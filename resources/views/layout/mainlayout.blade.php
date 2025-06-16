@@ -11,7 +11,6 @@
     <link href="{{ asset('template_assets/css/nucleo-icons.css') }}" rel="stylesheet" />
     <link href="{{ asset('template_assets/css/nucleo-svg.css') }}" rel="stylesheet" />
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-    <!-- CSS Files -->
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{ asset('assets/css/twitterbootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/datatablesbootstrap.css') }}">
