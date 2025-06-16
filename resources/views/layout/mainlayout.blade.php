@@ -12,13 +12,11 @@
     <link href="{{ asset('template_assets/css/nucleo-svg.css') }}" rel="stylesheet" />
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
     <!-- CSS Files -->
-    <link id="pagestyle" href="../assets/css/argon-dashboard.css?v=2.1.0" rel="stylesheet" />
-
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{ asset('assets/css/twitterbootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/datatablesbootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-    <link id="pagestyle" href="{{ asset('template_assets/css/argon-dashboard.css') }}?v=2.1.0" rel="stylesheet" />
+    <link id="pagestyle" href="{{ asset('template_assets/css/argon-dashboard.css') }}" rel="stylesheet" />
     <title>System</title>
 </head>
 @yield('config')
