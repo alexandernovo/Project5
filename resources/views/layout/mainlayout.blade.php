@@ -5,8 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Digital Incident Reporting System</title>
-    <link rel="shortcut icon" type="image/png" href="{{ asset('assets/images/logoico.png') }}" />
+    <title>MERO-BAARS</title>
+    <link rel="shortcut icon" type="image/png" href="{{ asset('assets/images/logo.jpg') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/twitterbootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/datatablesbootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('template_assets/css/icons/tabler-icons/tabler-icons.css') }}" />
@@ -18,11 +18,11 @@
 </head>
 
 <body>
+    @include('components.header')
     <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
         data-sidebar-position="fixed" data-header-position="fixed">
         @include('components.sidebar')
         <div class="body-wrapper">
-            @include('components.header')
             <div class="px-3 pb-3 mt-3">
                 @yield('content')
             </div>
@@ -90,9 +90,7 @@
     <script src="{{ asset('assets/js/socket.io.js') }}"></script>
     <script src="{{ asset('assets/js/script.js') }}"></script>
     @include('layout.js.layoutjs')
-    @include('layout.js.socket')
     @yield('javascript')
-    @include('layout.js.notification')
 </body>
 
 </html>

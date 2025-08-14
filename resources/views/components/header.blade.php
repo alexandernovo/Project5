@@ -7,11 +7,16 @@
                 </a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link nav-icon-hover" href="javascript:void(0)" data-bs-toggle="dropdown"
-                    aria-expanded="false" id="dropnotif">
-                    <i class="ti ti-bell-ringing"></i>
-                    <div class="notification bg-primary rounded-circle d-none" id="notif_dot"></div>
-                </a>
+                <div class="brand-logo d-flex align-items-center justify-content-between ps-0">
+                    <a href="./index.html" class="text-nowrap logo-img d-flex align-items-center gap-2">
+                        <img src="{{ asset('assets/images/logo.jpg') }}" width="" alt=""
+                            style="width: 43px; height: 43px" />
+                        <span style="font-size: 28px; letter-spacing: 4px; font-weight: 600; color:black"
+                            class="text-dark title-sidebar">
+                            MENRO-BAARS
+                        </span>
+                    </a>
+                </div>
                 <div class="dropdown-menu dropdown-menu-start dropdown-menu-animate-up" style="min-width: 350px;"
                     aria-labelledby="dropnotif">
                     <div class="d-flex align-items-center justify-content-between py-3 px-7">
@@ -20,7 +25,7 @@
                             id="notification_count"></span>
                     </div>
                     <div class="pb-3 overflow-y-auto mt-2" id="notificationDiv" style="height: 400px;">
-                     
+
                     </div>
                     <div class="px-4 pb-3 border-top" style="height: 35px;">
 

@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class UserController extends Controller
+class AuthController extends Controller
 {
-    public function user_view()
-    {
-    }
+    public function logout() {}
+
+    public function login() {}
 }
