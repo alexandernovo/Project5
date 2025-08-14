@@ -1,4 +1,4 @@
-<header class="app-header border-bottom position-sticky top-0 w-100">
+<header class="app-header border-bottom position-sticky top-0 w-100 primary-bg-new">
     <nav class="navbar navbar-expand-lg navbar-light">
         <ul class="navbar-nav">
             <li class="nav-item d-block d-xl-none">
@@ -12,7 +12,7 @@
                         <img src="{{ asset('assets/images/logo.png') }}" class="bg-white rounded-circle" width=""
                             alt="" style="width: 43px; height: 43px" />
                         <span style="font-size: 28px; letter-spacing: 4px; font-weight: 600;"
-                            class="text-dark title-sidebar">
+                            class="text-white title-sidebar">
                             MENRO-BAARS
                         </span>
                     </a>
@@ -68,7 +68,7 @@
                 <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
                     <div class="d-flex gap align-items-center">
                         <div class="d-flex flex-column justify-content-center align-items-end border-end pe-2">
-                            <p class="mb-0 fw-semibold " style="font-size: 13px; line-height: 17px">
+                            <p class="mb-0 fw-semibold text-white" style="font-size: 13px; line-height: 17px">
                                 Admin
                             </p>
                         </div>

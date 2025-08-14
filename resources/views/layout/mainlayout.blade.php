@@ -24,56 +24,19 @@
         @if (Route::currentRouteName() != 'home')
             @include('components.sidebar')
         @endif
-        <div class="body-wrapper">
-            <div class="px-3 pb-3 mt-3">
-                @yield('content')
+        @if (Route::currentRouteName() != 'home')
+            <div class="body-wrapper">
+                <div class="px-3 pb-3 mt-3">
+                    @yield('content')
+                </div>
             </div>
-        </div>
+        @else
+            @yield('content')
+        @endif
     </div>
-    {{-- container for toast alert --}}
+    @include('components.footer')
     <div class="toast-container position-fixed z-3 pb-2 pe-2" id="toast-container-global" style="right: 0; bottom: 0">
     </div>
-
-    {{-- toast template --}}
-    {{-- <div class="toast-container position-fixed z-3 pb-2 pe-2" style="right: 0; bottom: 0">
-        <div class="toast show glass-card text-white" role="alert" aria-live="assertive" aria-atomic="true"
-            data-bs-autohide="false">
-            <div class="toast-header glass-card border-bottom">
-                <img src="{{ asset('assets/images/incidentreport/notification_bell2.png') }}"
-                    class="toast-icon rounded me-2" alt="Notification">
-                <strong class="me-auto text-white">New Notification</strong>
-                <small class="text-white fs-1 datetime-notif" data-date="">2 seconds ago</small>
-                <button type="button" class="p-0 px-1 ms-1 close-btn" data-bs-dismiss="toast" aria-label="Close">
-                    <i class="bi bi-x-lg text-white"></i>
-                </button>
-            </div>
-            <div class="toast-body glass-card">
-                <div class="d-flex gap-1 align-items-center">
-                    <div class="profile-avatar"></div>
-                    <div>
-                        <p class="mb-0 fs-2 toast-username">Alexander E. Novo</p>
-                        <p class="mb-0 fs-2 toast-role">Computer Maintenance Technologist 1</p>
-                    </div>
-                </div>
-
-                <div class="mt-3 glass-card2 p-2 rounded">
-                    <p class="mb-0 fs-2 toast-message">
-                        <i class="bi bi-app-indicator me-1"></i>
-                        Incident Report has been Received.
-                    </p>
-                </div>
-
-                <div class="mt-2">
-                    <div class="col-6 ps-0">
-                        <button class="btn w-100 glass-card3 text-white btn-notif-hover" style="font-size: 11px; letter-spacing: 1px">
-                            View
-                        </button>
-                    </div>
-                    <div class="col-6"></div>
-                </div>
-            </div>
-        </div>
-    </div> --}}
     <script src="{{ asset('assets/js/jquery.js') }}"></script>
     <script src="{{ asset('assets/js/datatables.js') }}"></script>
     <script src="{{ asset('assets/js/datatablesbootstrap.js') }}"></script>
