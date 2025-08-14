@@ -9,9 +9,9 @@
             <li class="nav-item dropdown">
                 <div class="brand-logo d-flex align-items-center justify-content-between ps-0">
                     <a href="./index.html" class="text-nowrap logo-img d-flex align-items-center gap-2">
-                        <img src="{{ asset('assets/images/logo.jpg') }}" width="" alt=""
-                            style="width: 43px; height: 43px" />
-                        <span style="font-size: 28px; letter-spacing: 4px; font-weight: 600; color:black"
+                        <img src="{{ asset('assets/images/logo.png') }}" class="bg-white rounded-circle" width=""
+                            alt="" style="width: 43px; height: 43px" />
+                        <span style="font-size: 28px; letter-spacing: 4px; font-weight: 600;"
                             class="text-dark title-sidebar">
                             MENRO-BAARS
                         </span>
@@ -34,42 +34,55 @@
             </li>
         </ul>
         <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
-            <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
-                <div class="d-flex gap align-items-center">
-                    <div class="d-flex flex-column justify-content-center align-items-end border-end pe-2">
-                        <p class="mb-0 fw-semibold" style="font-size: 13px; line-height: 17px">
-                            Name
-                        <p class="mb-0 fw-semibold" style="font-size: 10px; line-height: 17px">
-                            Admin
-                        </p>
-                    </div>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link nav-icon-hover px-2" href="javascript:void(0)" id="drop2"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            <div class=" d-flex align-items-center" style="width: 40px; height: 40px">
-                                <img src="#"
-                                    onerror="this.src='{{ asset('template_assets/images/profile/user-1.jpg') }}'"
-                                    class="rounded-circle w-100 h-100 object-fit-cover">
-                            </div>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
-                            <div class="message-body">
-                                <a href="" class="d-flex align-items-center gap-2 dropdown-item">
-                                    <i class="ti ti-user fs-6"></i>
-                                    <p class="mb-0 fs-3">My Profile</p>
-                                </a>
-                                {{-- <hr class="my-2"> --}}
-                                {{-- <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
-                                    <i class="ti ti-mail fs-6"></i>
-                                    <p class="mb-0 fs-3">My Account</p>
-                                </a> --}}
-                                <a class="btn btn-outline-primary mx-3 mt-2 d-block logout-btn">Logout</a>
-                            </div>
+            @if (Route::currentRouteName() != 'home')
+                <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
+                    <div class="d-flex gap align-items-center">
+                        <div class="d-flex flex-column justify-content-center align-items-end border-end pe-2">
+                            <p class="mb-0 fw-semibold " style="font-size: 13px; line-height: 17px">
+                                Admin
+                            </p>
                         </div>
-                    </li>
-                </div>
-
-            </ul>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link nav-icon-hover px-2" href="javascript:void(0)" id="drop2"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <div class=" d-flex align-items-center" style="width: 40px; height: 40px">
+                                    <img src="#"
+                                        onerror="this.src='{{ asset('template_assets/images/profile/user-1.jpg') }}'"
+                                        class="rounded-circle w-100 h-100 object-fit-cover">
+                                </div>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up"
+                                aria-labelledby="drop2">
+                                <div class="message-body">
+                                    <a href="" class="d-flex align-items-center gap-2 dropdown-item">
+                                        <i class="ti ti-user fs-6"></i>
+                                        <p class="mb-0 fs-3">My Profile</p>
+                                    </a>
+                                    <a class="btn btn-outline-primary mx-3 mt-2 d-block logout-btn">Logout</a>
+                                </div>
+                            </div>
+                        </li>
+                    </div>
+                </ul>
+            @else
+                <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
+                    <div class="d-flex gap align-items-center">
+                        <div class="d-flex flex-column justify-content-center align-items-end border-end pe-2">
+                            <p class="mb-0 fw-semibold " style="font-size: 13px; line-height: 17px">
+                                Admin
+                            </p>
+                        </div>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link nav-icon-hover px-2 cursor-pointer">
+                                <div class=" d-flex align-items-center" style="width: 40px; height: 40px">
+                                    <img src="{{ asset('template_assets/images/profile/user-1.jpg') }}"
+                                        class="rounded-circle w-100 h-100 object-fit-cover">
+                                </div>
+                            </a>
+                        </li>
+                    </div>
+                </ul>
+            @endif
         </div>
     </nav>
 </header>

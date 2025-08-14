@@ -21,7 +21,9 @@
     @include('components.header')
     <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
         data-sidebar-position="fixed" data-header-position="fixed">
-        @include('components.sidebar')
+        @if (Route::currentRouteName() != 'home')
+            @include('components.sidebar')
+        @endif
         <div class="body-wrapper">
             <div class="px-3 pb-3 mt-3">
                 @yield('content')
