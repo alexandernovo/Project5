@@ -1,8 +1,8 @@
-<aside class="left-sidebar " style="height: calc(100vh - 71px); top: 71px;">
-    <div>
-        <nav class="sidebar-nav scroll-sidebar mt-4 position-relative pb-3">
+<aside class="left-sidebar " style="height: calc(100vh - 120px); top: 69px;">
+    <div class="h-100">
+        <nav class="sidebar-nav scroll-sidebar mt-1 position-relative pb-3 h-100">
             <ul id="sidebarnav">
-                <li class="nav-small-cap  mt-0">
+                <li class="nav-small-cap mt-1">
                     <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                     <span class="hide-menu">Main</span>
                 </li>
@@ -30,7 +30,7 @@
                         <span class="hide-menu">Setting</span>
                     </a>
                 </li>
-                <li class="nav-small-cap">
+                <li class="nav-small-cap mt-2">
                     <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                     <span class="hide-menu">Certification</span>
                 </li>
@@ -90,7 +90,7 @@
                         <span class="hide-menu">Vendors</span>
                     </a>
                 </li>
-                <li class="nav-small-cap ">
+                <li class="nav-small-cap  mt-2">
                     <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                     <span class="hide-menu">Waste</span>
                 </li>

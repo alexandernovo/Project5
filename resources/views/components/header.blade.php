@@ -3,7 +3,7 @@
         <ul class="navbar-nav">
             <li class="nav-item d-block d-xl-none">
                 <a class="nav-link sidebartoggler nav-icon-hover" id="headerCollapse" href="javascript:void(0)">
-                    <i class="ti ti-menu-2"></i>
+                    <i class="ti ti-menu-2 text-white"></i>
                 </a>
             </li>
             <li class="nav-item dropdown">
@@ -38,7 +38,7 @@
                 <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
                     <div class="d-flex gap align-items-center">
                         <div class="d-flex flex-column justify-content-center align-items-end border-end pe-2">
-                            <p class="mb-0 fw-semibold " style="font-size: 13px; line-height: 17px">
+                            <p class="mb-0 fw-semibold text-white" style="font-size: 13px; line-height: 17px">
                                 Admin
                             </p>
                         </div>
@@ -73,7 +73,7 @@
                             </p>
                         </div>
                         <li class="nav-item dropdown">
-                            <a class="nav-link nav-icon-hover px-2 cursor-pointer">
+                            <a class="nav-link nav-icon-hover px-2 cursor-pointer" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop">
                                 <div class=" d-flex align-items-center" style="width: 40px; height: 40px">
                                     <img src="{{ asset('template_assets/images/profile/user-1.jpg') }}"
                                         class="rounded-circle w-100 h-100 object-fit-cover">

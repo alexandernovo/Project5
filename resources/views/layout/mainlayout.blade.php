@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>MERO-BAARS</title>
-    <link rel="shortcut icon" type="image/png" href="{{ asset('assets/images/logo.jpg') }}" />
+    <link rel="shortcut icon" type="image/png" href="{{ asset('assets/images/logo.png') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/twitterbootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/datatablesbootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('template_assets/css/icons/tabler-icons/tabler-icons.css') }}" />
@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/style2.css') }}" />
 </head>
 
-<body>
+<body class="d-flex flex-column vh-100 justify-content-between">
     @include('components.header')
     <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
         data-sidebar-position="fixed" data-header-position="fixed">
@@ -34,9 +34,9 @@
             @yield('content')
         @endif
     </div>
-    @include('components.footer')
     <div class="toast-container position-fixed z-3 pb-2 pe-2" id="toast-container-global" style="right: 0; bottom: 0">
     </div>
+    @include('components.footer')
     <script src="{{ asset('assets/js/jquery.js') }}"></script>
     <script src="{{ asset('assets/js/datatables.js') }}"></script>
     <script src="{{ asset('assets/js/datatablesbootstrap.js') }}"></script>
