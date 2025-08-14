@@ -9,7 +9,7 @@
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="j" aria-expanded="false">
                         <span>
-                            <i class="ti ti-layout-dashboard"></i>
+                           <i class="bi bi-window-sidebar"></i>
                         </span>
                         <span class="hide-menu">Dashboard</span>
                     </a>
