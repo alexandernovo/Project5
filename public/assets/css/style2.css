@@ -1,0 +1,326 @@
+.steps-btn-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.steps-btn-group {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.steps-btn-group .steps-btn {
+    outline: none;
+    background: none;
+    border: none;
+    color: #567fec;
+    border: 3px solid #e3e8ee;
+    color: #5a6b84;
+    width: 50px;
+    height: 50px;
+    border-radius: 99999px;
+    font-size: 19px;
+    font-weight: 500;
+    background-color: white;
+    z-index: 2;
+    margin: 0 20px;
+}
+.steps-btn-group .steps-circle {
+    z-index: 2;
+}
+.steps-btn.active {
+    background-color: #567fec;
+    border: 3px solid #567fec;
+    color: white;
+}
+
+.steps-btn.finished {
+    background-color: white;
+    border: 3px solid #567fec;
+    color: #567fec;
+}
+
+.steps-btn-container .progress {
+    position: absolute;
+    width: calc(100% - 40px);
+    top: 35%;
+    height: 5px;
+    transform: translateY(-50%);
+}
+.steps-circle p {
+    margin-top: 5px;
+}
+
+.btn-deny {
+    background-color: rgb(52, 133, 82) !important;
+}
+
+.logout-style {
+    color: #2a3547;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    font-size: 14px;
+    white-space: nowrap;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    line-height: 25px;
+    position: relative;
+    margin: 0px 0px 2px;
+    padding: 10px;
+    border-radius: 7px;
+    gap: 15px;
+    font-weight: 400;
+}
+.unread-notif {
+    background-color: rgb(243, 242, 242);
+}
+.hover-notification {
+    cursor: pointer;
+}
+.hover-notification:hover {
+    background-color: rgb(243, 243, 243);
+    transition: ease-in 0.2s;
+}
+.received_class {
+    color: rgba(255, 174, 31, 1);
+    background-color: #ffefd2 !important;
+    border-radius: 10px;
+    font-size: 13px;
+    padding: 2px 8px;
+    font-weight: bold;
+}
+
+.submitted_class {
+    color: rgba(19, 222, 185, 1);
+    background-color: #e6fffa !important;
+    border-radius: 10px;
+    font-size: 13px;
+    padding: 2px 8px;
+    font-weight: bold;
+}
+
+.finaldispo_class {
+    color: rgba(250, 137, 107, 1);
+    background-color: #fbf2ef !important;
+    border-radius: 10px;
+    font-size: 13px;
+    padding: 2px 8px;
+    font-weight: bold;
+}
+
+.enccoded_class {
+    color: rgba(93, 135, 255, 1);
+    background-color: rgba(73, 190, 255, 0.1) !important;
+    border-radius: 10px;
+    font-size: 13px;
+    padding: 2px 8px;
+    font-weight: bold;
+}
+
+.close-btn,
+.close-btn:focus,
+.close-btn:active,
+.close-btn:focus:active,
+.close-btn:focus-visible {
+    background: transparent !important;
+    outline: none !important;
+    box-shadow: none !important;
+    border: 0;
+}
+
+.notallowed {
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.sidebar-config-dev {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.sm-create {
+    display: none;
+}
+
+.filters-sm-modal {
+    visibility: hidden;
+}
+.hr-sm-step3 {
+    display: none;
+}
+
+.hr-with-style {
+    flex-shrink: 0;
+    border-top: 0px solid rgba(0, 0, 0, 0.12);
+    border-right: 0px solid rgba(0, 0, 0, 0.12);
+    border-left: 0px solid rgba(0, 0, 0, 0.12);
+    background-color: transparent;
+    height: 0.0625rem;
+    margin: 0.3rem 0px;
+    /* margin-top: 0.5rem; */
+    border-bottom: none;
+    opacity: 0.25;
+    background-image: linear-gradient(
+        to right,
+        rgba(52, 71, 103, 0),
+        rgba(52, 71, 103, 0.4),
+        rgba(52, 71, 103, 0)
+    ) !important;
+}
+
+.button-msg-sm {
+    visibility: hidden;
+}
+
+.card-attachment-sm {
+    height: 330px;
+}
+
+.reportedFullnameview {
+    font-size: 14px;
+    max-width: 200px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.reportedPositionview {
+    font-size: 11px;
+    max-width: 250px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.sectionSelectModal {
+    width: 340px;
+}
+@media (max-width: 750px) {
+    .sidebar-config-dev {
+        position: unset;
+        bottom: unset;
+        left: unset;
+        transform: unset;
+        padding-bottom: 50px;
+    }
+
+    .filter-components {
+        display: none;
+    }
+
+    .top-filters-class {
+        margin-top: 0 !important;
+        width: 100%;
+        gap: 0;
+        justify-content: space-between;
+    }
+
+    .bottom-filters-class {
+        margin-top: 6px;
+        width: 100%;
+        gap: 0;
+        justify-content: space-between;
+    }
+
+    .title-tips-class {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .breadcrum-sm-class {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .sm-class-50 {
+        width: 48%;
+        font-size: 13px;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: center;
+    }
+
+    .sm-create {
+        display: unset;
+    }
+    .lg-create {
+        display: none;
+    }
+
+    .filters-sm-modal {
+        visibility: unset;
+    }
+
+    .boxDashClass {
+        margin-bottom: 20px;
+    }
+
+    .chat-box {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card-sm-padding {
+        padding: 8px !important;
+    }
+
+    .steps-btn-group .steps-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 15px;
+    }
+    .label-stepss {
+        font-size: 12px;
+    }
+
+    .steps-btn-container .progress {
+        top: 27%;
+        height: 5px;
+    }
+
+    .step-3-sm-style {
+        margin-top: 10px;
+    }
+
+    .hr-sm-step3 {
+        display: block;
+    }
+
+    .title-header-sm {
+        text-align: center;
+    }
+    .button-msg-sm {
+        visibility: visible;
+    }
+
+    #scrollablePreview {
+        overflow-y: auto;
+    }
+
+    .card-view-dirs-sm {
+        margin-top: 15px;
+        height: 500px;
+        margin-bottom: 15px;
+    }
+
+    .card-view-reported-sm {
+        margin-bottom: 15px;
+    }
+
+    .reportedFullnameview {
+        max-width: 200px;
+    }
+    .reportedPositionview {
+        max-width: 200px;
+    }
+
+    .sectionSelectModal {
+        width: 100%;
+    }
+
+    .marginsectionModal {
+        margin-top: 8px;
+    }
+}
