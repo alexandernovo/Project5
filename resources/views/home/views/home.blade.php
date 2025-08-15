@@ -15,3 +15,7 @@
         </div>
     </div>
 @endsection
+
+@section('javascript')
+    @include('home.js.login')
+@endsection
