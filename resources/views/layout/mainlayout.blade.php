@@ -17,22 +17,24 @@
     <link rel="stylesheet" href="{{ asset('assets/css/style2.css') }}" />
 </head>
 
-<body class="d-flex flex-column vh-100 justify-content-between">
-    @include('components.header')
-    <div class="page-wrapper flex-1" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
-        data-sidebar-position="fixed" data-header-position="fixed">
-        @if (Route::currentRouteName() != 'home')
-            @include('components.sidebar')
-        @endif
-        @if (Route::currentRouteName() != 'home')
-            <div class="body-wrapper">
-                <div class="px-3 pb-3 mt-3">
-                    @yield('content')
+<body>
+    <div class="d-flex flex-column vh-100 justify-content-between">
+        @include('components.header')
+        <div class="page-wrapper flex-1" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6"
+            data-sidebartype="full" data-sidebar-position="fixed" data-header-position="fixed">
+            @if (Route::currentRouteName() != 'home')
+                @include('components.sidebar')
+            @endif
+            @if (Route::currentRouteName() != 'home')
+                <div class="body-wrapper">
+                    <div class="px-3 pb-3 mt-3">
+                        @yield('content')
+                    </div>
                 </div>
-            </div>
-        @else
-            @yield('content')
-        @endif
+            @else
+                @yield('content')
+            @endif
+        </div>
     </div>
     <div class="toast-container position-fixed z-3 pb-2 pe-2" id="toast-container-global" style="right: 0; bottom: 0">
     </div>

@@ -14,3 +14,6 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 
 //association
 Route::get('/association/view', [AssociationController::class, 'association_view'])->name('association_view');
+Route::post('/association/save_new_association', [AssociationController::class, 'save_new_association'])->name('save_new_association');
+Route::post('/association/getAssociations', [AssociationController::class, 'getAssociations'])->name('getAssociations');
+Route::post('/association/deleteAssociation', [AssociationController::class, 'deleteAssociation'])->name('deleteAssociation');

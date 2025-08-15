@@ -71,7 +71,7 @@ $(document).ready(function () {
         }
     });
 });
-function formatDateToStr(rawDateTime) {
+function formatDateToStr(rawDateTime, withTime = true) {
     var months = [
         "Jan",
         "Feb",
@@ -112,12 +112,7 @@ function formatDateToStr(rawDateTime) {
             day +
             ", " +
             year +
-            " " +
-            hour +
-            ":" +
-            minute +
-            " " +
-            period
+            (withTime ? " " + hour + ":" + minute + " " + period : "")
         );
     } else {
         return "";

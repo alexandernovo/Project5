@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('clients', function (Blueprint $table) {
             $table->id("client_id");
-            $table->string('owner_name');
-            $table->string('address');
+            $table->string('owner_name')->nullable();
+            $table->string('address')->nullable();
             $table->timestamps();
         });
     }

@@ -330,3 +330,7 @@
 .flex-1 {
     flex: 1;
 }
+.selected td {
+    box-shadow: unset !important;
+    background-color: #a3a3a3 !important;
+}

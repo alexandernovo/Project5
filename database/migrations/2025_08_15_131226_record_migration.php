@@ -14,17 +14,17 @@ return new class extends Migration
         Schema::create('records', function (Blueprint $table) {
             $table->id("record_id");
             $table->integer("client_id");
-            $table->string('ornumber');
-            $table->string('association');
-            $table->string('model_no');
-            $table->string('brand');
-            $table->string('serial_no');
-            $table->string('lot_no');
-            $table->string('requester');
-            $table->string('name_other');
-            $table->string('status');
-            $table->string('type');
-            $table->datetime('expiration');
+            $table->string('ornumber')->nullable();
+            $table->string('association')->nullable();
+            $table->string('model_no')->nullable();
+            $table->string('brand')->nullable();
+            $table->string('serial_no')->nullable();
+            $table->string('lot_no')->nullable();
+            $table->string('requester')->nullable();
+            $table->string('name_other')->nullable();
+            $table->string('status')->nullable();
+            $table->string('type')->nullable();
+            $table->datetime('expiration')->nullable();
             $table->timestamps();
         });
     }

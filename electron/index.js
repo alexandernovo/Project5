@@ -22,14 +22,6 @@ function createWindow() {
         mainWindow.setMenuBarVisibility(false);
     });
 
-    mainWindow.webContents.on("will-navigate", (event, url) => {
-        event.preventDefault(); // Prevent the default navigation
-    });
-
-    mainWindow.webContents.on("new-window", (event, url) => {
-        event.preventDefault(); // Prevent the default behavior of opening a new window
-    });
-
     mainWindow.on("closed", () => {
         mainWindow = null;
     });
