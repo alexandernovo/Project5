@@ -35,7 +35,7 @@
                     <span class="hide-menu">Certification</span>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="a" aria-expanded="false">
+                    <a class="sidebar-link" href="{{ route('association_view') }}" aria-expanded="false">
                         <span>
                             <i class="bi bi-people"></i>
                         </span>

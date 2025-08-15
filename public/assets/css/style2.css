@@ -327,3 +327,6 @@
 .primary-bg-new {
     background-color: #720107;
 }
+.flex-1 {
+    flex: 1;
+}

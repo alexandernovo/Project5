@@ -19,7 +19,7 @@
 
 <body class="d-flex flex-column vh-100 justify-content-between">
     @include('components.header')
-    <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+    <div class="page-wrapper flex-1" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
         data-sidebar-position="fixed" data-header-position="fixed">
         @if (Route::currentRouteName() != 'home')
             @include('components.sidebar')
@@ -55,7 +55,7 @@
     <script src="{{ asset('assets/js/socket.io.js') }}"></script>
     <script src="{{ asset('assets/js/script.js') }}"></script>
     @include('layout.js.layoutjs')
-    @yield('javascript')
+    @yield('js')
 </body>
 
 </html>
