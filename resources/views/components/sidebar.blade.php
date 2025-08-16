@@ -7,7 +7,7 @@
                     <span class="hide-menu">Main</span>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="j" aria-expanded="false">
+                    <a class="sidebar-link" href="{{ route('dashboard') }}" aria-expanded="false">
                         <span>
                            <i class="bi bi-window-sidebar"></i>
                         </span>
