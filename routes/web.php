@@ -9,6 +9,7 @@ use App\Http\Controllers\ChainsawController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\TreesController;
+use App\Http\Controllers\TricycleController;
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
 Route::get('/dashboard', [DashboardController::class, 'dashboard_view'])->name('dashboard');
@@ -45,3 +46,9 @@ Route::get('/store/view', [StoreController::class, 'store_view'])->name('store_v
 Route::post('/store/save_new_store', [StoreController::class, 'save_new_store'])->name('save_new_store');
 Route::post('/store/getstores', [StoreController::class, 'getstores'])->name('getstore');
 Route::post('/store/deletestore', [StoreController::class, 'deletestore'])->name('deletestore');
+
+//tricycle
+Route::get('/tricycle/view', [TricycleController::class, 'tricycle_view'])->name('tricycle_view');
+Route::post('/tricycle/save_new_tricycle', [TricycleController::class, 'save_new_tricycle'])->name('save_new_tricycle');
+Route::post('/tricycle/gettricycles', [TricycleController::class, 'gettricycles'])->name('gettricycle');
+Route::post('/tricycle/deletetricycle', [TricycleController::class, 'deletetricycle'])->name('deletetricycle');
