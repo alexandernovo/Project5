@@ -51,7 +51,7 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="c" aria-expanded="false">
+                    <a class="sidebar-link" href="{{ route('chainsaw_view') }}" aria-expanded="false">
                         <span>
                             <i class="bi bi-folder"></i>
                         </span>
@@ -59,7 +59,7 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="d" aria-expanded="false">
+                    <a class="sidebar-link" href="{{ route('trees_view') }}" aria-expanded="false">
                         <span>
                             <i class="bi bi-tree"></i>
                         </span>
