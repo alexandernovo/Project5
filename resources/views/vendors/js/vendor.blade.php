@@ -1,22 +1,22 @@
 <script>
-    let chainsawOptions;
-    let chainsawTable;
-    let chainsawData = [];
-    let selectedchainsawId = null;
+    let vendorOptions;
+    let vendorTable;
+    let vendorData = [];
+    let selectedvendorId = null;
 
-    chainsawOptions = {
+    vendorOptions = {
         processing: false,
         serverSide: true,
         // data:[],
         ajax: {
-            url: "{{ route('getchainsaws') }}",
+            url: "{{ route('getvendor') }}",
             type: 'POST',
             dataType: 'json',
             data: function(d) {
                 d._token = '{{ csrf_token() }}';
             },
             dataSrc: function(json) {
-                chainsawData = json.data;
+                vendorData = json.data;
                 return json.data;
             }
         },
@@ -35,7 +35,7 @@
                 }
             },
             {
-                title: 'Owner of Chainsaw',
+                title: 'Owner of Vendor',
                 className: 'text-nowrap p-3',
                 render: function(data, type, row) {
                     return row.owner_name;
@@ -64,68 +64,68 @@
             }
         ],
         initComplete: function(settings, json) {
-            appendButtonschainsaw();
+            appendButtonsvendor();
             $('[data-bs-toggle="tooltip"]').tooltip();
         }
     };
 
     $(document).ready(function() {
-        renderChainsawTable();
+        rendervendorTable();
     })
 
-    function renderChainsawTable() {
-        if (chainsawTable) {
-            chainsawTable.destroy();
+    function rendervendorTable() {
+        if (vendorTable) {
+            vendorTable.destroy();
         }
-        chainsawTable = new DataTable('#chainsawTable', chainsawOptions)
+        vendorTable = new DataTable('#vendorTable', vendorOptions)
     }
 
-    $(document).on("click", "#reloadchainsawBtn", function() {
+    $(document).on("click", "#reloadvendorBtn", function() {
         reloadButtonLoading(true);
-        reloadChainsawTable();
+        reloadvendorTable();
         setTimeout(() => {
             reloadButtonLoading(false);
         }, 500);
     });
 
-    function reloadChainsawTable() {
-        if (chainsawTable) {
-            chainsawTable.ajax.reload(null, false);
+    function reloadvendorTable() {
+        if (vendorTable) {
+            vendorTable.ajax.reload(null, false);
         } else {
-            renderChainsawTable();
+            rendervendorTable();
         }
     }
 
-    function reloadChainsawTableWithPagination() {
-        if (chainsawTable) {
-            chainsawTable.ajax.reload(null, true);
+    function reloadvendorTableWithPagination() {
+        if (vendorTable) {
+            vendorTable.ajax.reload(null, true);
         } else {
-            renderChainsawTable();
+            rendervendorTable();
         }
     }
 
-    function appendButtonschainsaw() {
-        $('#chainsawTable_wrapper .row .dt-length').append(`
-            <div class="d-flex gap-2 ms-2 align-items-center chainsawBtnSm">
+    function appendButtonsvendor() {
+        $('#vendorTable_wrapper .row .dt-length').append(`
+            <div class="d-flex gap-2 ms-2 align-items-center vendorBtnSm">
                  <button class="btn btn-primary d-flex flex-nowrap align-items-center gap-2" id="">
                     <span>
                         <i class="bi bi-node-plus"></i>
                     </span>
                     Request Renew
                 </button>
-                <button class="btn btn-success d-flex flex-nowrap align-items-center gap-2" id="newchainsawBtn">
+                <button class="btn btn-success d-flex flex-nowrap align-items-center gap-2" id="newvendorBtn">
                     <span>
                         <i class="bi bi-clipboard-plus"></i>
                     </span>
                     Add New
                 </button>
-                <button class="btn btn-info d-flex flex-nowrap align-items-center gap-2" id="editchainsawBtn">
+                <button class="btn btn-info d-flex flex-nowrap align-items-center gap-2" id="editvendorBtn">
                     <span>
                         <i class="bi bi-pencil-square"></i>
                     </span>
                     Edit
                 </button>
-                <button class="btn btn-danger d-flex flex-nowrap align-items-center gap-2" id="deletechainsawBtn">
+                <button class="btn btn-danger d-flex flex-nowrap align-items-center gap-2" id="deletevendorBtn">
                     <span>
                         <i class="ti ti-trash"></i>
                     </span>
@@ -137,7 +137,7 @@
                     </span>
                     Share
                 </button>
-                <button class="btn btn-info d-flex flex-nowrap align-items-center gap-2" id="reloadchainsawBtn">
+                <button class="btn btn-info d-flex flex-nowrap align-items-center gap-2" id="reloadvendorBtn">
                     <span>
                         <i class="bi bi-arrow-clockwise"></i>
                     </span>
@@ -150,13 +150,13 @@
 
     function reloadButtonLoading(isLoading) {
         if (isLoading) {
-            $("#reloadchainsawBtn").html(`
+            $("#reloadvendorBtn").html(`
                     <div class="spinner-border text-white" role="status" style="width: 14px; height: 14px">
                 </div>
                 Reloading
             `);
         } else {
-            $("#reloadchainsawBtn").html(`
+            $("#reloadvendorBtn").html(`
                 <i class="bi bi-arrow-clockwise"></i>
                 Reload
             `);
@@ -164,12 +164,12 @@
     }
 
 
-    $(document).on("click", ".removechainsaw", function() {
+    $(document).on("click", ".removevendor", function() {
         let employee_id = $(this).data("employee_id");
 
         Swal.fire({
             title: "Warning",
-            text: "Remove this chainsaw?",
+            text: "Remove this vendor?",
             icon: "warning",
             showCancelButton: true,
             confirmButtonText: 'Remove'
@@ -185,7 +185,7 @@
                             icon: "success",
                             allowOutsideClick: false
                         }).then((result) => {
-                            reloadChainsawTable();
+                            reloadvendorTable();
                         });
                     } else {
                         Swal.fire({
@@ -199,25 +199,25 @@
         });
     });
 
-    $(document).on('click', '#chainsawTable tbody tr', function() {
-        let data = chainsawTable.row(this).data();
+    $(document).on('click', '#vendorTable tbody tr', function() {
+        let data = vendorTable.row(this).data();
         if (!data) return;
 
         if ($(this).hasClass('selected')) {
             $(this).removeClass('selected');
-            selectedchainsawId = null;
+            selectedvendorId = null;
         } else {
             $('tr.selected').removeClass('selected');
             $(this).addClass('selected');
-            selectedchainsawId = data.record_id; // store the ID
+            selectedvendorId = data.record_id; // vendor the ID
         }
     });
 
-    // Restore selection after reload
-    chainsawOptions.drawCallback = function(settings) {
-        chainsawTable.rows().every(function() {
+    // Revendor selection after reload
+    vendorOptions.drawCallback = function(settings) {
+        vendorTable.rows().every(function() {
             let data = this.data();
-            if (data.record_id === selectedchainsawId) {
+            if (data.record_id === selectedvendorId) {
                 $(this.node()).addClass('selected');
             }
         });

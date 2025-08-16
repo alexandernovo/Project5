@@ -83,7 +83,7 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="g" aria-expanded="false">
+                    <a class="sidebar-link" href="{{ route('vendor_view') }}" aria-expanded="false">
                         <span>
                             <i class="bi bi-people"></i>
                         </span>

@@ -35,7 +35,7 @@
                 }
             },
             {
-                title: 'Owner of Boat',
+                title: 'Owner of Tricycle',
                 className: 'text-nowrap p-3',
                 render: function(data, type, row) {
                     return row.owner_name;

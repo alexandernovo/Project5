@@ -10,6 +10,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\TreesController;
 use App\Http\Controllers\TricycleController;
+use App\Http\Controllers\VendorController;
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
 Route::get('/dashboard', [DashboardController::class, 'dashboard_view'])->name('dashboard');
@@ -52,3 +53,9 @@ Route::get('/tricycle/view', [TricycleController::class, 'tricycle_view'])->name
 Route::post('/tricycle/save_new_tricycle', [TricycleController::class, 'save_new_tricycle'])->name('save_new_tricycle');
 Route::post('/tricycle/gettricycles', [TricycleController::class, 'gettricycles'])->name('gettricycle');
 Route::post('/tricycle/deletetricycle', [TricycleController::class, 'deletetricycle'])->name('deletetricycle');
+
+//vendor
+Route::get('/vendor/view', [VendorController::class, 'vendor_view'])->name('vendor_view');
+Route::post('/vendor/save_new_vendor', [VendorController::class, 'save_new_vendor'])->name('save_new_vendor');
+Route::post('/vendor/getvendors', [VendorController::class, 'getvendors'])->name('getvendor');
+Route::post('/vendor/deletevendor', [VendorController::class, 'deletevendor'])->name('deletevendor');
