@@ -4,6 +4,7 @@ use App\Http\Controllers\AssociationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BoatingController;
 use App\Http\Controllers\HomeController;
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
@@ -17,3 +18,9 @@ Route::get('/association/view', [AssociationController::class, 'association_view
 Route::post('/association/save_new_association', [AssociationController::class, 'save_new_association'])->name('save_new_association');
 Route::post('/association/getAssociations', [AssociationController::class, 'getAssociations'])->name('getAssociations');
 Route::post('/association/deleteAssociation', [AssociationController::class, 'deleteAssociation'])->name('deleteAssociation');
+
+//boating
+Route::get('/boating/view', [BoatingController::class, 'boating_view'])->name('boating_view');
+Route::post('/boating/save_new_boating', [BoatingController::class, 'save_new_boating'])->name('save_new_boating');
+Route::post('/boating/getBoatings', [BoatingController::class, 'getBoatings'])->name('getBoatings');
+Route::post('/boating/deleteBoating', [BoatingController::class, 'deleteBoating'])->name('deleteBoating');

@@ -41,7 +41,7 @@
                     if (result.dismiss === Swal.DismissReason.timer) {
                         postRequest("{{ route('auth.logout') }}", {}, (response) => {
                             if (response.status == "success") {
-                                window.location.href = "{{ route('login') }}";
+                                window.location.href = "{{ route('home') }}";
                             }
                         })
                     }

@@ -8,14 +8,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Exception;
 
-class AssociationController extends Controller
+class BoatingController extends Controller
 {
-    public function association_view()
+    public function boating_view()
     {
-        return view('association.views.association');
+        return view('boating.views.boating');
     }
 
-    public function save_new_association(Request $request)
+    public function save_new_boating(Request $request)
     {
         try {
             DB::beginTransaction();
@@ -25,7 +25,6 @@ class AssociationController extends Controller
             unset($all['record_id']);
 
             if ($all['client_id'] == 0) {
-                // Create new client
                 $client = Client::create([
                     "owner_name" => $all['owner_name'],
                     "address" => $all['address']
@@ -44,7 +43,7 @@ class AssociationController extends Controller
 
             if ($record_id == 0) {
                 $all['status'] = "ACTIVE";
-                $all['type'] = "ASSOCIATION";
+                $all['type'] = "BOATING";
                 Record::create($all);
             } else {
                 Record::where("record_id", $record_id)->update($all);
@@ -54,7 +53,7 @@ class AssociationController extends Controller
 
             return response()->json([
                 'status' => 'success',
-                'message' => "Association saved successfully"
+                'message' => "Boat saved successfully"
             ]);
         } catch (Exception $ex) {
             DB::rollBack();
@@ -66,7 +65,7 @@ class AssociationController extends Controller
         }
     }
 
-    public function getAssociations(Request $request)
+    public function getBoatings(Request $request)
     {
         $length = $request->input('length');
         $start = $request->input('start');
@@ -75,12 +74,13 @@ class AssociationController extends Controller
         $query = DB::table('records')
             ->leftJoin('clients', 'records.client_id', '=', 'clients.client_id')
             ->select('records.*', 'clients.*')
-            ->where("records.type", "ASSOCIATION");
+            ->where("records.type", "BOATING");
 
         if (!empty($searchValue)) {
             $query->where(function ($q) use ($searchValue) {
                 $q->where('clients.owner_name', 'like', "%{$searchValue}%")
                     ->orWhere('clients.address', 'like', "%{$searchValue}%")
+                    ->orWhere('records.name_other', 'like', "%{$searchValue}%")
                     ->orWhere('records.record_id', 'like', "%{$searchValue}%");
             });
         }
@@ -100,7 +100,7 @@ class AssociationController extends Controller
         ]);
     }
 
-    public function deleteAssociation(Request $request)
+    public function deleteBoating(Request $request)
     {
         $record_id = $request->record_id;
 
