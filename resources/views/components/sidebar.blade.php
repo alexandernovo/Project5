@@ -67,7 +67,7 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="e" aria-expanded="false">
+                    <a class="sidebar-link" href="{{ route('store_view') }}" aria-expanded="false">
                         <span>
                             <i class="bi bi-shop"></i>
                         </span>

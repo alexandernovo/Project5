@@ -1,20 +1,20 @@
 <script>
-    $(document).on("click", "#newtreesBtn", function() {
-        $("#newtreesModalLabel").text("New Cutting Trees");
+    $(document).on("click", "#newstoreBtn", function() {
+        $("#newstoreModalLabel").text("New Store");
         resetFormAssociation();
-        $("#newtreesModal").modal("show");
+        $("#newstoreModal").modal("show");
     });
 
-    $(document).on("click", "#edittreesBtn", function() {
-        $("#newtreesModalLabel").text("Edit Cutting Trees");
-        var selectedRow = treesTable.row('.selected');
+    $(document).on("click", "#editstoreBtn", function() {
+        $("#newstoreModalLabel").text("Edit Store");
+        var selectedRow = storeTable.row('.selected');
         resetFormAssociation();
 
         if (selectedRow.node()) {
             var data = selectedRow.data();
             if (data) {
-                populateForm(data, "newtreesform");
-                $("#newtreesModal").modal("show");
+                populateForm(data, "newstoreform");
+                $("#newstoreModal").modal("show");
             }
         } else {
             Swal.fire({
@@ -25,7 +25,7 @@
         }
     })
 
-    $(document).on("submit", "#newtreesform", function(e) {
+    $(document).on("submit", "#newstoreform", function(e) {
         e.preventDefault();
 
         let formData = {
@@ -33,16 +33,15 @@
             record_id: $('#record_id').val(),
             client_id: $('#client_id').val(),
             owner_name: $('#owner_name').val(),
+            name_other: $('#name_other').val(),
             address: $('#address').val(),
-            lot_no: $('#lot_no').val(),
-            requester: $('#requester').val(),
             expiration: $('#expiration').val()
         };
 
-        postRequest("{{ route('save_new_trees') }}", formData, (response) => {
+        postRequest("{{ route('save_new_store') }}", formData, (response) => {
             if (response.status == "success") {
-                reloadtreesTable();
-                $("#newtreesModal").modal("hide");
+                reloadstoreTable();
+                $("#newstoreModal").modal("hide");
                 Swal.fire({
                     title: "Success",
                     text: response.message,
@@ -55,7 +54,7 @@
     });
 
     function resetFormAssociation() {
-        $("#newtreesform")[0].reset();
-        $("#newtreesform input[type='hidden']").val(0);
+        $("#newstoreform")[0].reset();
+        $("#newstoreform input[type='hidden']").val(0);
     }
 </script>

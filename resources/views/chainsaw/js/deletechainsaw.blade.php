@@ -7,7 +7,7 @@
             if (data) {
                 Swal.fire({
                     title: "Warning",
-                    text: "Delete this Boat?",
+                    text: "Delete this Chainsaw Record?",
                     icon: "warning",
                     showCancelButton: true,
                     confirmButtonText: 'Delete'

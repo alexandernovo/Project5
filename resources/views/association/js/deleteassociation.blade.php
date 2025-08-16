@@ -7,7 +7,7 @@
             if (data) {
                 Swal.fire({
                     title: "Warning",
-                    text: "Delete this association?",
+                    text: "Delete this Association Record?",
                     icon: "warning",
                     showCancelButton: true,
                     confirmButtonText: 'Delete'

@@ -7,6 +7,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BoatingController;
 use App\Http\Controllers\ChainsawController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\StoreController;
 use App\Http\Controllers\TreesController;
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
@@ -38,3 +39,9 @@ Route::get('/trees/view', [TreesController::class, 'trees_view'])->name('trees_v
 Route::post('/trees/save_new_trees', [TreesController::class, 'save_new_trees'])->name('save_new_trees');
 Route::post('/trees/gettreess', [TreesController::class, 'gettreess'])->name('gettrees');
 Route::post('/trees/deletetrees', [TreesController::class, 'deletetrees'])->name('deletetrees');
+
+//store
+Route::get('/store/view', [StoreController::class, 'store_view'])->name('store_view');
+Route::post('/store/save_new_store', [StoreController::class, 'save_new_store'])->name('save_new_store');
+Route::post('/store/getstores', [StoreController::class, 'getstores'])->name('getstore');
+Route::post('/store/deletestore', [StoreController::class, 'deletestore'])->name('deletestore');

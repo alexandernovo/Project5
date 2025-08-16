@@ -1,23 +1,23 @@
 <script>
-    $(document).on("click", "#deleteboatingBtn", function() {
-        var selectedRow = boatingTable.row('.selected');
+    $(document).on("click", "#deletestoreBtn", function() {
+        var selectedRow = storeTable.row('.selected');
 
         if (selectedRow.node()) {
             var data = selectedRow.data();
             if (data) {
                 Swal.fire({
                     title: "Warning",
-                    text: "Delete this Boating Record?",
+                    text: "Delete this Sari-Sari Store?",
                     icon: "warning",
                     showCancelButton: true,
                     confirmButtonText: 'Delete'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        postRequest("{{ route('deleteBoating') }}", {
+                        postRequest("{{ route('deletestore') }}", {
                             record_id: data.record_id
                         }, (response) => {
                             if (response.status == "success") {
-                                reloadboatingTable();
+                                reloadstoreTable();
                                 Swal.fire({
                                     title: "Success",
                                     text: response.message,
