@@ -4,38 +4,39 @@ namespace App\Http\Controllers;
 
 use App\Models\Client;
 use App\Models\Record;
-use App\Models\WasteCollection;
+use App\Models\WasteBottle;
+use App\Models\wastebottleion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Exception;
 
-class WasteCollectController extends Controller
+class WasteBottleController extends Controller
 {
-    public function wastecollect_view()
+    public function wastebottle_view()
     {
-        return view('wastecollect.views.wastecollect');
+        return view('wastebottle.views.wastebottle');
     }
 
-    public function save_new_wastecollect(Request $request)
+    public function save_new_wastebottle(Request $request)
     {
         try {
             DB::beginTransaction();
 
             $all = $request->all();
-            $wastecollect_id = $all['wastecollect_id'];
-            unset($all['wastecollect_id']);
+            $wastebottle_id = $all['wastebottle_id'];
+            unset($all['wastebottle_id']);
 
-            if ($wastecollect_id == 0) {
-                WasteCollection::create($all);
+            if ($wastebottle_id == 0) {
+                WasteBottle::create($all);
             } else {
-                WasteCollection::where("wastecollect_id", $wastecollect_id)->update($all);
+                WasteBottle::where("wastebottle_id", $wastebottle_id)->update($all);
             }
 
             DB::commit();
 
             return response()->json([
                 'status' => 'success',
-                'message' => "Waste Collection saved successfully"
+                'message' => "Waste Bottle Record saved successfully"
             ]);
         } catch (Exception $ex) {
             DB::rollBack();
@@ -47,18 +48,18 @@ class WasteCollectController extends Controller
         }
     }
 
-    public function getwastecollects(Request $request)
+    public function getwastebottles(Request $request)
     {
         $length = $request->input('length');
         $start = $request->input('start');
         $searchValue = $request->input('search.value');
 
-        $query = DB::table('wastecollection')
-            ->select('*', DB::raw('(recyclable + biodegradable + nonbio + specialwaste) AS total'));
+        $query = DB::table('wastebottle')
+            ->select('*', DB::raw('(bottle_kg + rice_kg) AS total'));
 
         if (!empty($searchValue)) {
             $query->where(function ($q) use ($searchValue) {
-                $q->where('wastecollection.barangay', 'like', "%{$searchValue}%");
+                $q->where('wastebottle.resident_name', 'like', "%{$searchValue}%");
             });
         }
 
@@ -77,15 +78,15 @@ class WasteCollectController extends Controller
         ]);
     }
 
-    public function deletewastecollect(Request $request)
+    public function deletewastebottle(Request $request)
     {
-        $wastecollect_id = $request->wastecollect_id;
+        $wastebottle_id = $request->wastebottle_id;
 
-        WasteCollection::where('wastecollect_id', $wastecollect_id)->delete();
+        WasteBottle::where('wastebottle_id', $wastebottle_id)->delete();
 
         return response()->json([
             'status' => 'success',
-            'message' => "Waste Collection Record deleted successfully"
+            'message' => "Waste Bottle Record deleted successfully"
         ]);
     }
 }

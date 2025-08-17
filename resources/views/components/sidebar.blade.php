@@ -103,7 +103,7 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="i" aria-expanded="false">
+                    <a class="sidebar-link" href="{{ route('wastebottle_view') }}" aria-expanded="false">
                         <span>
                             <i class="bi bi-trash"></i>
                         </span>

@@ -1,14 +1,14 @@
 <script>
     $(document).on("click", "#newwastecollectBtn", function() {
         $("#newwastecollectModalLabel").text("New Waste Collection");
-        resetWaterCollect();
+        resetWasteCollect();
         $("#newwastecollectModal").modal("show");
     });
 
     $(document).on("click", "#editwastecollectBtn", function() {
         $("#newwastecollectModalLabel").text("Edit Waste Collection");
         var selectedRow = wastecollectTable.row('.selected');
-        resetWaterCollect();
+        resetWasteCollect();
 
         if (selectedRow.node()) {
             var data = selectedRow.data();
@@ -54,7 +54,7 @@
 
     });
 
-    function resetWaterCollect() {
+    function resetWasteCollect() {
         $("#newwastecollectform")[0].reset();
         $("#newwastecollectform input[type='hidden']").val(0);
     }
