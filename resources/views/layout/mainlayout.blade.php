@@ -7,11 +7,11 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>MERO-BAARS</title>
     <link rel="shortcut icon" type="image/png" href="{{ asset('assets/images/logo.png') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/bootstrap-icons/font/bootstrap-icons.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/twitterbootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/datatablesbootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('template_assets/css/icons/tabler-icons/tabler-icons.css') }}" />
     <link rel="stylesheet" href="{{ asset('template_assets/css/styles.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/bootstrap-icons/font/bootstrap-icons.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/select2.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/style2.css') }}" />
