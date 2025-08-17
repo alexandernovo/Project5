@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/style2.css') }}" />
 </head>
 
-<body>
+<body class="position-relative">
     <div class="d-flex flex-column vh-100 justify-content-between">
         @include('components.header')
         <div class="page-wrapper flex-1" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6"
@@ -39,6 +39,7 @@
     <div class="toast-container position-fixed z-3 pb-2 pe-2" id="toast-container-global" style="right: 0; bottom: 0">
     </div>
     @include('components.footer')
+    <script src="{{ asset('assets/js/loader.js') }}"></script>
     <script src="{{ asset('assets/js/jquery.js') }}"></script>
     <script src="{{ asset('assets/js/datatables.js') }}"></script>
     <script src="{{ asset('assets/js/datatablesbootstrap.js') }}"></script>
