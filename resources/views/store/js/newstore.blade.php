@@ -1,14 +1,14 @@
 <script>
     $(document).on("click", "#newstoreBtn", function() {
         $("#newstoreModalLabel").text("New Store");
-        resetFormAssociation();
+        resetstore();
         $("#newstoreModal").modal("show");
     });
 
     $(document).on("click", "#editstoreBtn", function() {
         $("#newstoreModalLabel").text("Edit Store");
         var selectedRow = storeTable.row('.selected');
-        resetFormAssociation();
+        resetstore();
 
         if (selectedRow.node()) {
             var data = selectedRow.data();
@@ -53,7 +53,7 @@
 
     });
 
-    function resetFormAssociation() {
+    function resetstore() {
         $("#newstoreform")[0].reset();
         $("#newstoreform input[type='hidden']").val(0);
     }

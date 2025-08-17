@@ -1,14 +1,14 @@
 <script>
     $(document).on("click", "#newchainsawBtn", function() {
         $("#newChainsawModalLabel").text("New Chainsaw");
-        resetFormAssociation();
+        resetchainsaw();
         $("#newChainsawModal").modal("show");
     });
 
     $(document).on("click", "#editchainsawBtn", function() {
         $("#newChainsawModalLabel").text("Edit Chainsaw");
         var selectedRow = chainsawTable.row('.selected');
-        resetFormAssociation();
+        resetchainsaw();
 
         if (selectedRow.node()) {
             var data = selectedRow.data();
@@ -58,7 +58,7 @@
 
     });
 
-    function resetFormAssociation() {
+    function resetchainsaw() {
         $("#newChainsawform")[0].reset();
         $("#newChainsawform input[type='hidden']").val(0);
     }

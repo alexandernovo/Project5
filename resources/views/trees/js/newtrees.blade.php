@@ -1,14 +1,14 @@
 <script>
     $(document).on("click", "#newtreesBtn", function() {
         $("#newtreesModalLabel").text("New Cutting Trees");
-        resetFormAssociation();
+        resettrees();
         $("#newtreesModal").modal("show");
     });
 
     $(document).on("click", "#edittreesBtn", function() {
         $("#newtreesModalLabel").text("Edit Cutting Trees");
         var selectedRow = treesTable.row('.selected');
-        resetFormAssociation();
+        resettrees();
 
         if (selectedRow.node()) {
             var data = selectedRow.data();
@@ -54,7 +54,7 @@
 
     });
 
-    function resetFormAssociation() {
+    function resettrees() {
         $("#newtreesform")[0].reset();
         $("#newtreesform input[type='hidden']").val(0);
     }

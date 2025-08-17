@@ -95,7 +95,7 @@
                     <span class="hide-menu">Waste</span>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="h" aria-expanded="false">
+                    <a class="sidebar-link" href="{{ route('wastecollect_view') }}" aria-expanded="false">
                         <span>
                             <i class="bi bi-trash"></i>
                         </span>

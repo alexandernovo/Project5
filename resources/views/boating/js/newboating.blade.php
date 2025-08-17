@@ -1,14 +1,14 @@
 <script>
     $(document).on("click", "#newboatingBtn", function() {
         $("#newBoatingModalLabel").text("New Boat");
-        resetFormAssociation();
+        resetBoating();
         $("#newBoatingModal").modal("show");
     });
 
     $(document).on("click", "#editboatingBtn", function() {
         $("#newBoatingModalLabel").text("Edit Boat");
         var selectedRow = boatingTable.row('.selected');
-        resetFormAssociation();
+        resetBoating();
 
         if (selectedRow.node()) {
             var data = selectedRow.data();
@@ -53,7 +53,7 @@
 
     });
 
-    function resetFormAssociation() {
+    function resetBoating() {
         $("#newBoatingform")[0].reset();
         $("#newBoatingform input[type='hidden']").val(0);
     }

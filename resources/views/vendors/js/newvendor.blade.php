@@ -1,14 +1,14 @@
 <script>
     $(document).on("click", "#newvendorBtn", function() {
         $("#newvendorModalLabel").text("New Vendor");
-        resetFormAssociation();
+        resetvendor();
         $("#newvendorModal").modal("show");
     });
 
     $(document).on("click", "#editvendorBtn", function() {
         $("#newvendorModalLabel").text("Edit Vendor");
         var selectedRow = vendorTable.row('.selected');
-        resetFormAssociation();
+        resetvendor();
 
         if (selectedRow.node()) {
             var data = selectedRow.data();
@@ -53,7 +53,7 @@
 
     });
 
-    function resetFormAssociation() {
+    function resetvendor() {
         $("#newvendorform")[0].reset();
         $("#newvendorform input[type='hidden']").val(0);
     }

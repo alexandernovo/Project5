@@ -1,14 +1,14 @@
 <script>
     $(document).on("click", "#newtricycleBtn", function() {
         $("#newtricycleModalLabel").text("New Tricycle");
-        resetFormAssociation();
+        resettricycle();
         $("#newtricycleModal").modal("show");
     });
 
     $(document).on("click", "#edittricycleBtn", function() {
         $("#newtricycleModalLabel").text("Edit Tricycle");
         var selectedRow = tricycleTable.row('.selected');
-        resetFormAssociation();
+        resettricycle();
 
         if (selectedRow.node()) {
             var data = selectedRow.data();
@@ -53,7 +53,7 @@
 
     });
 
-    function resetFormAssociation() {
+    function resettricycle() {
         $("#newtricycleform")[0].reset();
         $("#newtricycleform input[type='hidden']").val(0);
     }
