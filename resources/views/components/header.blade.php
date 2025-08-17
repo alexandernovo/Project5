@@ -8,7 +8,7 @@
             </li>
             <li class="nav-item dropdown">
                 <div class="brand-logo d-flex align-items-center justify-content-between ps-0">
-                    <a href="./index.html" class="text-nowrap logo-img d-flex align-items-center gap-2">
+                    <a href="#" class="text-nowrap logo-img d-flex align-items-center gap-2">
                         <img src="{{ asset('assets/images/logo.png') }}" class="bg-white rounded-circle" width=""
                             alt="" style="width: 43px; height: 43px" />
                         <span style="font-size: 28px; letter-spacing: 4px; font-weight: 600;"
