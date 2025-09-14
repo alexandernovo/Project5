@@ -13,7 +13,7 @@ function createWindow() {
         },
     });
 
-    const baseUrl = "http://127.0.0.1:8000";
+    const baseUrl = "http://localhost/menro/public";
     mainWindow.loadURL(baseUrl);
 
     mainWindow.setMenuBarVisibility(false);
