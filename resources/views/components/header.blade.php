@@ -1,4 +1,4 @@
-<header class="app-header border-bottom position-sticky top-0 w-100 primary-bg-new">
+<header class="app-header position-sticky top-0 w-100 primary-bg-new">
     <nav class="navbar navbar-expand-lg navbar-light">
         <ul class="navbar-nav">
             <li class="nav-item d-block d-xl-none">

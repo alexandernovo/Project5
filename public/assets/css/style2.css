@@ -325,7 +325,7 @@
     }
 }
 .primary-bg-new {
-    background-color: #720107;
+    background-color: #41080D;
 }
 .flex-1 {
     flex: 1;
@@ -338,6 +338,6 @@
 .sidebar-nav ul .sidebar-item.selected > .sidebar-link,
 .sidebar-nav ul .sidebar-item.selected > .sidebar-link.active,
 .sidebar-nav ul .sidebar-item > .sidebar-link.active {
-    background-color: #720107 !important;
+    background-color: #41080D !important;
     color: #fff;
 }
