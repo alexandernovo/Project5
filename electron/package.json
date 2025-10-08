@@ -26,18 +26,18 @@
     ],
     "win": {
       "target": "nsis",
-      "icon": "assets/image/logo.png"
+      "icon": "assets/image/logo.ico"
     },
     "mac": {
       "target": "dmg",
-      "icon": "assets/image/logo.png"
+      "icon": "assets/image/logo.ico"
     },
     "linux": {
       "target": [
         "AppImage",
         "deb"
       ],
-      "icon": "assets/image/logo.png"
+      "icon": "assets/image/logo.ico"
     },
     "nsis": {
       "oneClick": false,
