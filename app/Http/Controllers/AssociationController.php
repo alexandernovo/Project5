@@ -27,19 +27,32 @@ class AssociationController extends Controller
             if ($all['client_id'] == 0) {
                 // Create new client
                 $client = Client::create([
-                    "owner_name" => $all['owner_name'],
-                    "address" => $all['address']
+                    "firstname" => $all['firstname'],
+                    "middlename" => $all['middlename'],
+                    "lastname" => $all['lastname'],
+                    "barangay" => $all['barangay'],
+                    "municipality" => $all['municipality'],
+                    "province" => $all['province'],
+                    "sex" => $all['sex'],
+                    "contact_no" => $all['contact_no'],
                 ]);
+
                 $client_id = $client->client_id;
             } else {
                 $client_id = $all['client_id'];
                 Client::where('client_id', $client_id)->update([
-                    "owner_name" => $all['owner_name'],
-                    "address" => $all['address']
+                    "firstname" => $all['firstname'],
+                    "middlename" => $all['middlename'],
+                    "lastname" => $all['lastname'],
+                    "barangay" => $all['barangay'],
+                    "municipality" => $all['municipality'],
+                    "province" => $all['province'],
+                    "sex" => $all['sex'],
+                    "contact_no" => $all['contact_no'],
                 ]);
             }
 
-            unset($all['client_id'], $all['owner_name'], $all['address']);
+            unset($all['client_id'], $all['firstname'], $all['middlename'], $all['lastname'], $all['barangay'], $all['municipality'], $all['province'], $all['sex'], $all['contact_no']);
             $all['client_id'] = $client_id;
 
             if ($record_id == 0) {

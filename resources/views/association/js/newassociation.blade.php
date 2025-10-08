@@ -28,15 +28,10 @@
     $(document).on("submit", "#newassociationform", function(e) {
         e.preventDefault();
 
-        let formData = {
-            ornumber: $('#ornumber').val(),
-            record_id: $('#record_id').val(),
-            client_id: $('#client_id').val(),
-            owner_name: $('#owner_name').val(),
-            association: $('#association').val(),
-            address: $('#address').val(),
-            expiration: $('#expiration').val()
-        };
+        let formData = {};
+        $(this).serializeArray().forEach(function(field) {
+            formData[field.name] = field.value;
+        });
 
         postRequest("{{ route('save_new_association') }}", formData, (response) => {
             if (response.status == "success") {

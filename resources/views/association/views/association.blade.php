@@ -23,6 +23,18 @@
         </div>
         <div class="card w-100 px-0 mb-0">
             <div class="card-body p-3">
+                <div class="d-flex justify-content-end gap-2">
+                    <button class="btn btn-secondary-new d-flex flex-nowrap align-items-center gap-2" id="reloadassociationBtn">
+                        <span>
+                            <i class="bi bi-arrow-clockwise"></i>
+                        </span>
+                        Reload
+                    </button>
+                    <div class="d-flex justify-content-end">
+                        <button class="btn btn-primary-new">Print Certification</button>
+                    </div>
+                    <button class="btn btn-primary-new" id="newassociationBtn">Add Certification</button>
+                </div>
                 <table id="associationTable" class="table table-bordered">
                     <thead>
                         <tr>

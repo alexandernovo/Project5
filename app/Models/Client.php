@@ -13,7 +13,13 @@ class Client extends Model
     public $timestamps = true;
 
     protected $fillable = [
-        'owner_name',
-        'address',
+        'firstname',
+        'middlename',
+        'lastname',
+        'barangay',
+        'municipality',
+        'province',
+        'sex',
+        'contact_no',
     ];
 }

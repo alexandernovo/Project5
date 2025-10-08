@@ -26,5 +26,6 @@ class Record extends Model
         'status',
         'type',
         'expiration',
+        'date_renewal',
     ];
 }

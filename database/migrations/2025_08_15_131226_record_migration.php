@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('status')->nullable();
             $table->string('type')->nullable();
             $table->datetime('expiration')->nullable();
+            $table->datetime('date_renewal')->nullable();
             $table->timestamps();
         });
     }

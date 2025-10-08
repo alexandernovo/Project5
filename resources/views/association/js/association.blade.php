@@ -64,7 +64,7 @@
             }
         ],
         initComplete: function(settings, json) {
-            appendButtonsassociation();
+            // appendButtonsassociation();
             $('[data-bs-toggle="tooltip"]').tooltip();
         }
     };
@@ -138,13 +138,14 @@
                     </span>
                     Share
                 </button>
+                
                 <button class="btn btn-info d-flex flex-nowrap align-items-center gap-2" id="reloadassociationBtn">
                     <span>
                         <i class="bi bi-arrow-clockwise"></i>
                     </span>
                     Reload
                 </button>
-               
+    
             </div>
         `);
     }
