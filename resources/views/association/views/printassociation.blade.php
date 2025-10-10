@@ -29,10 +29,15 @@
                 </div>
             </div>
         </div>
-
-        <div class="container bg-white p-5 border rounded shadow-sm"
+        <div class="container bg-white p-0 mt-3 d-flex justify-content-end"
             style="max-width:800px; margin:auto; position:relative;">
-            <!-- Header logos -->
+            <button class="btn btn-primary-new" id="printButton">
+                <i class="bi bi-printer-fill"></i>
+                Print
+            </button>
+        </div>
+        <div class="container bg-white p-5 border rounded shadow-sm mt-2"
+            style="max-width:800px; margin:auto; position:relative;" id="print_area">
             <div class="text-center mb-3">
                 <div style="display:flex; justify-content:space-between; align-items:center;">
                     <img src="{{ asset('assets/images/logo.jpg') }}" alt="Left Logo" style="width:90px; height:auto;">
@@ -46,7 +51,6 @@
                 </div>
             </div>
 
-            <!-- Department title -->
             <div class="text-center py-2 mb-4" style="border-bottom:3px solid #06B9E8 !important;">
                 <p class="mb-0 text-danger" style="font-size:16px; font-weight: bold">
                     MUNICIPAL ENVIRONMENT &amp; NATURAL
@@ -54,10 +58,8 @@
                     OFFICE</p>
             </div>
 
-            <!-- Certification title -->
             <h5 class="text-center mb-4" style="letter-spacing:3px; font-size: 20px; font-weight: bold">CERTIFICATION</h5>
 
-            <!-- Body -->
             <div style="font-size:16px; text-align:justify; line-height:1.8;">
                 <p><strong>TO WHOM IT MAY CONCERN:</strong></p>
                 <p style="text-indent: 40px">
@@ -74,11 +76,10 @@
                 </p>
                 @php
                     $date = \Carbon\Carbon::parse($record->date_renewal);
-                    $day = $date->format('j'); // numeric day without leading zero
+                    $day = $date->format('j');
                     $month = $date->format('F');
                     $year = $date->format('Y');
 
-                    // Determine ordinal suffix (st, nd, rd, th)
                     if ($day % 10 == 1 && $day != 11) {
                         $suffix = 'st';
                     } elseif ($day % 10 == 2 && $day != 12) {
@@ -96,23 +97,78 @@
                 </p>
             </div>
 
-            <!-- Signature -->
             <div class="d-flex justify-content-end">
                 <div class="text-end mt-5 d-flex justify-content-center align-items-center flex-column">
                     <p class="fw-semibold mb-0">GALILEO E. NACIONALES</p>
                     <p class="mb-0">MENRO</p>
                 </div>
             </div>
-            <!-- Footer -->
             <div class="mt-4 fw-semibold" style="font-size:11px; color:#555;">
                 <p class="mb-0"><em>Paid under O.R. No. {{ $record->ornumber }}</em></p>
                 <p class="mb-0"><em>Issued at Barbaza, Antique</em></p>
                 <p><em>On {{ date('F d, Y', strtotime($record->created_at)) }}</em></p>
             </div>
 
-            <!-- Close button (top-right) -->
             <button type="button" class="btn-close position-absolute" style="top:15px; right:15px;"
                 aria-label="Close"></button>
         </div>
     </div>
+@endsection
+@section('js')
+    <script>
+        $(document).ready(function() {
+            $('#printButton').on('click', function() {
+                printDiv('print_area');
+            });
+
+            function printDiv(divId) {
+                var printContents = $('#' + divId).html();
+                var originalTitle = document.title;
+
+                // Calculate center position
+                var width = 800;
+                var height = 800;
+                var left = (screen.width / 2) - (width / 2);
+                var top = (screen.height / 2) - (height / 2);
+
+                // Open centered window
+                var printWindow = window.open('', '', `width=${width},height=${height},top=${top},left=${left}`);
+
+                // Write HTML with Bootstrap CSS
+                printWindow.document.write(`
+                <html>
+                <head>
+                    <title>${originalTitle}</title>
+                    <link rel="stylesheet" href="{{ asset('template_assets/css/styles.min.css') }}">
+                    <style>
+                        body {
+                            background: white !important;
+                            -webkit-print-color-adjust: exact !important;
+                            print-color-adjust: exact !important;
+                            margin: 40px;
+                            font-family: 'Arial', sans-serif;
+                        }
+                        @media print {
+                            .btn, .btn-close { display: none !important; }
+                            body { margin: 0; }
+                        }
+                    </style>
+                </head>
+                <body>
+                    ${printContents}
+                </body>
+                </html>
+            `);
+
+                printWindow.document.close();
+                printWindow.focus();
+
+                // Wait for styles to load before printing
+                setTimeout(function() {
+                    printWindow.print();
+                    printWindow.close();
+                }, 600);
+            }
+        });
+    </script>
 @endsection

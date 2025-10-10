@@ -84,7 +84,9 @@ class AssociationController extends Controller
         $length = $request->input('length');
         $start = $request->input('start');
         $searchValue = $request->input('search.value');
-
+        $dateFrom = $request->input('dateFrom');
+        $dateTo = $request->input('dateTo');
+        
         $query = DB::table('records')
             ->leftJoin('clients', 'records.client_id', '=', 'clients.client_id')
             ->select(
@@ -101,6 +103,13 @@ class AssociationController extends Controller
                     ->orWhere(DB::raw("CONCAT(clients.barangay, ', ', clients.municipality, ', ', clients.province)"), 'like', "%{$searchValue}%")
                     ->orWhere('records.record_id', 'like', "%{$searchValue}%");
             });
+        }
+
+        if (!empty($dateFrom) && !empty($dateTo)) {
+            $dateFrom = date("Y-m-d", strtotime($dateFrom));
+            $dateTo = date("Y-m-d", strtotime($dateTo));
+            $query->where(DB::raw("CAST(records.created_at AS DATE)"), ">=", $dateFrom)
+                ->where(DB::raw("CAST(records.created_at AS DATE)"), "<=", $dateTo);
         }
 
         $totalData = $query->count();
@@ -144,7 +153,7 @@ class AssociationController extends Controller
             )
             ->where("records.type", "ASSOCIATION")
             ->where("records.record_id", $record_id)->first();
-            
+
         return view('association.views.printassociation', ['record' => $record]);
     }
 }

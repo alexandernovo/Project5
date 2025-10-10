@@ -9,7 +9,8 @@
                     <div
                         class="d-flex align-items-center mb-2 flex-wrap text-lg-start text-sm-center gap-2 title-tips-class">
                         <h4 class="fw-semibold mb-0 text-nowrap">
-                            <img src="{{ asset('assets/images/icons/Association.png') }}" style="width: 30px; height:40px; filter: invert(1);" alt="">
+                            <img src="{{ asset('assets/images/icons/Association.png') }}"
+                                style="width: 30px; height:40px; filter: invert(1);" alt="">
                             Association
                         </h4>
                     </div>
@@ -35,9 +36,13 @@
                         Reload
                     </button>
                     <div class="d-flex justify-content-end">
-                        <button class="btn btn-primary-new" id="printCertificate">Print Certification</button>
+                        <button class="btn btn-primary-new" id="printCertificate"><i class="bi bi-printer-fill"></i> Print
+                            Certification</button>
                     </div>
-                    <button class="btn btn-primary-new" id="newassociationBtn">Add Certification</button>
+                    <button class="btn btn-primary-new" id="newassociationBtn">
+                        <i class="bi bi-clipboard-plus-fill"></i>
+                        Add Certification
+                    </button>
                 </div>
                 <table id="associationTable" class="table table-bordered data_table">
                     <thead>

@@ -3,6 +3,8 @@
     let associationTable;
     let associationData = [];
     let selectedAssociationId = null;
+    let dateFrom = "";
+    let dateTo = "";
 
     associationOptions = {
         processing: false,
@@ -14,6 +16,8 @@
             dataType: 'json',
             data: function(d) {
                 d._token = '{{ csrf_token() }}';
+                d.dateFrom = dateFrom;
+                d.dateTo = dateTo;
             },
             dataSrc: function(json) {
                 associationData = json.data;
@@ -131,6 +135,7 @@
 
     $(document).on("click", "#reloadassociationBtn", function() {
         reloadButtonLoading(true);
+        resetDate();
         reloadassociationTable();
         setTimeout(() => {
             reloadButtonLoading(false);
@@ -277,6 +282,21 @@
         }
     });
 
+    $(document).on('click', '#filterDateBtn', function() {
+        dateFrom = $("#dateFromFilter").val();
+        dateTo = $("#dateToFilter").val();
+        associationOptions.ajax.data.dateFrom = dateFrom;
+        associationOptions.ajax.data.dateTo = dateTo;
+        reloadassociationTableWithPagination();
+    });
+
+    function resetDate() {
+        dateFrom = "";
+        dateTo = "";
+
+        associationOptions.ajax.data.dateFrom = dateFrom;
+        associationOptions.ajax.data.dateTo = dateTo;
+    }
     // Restore selection after reload
     associationOptions.drawCallback = function(settings) {
         associationTable.rows().every(function() {
