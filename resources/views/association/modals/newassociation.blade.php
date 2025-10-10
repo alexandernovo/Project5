@@ -2,23 +2,19 @@
     aria-labelledby="newassociationModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg  modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5 ms-2">
-                    <span>
-                        <i class="ti ti-user-plus" style="font-size: 20px"></i>
-                    </span>
-                    <span id="newassociationModalLabel">
-                        New Association
-                    </span>
-                </h1>
-                <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">
+            <div class="modal-header position-relative d-flex justify-content-center align-items-center flex-column">
+                <img class="mb-1" src="{{ asset('assets/images/logo.jpg') }}" style="height: 70px; width: 70px" alt="">
+                <div>
+                    <p class="mb-0 text-center fw-semibold" style="color: #5D0900; font-size: 20px">ASSOCIATION CERTIFICATION FORM</p>
+                </div>
+                <button type="button" class="btn position-absolute rounded-circle d-flex justify-content-center align-items-center" style="top: 5px; right: 5px; width: 40px; height: 40px" data-bs-dismiss="modal" aria-label="Close">
                     <i class="bi bi-x-lg" style="font-size: 15px"></i>
                 </button>
             </div>
             <form id="newassociationform">
                 <input type="hidden" id="record_id" name="record_id" value="0">
                 <input type="hidden" id="client_id" name="client_id" value="0">
-                <div class="modal-body overflow-y-auto" style="max-height: 70vh">
+                <div class="modal-body overflow-y-auto" style="max-height: 65vh">
                     <div class="row mx-auto">
                         <div class="col-12 mb-1">
                             <p class="mb-0 fw-semibold">OWNER'S INFORMATION</p>
@@ -112,7 +108,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary-new">Add Certification</button>
+                    <button type="submit" class="btn btn-primary-new button-submit">Add Certification</button>
                     <button type="button" class="btn btn-secondary-new" data-bs-dismiss="modal">Cancel</button>
                 </div>
             </form>

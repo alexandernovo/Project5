@@ -87,13 +87,18 @@ class AssociationController extends Controller
 
         $query = DB::table('records')
             ->leftJoin('clients', 'records.client_id', '=', 'clients.client_id')
-            ->select('records.*', 'clients.*')
+            ->select(
+                'records.*',
+                'clients.*',
+                DB::raw("clients.firstname + ' '+ clients.middlename+' '+ clients.lastname AS owner_name"),
+                DB::raw("clients.barangay + ', '+ clients.municipality+', '+ clients.province AS address")
+            )
             ->where("records.type", "ASSOCIATION");
 
         if (!empty($searchValue)) {
             $query->where(function ($q) use ($searchValue) {
-                $q->where('clients.owner_name', 'like', "%{$searchValue}%")
-                    ->orWhere('clients.address', 'like', "%{$searchValue}%")
+                $q->where(DB::raw("CONCAT(clients.firstname, ' ', clients.middlename, ' ', clients.lastname)"), 'like', "%{$searchValue}%")
+                    ->orWhere(DB::raw("CONCAT(clients.barangay, ', ', clients.municipality, ', ', clients.province)"), 'like', "%{$searchValue}%")
                     ->orWhere('records.record_id', 'like', "%{$searchValue}%");
             });
         }
@@ -123,5 +128,23 @@ class AssociationController extends Controller
             'status' => 'success',
             'message' => "Association deleted successfully"
         ]);
+    }
+
+    public function printAssociation(Request $request)
+    {
+        $record_id = $request->query("record_id");
+
+        $record = DB::table('records')
+            ->leftJoin('clients', 'records.client_id', '=', 'clients.client_id')
+            ->select(
+                'records.*',
+                'clients.*',
+                DB::raw("clients.firstname + ' '+ clients.middlename+' '+ clients.lastname AS owner_name"),
+                DB::raw("clients.barangay + ', '+ clients.municipality+', '+ clients.province AS address")
+            )
+            ->where("records.type", "ASSOCIATION")
+            ->where("records.record_id", $record_id)->first();
+            
+        return view('association.views.printassociation', ['record' => $record]);
     }
 }

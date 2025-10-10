@@ -324,3 +324,27 @@ function updateTimeAgoBaseOnClass() {
 function cloneObject(obj) {
     return JSON.parse(JSON.stringify(obj));
 }
+
+function renderExpirationStatus(expiration) {
+    if (!expiration) return "";
+
+    const expirationDate = new Date(expiration);
+    const today = new Date();
+
+    expirationDate.setHours(0, 0, 0, 0);
+    today.setHours(0, 0, 0, 0);
+
+    const formattedDate = formatDateToStr(expiration, false);
+
+    if (expirationDate < today) {
+        // Expired
+        return `
+            <span class="badge bg-danger">Expired</span>
+        `;
+    } else {
+        // Renewed (still valid)
+        return `
+            <span class="badge bg-success">Renewed</span>
+        `;
+    }
+}

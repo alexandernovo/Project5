@@ -1,21 +1,19 @@
 <script>
     $(document).on("click", "#newassociationBtn", function() {
-        $("#newassociationModalLabel").text("New Association");
+        $(".button-submit").text("Add Certification");
         resetFormAssociation();
         $("#newassociationModal").modal("show");
     });
 
-    $(document).on("click", "#editassociationBtn", function() {
-        $("#newassociationModalLabel").text("Edit Association");
-        var selectedRow = associationTable.row('.selected');
+    $(document).on("click", ".editButton", function(e) {
+        e.stopPropagation();
+        let record_id = $(this).data('record_id');
+        let data = associationData.find(x => x.record_id == record_id);
+        $(".button-submit").text("Edit Certification");
         resetFormAssociation();
-
-        if (selectedRow.node()) {
-            var data = selectedRow.data();
-            if (data) {
-                populateForm(data, "newassociationform");
-                $("#newassociationModal").modal("show");
-            }
+        if (data) {
+            populateForm(data, "newassociationform");
+            $("#newassociationModal").modal("show");
         } else {
             Swal.fire({
                 title: "Warning",

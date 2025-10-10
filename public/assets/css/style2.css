@@ -357,3 +357,39 @@
     background-color: #41080d !important;
     color: #fff;
 }
+
+.data_table.dataTable > thead > tr > th,
+.data_table.dataTable > thead > tr > td {
+    position: relative !important;
+    text-wrap: nowrap !important;
+}
+
+.sticky-action {
+    position: sticky !important;
+    right: 0 !important;
+    /* background: white !important; */
+    z-index: 3;
+    width: 200px !important;
+}
+
+.data_table.dataTable > thead > tr > th:last-child {
+    position: sticky !important;
+    right: 0 !important;
+    background: white !important;
+    z-index: 3;
+    width: 200px;
+}
+
+.data_table.dataTable > tbody > tr > td:last-child {
+    background: white !important;
+}
+
+.data_table.dataTable th,
+.data_table.dataTable td {
+    white-space: nowrap !important;
+    position: relative;
+}
+
+.dt-layout-table {
+    overflow-x: auto !important;
+}
