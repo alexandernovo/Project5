@@ -16352,7 +16352,7 @@ fieldset:disabled .btn {
     overflow-y: auto;
     padding: 0 24px;
     height: calc(100vh - 80px);
-    border-radius: 7px;
+    /* border-radius: 7px; */
 }
 .left-sidebar .scroll-sidebar .simplebar-track.simplebar-horizontal {
     visibility: hidden !important;

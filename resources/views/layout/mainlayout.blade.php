@@ -19,23 +19,36 @@
 
 <body class="position-relative">
     <div class="d-flex flex-column vh-100 justify-content-between">
-        @include('components.header')
+        @if (Route::currentRouteName() == 'home')
+            @include('components.header')
+        @endif
+
         <div class="page-wrapper flex-1" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6"
             data-sidebartype="full" data-sidebar-position="fixed" data-header-position="fixed">
             @if (Route::currentRouteName() != 'home')
                 @include('components.sidebar')
             @endif
+
             @if (Route::currentRouteName() != 'home')
-                <div class="body-wrapper">
+                <div class="body-wrapper position-relative d-flex flex-column vh-100 justify-content-between">
+                    @if (Route::currentRouteName() != 'home')
+                        @include('components.header2')
+                    @endif
                     <div class="px-3 pb-3 mt-3">
                         @yield('content')
                     </div>
+                    @if (Route::currentRouteName() != 'home')
+                        @include('components.footer2')
+                    @endif
                 </div>
             @else
                 @yield('content')
             @endif
         </div>
-        @include('components.footer')
+        @if (Route::currentRouteName() == 'home')
+            @include('components.footer')
+        @endif
+
     </div>
     <div class="toast-container position-fixed z-3 pb-2 pe-2" id="toast-container-global" style="right: 0; bottom: 0">
     </div>

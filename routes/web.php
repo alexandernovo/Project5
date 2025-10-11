@@ -7,6 +7,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BoatingController;
 use App\Http\Controllers\ChainsawController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\TreesController;
 use App\Http\Controllers\TricycleController;
@@ -78,3 +79,6 @@ Route::get('/wastebottle/view', [WasteBottleController::class, 'wastebottle_view
 Route::post('/wastebottle/save_new_wastebottle', [WasteBottleController::class, 'save_new_wastebottle'])->name('save_new_wastebottle');
 Route::post('/wastebottle/getwastebottles', [WasteBottleController::class, 'getwastebottles'])->name('getwastebottle');
 Route::post('/wastebottle/deletewastebottle', [WasteBottleController::class, 'deletewastebottle'])->name('deletewastebottle');
+
+//reports
+Route::get('/reports/dashboard/view', [ReportController::class, 'reportdashboard'])->name('reportdashboard');
