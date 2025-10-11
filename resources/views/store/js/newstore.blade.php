@@ -1,42 +1,31 @@
 <script>
-    $(document).on("click", "#newstoreBtn", function() {
-        $("#newstoreModalLabel").text("New Store");
+    $(document).on("click", "#newCertification", function() {
+        $(".button-submit").text("Add Certification");
         resetstore();
         $("#newstoreModal").modal("show");
     });
 
-    $(document).on("click", "#editstoreBtn", function() {
-        $("#newstoreModalLabel").text("Edit Store");
-        var selectedRow = storeTable.row('.selected');
+    $(document).on("click", ".editButton", function(e) {
+        e.stopPropagation();
+        $(".button-submit").text("Edit Certification");
+
+        let record_id = $(this).data('record_id');
+        let data = storeData.find(x => x.record_id == record_id);
         resetstore();
 
-        if (selectedRow.node()) {
-            var data = selectedRow.data();
-            if (data) {
-                populateForm(data, "newstoreform");
-                $("#newstoreModal").modal("show");
-            }
-        } else {
-            Swal.fire({
-                title: "Warning",
-                text: "Please Select a Row First",
-                icon: "warning",
-            });
+        if (data) {
+            populateForm(data, "newstoreform");
+            $("#newstoreModal").modal("show");
         }
     })
 
     $(document).on("submit", "#newstoreform", function(e) {
         e.preventDefault();
 
-        let formData = {
-            ornumber: $('#ornumber').val(),
-            record_id: $('#record_id').val(),
-            client_id: $('#client_id').val(),
-            owner_name: $('#owner_name').val(),
-            name_other: $('#name_other').val(),
-            address: $('#address').val(),
-            expiration: $('#expiration').val()
-        };
+        let formData = {};
+        $(this).serializeArray().forEach(function(field) {
+            formData[field.name] = field.value;
+        });
 
         postRequest("{{ route('save_new_store') }}", formData, (response) => {
             if (response.status == "success") {

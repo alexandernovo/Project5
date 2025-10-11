@@ -48,6 +48,7 @@ Route::post('/trees/deletetrees', [TreesController::class, 'deletetrees'])->name
 
 //store
 Route::get('/store/view', [StoreController::class, 'store_view'])->name('store_view');
+Route::get('/store/print', [StoreController::class, 'printStore'])->name('printStore');
 Route::post('/store/save_new_store', [StoreController::class, 'save_new_store'])->name('save_new_store');
 Route::post('/store/getstores', [StoreController::class, 'getstores'])->name('getstore');
 Route::post('/store/deletestore', [StoreController::class, 'deletestore'])->name('deletestore');

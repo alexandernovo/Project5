@@ -2,16 +2,16 @@
     aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5 ms-2">
-                    <span>
-                        <i class="ti ti-user-plus" style="font-size: 20px"></i>
-                    </span>
-                    <span id="newBoatingModalLabel">
-                        New Boat
-                    </span>
-                </h1>
-                <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">
+            <div class="modal-header position-relative d-flex justify-content-center align-items-center flex-column">
+                <img class="mb-1" src="{{ asset('assets/images/logo.jpg') }}" style="height: 70px; width: 70px"
+                    alt="">
+                <div>
+                    <p class="mb-0 text-center fw-semibold" style="color: #5D0900; font-size: 20px">BOATING
+                        CERTIFICATION FORM</p>
+                </div>
+                <button type="button"
+                    class="btn position-absolute rounded-circle d-flex justify-content-center align-items-center"
+                    style="top: 5px; right: 5px; width: 40px; height: 40px" data-bs-dismiss="modal" aria-label="Close">
                     <i class="bi bi-x-lg" style="font-size: 15px"></i>
                 </button>
             </div>
@@ -54,8 +54,8 @@
                         <div class="col-12">
                             <div class="form-group mb-1">
                                 <label for="" class="mb-1">Name of Boat</label>
-                                <input type="text" name="name_other" placeholder="Name of Boat"
-                                    id="name_other" class="form-control" required>
+                                <input type="text" name="name_other" placeholder="Name of Boat" id="name_other"
+                                    class="form-control" required>
                             </div>
                         </div>
                         <div class="col-4">
@@ -98,8 +98,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary-new button-submit">Add Certification</button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save changes</button>
                 </div>
             </form>
         </div>

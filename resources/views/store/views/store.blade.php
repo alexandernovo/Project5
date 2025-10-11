@@ -23,7 +23,23 @@
         </div>
         <div class="card w-100 px-0 mb-0">
             <div class="card-body p-3">
-                <table id="storeTable" class="table table-bordered">
+                <div class="d-flex justify-content-end gap-2">
+                    <button class="btn btn-secondary-new d-flex flex-nowrap align-items-center gap-2" id="reloadButton">
+                        <span>
+                            <i class="bi bi-arrow-clockwise"></i>
+                        </span>
+                        Reload
+                    </button>
+                    <div class="d-flex justify-content-end">
+                        <button class="btn btn-primary-new" id="printCertificate"><i class="bi bi-printer-fill"></i> Print
+                            Certification</button>
+                    </div>
+                    <button class="btn btn-primary-new" id="newCertification">
+                        <i class="bi bi-clipboard-plus-fill"></i>
+                        Add Certification
+                    </button>
+                </div>
+                <table id="storeTable" class="table table-bordered data_table">
                     <thead>
                         <tr>
                             <th>No.</th>
@@ -46,4 +62,5 @@
     @include('store.js.store')
     @include('store.js.newstore')
     @include('store.js.deletestore')
+    @include('store.js.printcertificate')
 @endsection

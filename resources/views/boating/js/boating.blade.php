@@ -151,13 +151,13 @@
 
     function reloadButtonLoading(isLoading) {
         if (isLoading) {
-            $("#reloadboatingBtn").html(`
+            $("#reloadButton").html(`
                     <div class="spinner-border text-white" role="status" style="width: 14px; height: 14px">
                 </div>
                 Reloading
             `);
         } else {
-            $("#reloadboatingBtn").html(`
+            $("#reloadButton").html(`
                 <i class="bi bi-arrow-clockwise"></i>
                 Reload
             `);

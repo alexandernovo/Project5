@@ -1,11 +1,14 @@
 <script>
     $(document).on("click", "#newCertification", function() {
         resetBoating();
+        $(".button-submit").text("Add Certification");
         $("#newBoatingModal").modal("show");
     });
 
     $(document).on("click", ".editButton", function(e) {
         e.stopPropagation();
+        $(".button-submit").text("Edit Certification");
+
         let record_id = $(this).data('record_id');
         let data = boatingData.find(x => x.record_id == record_id);
         resetBoating();
