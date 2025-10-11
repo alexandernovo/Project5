@@ -29,7 +29,7 @@
             <div class="card-body p-3">
                 <div class="d-flex justify-content-end gap-2">
                     <button class="btn btn-secondary-new d-flex flex-nowrap align-items-center gap-2"
-                        id="reloadassociationBtn">
+                        id="reloadButton">
                         <span>
                             <i class="bi bi-arrow-clockwise"></i>
                         </span>
@@ -39,20 +39,22 @@
                         <button class="btn btn-primary-new" id="printCertificate"><i class="bi bi-printer-fill"></i> Print
                             Certification</button>
                     </div>
-                    <button class="btn btn-primary-new" id="newassociationBtn">
+                    <button class="btn btn-primary-new" id="newCertification">
                         <i class="bi bi-clipboard-plus-fill"></i>
                         Add Certification
                     </button>
                 </div>
                 <table id="boatingTable" class="table table-bordered data_table">
                     <thead>
-                        <tr>
-                            <th>No.</th>
-                            <th>Date Created</th>
-                            <th>Owner of Boat</th>
-                            <th>Address</th>
-                            <th>Expiration Date</th>
-                            <th width="80px">Permit Status</th>
+                        <tr class="text-center">
+                            <th class="text-nowrap p-3 text-center">No.</th>
+                            <th class="text-nowrap p-3">Owner</th>
+                            <th class="text-nowrap p-3">Name of Boat</th>
+                            <th class="text-nowrap p-3">Address</th>
+                            <th class="text-nowrap p-3">Sex</th>
+                            <th class="text-nowrap p-3">Contact No.</th>
+                            <th class="text-nowrap p-3">Date Created</th>
+                            <th class="text-nowrap p-2 text-center align-middle sticky-action">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -67,4 +69,5 @@
     @include('boating.js.boating')
     @include('boating.js.newboating')
     @include('boating.js.deleteboating')
+    @include('boating.js.printcertificate')
 @endsection

@@ -3,6 +3,8 @@
     let boatingTable;
     let boatingData = [];
     let selectedboatingId = null;
+    let dateFrom = "";
+    let dateTo = "";
 
     boatingOptions = {
         processing: false,
@@ -13,6 +15,8 @@
             dataType: 'json',
             data: function(d) {
                 d._token = '{{ csrf_token() }}';
+                d.dateFrom = dateFrom;
+                d.dateTo = dateTo;
             },
             dataSrc: function(json) {
                 boatingData = json.data;
@@ -27,17 +31,17 @@
                 }
             },
             {
-                title: 'Date Created',
-                className: 'text-nowrap p-3',
-                render: function(data, type, row) {
-                    return formatDateToStr(row.created_at);
-                }
-            },
-            {
-                title: 'Owner of Boat',
+                title: 'Owner',
                 className: 'text-nowrap p-3',
                 render: function(data, type, row) {
                     return row.owner_name;
+                }
+            },
+            {
+                title: 'Name of Boat',
+                className: 'text-nowrap p-3',
+                render: function(data, type, row) {
+                    return row.name_other;
                 }
             },
             {
@@ -48,17 +52,36 @@
                 }
             },
             {
-                title: 'Expiration Date',
+                title: 'Sex',
                 className: 'text-nowrap p-3',
                 render: function(data, type, row) {
-                    return formatDateToStr(row.expiration, false);
+                    return row.sex;
                 }
             },
             {
-                title: 'Permit Status',
-                className: 'text-nowrap p-3 text-center',
+                title: 'Contact No.',
+                className: 'text-nowrap p-3',
                 render: function(data, type, row) {
-                    return `<span class="${row.status == "ACTIVE" ? 'text-success': 'text-danger'} text-capitalize">${row.status ? row.status.toLowerCase() : ''}</span>`;
+                    return row.contact_no;
+                }
+            },
+            {
+                title: 'Date Created',
+                className: 'text-nowrap p-3',
+                render: function(data, type, row) {
+                    return formatDateToStr(row.created_at, false);
+                }
+            },
+            {
+                title: 'Action',
+                className: 'text-nowrap p-2 text-center  align-middle sticky-action',
+                render: function(data, type, row) {
+                    return `
+                        <div class="d-flex gap-2 text-center align-items-center">
+                            <button class="btn btn-warning editButton" data-record_id="${row.record_id}">Edit</button>
+                            <button class="btn btn-secondary-new deleteButton" data-record_id="${row.record_id}">Delete</button>
+                        </div>
+                    `;
                 }
             }
         ],
@@ -80,8 +103,9 @@
         boatingTable = new DataTable('#boatingTable', boatingOptions)
     }
 
-    $(document).on("click", "#reloadboatingBtn", function() {
+    $(document).on("click", "#reloadButton", function() {
         reloadButtonLoading(true);
+        resetDate();
         reloadboatingTable();
         setTimeout(() => {
             reloadButtonLoading(false);
@@ -199,4 +223,20 @@
             }
         });
     };
+
+    $(document).on('click', '#filterDateBtn', function() {
+        dateFrom = $("#dateFromFilter").val();
+        dateTo = $("#dateToFilter").val();
+        boatingOptions.ajax.data.dateFrom = dateFrom;
+        boatingOptions.ajax.data.dateTo = dateTo;
+        reloadboatingTableWithPagination();
+    });
+
+    function resetDate() {
+        dateFrom = "";
+        dateTo = "";
+
+        boatingOptions.ajax.data.dateFrom = dateFrom;
+        boatingOptions.ajax.data.dateTo = dateTo;
+    }
 </script>

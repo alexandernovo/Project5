@@ -29,6 +29,7 @@ Route::post('/association/deleteAssociation', [AssociationController::class, 'de
 
 //boating
 Route::get('/boating/view', [BoatingController::class, 'boating_view'])->name('boating_view');
+Route::get('/boating/print', [BoatingController::class, 'printBoating'])->name('printBoating');
 Route::post('/boating/save_new_boating', [BoatingController::class, 'save_new_boating'])->name('save_new_boating');
 Route::post('/boating/getBoatings', [BoatingController::class, 'getBoatings'])->name('getBoatings');
 Route::post('/boating/deleteBoating', [BoatingController::class, 'deleteBoating'])->name('deleteBoating');

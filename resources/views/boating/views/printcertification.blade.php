@@ -1,7 +1,7 @@
 @extends('layout.mainlayout')
 @section('content')
-    @include('association.css.association')
-    @include('association.modals.newassociation')
+    @include('boating.css.boating')
+    @include('boating.modals.newboating')
     <div class="row mx-auto">
         <div class="card-body px-2 py-1">
             <div class="row align-items-center">
@@ -9,9 +9,9 @@
                     <div
                         class="d-flex align-items-center mb-2 flex-wrap text-lg-start text-sm-center gap-2 title-tips-class">
                         <h4 class="fw-semibold mb-0 text-nowrap">
-                            <img src="{{ asset('assets/images/icons/Association.png') }}"
+                            <img src="{{ asset('assets/images/icons/Boating.png') }}"
                                 style="width: 30px; height:40px; filter: invert(1);" alt="">
-                            Association
+                            Boating
                         </h4>
                     </div>
                     <nav aria-label="breadcrumb" class="breadcrum-sm-class">
@@ -21,9 +21,9 @@
                             </li>
                             <li class="breadcrumb-item">
                                 <a class="text-muted text-decoration-none"
-                                    href="{{ route('association_view') }}">Association</a>
+                                    href="{{ route('boating_view') }}">Boating</a>
                             </li>
-                            <li class="breadcrumb-item" aria-current="page">Print Association</li>
+                            <li class="breadcrumb-item" aria-current="page">Print Boating</li>
                         </ol>
                     </nav>
                 </div>
@@ -66,15 +66,17 @@
                 <div style="font-size:16px; text-align:justify; line-height:1.8;">
                     <p><strong>TO WHOM IT MAY CONCERN:</strong></p>
                     <p style="text-indent: 40px">
-                        This is to certify that the <strong>{{ $record->association }}</strong> located at {{ $record->address }} has compiled all the requirements based on Article I Section 2 of Municipal Ordinance No. 4
-                        Series 2018 known as the Ecological and Integrated Solid Waste Management and allowed to operate for
-                        business.
+                        This is to certify that Barangay Officials of <strong>{{ $record->address }}</strong> is
+                        allowed to conduct 2nd Dagsa Festival Bancarera 2024 on May 13, 2024 as part of their Religious
+                        Fiesta
+                        activity.
                     </p>
                     <p style="text-indent: 40px">
-                        This certification is issued to <strong>{{ $record->association }}</strong> for whatever legal
-                        purpose
-                        it may
-                        serve.
+                        On the other hand, they should ensure to protect and conserve our environment. However, it is still
+                        subject to the approval of the Provincial Coast Guard.
+                    </p>
+                    <p style="text-indent: 40px">
+                        This certification is issued to whatever legal purpose it may serve.
                     </p>
                     @php
                         $date = \Carbon\Carbon::parse($record->date_renewal);
@@ -94,8 +96,8 @@
                     @endphp
 
                     <p style="text-indent: 40px">
-                        Done this <strong>{{ $day }}<sup>{{ $suffix }}</sup> day of {{ $month }},
-                            {{ $year }}</strong> at Barbaza, Antique.
+                        Issued <strong>{{ $day }}<sup>{{ $suffix }}</sup> day of {{ $month }},
+                            {{ $year }}</strong> at the Municipality of Barbaza, Antique, Philippines.
                     </p>
                 </div>
 

@@ -100,8 +100,7 @@ class AssociationController extends Controller
         if (!empty($searchValue)) {
             $query->where(function ($q) use ($searchValue) {
                 $q->where(DB::raw("CONCAT(clients.firstname, ' ', clients.middlename, ' ', clients.lastname)"), 'like', "%{$searchValue}%")
-                    ->orWhere(DB::raw("CONCAT(clients.barangay, ', ', clients.municipality, ', ', clients.province)"), 'like', "%{$searchValue}%")
-                    ->orWhere('records.record_id', 'like', "%{$searchValue}%");
+                    ->orWhere(DB::raw("CONCAT(clients.barangay, ', ', clients.municipality, ', ', clients.province)"), 'like', "%{$searchValue}%");
             });
         }
 
@@ -149,7 +148,7 @@ class AssociationController extends Controller
                 'records.*',
                 'clients.*',
                 DB::raw("clients.firstname + ' '+ clients.middlename+' '+ clients.lastname AS owner_name"),
-                DB::raw("clients.barangay + ', '+ clients.municipality+', '+ clients.province AS address")
+                DB::raw("'Brgy. ' + clients.barangay + ', '+ clients.municipality+', '+ clients.province AS address")
             )
             ->where("records.type", "ASSOCIATION")
             ->where("records.record_id", $record_id)->first();

@@ -1,21 +1,18 @@
 <script>
-    $(document).on("click", "#newboatingBtn", function() {
-        $("#newBoatingModalLabel").text("New Boat");
+    $(document).on("click", "#newCertification", function() {
         resetBoating();
         $("#newBoatingModal").modal("show");
     });
 
-    $(document).on("click", "#editboatingBtn", function() {
-        $("#newBoatingModalLabel").text("Edit Boat");
-        var selectedRow = boatingTable.row('.selected');
+    $(document).on("click", ".editButton", function(e) {
+        e.stopPropagation();
+        let record_id = $(this).data('record_id');
+        let data = boatingData.find(x => x.record_id == record_id);
         resetBoating();
 
-        if (selectedRow.node()) {
-            var data = selectedRow.data();
-            if (data) {
-                populateForm(data, "newBoatingform");
-                $("#newBoatingModal").modal("show");
-            }
+        if (data) {
+            populateForm(data, "newBoatingform");
+            $("#newBoatingModal").modal("show");
         } else {
             Swal.fire({
                 title: "Warning",
@@ -28,15 +25,10 @@
     $(document).on("submit", "#newBoatingform", function(e) {
         e.preventDefault();
 
-        let formData = {
-            ornumber: $('#ornumber').val(),
-            record_id: $('#record_id').val(),
-            client_id: $('#client_id').val(),
-            owner_name: $('#owner_name').val(),
-            name_other: $('#name_other').val(),
-            address: $('#address').val(),
-            expiration: $('#expiration').val()
-        };
+        let formData = {};
+        $(this).serializeArray().forEach(function(field) {
+            formData[field.name] = field.value;
+        });
 
         postRequest("{{ route('save_new_boating') }}", formData, (response) => {
             if (response.status == "success") {
