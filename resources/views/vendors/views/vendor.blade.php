@@ -8,7 +8,11 @@
                 <div class="col-12">
                     <div
                         class="d-flex align-items-center mb-2 flex-wrap text-lg-start text-sm-center gap-2 title-tips-class">
-                        <h4 class="fw-semibold mb-0 text-nowrap">Vendors</h4>
+                        <h4 class="fw-semibold mb-0 text-nowrap">
+                            <img src="{{ asset('assets/images/icons/Vendors.png') }}"
+                                style="width: 30px; height:40px; filter: invert(1);" alt="">
+                            Vendors
+                        </h4>
                     </div>
                     <nav aria-label="breadcrumb" class="breadcrum-sm-class">
                         <ol class="breadcrumb mb-1">
@@ -23,15 +27,37 @@
         </div>
         <div class="card w-100 px-0 mb-0">
             <div class="card-body p-3">
-                <table id="vendorTable" class="table table-bordered">
+                <div class="d-flex justify-content-end gap-2">
+                    <button class="btn btn-secondary-new d-flex flex-nowrap align-items-center gap-2" id="reloadButton">
+                        <span>
+                            <i class="bi bi-arrow-clockwise"></i>
+                        </span>
+                        Reload
+                    </button>
+                    <div class="d-flex justify-content-end">
+                        <button class="btn btn-primary-new" id="printCertificate"><i class="bi bi-printer-fill"></i> Print
+                            Certification</button>
+                    </div>
+                    <button class="btn btn-primary-new" id="newCertification">
+                        <i class="bi bi-clipboard-plus-fill"></i>
+                        Add Certification
+                    </button>
+                </div>
+                <table id="vendorTable" class="table table-bordered data_table">
                     <thead>
                         <tr>
-                            <th>No.</th>
-                            <th>Date Created</th>
-                            <th>Owner of Vendors</th>
-                            <th>Address</th>
-                            <th>Expiration Date</th>
-                            <th width="80px">Permit Status</th>
+                            <th class="text-nowrap p-3 text-center">No.</th>
+                            <th class="text-nowrap p-3">Owner</th>
+                            <th class="text-nowrap p-3">OR No.</th>
+                            <th class="text-nowrap p-3">Name of Vendor</th>
+                            <th class="text-nowrap p-3">Address</th>
+                            <th class="text-nowrap p-3">Sex</th>
+                            <th class="text-nowrap p-3">Contact No.</th>
+                            <th class="text-nowrap p-3">Date Created</th>
+                            <th class="text-nowrap p-3 text-center">Renewal Status</th>
+                            <th class="text-nowrap p-3">Date of Renewal</th>
+                            <th class="text-nowrap p-3">Date of Expiration</th>
+                            <th class="text-nowrap p-3 sticky-action">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -46,4 +72,5 @@
     @include('vendors.js.vendor')
     @include('vendors.js.newvendor')
     @include('vendors.js.deletevendor')
+    @include('vendors.js.printcertificate')
 @endsection

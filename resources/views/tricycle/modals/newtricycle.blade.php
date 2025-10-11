@@ -55,7 +55,7 @@
                         <div class="col-12">
                             <div class="form-group mb-1">
                                 <label for="" class="mb-1">Name of Tricycle</label>
-                                <input type="text" name="name_other" placeholder="Name of Store" id="name_other"
+                                <input type="text" name="name_other" placeholder="Name of Tricycle" id="name_other"
                                     class="form-control" required>
                             </div>
                         </div>

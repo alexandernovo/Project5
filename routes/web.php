@@ -62,6 +62,7 @@ Route::post('/tricycle/deletetricycle', [TricycleController::class, 'deletetricy
 
 //vendor
 Route::get('/vendor/view', [VendorController::class, 'vendor_view'])->name('vendor_view');
+Route::get('/vendor/print', [VendorController::class, 'printVendor'])->name('printVendor');
 Route::post('/vendor/save_new_vendor', [VendorController::class, 'save_new_vendor'])->name('save_new_vendor');
 Route::post('/vendor/getvendors', [VendorController::class, 'getvendors'])->name('getvendor');
 Route::post('/vendor/deletevendor', [VendorController::class, 'deletevendor'])->name('deletevendor');

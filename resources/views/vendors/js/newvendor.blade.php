@@ -1,42 +1,31 @@
 <script>
-    $(document).on("click", "#newvendorBtn", function() {
-        $("#newvendorModalLabel").text("New Vendor");
+    $(document).on("click", "#newCertification", function() {
+        $(".button-submit").text("Add Certification");
         resetvendor();
         $("#newvendorModal").modal("show");
     });
 
-    $(document).on("click", "#editvendorBtn", function() {
-        $("#newvendorModalLabel").text("Edit Vendor");
-        var selectedRow = vendorTable.row('.selected');
+    $(document).on("click", ".editButton", function(e) {
+        e.stopPropagation();
+        $(".button-submit").text("Edit Certification");
+        let record_id = $(this).data('record_id');
+        let data = vendorData.find(x => x.record_id == record_id);
+
         resetvendor();
 
-        if (selectedRow.node()) {
-            var data = selectedRow.data();
-            if (data) {
-                populateForm(data, "newvendorform");
-                $("#newvendorModal").modal("show");
-            }
-        } else {
-            Swal.fire({
-                title: "Warning",
-                text: "Please Select a Row First",
-                icon: "warning",
-            });
+        if (data) {
+            populateForm(data, "newvendorform");
+            $("#newvendorModal").modal("show");
         }
     })
 
     $(document).on("submit", "#newvendorform", function(e) {
         e.preventDefault();
 
-        let formData = {
-            ornumber: $('#ornumber').val(),
-            record_id: $('#record_id').val(),
-            client_id: $('#client_id').val(),
-            owner_name: $('#owner_name').val(),
-            name_other: $('#name_other').val(),
-            address: $('#address').val(),
-            expiration: $('#expiration').val()
-        };
+        let formData = {};
+        $(this).serializeArray().forEach(function(field) {
+            formData[field.name] = field.value;
+        });
 
         postRequest("{{ route('save_new_vendor') }}", formData, (response) => {
             if (response.status == "success") {

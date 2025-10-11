@@ -86,7 +86,7 @@ class AssociationController extends Controller
         $searchValue = $request->input('search.value');
         $dateFrom = $request->input('dateFrom');
         $dateTo = $request->input('dateTo');
-        
+
         $query = DB::table('records')
             ->leftJoin('clients', 'records.client_id', '=', 'clients.client_id')
             ->select(
@@ -100,7 +100,8 @@ class AssociationController extends Controller
         if (!empty($searchValue)) {
             $query->where(function ($q) use ($searchValue) {
                 $q->where(DB::raw("CONCAT(clients.firstname, ' ', clients.middlename, ' ', clients.lastname)"), 'like', "%{$searchValue}%")
-                    ->orWhere(DB::raw("CONCAT(clients.barangay, ', ', clients.municipality, ', ', clients.province)"), 'like', "%{$searchValue}%");
+                    ->orWhere(DB::raw("CONCAT(clients.barangay, ', ', clients.municipality, ', ', clients.province)"), 'like', "%{$searchValue}%")
+                    ->orWhere('ornumber', 'like', "%{$searchValue}%");
             });
         }
 

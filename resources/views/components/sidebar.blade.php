@@ -9,27 +9,12 @@
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="{{ route('dashboard') }}" aria-expanded="false">
                         <span>
-                           <i class="bi bi-window-sidebar"></i>
+                            <i class="bi bi-window-sidebar"></i>
                         </span>
                         <span class="hide-menu">Dashboard</span>
                     </a>
                 </li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="k" aria-expanded="false">
-                        <span>
-                            <i class="bi bi-list-stars"></i>
-                        </span>
-                        <span class="hide-menu">Report</span>
-                    </a>
-                </li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="l" aria-expanded="false">
-                        <span>
-                            <i class="bi bi-gear"></i>
-                        </span>
-                        <span class="hide-menu">Setting</span>
-                    </a>
-                </li>
+
                 <li class="nav-small-cap mt-2">
                     <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                     <span class="hide-menu">Certification</span>
@@ -110,7 +95,26 @@
                         <span class="hide-menu">Waste in the Bottle</span>
                     </a>
                 </li>
-
+                <li class="nav-small-cap mt-2">
+                    <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                    <span class="hide-menu">Others</span>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="k" aria-expanded="false">
+                        <span>
+                            <i class="bi bi-list-stars"></i>
+                        </span>
+                        <span class="hide-menu">Report</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="l" aria-expanded="false">
+                        <span>
+                            <i class="bi bi-gear"></i>
+                        </span>
+                        <span class="hide-menu">Profile</span>
+                    </a>
+                </li>
             </ul>
         </nav>
     </div>

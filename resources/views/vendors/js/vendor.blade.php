@@ -3,6 +3,8 @@
     let vendorTable;
     let vendorData = [];
     let selectedvendorId = null;
+    let dateFrom = "";
+    let dateTo = "";
 
     vendorOptions = {
         processing: false,
@@ -14,6 +16,8 @@
             dataType: 'json',
             data: function(d) {
                 d._token = '{{ csrf_token() }}';
+                d.dateFrom = dateFrom;
+                d.dateTo = dateTo;
             },
             dataSrc: function(json) {
                 vendorData = json.data;
@@ -22,46 +26,94 @@
         },
         columns: [{
                 title: 'No.',
-                className: 'text-nowrap p-3 text-center',
+                className: 'text-nowrap p-2 text-center align-middle',
                 render: function(data, type, row, meta) {
                     return meta.row + meta.settings._iDisplayStart + 1;
                 }
             },
             {
-                title: 'Date Created',
-                className: 'text-nowrap p-3',
-                render: function(data, type, row) {
-                    return formatDateToStr(row.created_at);
-                }
-            },
-            {
-                title: 'Owner of Vendor',
-                className: 'text-nowrap p-3',
+                title: 'Owner',
+                className: 'text-nowrap p-2 text-center  align-middle',
                 render: function(data, type, row) {
                     return row.owner_name;
                 }
             },
             {
+                title: 'OR No.',
+                className: 'text-nowrap p-2 text-center  align-middle',
+                render: function(data, type, row) {
+                    return row.ornumber;
+                }
+            },
+            {
+                title: 'Name of Tricycle',
+                className: 'text-nowrap p-2 text-center  align-middle',
+                render: function(data, type, row) {
+                    return row.name_other;
+                }
+            },
+            {
                 title: 'Address',
-                className: 'text-nowrap p-3',
+                className: 'text-nowrap p-2 text-center  align-middle',
                 render: function(data, type, row) {
                     return row.address;
                 }
             },
             {
-                title: 'Expiration Date',
-                className: 'text-nowrap p-3',
+                title: 'Sex',
+                className: 'text-nowrap p-2 text-center  align-middle',
+                render: function(data, type, row) {
+                    return row.sex;
+                }
+            },
+            {
+                title: 'Contact No.',
+                className: 'text-nowrap p-2 text-center  align-middle',
+                render: function(data, type, row) {
+                    return row.contact_no;
+                }
+            },
+            {
+                title: 'Date Created',
+                className: 'text-nowrap p-2 text-center  align-middle',
+                render: function(data, type, row) {
+                    return formatDateToStr(row.created_at);
+                }
+            },
+            {
+                title: 'Renewal Status',
+                className: 'text-nowrap p-2 text-center  align-middle text-center',
+                render: function(data, type, row) {
+                    return renderExpirationStatus(row.expiration);
+                }
+            },
+            {
+                title: 'Date of Renewal',
+                className: 'text-nowrap p-2 text-center  align-middle',
                 render: function(data, type, row) {
                     return formatDateToStr(row.expiration, false);
                 }
             },
             {
-                title: 'Permit Status',
-                className: 'text-nowrap p-3 text-center',
+                title: 'Date of Expiration',
+                className: 'text-nowrap p-2 text-center  align-middle',
                 render: function(data, type, row) {
-                    return `<span class="${row.status == "ACTIVE" ? 'text-success': 'text-danger'} text-capitalize">${row.status ? row.status.toLowerCase() : ''}</span>`;
+                    return formatDateToStr(row.expiration, false);
                 }
-            }
+            },
+            {
+                title: 'Action',
+                className: 'text-nowrap p-2 text-center  align-middle sticky-action',
+                render: function(data, type, row) {
+                    return `
+                        <div class="d-flex gap-2 text-center align-items-center">
+                            <button class="btn btn-warning editButton" data-record_id="${row.record_id}">Edit</button>
+                            <button class="btn btn-secondary-new deleteButton" data-record_id="${row.record_id}">Delete</button>
+                        </div>
+                    `;
+                }
+            },
+
         ],
         initComplete: function(settings, json) {
             appendButtonsvendor();
@@ -80,8 +132,9 @@
         vendorTable = new DataTable('#vendorTable', vendorOptions)
     }
 
-    $(document).on("click", "#reloadvendorBtn", function() {
+    $(document).on("click", "#reloadButton", function() {
         reloadButtonLoading(true);
+        resetDate();
         reloadvendorTable();
         setTimeout(() => {
             reloadButtonLoading(false);
@@ -107,56 +160,33 @@
     function appendButtonsvendor() {
         $('#vendorTable_wrapper .row .dt-length').append(`
             <div class="d-flex gap-2 ms-2 align-items-center vendorBtnSm">
-                 <button class="btn btn-primary d-flex flex-nowrap align-items-center gap-2" id="">
-                    <span>
-                        <i class="bi bi-node-plus"></i>
-                    </span>
-                    Request Renew
-                </button>
-                <button class="btn btn-success d-flex flex-nowrap align-items-center gap-2" id="newvendorBtn">
-                    <span>
-                        <i class="bi bi-clipboard-plus"></i>
-                    </span>
-                    Add New
-                </button>
-                <button class="btn btn-info d-flex flex-nowrap align-items-center gap-2" id="editvendorBtn">
-                    <span>
-                        <i class="bi bi-pencil-square"></i>
-                    </span>
-                    Edit
-                </button>
-                <button class="btn btn-danger d-flex flex-nowrap align-items-center gap-2" id="deletevendorBtn">
-                    <span>
-                        <i class="ti ti-trash"></i>
-                    </span>
-                    Delete
-                </button>
-                <button class="btn btn-primary d-flex flex-nowrap align-items-center gap-2" id="">
-                    <span>
-                        <i class="bi bi-share"></i>
-                    </span>
-                    Share
-                </button>
-                <button class="btn btn-info d-flex flex-nowrap align-items-center gap-2" id="reloadvendorBtn">
-                    <span>
-                        <i class="bi bi-arrow-clockwise"></i>
-                    </span>
-                    Reload
-                </button>
-               
+                <div class="d-flex">
+                    <div class="input-group" style="width: 120%">
+                        <span  style="border: 1px solid #EAEFF4 !important" class="input-group-text filter-padding">From:</span>
+                        <input type="date" id="dateFromFilter" value="{{ date('Y-m-d') }}" class="form-control filter-padding rounded-end-0 border-end-0">
+                    </div>
+                    <div class="input-group" style="width: 110%">
+                        <span  style="border: 1px solid #EAEFF4 !important" class="input-group-text rounded-start-0 filter-padding">To:</span>
+                        <input type="date" id="dateToFilter" value="{{ date('Y-m-d') }}" class="form-control filter-padding rounded-end-0 border-end-0">
+                    </div>
+                    <button data-bs-toggle="tooltip" data-bs-title="Filter by Date & Time of Incident" type="button" id="filterDateBtn" class="btn btn-secondary-new filter-padding d-flex gap-1 align-items-center border-1 rounded-start-0 position-relative">
+                        <i class="bi bi-funnel-fill"></i>
+                        Filter
+                    </button>
+                </div>
             </div>
         `);
     }
 
     function reloadButtonLoading(isLoading) {
         if (isLoading) {
-            $("#reloadvendorBtn").html(`
+            $("#reloadButton").html(`
                     <div class="spinner-border text-white" role="status" style="width: 14px; height: 14px">
                 </div>
                 Reloading
             `);
         } else {
-            $("#reloadvendorBtn").html(`
+            $("#reloadButton").html(`
                 <i class="bi bi-arrow-clockwise"></i>
                 Reload
             `);
@@ -222,4 +252,20 @@
             }
         });
     };
+
+    $(document).on('click', '#filterDateBtn', function() {
+        dateFrom = $("#dateFromFilter").val();
+        dateTo = $("#dateToFilter").val();
+        vendorOptions.ajax.data.dateFrom = dateFrom;
+        vendorOptions.ajax.data.dateTo = dateTo;
+        reloadvendorTableWithPagination();
+    });
+
+    function resetDate() {
+        dateFrom = "";
+        dateTo = "";
+
+        vendorOptions.ajax.data.dateFrom = dateFrom;
+        vendorOptions.ajax.data.dateTo = dateTo;
+    }
 </script>

@@ -1,7 +1,7 @@
 @extends('layout.mainlayout')
 @section('content')
-    @include('tricycle.css.tricycle')
-    @include('tricycle.modals.newtricycle')
+    @include('vendors.css.vendor')
+    @include('vendors.modals.newvendor')
     <div class="row mx-auto">
         <div class="card-body px-2 py-1">
             <div class="row align-items-center">
@@ -9,9 +9,9 @@
                     <div
                         class="d-flex align-items-center mb-2 flex-wrap text-lg-start text-sm-center gap-2 title-tips-class">
                         <h4 class="fw-semibold mb-0 text-nowrap">
-                            <img src="{{ asset('assets/images/icons/Tricycle.png') }}"
+                            <img src="{{ asset('assets/images/icons/Vendors.png') }}"
                                 style="width: 30px; height:40px; filter: invert(1);" alt="">
-                            Tricycle
+                            Vendors
                         </h4>
                     </div>
                     <nav aria-label="breadcrumb" class="breadcrum-sm-class">
@@ -20,11 +20,10 @@
                                 <a class="text-muted text-decoration-none" href="{{ route('dashboard') }}">Dashboard</a>
                             </li>
                             <li class="breadcrumb-item">
-                                <a class="text-muted text-decoration-none" href="{{ route('tricycle_view') }}">
-                                    Tricycle
+                                <a class="text-muted text-decoration-none" href="{{ route('vendor_view') }}"> Vendors
                                 </a>
                             </li>
-                            <li class="breadcrumb-item" aria-current="page">Print Tricycle</li>
+                            <li class="breadcrumb-item" aria-current="page">Print Vendors</li>
                         </ol>
                     </nav>
                 </div>
@@ -68,8 +67,8 @@
                     <p><strong>TO WHOM IT MAY CONCERN:</strong></p>
                     <p style="text-indent: 40px">
                         This is to certify that {{ $record->sex == 'Male' ? 'MR.' : 'MS.' }}
-                        <span class="text-uppercase"><strong>{{ $record->owner_name }}</strong></span> owner of
-                        <span class="text-uppercase"><strong>{{ $record->name_other }}</strong></span> located at
+                        <span class="text-uppercase"><strong>{{ $record->owner_name }}</strong></span> is a
+                        <span class="text-uppercase"><strong>{{ $record->name_other }}</strong></span> resident of
                         {{ $record->address }}
                         has compiled all the requirements based on Article 4 Section 12 & 14 of Municipal Ordinance No. 4
                         Series 2018 known as the
