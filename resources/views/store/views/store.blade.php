@@ -8,7 +8,11 @@
                 <div class="col-12">
                     <div
                         class="d-flex align-items-center mb-2 flex-wrap text-lg-start text-sm-center gap-2 title-tips-class">
-                        <h4 class="fw-semibold mb-0 text-nowrap">Sari-Sari Store</h4>
+                        <h4 class="fw-semibold mb-0 text-nowrap">
+                            <img src="{{ asset('assets/images/icons/Sari-Sari Store.png') }}"
+                                style="width: 30px; height:40px; filter: invert(1);" alt="">
+                            Sari-Sari Store
+                        </h4>
                     </div>
                     <nav aria-label="breadcrumb" class="breadcrum-sm-class">
                         <ol class="breadcrumb mb-1">
@@ -42,12 +46,18 @@
                 <table id="storeTable" class="table table-bordered data_table">
                     <thead>
                         <tr>
-                            <th>No.</th>
-                            <th>Date Created</th>
-                            <th>Owner of Store</th>
-                            <th>Address</th>
-                            <th>Expiration Date</th>
-                            <th width="80px">Permit Status</th>
+                            <th class="text-nowrap p-3 text-center">No.</th>
+                            <th class="text-nowrap p-3">Owner</th>
+                            <th class="text-nowrap p-3">OR No.</th>
+                            <th class="text-nowrap p-3">Name of Store</th>
+                            <th class="text-nowrap p-3">Address</th>
+                            <th class="text-nowrap p-3">Sex</th>
+                            <th class="text-nowrap p-3">Contact No.</th>
+                            <th class="text-nowrap p-3">Date Created</th>
+                            <th class="text-nowrap p-3 text-center">Renewal Status</th>
+                            <th class="text-nowrap p-3">Date of Renewal</th>
+                            <th class="text-nowrap p-3">Date of Expiration</th>
+                            <th class="text-nowrap p-3 sticky-action">Action</th>
                         </tr>
                     </thead>
                     <tbody>

@@ -55,6 +55,7 @@ Route::post('/store/deletestore', [StoreController::class, 'deletestore'])->name
 
 //tricycle
 Route::get('/tricycle/view', [TricycleController::class, 'tricycle_view'])->name('tricycle_view');
+Route::get('/tricycle/print', [TricycleController::class, 'printTricycle'])->name('printTricycle');
 Route::post('/tricycle/save_new_tricycle', [TricycleController::class, 'save_new_tricycle'])->name('save_new_tricycle');
 Route::post('/tricycle/gettricycles', [TricycleController::class, 'gettricycles'])->name('gettricycle');
 Route::post('/tricycle/deletetricycle', [TricycleController::class, 'deletetricycle'])->name('deletetricycle');
