@@ -31,11 +31,13 @@
 
             @if (Route::currentRouteName() != 'home')
                 <div class="body-wrapper position-relative d-flex flex-column vh-100 justify-content-between">
-                    @if (Route::currentRouteName() != 'home')
-                        @include('components.header2')
-                    @endif
-                    <div class="px-3 pb-3 mt-3">
-                        @yield('content')
+                    <div>
+                        @if (Route::currentRouteName() != 'home')
+                            @include('components.header2')
+                        @endif
+                        <div class="px-3 pb-3 mt-3">
+                            @yield('content')
+                        </div>
                     </div>
                     @if (Route::currentRouteName() != 'home')
                         @include('components.footer2')
