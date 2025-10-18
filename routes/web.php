@@ -38,6 +38,7 @@ Route::post('/boating/deleteBoating', [BoatingController::class, 'deleteBoating'
 
 //chainsaw
 Route::get('/chainsaw/view', [ChainsawController::class, 'chainsaw_view'])->name('chainsaw_view');
+Route::get('/chainsaw/print', [ChainsawController::class, 'printChainsaw'])->name('printChainsaw');
 Route::post('/chainsaw/save_new_chainsaw', [ChainsawController::class, 'save_new_chainsaw'])->name('save_new_chainsaw');
 Route::post('/chainsaw/getchainsaws', [ChainsawController::class, 'getchainsaws'])->name('getchainsaws');
 Route::post('/chainsaw/deletechainsaw', [ChainsawController::class, 'deletechainsaw'])->name('deletechainsaw');

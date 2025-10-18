@@ -23,15 +23,37 @@
         </div>
         <div class="card w-100 px-0 mb-0">
             <div class="card-body p-3">
-                <table id="chainsawTable" class="table table-bordered">
+                <div class="d-flex justify-content-end gap-2">
+                    <button class="btn btn-secondary-new d-flex flex-nowrap align-items-center gap-2" id="reloadButton">
+                        <span>
+                            <i class="bi bi-arrow-clockwise"></i>
+                        </span>
+                        Reload
+                    </button>
+                    <div class="d-flex justify-content-end">
+                        <button class="btn btn-primary-new" id="printCertificate"><i class="bi bi-printer-fill"></i> Print
+                            Certification</button>
+                    </div>
+                    <button class="btn btn-primary-new" id="newCertification">
+                        <i class="bi bi-clipboard-plus-fill"></i>
+                        Add Certification
+                    </button>
+                </div>
+                <table id="chainsawTable" class="table table-bordered data_table">
                     <thead>
                         <tr>
-                            <th>No.</th>
-                            <th>Date Created</th>
-                            <th>Owner of Chainsaw</th>
-                            <th>Address</th>
-                            <th>Expiration Date</th>
-                            <th width="80px">Permit Status</th>
+                            <th class="text-nowrap p-3 text-center">No.</th>
+                            <th class="text-nowrap p-3">Owner of Association</th>
+                            <th class="text-nowrap p-3">OR No.</th>
+                            <th class="text-nowrap p-3">Name of Association</th>
+                            <th class="text-nowrap p-3">Address</th>
+                            <th class="text-nowrap p-3">Sex</th>
+                            <th class="text-nowrap p-3">Contact No.</th>
+                            <th class="text-nowrap p-3">Date Created</th>
+                            <th class="text-nowrap p-3 text-center">Renewal Status</th>
+                            <th class="text-nowrap p-3">Date of Renewal</th>
+                            <th class="text-nowrap p-3">Date of Expiration</th>
+                            <th class="text-nowrap p-3 sticky-action">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -46,4 +68,5 @@
     @include('chainsaw.js.chainsaw')
     @include('chainsaw.js.newchainsaw')
     @include('chainsaw.js.deletechainsaw')
+    @include('chainsaw.js.printcertificate')
 @endsection

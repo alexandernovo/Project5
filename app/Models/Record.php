@@ -10,7 +10,7 @@ class Record extends Model
     protected $table = 'records';
 
     protected $primaryKey = 'record_id';
-    
+
     public $timestamps = true;
 
     protected $fillable = [
@@ -27,5 +27,9 @@ class Record extends Model
         'type',
         'expiration',
         'date_renewal',
+        'ctpo',
+        'brgy_cert',
+        'orno_check',
+        'cr_check',
     ];
 }

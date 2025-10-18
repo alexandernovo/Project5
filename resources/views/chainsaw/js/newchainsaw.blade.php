@@ -1,47 +1,57 @@
 <script>
-    $(document).on("click", "#newchainsawBtn", function() {
-        $("#newChainsawModalLabel").text("New Chainsaw");
+    let chainsawTableRequirements = [
+        "ctpo",
+        "brgy_cert",
+        "orno_check",
+        "cr_check"
+    ];
+
+    $(document).on("click", "#newCertification", function() {
+        $(".button-submit").text("Add Certification");
         resetchainsaw();
         $("#newChainsawModal").modal("show");
     });
 
-    $(document).on("click", "#editchainsawBtn", function() {
-        $("#newChainsawModalLabel").text("Edit Chainsaw");
-        var selectedRow = chainsawTable.row('.selected');
+    $(document).on("click", ".editButton", function(e) {
+        e.stopPropagation();
+        
+        $(".button-submit").text("Edit Certification");
+
+        let record_id = $(this).data('record_id');
+        let data = chainsawData.find(x => x.record_id == record_id);
         resetchainsaw();
 
-        if (selectedRow.node()) {
-            var data = selectedRow.data();
-            if (data) {
-                populateForm(data, "newChainsawform");
-                $("#newChainsawModal").modal("show");
-            }
-        } else {
-            Swal.fire({
-                title: "Warning",
-                text: "Please Select a Row First",
-                icon: "warning",
+        if (data) {
+            populateForm(data, "newChainsawform");
+            chainsawTableRequirements.forEach(req => {
+                if (data.hasOwnProperty(req)) {
+                    if (data[req] != 0 && data[req] != null) {
+                        $(`#${req}_status`).html(`<span class="badge bg-success">Submitted</span>`);
+                    } else {
+                        $(`#${req}_status`).empty();
+                    }
+                } else {
+                    $(`#${req}_status`).empty();
+                }
             });
+
+            $("#newChainsawModal").modal("show");
         }
     })
 
     $(document).on("submit", "#newChainsawform", function(e) {
         e.preventDefault();
 
-        let formData = {
-            ornumber: $('#ornumber').val(),
-            record_id: $('#record_id').val(),
-            client_id: $('#client_id').val(),
-            owner_name: $('#owner_name').val(),
-            name_other: $('#name_other').val(),
-            address: $('#address').val(),
+        let formData = {};
+        $(this).serializeArray().forEach(function(field) {
+            formData[field.name] = field.value;
+        });
 
-            model_no: $('#model_no').val(),
-            brand: $('#brand').val(),
-            serial_no: $('#serial_no').val(),
-            
-            expiration: $('#expiration').val()
-        };
+        $(this).find("input[type='checkbox']").each(function() {
+            if (!$(this).is(":checked")) {
+                formData[$(this).attr("name")] = 0;
+            }
+        });
 
         postRequest("{{ route('save_new_chainsaw') }}", formData, (response) => {
             if (response.status == "success") {
@@ -62,4 +72,13 @@
         $("#newChainsawform")[0].reset();
         $("#newChainsawform input[type='hidden']").val(0);
     }
+
+    $(document).on("change", ".checkthis", function() {
+        let id = $(this).attr('id');
+        if ($(this).prop("checked")) {
+            $(`#${id}_status`).html(`<span class="badge bg-success">Submitted</span>`);
+        } else {
+            $(`#${id}_status`).empty();
+        }
+    })
 </script>

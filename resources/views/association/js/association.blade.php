@@ -91,7 +91,7 @@
                 title: 'Date of Renewal',
                 className: 'text-nowrap p-2 text-center  align-middle',
                 render: function(data, type, row) {
-                    return formatDateToStr(row.expiration, false);
+                    return formatDateToStr(row.date_renewal, false);
                 }
             },
             {
