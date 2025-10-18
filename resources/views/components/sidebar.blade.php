@@ -1,11 +1,11 @@
 <aside class="left-sidebar primary-bg-new" style="">
     <div class="h-100">
         <div class="d-flex justify-content-center align-items-center mt-3 flex-column">
-            <img src="{{ asset('assets/images/logo.jpg') }}" style="width: 90px; height: 90px" class="rounded-circle"
+            <img src="{{ asset('assets/images/logo.jpg') }}" style="width: 80px; height: 80px" class="rounded-circle"
                 alt="">
-            <p class="mb-0 text-white my-2" style="font-weight: bold; font-size: 20px">MENRO-BAARS PORTAL</p>
+            <p class="mb-0 text-white my-2" style="font-weight: bold; font-size: 18px">MENRO-BAARS PORTAL</p>
         </div>
-        <nav class="sidebar-nav scroll-sidebar position-relative pb-3 h-100">
+        <nav class="sidebar-nav scroll-sidebar position-relative pb-3" style="">
             <ul id="sidebarnav">
                 <li class="nav-small-cap mt-1">
                     <i class="ti ti-dots nav-small-cap-icon text-white fs-4"></i>
@@ -104,7 +104,7 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="l" aria-expanded="false">
+                    <a class="sidebar-link" href="{{ route('profile_view') }}" aria-expanded="false">
                         <span>
                             <i class="bi bi-person-circle text-white"></i>
                         </span>

@@ -7,6 +7,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BoatingController;
 use App\Http\Controllers\ChainsawController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\TreesController;
@@ -80,5 +81,16 @@ Route::post('/wastebottle/save_new_wastebottle', [WasteBottleController::class, 
 Route::post('/wastebottle/getwastebottles', [WasteBottleController::class, 'getwastebottles'])->name('getwastebottle');
 Route::post('/wastebottle/deletewastebottle', [WasteBottleController::class, 'deletewastebottle'])->name('deletewastebottle');
 
+//profile
+Route::get('/profile/view', [ProfileController::class, 'profile_view'])->name('profile_view');
+Route::post('/profile/updateProfile', [ProfileController::class, 'updateProfile'])->name('updateProfile');
+Route::post('/profile/profileUpload', [ProfileController::class, 'profileUpload'])->name('profileUpload');
+Route::post('/profile/backgroundUpload', [ProfileController::class, 'backgroundUpload'])->name('backgroundUpload');
+Route::post('/profile/deleteCover', [ProfileController::class, 'deleteCover'])->name('deleteCover');
+
 //reports
 Route::get('/reports/dashboard/view', [ReportController::class, 'reportdashboard'])->name('reportdashboard');
+Route::get('/reports/association/print', [ReportController::class, 'associationPrint'])->name('associationPrint');
+Route::get('/reports/boating/print', [ReportController::class, 'boatingPrint'])->name('boatingPrint');
+Route::get('/reports/sarisaristore/print', [ReportController::class, 'sarisaristorePrint'])->name('sarisaristorePrint');
+Route::get('/reports/tricycle/print', [ReportController::class, 'tricyclePrint'])->name('tricyclePrint');

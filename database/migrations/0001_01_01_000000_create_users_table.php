@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('password');
             $table->string('username');
             $table->boolean('notify')->default(false); 
+            $table->string('background')->nullable();
+            $table->string('profile')->nullable();
             $table->timestamps();
         });
     }

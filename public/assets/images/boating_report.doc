@@ -1,0 +1,20 @@
+﻿
+            <h3 style="text-align:center;">Association Report</h3>
+            <table border='1' cellspacing='0' cellpadding='5' style='border-collapse:collapse; width:100%; font-size:12px;'>
+                <tr style="background:#f2f2f2;">
+                    <th>No</th>
+                    <th>Name of Owner</th>
+                    <th>OR Number</th>
+                    <th>Name of Association</th>
+                    <th>Address</th>
+                    <th>Date</th>
+                </tr>
+        
+                <tr>
+                    <td>1</td>
+                    <td>Porter Jade Duran Merritt</td>
+                    <td>900</td>
+                    <td></td>
+                    <td>Brgy. Fugit totam eveniet, Velit eum exercitati, Est iste hic do ab</td>
+                    <td>October 11, 2025 at 04:48 PM</td>
+                </tr></table>

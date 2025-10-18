@@ -72,6 +72,7 @@
     <script src="{{ asset('assets/js/xlsx.full.min.js') }}"></script>
     <script src="{{ asset('assets/js/socket.io.js') }}"></script>
     <script src="{{ asset('assets/js/script.js') }}"></script>
+    <script src="{{ asset('assets/js/html2pdf.js') }}"></script>
     @include('layout.js.layoutjs')
     @yield('js')
 </body>

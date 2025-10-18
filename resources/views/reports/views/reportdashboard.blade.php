@@ -4,12 +4,12 @@
         $dashboard = [
             [
                 'title' => 'ASSOCIATION REPORT',
-                'route' => '',
+                'route' => route('associationPrint'),
                 'icon' => asset('assets/images/icons/Association.png'),
             ],
             [
                 'title' => 'BOATING REPORT',
-                'route' => '',
+                'route' => route('boatingPrint'),
                 'icon' => asset('assets/images/icons/Boating.png'),
             ],
             [
@@ -24,12 +24,12 @@
             ],
             [
                 'title' => 'SARI-SARI STORE REPORT',
-                'route' => '',
+                'route' => route('sarisaristorePrint'),
                 'icon' => asset('assets/images/icons/Sari-Sari Store.png'),
             ],
             [
                 'title' => 'TRICYCLE REPORT',
-                'route' => '',
+                'route' => route('tricyclePrint'),
                 'icon' => asset('assets/images/icons/Tricycle.png'),
             ],
             [
@@ -47,7 +47,9 @@
                     <div class="d-flex flex-column justify-content-center align-items-center">
                         <img src="{{ $d['icon'] }}" style="width: 120px; height: 170px" alt="">
                         <p class="mb-0 text-white" style="font-size: 20px">{{ $d['title'] }}</p>
-                        <button class="btn w-100 mt-4 text-white" style="border: 1px solid white;">View</button>
+                        <a href="{{ $d['route'] }}" class="btn w-100 mt-4 text-white" style="border: 1px solid white;">
+                            View
+                        </a>
                     </div>
                 </div>
             </div>
