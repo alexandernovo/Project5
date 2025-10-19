@@ -14,12 +14,12 @@
             ],
             [
                 'title' => 'CHAINSAW REPORT',
-                'route' => '',
+                'route' => route('chainsawPrint'),
                 'icon' => asset('assets/images/icons/Chainsaw.png'),
             ],
             [
                 'title' => 'CUTTING TREES REPORT',
-                'route' => '',
+                'route' => route('treesPrint'),
                 'icon' => asset('assets/images/icons/Cutting Trees.png'),
             ],
             [
@@ -34,7 +34,7 @@
             ],
             [
                 'title' => 'VENDORS REPORT',
-                'route' => '',
+                'route' => route('vendorsPrint'),
                 'icon' => asset('assets/images/icons/Vendors.png'),
             ],
         ];

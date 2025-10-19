@@ -52,7 +52,7 @@
                 title: 'Lot No.',
                 className: 'text-nowrap p-2 text-center  align-middle',
                 render: function(data, type, row) {
-                    return row.name_other;
+                    return row.lot_no;
                 }
             },
             {

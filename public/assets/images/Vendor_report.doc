@@ -1,0 +1,20 @@
+﻿
+            <h3 style="text-align:center;">Vendor Report</h3>
+            <table border='1' cellspacing='0' cellpadding='5' style='border-collapse:collapse; width:100%; font-size:12px;'>
+                <tr style="background:#f2f2f2;">
+                    <th>No</th>
+                    <th>Name of Owner</th>
+                    <th>OR Number</th>
+                    <th>Name of Vendor</th>
+                    <th>Address</th>
+                    <th>Date</th>
+                </tr>
+        
+                <tr>
+                    <td>1</td>
+                    <td>Ethan Len Sherman Mullins</td>
+                    <td>555</td>
+                    <td>Risa Burch</td>
+                    <td>Brgy. Ullam sit ut ullamc, Et cumque laudantium, Alias impedit dolor</td>
+                    <td>October 11, 2025 at 06:51 PM</td>
+                </tr></table>

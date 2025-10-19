@@ -11,7 +11,9 @@
         $("#newtreesModal").modal("show");
     });
 
-    $(document).on("click", ".editButton", function() {
+    $(document).on("click", ".editButton", function(e) {
+        e.stopPropagation();
+        
         let record_id = $(this).data('record_id');
         let data = treesData.find(x => x.record_id == record_id);
         $(".button-submit").text("Edit Certification");

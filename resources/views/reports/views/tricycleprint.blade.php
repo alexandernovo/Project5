@@ -30,7 +30,7 @@
                         </div>
                     </form>
                     <div class="d-flex gap-2 align-items-center">
-                        <button class="btn btn-prime" id="printBtn">
+                        <button class="btn btn-primary-new" id="printBtn">
                             <i class="bi bi-printer"></i>
                             Print Report
                         </button>
@@ -80,7 +80,7 @@
                                     OR Number
                                 </th>
                                 <th class="text-center p-1 align-middle" style="font-size: 12px" style="font-size: 12px">
-                                    Name of Store
+                                    Name of Tricycle
                                 </th>
                                 <th class="text-center p-1 align-middle" style="font-size: 12px" style="font-size: 12px">
                                     Address
@@ -130,5 +130,5 @@
     <script>
         const reportData = @json($data);
     </script>
-    @include('reports.js.sarisaristoredownload')
+    @include('reports.js.tricycledownload')
 @endsection

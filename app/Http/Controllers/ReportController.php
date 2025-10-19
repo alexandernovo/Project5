@@ -63,6 +63,42 @@ class ReportController extends Controller
         return view('reports.views.tricycleprint', $data);
     }
 
+    public function vendorsPrint(Request $request)
+    {
+        $monthyear = $request->query('monthyear');
+        $result = $this->getPrintQuery($monthyear, "VENDOR");
+
+        $data = [
+            'data' => $result
+        ];
+
+        return view('reports.views.vendorprint', $data);
+    }
+
+    public function chainsawPrint(Request $request)
+    {
+        $monthyear = $request->query('monthyear');
+        $result = $this->getPrintQuery($monthyear, "CHAINSAW");
+
+        $data = [
+            'data' => $result
+        ];
+
+        return view('reports.views.chainsawprint', $data);
+    }
+    
+    public function treesPrint(Request $request)
+    {
+        $monthyear = $request->query('monthyear');
+        $result = $this->getPrintQuery($monthyear, "TREES");
+
+        $data = [
+            'data' => $result
+        ];
+
+        return view('reports.views.treesprint', $data);
+    }
+
     private function getPrintQuery($monthyear, $type)
     {
         $query = DB::table('records')

@@ -30,7 +30,7 @@
                         </div>
                     </form>
                     <div class="d-flex gap-2 align-items-center">
-                        <button class="btn btn-prime" id="printBtn">
+                        <button class="btn btn-primary-new" id="printBtn">
                             <i class="bi bi-printer"></i>
                             Print Report
                         </button>

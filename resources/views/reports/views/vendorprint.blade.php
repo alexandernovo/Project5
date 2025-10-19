@@ -6,14 +6,14 @@
                 <div class="col-12">
                     <div
                         class="d-flex align-items-center mb-2 flex-wrap text-lg-start text-sm-center gap-2 title-tips-class">
-                        <h4 class="fw-semibold mb-0 text-nowrap">Report | Association</h4>
+                        <h4 class="fw-semibold mb-0 text-nowrap">Report | Vendors</h4>
                     </div>
                     <nav aria-label="breadcrumb" class="breadcrum-sm-class">
                         <ol class="breadcrumb mb-1">
                             <li class="breadcrumb-item">
                                 <a class="text-muted text-decoration-none" href="{{ route('dashboard') }}">Dashboard</a>
                             </li>
-                            <li class="breadcrumb-item" aria-current="page">Report | Association</li>
+                            <li class="breadcrumb-item" aria-current="page">Report | Vendors</li>
                         </ol>
                     </nav>
                 </div>
@@ -64,7 +64,7 @@
                         MUNICIPAL ENVIRONMENT & NATURAL RESOURCES OFFICE
                     </p>
                     <p class="mb-2 mt-4 text-center fw-semibold text-uppercase" style="font-size: 20px; color: black">
-                        ASSOCIATION REPORT AS OF
+                        Vendor REPORT AS OF
                         {{ date('F Y', strtotime(request('monthyear', date('Y-m')) . '-01')) }}
                     </p>
                     <table class="table-bordered border-dark table mt-3">
@@ -80,7 +80,7 @@
                                     OR Number
                                 </th>
                                 <th class="text-center p-1 align-middle" style="font-size: 12px" style="font-size: 12px">
-                                    Name of Association
+                                    Name of Vendor
                                 </th>
                                 <th class="text-center p-1 align-middle" style="font-size: 12px" style="font-size: 12px">
                                     Address
@@ -103,7 +103,7 @@
                                         {{ $d->ornumber }}
                                     </td>
                                     <td class="text-center px-2 py-1 align-middle" style="font-size: 12px">
-                                        {{ $d->association }}</td>
+                                        {{ $d->name_other }}</td>
                                     <td class="text-center px-2 py-1 align-middle" style="font-size: 12px">
                                         {{ $d->address }}</td>
                                     <td class="text-center px-2 py-1 align-middle" style="font-size: 12px">
@@ -130,5 +130,5 @@
     <script>
         const reportData = @json($data);
     </script>
-    @include('reports.js.associationdownload')
+    @include('reports.js.vendordownload')
 @endsection

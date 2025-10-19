@@ -96,3 +96,6 @@ Route::get('/reports/association/print', [ReportController::class, 'associationP
 Route::get('/reports/boating/print', [ReportController::class, 'boatingPrint'])->name('boatingPrint');
 Route::get('/reports/sarisaristore/print', [ReportController::class, 'sarisaristorePrint'])->name('sarisaristorePrint');
 Route::get('/reports/tricycle/print', [ReportController::class, 'tricyclePrint'])->name('tricyclePrint');
+Route::get('/reports/vendors/print', [ReportController::class, 'vendorsPrint'])->name('vendorsPrint');
+Route::get('/reports/chainsaw/print', [ReportController::class, 'chainsawPrint'])->name('chainsawPrint');
+Route::get('/reports/trees/print', [ReportController::class, 'treesPrint'])->name('treesPrint');

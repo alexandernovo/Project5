@@ -60,11 +60,18 @@
                                             class="form-control" required>
                                     </div>
                                 </div>
-                                <div class="col-12">
+                                <div class="col-6">
                                     <div class="form-group mb-1">
                                         <label for="" class="mb-1">Owner of Trees</label>
-                                        <input type="text" name="name_other" id="name_other" placeholder="Owner of Trees"
-                                            class="form-control" required>
+                                        <input type="text" name="name_other" id="name_other"
+                                            placeholder="Owner of Trees" class="form-control" required>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group mb-1">
+                                        <label for="" class="mb-1">Lot Number</label>
+                                        <input type="text" name="lot_no" id="lot_no"
+                                            placeholder="Lot Number" class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="col-4">
@@ -118,31 +125,6 @@
                                             required>
                                     </div>
                                 </div>
-                                <div class="col-12 mb-1">
-                                    <p class="mb-0 fw-semibold">CHAINSAW INFORMATION</p>
-                                </div>
-                                <div class="col-4">
-                                    <div class="form-group mb-1">
-                                        <label for="" class="mb-1">Brand</label>
-                                        <input type="text" name="brand" id="brand" class="form-control"
-                                            required>
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="form-group mb-1">
-                                        <label for="" class="mb-1">Model No.</label>
-                                        <input type="text" name="model_no" id="model_no" class="form-control"
-                                            required>
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="form-group mb-1">
-                                        <label for="" class="mb-1">Serial No.</label>
-                                        <input type="text" name="serial_no" id="serial_no" class="form-control"
-                                            required>
-                                    </div>
-                                </div>
-
                             </div>
                         </div>
                         <div class="col-5">
