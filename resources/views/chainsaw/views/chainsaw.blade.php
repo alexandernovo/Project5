@@ -8,7 +8,11 @@
                 <div class="col-12">
                     <div
                         class="d-flex align-items-center mb-2 flex-wrap text-lg-start text-sm-center gap-2 title-tips-class">
-                        <h4 class="fw-semibold mb-0 text-nowrap">Chainsaw</h4>
+                        <h4 class="fw-semibold mb-0 text-nowrap">
+                            <img src="{{ asset('assets/images/icons/Chainsaw.png') }}"
+                                style="width: 30px; height:40px; filter: invert(1);" alt="">
+                            Chainsaw
+                        </h4>
                     </div>
                     <nav aria-label="breadcrumb" class="breadcrum-sm-class">
                         <ol class="breadcrumb mb-1">

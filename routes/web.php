@@ -43,8 +43,9 @@ Route::post('/chainsaw/save_new_chainsaw', [ChainsawController::class, 'save_new
 Route::post('/chainsaw/getchainsaws', [ChainsawController::class, 'getchainsaws'])->name('getchainsaws');
 Route::post('/chainsaw/deletechainsaw', [ChainsawController::class, 'deletechainsaw'])->name('deletechainsaw');
 
-//chainsaw
+//trees
 Route::get('/trees/view', [TreesController::class, 'trees_view'])->name('trees_view');
+Route::get('/trees/print', [TreesController::class, 'printTrees'])->name('printTrees');
 Route::post('/trees/save_new_trees', [TreesController::class, 'save_new_trees'])->name('save_new_trees');
 Route::post('/trees/gettreess', [TreesController::class, 'gettreess'])->name('gettrees');
 Route::post('/trees/deletetrees', [TreesController::class, 'deletetrees'])->name('deletetrees');

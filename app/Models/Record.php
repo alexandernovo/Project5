@@ -31,5 +31,6 @@ class Record extends Model
         'brgy_cert',
         'orno_check',
         'cr_check',
+        'tax_check',
     ];
 }

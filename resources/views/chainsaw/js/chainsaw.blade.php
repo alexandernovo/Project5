@@ -32,7 +32,7 @@
                 }
             },
             {
-                title: 'Owner of Association',
+                title: 'Owner',
                 className: 'text-nowrap p-2 text-center  align-middle',
                 render: function(data, type, row) {
                     return row.owner_name;

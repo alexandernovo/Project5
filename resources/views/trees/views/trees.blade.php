@@ -8,7 +8,11 @@
                 <div class="col-12">
                     <div
                         class="d-flex align-items-center mb-2 flex-wrap text-lg-start text-sm-center gap-2 title-tips-class">
-                        <h4 class="fw-semibold mb-0 text-nowrap">Cutting Trees</h4>
+                        <h4 class="fw-semibold mb-0 text-nowrap">
+                            <img src="{{ asset('assets/images/icons/Cutting Trees.png') }}"
+                                style="width: 30px; height:40px; filter: invert(1);" alt="">
+                            Cutting Trees
+                        </h4>
                     </div>
                     <nav aria-label="breadcrumb" class="breadcrum-sm-class">
                         <ol class="breadcrumb mb-1">
@@ -23,7 +27,24 @@
         </div>
         <div class="card w-100 px-0 mb-0">
             <div class="card-body p-3">
-                <table id="treesTable" class="table table-bordered">
+                <div class="d-flex justify-content-end gap-2">
+                    <button class="btn btn-secondary-new d-flex flex-nowrap align-items-center gap-2"
+                        id="reloadassociationBtn">
+                        <span>
+                            <i class="bi bi-arrow-clockwise"></i>
+                        </span>
+                        Reload
+                    </button>
+                    <div class="d-flex justify-content-end">
+                        <button class="btn btn-primary-new" id="printCertificate"><i class="bi bi-printer-fill"></i> Print
+                            Certification</button>
+                    </div>
+                    <button class="btn btn-primary-new" id="newCertification">
+                        <i class="bi bi-clipboard-plus-fill"></i>
+                        Add Certification
+                    </button>
+                </div>
+                <table id="treesTable" class="table table-bordered data_table">
                     <thead>
                         <tr>
                             <th>No.</th>
@@ -46,4 +67,5 @@
     @include('trees.js.trees')
     @include('trees.js.newtrees')
     @include('trees.js.deletetrees')
+    @include('trees.js.printcertificate')
 @endsection

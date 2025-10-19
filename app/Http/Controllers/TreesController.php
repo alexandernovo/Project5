@@ -25,20 +25,34 @@ class TreesController extends Controller
             unset($all['record_id']);
 
             if ($all['client_id'] == 0) {
+                // Create new client
                 $client = Client::create([
-                    "owner_name" => $all['owner_name'],
-                    "address" => $all['address']
+                    "firstname" => $all['firstname'],
+                    "middlename" => $all['middlename'],
+                    "lastname" => $all['lastname'],
+                    "barangay" => $all['barangay'],
+                    "municipality" => $all['municipality'],
+                    "province" => $all['province'],
+                    "sex" => $all['sex'],
+                    "contact_no" => $all['contact_no'],
                 ]);
+
                 $client_id = $client->client_id;
             } else {
                 $client_id = $all['client_id'];
                 Client::where('client_id', $client_id)->update([
-                    "owner_name" => $all['owner_name'],
-                    "address" => $all['address']
+                    "firstname" => $all['firstname'],
+                    "middlename" => $all['middlename'],
+                    "lastname" => $all['lastname'],
+                    "barangay" => $all['barangay'],
+                    "municipality" => $all['municipality'],
+                    "province" => $all['province'],
+                    "sex" => $all['sex'],
+                    "contact_no" => $all['contact_no'],
                 ]);
             }
 
-            unset($all['client_id'], $all['owner_name'], $all['address']);
+            unset($all['client_id'], $all['firstname'], $all['middlename'], $all['lastname'], $all['barangay'], $all['municipality'], $all['province'], $all['sex'], $all['contact_no']);
             $all['client_id'] = $client_id;
 
             if ($record_id == 0) {
@@ -70,19 +84,32 @@ class TreesController extends Controller
         $length = $request->input('length');
         $start = $request->input('start');
         $searchValue = $request->input('search.value');
+        $dateFrom = $request->input('dateFrom');
+        $dateTo = $request->input('dateTo');
 
         $query = DB::table('records')
             ->leftJoin('clients', 'records.client_id', '=', 'clients.client_id')
-            ->select('records.*', 'clients.*')
+            ->select(
+                'records.*',
+                'clients.*',
+                DB::raw("clients.firstname + ' '+ clients.middlename+' '+ clients.lastname AS owner_name"),
+                DB::raw("clients.barangay + ', '+ clients.municipality+', '+ clients.province AS address")
+            )
             ->where("records.type", "TREES");
 
         if (!empty($searchValue)) {
             $query->where(function ($q) use ($searchValue) {
-                $q->where('clients.owner_name', 'like', "%{$searchValue}%")
-                    ->orWhere('clients.address', 'like', "%{$searchValue}%")
-                    ->orWhere('records.name_other', 'like', "%{$searchValue}%")
-                    ->orWhere('records.record_id', 'like', "%{$searchValue}%");
+                $q->where(DB::raw("CONCAT(clients.firstname, ' ', clients.middlename, ' ', clients.lastname)"), 'like', "%{$searchValue}%")
+                    ->orWhere(DB::raw("CONCAT(clients.barangay, ', ', clients.municipality, ', ', clients.province)"), 'like', "%{$searchValue}%")
+                    ->orWhere('ornumber', 'like', "%{$searchValue}%");
             });
+        }
+
+        if (!empty($dateFrom) && !empty($dateTo)) {
+            $dateFrom = date("Y-m-d", strtotime($dateFrom));
+            $dateTo = date("Y-m-d", strtotime($dateTo));
+            $query->where(DB::raw("CAST(records.created_at AS DATE)"), ">=", $dateFrom)
+                ->where(DB::raw("CAST(records.created_at AS DATE)"), "<=", $dateTo);
         }
 
         $totalData = $query->count();
@@ -110,5 +137,23 @@ class TreesController extends Controller
             'status' => 'success',
             'message' => "Cutting Trees deleted successfully"
         ]);
+    }
+
+    public function printTrees(Request $request)
+    {
+        $record_id = $request->query("record_id");
+
+        $record = DB::table('records')
+            ->leftJoin('clients', 'records.client_id', '=', 'clients.client_id')
+            ->select(
+                'records.*',
+                'clients.*',
+                DB::raw("clients.firstname + ' '+ clients.middlename+' '+ clients.lastname AS owner_name"),
+                DB::raw("'Brgy. ' + clients.barangay + ', '+ clients.municipality+', '+ clients.province AS address")
+            )
+            ->where("records.type", "TREES")
+            ->where("records.record_id", $record_id)->first();
+
+        return view('trees.views.printtrees', ['record' => $record]);
     }
 }

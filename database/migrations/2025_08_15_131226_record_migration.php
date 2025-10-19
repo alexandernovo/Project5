@@ -24,11 +24,12 @@ return new class extends Migration
             $table->string('name_other')->nullable();
             $table->string('status')->nullable();
             $table->string('type')->nullable();
-            
+
             $table->string('ctpo')->nullable();
             $table->string('brgy_cert')->nullable();
             $table->string('orno_check')->nullable();
             $table->string('cr_check')->nullable();
+            $table->string('tax_check')->nullable();
 
             $table->datetime('expiration')->nullable();
             $table->datetime('date_renewal')->nullable();
