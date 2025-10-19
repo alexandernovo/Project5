@@ -8,7 +8,11 @@
                 <div class="col-12">
                     <div
                         class="d-flex align-items-center mb-2 flex-wrap text-lg-start text-sm-center gap-2 title-tips-class">
-                        <h4 class="fw-semibold mb-0 text-nowrap">Waste Bottle</h4>
+                        <h4 class="fw-semibold mb-0 text-nowrap d-flex align-items-center">
+                            <img src="{{ asset('assets/images/icons/Waste Bottle.png') }}"
+                                style="width: 30px; height:30px; filter: invert(1);" alt="">
+                            Waste Bottle
+                        </h4>
                     </div>
                     <nav aria-label="breadcrumb" class="breadcrum-sm-class">
                         <ol class="breadcrumb mb-1">
@@ -19,19 +23,35 @@
                         </ol>
                     </nav>
                 </div>
-            </div>  
+            </div>
         </div>
         <div class="card w-100 px-0 mb-0">
             <div class="card-body p-3">
-                <table id="wastebottleTable" class="table table-bordered">
+                <div class="d-flex justify-content-end gap-2">
+                    <button class="btn btn-secondary-new d-flex flex-nowrap align-items-center gap-2" id="reloadButton">
+                        <span>
+                            <i class="bi bi-arrow-clockwise"></i>
+                        </span>
+                        Reload
+                    </button>
+                    <button class="btn btn-primary-new" id="newwastebottleBtn">
+                        <img src="{{ asset('assets/images/icons/Waste Bottle.png') }}"
+                            style="width: 30px; height:30px;" alt="">
+                        Add Waste Bottle
+                    </button>
+                </div>
+                <table id="wastebottleTable" class="table table-bordered data_table">
                     <thead>
                         <tr>
                             <th>No.</th>
+                            <th>Barangay</th>
+                            <th>Municipality</th>
+                            <th>Province</th>
+                            <th>Purok</th>
+                            <th>Bottle in Kg</th>
+                            <th>Rice in Kg</th>
+                            <th>Total in Rice</th>
                             <th>Date Created</th>
-                            <th>Resident Name</th>
-                            <th>Bottle Kg</th>
-                            <th>Rice Kg</th>
-                            <th>Total | Rice</th>
                         </tr>
                     </thead>
                     <tbody>

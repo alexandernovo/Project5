@@ -28,12 +28,10 @@
     $(document).on("submit", "#newwastebottleform", function(e) {
         e.preventDefault();
 
-        let formData = {
-            wastebottle_id: $("#wastebottle_id").val(),
-            resident_name: $("#resident_name").val(),
-            bottle_kg: $("#bottle_kg").val(),
-            rice_kg: $("#rice_kg").val(),
-        };
+        let formData = {};
+        $(this).serializeArray().forEach(function(field) {
+            formData[field.name] = field.value;
+        });
 
         postRequest("{{ route('save_new_wastebottle') }}", formData, (response) => {
             if (response.status == "success") {
@@ -54,4 +52,15 @@
         $("#newwastebottleform")[0].reset();
         $("#newwastebottleform input[type='hidden']").val(0);
     }
+
+    $(document).ready(function() {
+        function calculateTotal() {
+            let bottle = parseFloat($("#bottleinkg").val()) || 0;
+            let rice = parseFloat($("#riceinkg").val()) || 0;
+            let total = bottle + rice;
+            $("#totalinrice").val(total);
+        }
+
+        $("#bottleinkg, #riceinkg").on("input change", calculateTotal);
+    });
 </script>

@@ -13,9 +13,13 @@ return new class extends Migration
     {
         Schema::create('wastebottle', function (Blueprint $table) {
             $table->id("wastebottle_id");
-            $table->string('resident_name')->nullable();
-            $table->integer('bottle_kg')->nullable();
-            $table->integer('rice_kg')->nullable();
+            $table->string('brgy')->nullable();
+            $table->string('municipality')->nullable();
+            $table->string('province')->nullable();
+            $table->string('purok')->nullable();
+            $table->decimal('bottleinkg', 8, 2)->nullable();
+            $table->decimal('riceinkg', 8, 2)->nullable();
+            $table->decimal('totalinrice', 8, 2)->nullable();
             $table->timestamps();
         });
     }

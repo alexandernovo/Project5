@@ -13,8 +13,12 @@ class WasteBottle extends Model
     public $timestamps = true;
 
     protected $fillable = [
-        'resident_name',
-        'bottle_kg',
-        'rice_kg',
+        'brgy',
+        'municipality',
+        'province',
+        'purok',
+        'bottleinkg',
+        'riceinkg',
+        'totalinrice',
     ];
 }

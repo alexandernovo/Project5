@@ -36,7 +36,7 @@ class WasteBottleController extends Controller
 
             return response()->json([
                 'status' => 'success',
-                'message' => "Waste Bottle Record saved successfully"
+                'message' => "Waste in the Bottle Record saved successfully"
             ]);
         } catch (Exception $ex) {
             DB::rollBack();
@@ -53,14 +53,26 @@ class WasteBottleController extends Controller
         $length = $request->input('length');
         $start = $request->input('start');
         $searchValue = $request->input('search.value');
+        $dateFrom = $request->input('dateFrom');
+        $dateTo = $request->input('dateTo');
 
         $query = DB::table('wastebottle')
-            ->select('*', DB::raw('(bottle_kg + rice_kg) AS total'));
+            ->select('*', DB::raw('(bottleinkg + riceinkg) AS total'));
 
         if (!empty($searchValue)) {
             $query->where(function ($q) use ($searchValue) {
-                $q->where('wastebottle.resident_name', 'like', "%{$searchValue}%");
+                $q->where('wastebottle.brgy', 'like', "%{$searchValue}%")
+                    ->orWhere('wastebottle.province', 'like', "%{$searchValue}%")
+                    ->orWhere('wastebottle.municipality', 'like', "%{$searchValue}%")
+                    ->orWhere('wastebottle.purok', 'like', "%{$searchValue}%");
             });
+        }
+
+        if (!empty($dateFrom) && !empty($dateTo)) {
+            $dateFrom = date("Y-m-d", strtotime($dateFrom));
+            $dateTo = date("Y-m-d", strtotime($dateTo));
+            $query->where(DB::raw("CAST(wastebottle.created_at AS DATE)"), ">=", $dateFrom)
+                ->where(DB::raw("CAST(wastebottle.created_at AS DATE)"), "<=", $dateTo);
         }
 
         $totalData = $query->count();
@@ -77,6 +89,7 @@ class WasteBottleController extends Controller
             "data" => $data
         ]);
     }
+
 
     public function deletewastebottle(Request $request)
     {

@@ -3,6 +3,8 @@
     let wastebottleTable;
     let wastebottleData = [];
     let selectedwastebottleId = null;
+    let dateFrom = "";
+    let dateTo = "";
 
     wastebottleOptions = {
         processing: false,
@@ -14,6 +16,8 @@
             dataType: 'json',
             data: function(d) {
                 d._token = '{{ csrf_token() }}';
+                d.dateFrom = dateFrom;
+                d.dateTo = dateTo;
             },
             dataSrc: function(json) {
                 wastebottleData = json.data;
@@ -28,38 +32,66 @@
                 }
             },
             {
-                title: 'Date Created',
+                title: 'Barangay',
+                data: 'brgy',
                 className: 'text-nowrap p-3',
+                render: function(data) {
+                    return data ?? '';
+                }
+            },
+            {
+                title: 'Municipality',
+                data: 'municipality',
+                className: 'text-nowrap p-3',
+                render: function(data) {
+                    return data ?? '';
+                }
+            },
+            {
+                title: 'Province',
+                data: 'province',
+                className: 'text-nowrap p-3 text-center',
+                render: function(data) {
+                    return data ?? '';
+                }
+            },
+            {
+                title: 'Purok',
+                data: 'purok',
+                className: 'text-nowrap p-3 text-center',
+                render: function(data) {
+                    return data ?? '';
+                }
+            },
+            {
+                title: 'Bottle in Kg',
+                data: 'bottleinkg',
+                className: 'text-nowrap p-3 text-center',
+                render: function(data) {
+                    return data ?? 0;
+                }
+            },
+            {
+                title: 'Rice in Kg',
+                data: 'riceinkg',
+                className: 'text-nowrap p-3 text-center',
+                render: function(data) {
+                    return data ?? 0;
+                }
+            },
+            {
+                title: 'Total in Rice',
+                data: 'total',
+                className: 'text-nowrap p-3 text-center',
+                render: function(data) {
+                    return data ?? 0;
+                }
+            },
+            {
+                title: 'Date Created',
+                className: 'text-nowrap p-3 text-center',
                 render: function(data, type, row) {
                     return formatDateToStr(row.created_at);
-                }
-            },
-            {
-                title: 'Resident Name',
-                className: 'text-nowrap p-3',
-                render: function(data, type, row) {
-                    return row.resident_name;
-                }
-            },
-            {
-                title: 'Bottle Kg',
-                className: 'text-nowrap p-3 text-center',
-                render: function(data, type, row) {
-                    return row.bottle_kg;
-                }
-            },
-            {
-                title: 'Rice Kg',
-                className: 'text-nowrap p-3 text-center',
-                render: function(data, type, row) {
-                    return row.rice_kg;
-                }
-            },
-            {
-                title: 'Total',
-                className: 'text-nowrap p-3 text-center',
-                render: function(data, type, row) {
-                    return row.total
                 }
             }
         ],
@@ -80,8 +112,9 @@
         wastebottleTable = new DataTable('#wastebottleTable', wastebottleOptions)
     }
 
-    $(document).on("click", "#reloadwastebottleBtn", function() {
+    $(document).on("click", "#reloadButton", function() {
         reloadButtonLoading(true);
+        resetDate();
         reloadwastebottleTable();
         setTimeout(() => {
             reloadButtonLoading(false);
@@ -107,37 +140,20 @@
     function appendButtonswastebottle() {
         $('#wastebottleTable_wrapper .row .dt-length').append(`
             <div class="d-flex gap-2 ms-2 align-items-center wastebottleBtnSm">
-                <button class="btn btn-success d-flex flex-nowrap align-items-center gap-2" id="newwastebottleBtn">
-                    <span>
-                        <i class="bi bi-clipboard-plus"></i>
-                    </span>
-                    Add New
-                </button>
-                <button class="btn btn-info d-flex flex-nowrap align-items-center gap-2" id="editwastebottleBtn">
-                    <span>
-                        <i class="bi bi-pencil-square"></i>
-                    </span>
-                    Edit
-                </button>
-                <button class="btn btn-danger d-flex flex-nowrap align-items-center gap-2" id="deletewastebottleBtn">
-                    <span>
-                        <i class="ti ti-trash"></i>
-                    </span>
-                    Delete
-                </button>
-                <button class="btn btn-primary d-flex flex-nowrap align-items-center gap-2" id="">
-                    <span>
-                        <i class="bi bi-share"></i>
-                    </span>
-                    Share
-                </button>
-                <button class="btn btn-info d-flex flex-nowrap align-items-center gap-2" id="reloadwastebottleBtn">
-                    <span>
-                        <i class="bi bi-arrow-clockwise"></i>
-                    </span>
-                    Reload
-                </button>
-               
+                               <div class="d-flex">
+                    <div class="input-group" style="width: 120%">
+                        <span  style="border: 1px solid #EAEFF4 !important" class="input-group-text filter-padding">From:</span>
+                        <input type="date" id="dateFromFilter" value="{{ date('Y-m-d') }}" class="form-control filter-padding rounded-end-0 border-end-0">
+                    </div>
+                    <div class="input-group" style="width: 110%">
+                        <span  style="border: 1px solid #EAEFF4 !important" class="input-group-text rounded-start-0 filter-padding">To:</span>
+                        <input type="date" id="dateToFilter" value="{{ date('Y-m-d') }}" class="form-control filter-padding rounded-end-0 border-end-0">
+                    </div>
+                    <button data-bs-toggle="tooltip" data-bs-title="Filter by Date & Time of Incident" type="button" id="filterDateBtn" class="btn btn-secondary-new filter-padding d-flex gap-1 align-items-center border-1 rounded-start-0 position-relative">
+                        <i class="bi bi-funnel-fill"></i>
+                        Filter
+                    </button>
+                </div>
             </div>
         `);
     }
@@ -171,6 +187,21 @@
         }
     });
 
+    $(document).on('click', '#filterDateBtn', function() {
+        dateFrom = $("#dateFromFilter").val();
+        dateTo = $("#dateToFilter").val();
+        wastebottleOptions.ajax.data.dateFrom = dateFrom;
+        wastebottleOptions.ajax.data.dateTo = dateTo;
+        reloadwastebottleTableWithPagination();
+    });
+
+    function resetDate() {
+        dateFrom = "";
+        dateTo = "";
+
+        wastebottleOptions.ajax.data.dateFrom = dateFrom;
+        wastebottleOptions.ajax.data.dateTo = dateTo;
+    }
     // Rewastebottle selection after reload
     wastebottleOptions.drawCallback = function(settings) {
         wastebottleTable.rows().every(function() {
