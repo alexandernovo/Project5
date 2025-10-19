@@ -52,14 +52,26 @@ class WasteCollectController extends Controller
         $length = $request->input('length');
         $start = $request->input('start');
         $searchValue = $request->input('search.value');
+        $dateFrom = $request->input('dateFrom');
+        $dateTo = $request->input('dateTo');
 
         $query = DB::table('wastecollection')
             ->select('*', DB::raw('(recyclable + biodegradable + nonbio + specialwaste) AS total'));
 
         if (!empty($searchValue)) {
             $query->where(function ($q) use ($searchValue) {
-                $q->where('wastecollection.barangay', 'like', "%{$searchValue}%");
+                $q->where('wastecollection.barangay', 'like', "%{$searchValue}%")
+                    ->orWhere('wastecollection.province', 'like', "%{$searchValue}%")
+                    ->orWhere('wastecollection.municipality', 'like', "%{$searchValue}%")
+                    ->orWhere('wastecollection.purok', 'like', "%{$searchValue}%");
             });
+        }
+
+        if (!empty($dateFrom) && !empty($dateTo)) {
+            $dateFrom = date("Y-m-d", strtotime($dateFrom));
+            $dateTo = date("Y-m-d", strtotime($dateTo));
+            $query->where(DB::raw("CAST(wastecollection.created_at AS DATE)"), ">=", $dateFrom)
+                ->where(DB::raw("CAST(wastecollection.created_at AS DATE)"), "<=", $dateTo);
         }
 
         $totalData = $query->count();

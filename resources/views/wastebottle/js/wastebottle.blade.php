@@ -140,7 +140,7 @@
     function appendButtonswastebottle() {
         $('#wastebottleTable_wrapper .row .dt-length').append(`
             <div class="d-flex gap-2 ms-2 align-items-center wastebottleBtnSm">
-                               <div class="d-flex">
+                <div class="d-flex">
                     <div class="input-group" style="width: 120%">
                         <span  style="border: 1px solid #EAEFF4 !important" class="input-group-text filter-padding">From:</span>
                         <input type="date" id="dateFromFilter" value="{{ date('Y-m-d') }}" class="form-control filter-padding rounded-end-0 border-end-0">
@@ -173,19 +173,19 @@
         }
     }
 
-    $(document).on('click', '#wastebottleTable tbody tr', function() {
-        let data = wastebottleTable.row(this).data();
-        if (!data) return;
+    // $(document).on('click', '#wastebottleTable tbody tr', function() {
+    //     let data = wastebottleTable.row(this).data();
+    //     if (!data) return;
 
-        if ($(this).hasClass('selected')) {
-            $(this).removeClass('selected');
-            selectedwastebottleId = null;
-        } else {
-            $('tr.selected').removeClass('selected');
-            $(this).addClass('selected');
-            selectedwastebottleId = data.record_id; // wastebottle the ID
-        }
-    });
+    //     if ($(this).hasClass('selected')) {
+    //         $(this).removeClass('selected');
+    //         selectedwastebottleId = null;
+    //     } else {
+    //         $('tr.selected').removeClass('selected');
+    //         $(this).addClass('selected');
+    //         selectedwastebottleId = data.record_id; // wastebottle the ID
+    //     }
+    // });
 
     $(document).on('click', '#filterDateBtn', function() {
         dateFrom = $("#dateFromFilter").val();

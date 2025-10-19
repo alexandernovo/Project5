@@ -8,7 +8,11 @@
                 <div class="col-12">
                     <div
                         class="d-flex align-items-center mb-2 flex-wrap text-lg-start text-sm-center gap-2 title-tips-class">
-                        <h4 class="fw-semibold mb-0 text-nowrap">Waste Collection</h4>
+                        <h4 class="fw-semibold mb-0 text-nowrap d-flex align-items-center">
+                            <img src="{{ asset('assets/images/icons/Waste Collection.png') }}"
+                                style="width: 30px; height:30px; filter: invert(1);" alt="">
+                            Waste Collection
+                        </h4>
                     </div>
                     <nav aria-label="breadcrumb" class="breadcrum-sm-class">
                         <ol class="breadcrumb mb-1">
@@ -23,18 +27,32 @@
         </div>
         <div class="card w-100 px-0 mb-0">
             <div class="card-body p-3">
+                <div class="d-flex justify-content-end gap-2">
+                    <button class="btn btn-secondary-new d-flex flex-nowrap align-items-center gap-2" id="reloadButton">
+                        <span>
+                            <i class="bi bi-arrow-clockwise"></i>
+                        </span>
+                        Reload
+                    </button>
+                    <button class="btn btn-primary-new" id="newwastecollectBtn">
+                        <img src="{{ asset('assets/images/icons/Waste Collection.png') }}" style="width: 30px; height:30px;"
+                            alt="">
+                        Add Waste Collection
+                    </button>
+                </div>
                 <table id="wastecollectTable" class="table table-bordered">
                     <thead>
                         <tr>
                             <th>No.</th>
-                            <th>Date Created</th>
                             <th>Barangay</th>
-                            <th>Schedule</th>
-                            <th>Recyclable</th>
+                            <th>Municipality</th>
+                            <th>Province</th>
+                            <th>Purok</th>
                             <th>Biodegradable</th>
-                            <th>Non-Bio</th>
+                            <th>Non-Biodegradable</th>
+                            <th>Recyclable</th>
                             <th>Special Waste</th>
-                            <th>Total</th>
+                            <th>Date Created</th>
                         </tr>
                     </thead>
                     <tbody>

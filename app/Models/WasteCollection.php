@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+
 use Illuminate\Database\Eloquent\Model;
 
 class WasteCollection extends Model
@@ -13,6 +14,9 @@ class WasteCollection extends Model
 
     protected $fillable = [
         'barangay',
+        'municipality',
+        'province',
+        'purok',
         'schedule_from',
         'schedule_to',
         'recyclable',

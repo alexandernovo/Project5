@@ -3,6 +3,8 @@
     let wastecollectTable;
     let wastecollectData = [];
     let selectedwastecollectId = null;
+    let dateFrom = "";
+    let dateTo = "";
 
     wastecollectOptions = {
         processing: false,
@@ -14,6 +16,8 @@
             dataType: 'json',
             data: function(d) {
                 d._token = '{{ csrf_token() }}';
+                d.dateFrom = dateFrom;
+                d.dateTo = dateTo;
             },
             dataSrc: function(json) {
                 wastecollectData = json.data;
@@ -27,13 +31,7 @@
                     return meta.row + meta.settings._iDisplayStart + 1;
                 }
             },
-            {
-                title: 'Date Created',
-                className: 'text-nowrap p-3',
-                render: function(data, type, row) {
-                    return formatDateToStr(row.created_at);
-                }
-            },
+
             {
                 title: 'Barangay',
                 className: 'text-nowrap p-3',
@@ -42,17 +40,24 @@
                 }
             },
             {
-                title: 'Schedule',
+                title: 'Municipality',
                 className: 'text-nowrap p-3',
                 render: function(data, type, row) {
-                    return `<span class="border-end border-dark pe-1 me-1">${row.schedule_from}</span>${row.schedule_to}`;
+                    return row.municipality;
                 }
             },
             {
-                title: 'Recyclable',
+                title: 'Province',
                 className: 'text-nowrap p-3 text-center',
                 render: function(data, type, row) {
-                    return row.recyclable;
+                    return row.province;
+                }
+            },
+            {
+                title: 'Purok',
+                className: 'text-nowrap p-3 text-center',
+                render: function(data, type, row) {
+                    return row.purok
                 }
             },
             {
@@ -63,10 +68,24 @@
                 }
             },
             {
-                title: 'Non-Bio',
+                title: 'Non-Biodegradable',
                 className: 'text-nowrap p-3 text-center',
                 render: function(data, type, row) {
                     return row.nonbio
+                }
+            },
+            {
+                title: 'Non-Biodegradable',
+                className: 'text-nowrap p-3 text-center',
+                render: function(data, type, row) {
+                    return row.nonbio
+                }
+            },
+            {
+                title: 'Recyclable',
+                className: 'text-nowrap p-3 text-center',
+                render: function(data, type, row) {
+                    return row.recyclable
                 }
             },
             {
@@ -82,7 +101,14 @@
                 render: function(data, type, row) {
                     return row.total
                 }
-            }
+            },
+            {
+                title: 'Date Created',
+                className: 'text-nowrap p-3',
+                render: function(data, type, row) {
+                    return formatDateToStr(row.created_at);
+                }
+            },
         ],
         initComplete: function(settings, json) {
             appendButtonswastecollect();
@@ -101,8 +127,9 @@
         wastecollectTable = new DataTable('#wastecollectTable', wastecollectOptions)
     }
 
-    $(document).on("click", "#reloadwastecollectBtn", function() {
+    $(document).on("click", "#reloadButton", function() {
         reloadButtonLoading(true);
+        resetDate();
         reloadwastecollectTable();
         setTimeout(() => {
             reloadButtonLoading(false);
@@ -128,37 +155,20 @@
     function appendButtonswastecollect() {
         $('#wastecollectTable_wrapper .row .dt-length').append(`
             <div class="d-flex gap-2 ms-2 align-items-center wastecollectBtnSm">
-                <button class="btn btn-success d-flex flex-nowrap align-items-center gap-2" id="newwastecollectBtn">
-                    <span>
-                        <i class="bi bi-clipboard-plus"></i>
-                    </span>
-                    Add New
-                </button>
-                <button class="btn btn-info d-flex flex-nowrap align-items-center gap-2" id="editwastecollectBtn">
-                    <span>
-                        <i class="bi bi-pencil-square"></i>
-                    </span>
-                    Edit
-                </button>
-                <button class="btn btn-danger d-flex flex-nowrap align-items-center gap-2" id="deletewastecollectBtn">
-                    <span>
-                        <i class="ti ti-trash"></i>
-                    </span>
-                    Delete
-                </button>
-                <button class="btn btn-primary d-flex flex-nowrap align-items-center gap-2" id="">
-                    <span>
-                        <i class="bi bi-share"></i>
-                    </span>
-                    Share
-                </button>
-                <button class="btn btn-info d-flex flex-nowrap align-items-center gap-2" id="reloadwastecollectBtn">
-                    <span>
-                        <i class="bi bi-arrow-clockwise"></i>
-                    </span>
-                    Reload
-                </button>
-               
+                <div class="d-flex">
+                    <div class="input-group" style="width: 120%">
+                        <span  style="border: 1px solid #EAEFF4 !important" class="input-group-text filter-padding">From:</span>
+                        <input type="date" id="dateFromFilter" value="{{ date('Y-m-d') }}" class="form-control filter-padding rounded-end-0 border-end-0">
+                    </div>
+                    <div class="input-group" style="width: 110%">
+                        <span  style="border: 1px solid #EAEFF4 !important" class="input-group-text rounded-start-0 filter-padding">To:</span>
+                        <input type="date" id="dateToFilter" value="{{ date('Y-m-d') }}" class="form-control filter-padding rounded-end-0 border-end-0">
+                    </div>
+                    <button data-bs-toggle="tooltip" data-bs-title="Filter by Date & Time of Incident" type="button" id="filterDateBtn" class="btn btn-secondary-new filter-padding d-flex gap-1 align-items-center border-1 rounded-start-0 position-relative">
+                        <i class="bi bi-funnel-fill"></i>
+                        Filter
+                    </button>
+                </div>
             </div>
         `);
     }
@@ -178,20 +188,35 @@
         }
     }
 
-    $(document).on('click', '#wastecollectTable tbody tr', function() {
-        let data = wastecollectTable.row(this).data();
-        if (!data) return;
+    // $(document).on('click', '#wastecollectTable tbody tr', function() {
+    //     let data = wastecollectTable.row(this).data();
+    //     if (!data) return;
 
-        if ($(this).hasClass('selected')) {
-            $(this).removeClass('selected');
-            selectedwastecollectId = null;
-        } else {
-            $('tr.selected').removeClass('selected');
-            $(this).addClass('selected');
-            selectedwastecollectId = data.record_id; // wastecollect the ID
-        }
+    //     if ($(this).hasClass('selected')) {
+    //         $(this).removeClass('selected');
+    //         selectedwastecollectId = null;
+    //     } else {
+    //         $('tr.selected').removeClass('selected');
+    //         $(this).addClass('selected');
+    //         selectedwastecollectId = data.record_id; // wastecollect the ID
+    //     }
+    // });
+
+    $(document).on('click', '#filterDateBtn', function() {
+        dateFrom = $("#dateFromFilter").val();
+        dateTo = $("#dateToFilter").val();
+        wastecollectOptions.ajax.data.dateFrom = dateFrom;
+        wastecollectOptions.ajax.data.dateTo = dateTo;
+        reloadwastecollectTableWithPagination();
     });
 
+    function resetDate() {
+        dateFrom = "";
+        dateTo = "";
+
+        wastecollectOptions.ajax.data.dateFrom = dateFrom;
+        wastecollectOptions.ajax.data.dateTo = dateTo;
+    }
     // Rewastecollect selection after reload
     wastecollectOptions.drawCallback = function(settings) {
         wastecollectTable.rows().every(function() {
