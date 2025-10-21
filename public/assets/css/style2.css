@@ -327,6 +327,11 @@
 .primary-bg-new {
     background-color: #41080d;
 }
+
+.secondary-bg {
+    background-color: #767473;
+}
+
 .flex-1 {
     flex: 1;
 }
@@ -354,7 +359,7 @@
 .sidebar-nav ul .sidebar-item.selected > .sidebar-link,
 .sidebar-nav ul .sidebar-item.selected > .sidebar-link.active,
 .sidebar-nav ul .sidebar-item > .sidebar-link.active {
-    background-color: #590A00 !important;
+    background-color: #590a00 !important;
     color: #fff;
 }
 

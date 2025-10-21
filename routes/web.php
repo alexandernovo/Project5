@@ -99,3 +99,7 @@ Route::get('/reports/tricycle/print', [ReportController::class, 'tricyclePrint']
 Route::get('/reports/vendors/print', [ReportController::class, 'vendorsPrint'])->name('vendorsPrint');
 Route::get('/reports/chainsaw/print', [ReportController::class, 'chainsawPrint'])->name('chainsawPrint');
 Route::get('/reports/trees/print', [ReportController::class, 'treesPrint'])->name('treesPrint');
+
+
+Route::post('/dashboard/getDashboardDetails', [DashboardController::class, 'getDashboardDetails'])->name('getDashboardDetails');
+Route::post('/dashboard/getChartData', [DashboardController::class, 'getChartData'])->name('getChartData');
