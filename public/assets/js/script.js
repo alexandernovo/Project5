@@ -339,12 +339,12 @@ function renderExpirationStatus(expiration) {
     if (expirationDate < today) {
         // Expired
         return `
-            <span class="badge bg-danger">Expired</span>
+            <span class="badge bg-danger" style="font-size: 11px; border-radius: 10px">Expired</span>
         `;
     } else {
         // Renewed (still valid)
         return `
-            <span class="badge bg-success">Renewed</span>
+            <span class="badge bg-success" style="font-size: 11px; border-radius: 10px">Renewed</span>
         `;
     }
 }
