@@ -103,3 +103,4 @@ Route::get('/reports/trees/print', [ReportController::class, 'treesPrint'])->nam
 
 Route::post('/dashboard/getDashboardDetails', [DashboardController::class, 'getDashboardDetails'])->name('getDashboardDetails');
 Route::post('/dashboard/getChartData', [DashboardController::class, 'getChartData'])->name('getChartData');
+Route::post('/dashboard/getDashboardCounts', [DashboardController::class, 'getDashboardCounts'])->name('getDashboardCounts');

@@ -2,46 +2,46 @@
 @section('content')
     @include('dashboard.css.dashboard')
 
-
     @php
         $countCards = [
             [
                 'title' => 'Association | Month',
                 'icon' => asset('assets/images/icons/Association.png'),
-                'count_id' => '',
+                'count_id' => 'associationCount',
             ],
             [
                 'title' => 'Boating | Month',
                 'icon' => asset('assets/images/icons/Boating.png'),
-                'count_id' => '',
+                'count_id' => 'boatingCount',
             ],
             [
                 'title' => 'Chainsaw | Month',
                 'icon' => asset('assets/images/icons/Chainsaw.png'),
-                'count_id' => '',
+                'count_id' => 'chainsawCount',
             ],
             [
                 'title' => 'Cutting Trees | Month',
                 'icon' => asset('assets/images/icons/Cutting Trees.png'),
-                'count_id' => '',
+                'count_id' => 'treesCount',
             ],
             [
                 'title' => 'Sari-Sari Store | Month',
                 'icon' => asset('assets/images/icons/Sari-Sari Store.png'),
-                'count_id' => '',
+                'count_id' => 'storeCount',
             ],
             [
                 'title' => 'Tricycle | Month',
                 'icon' => asset('assets/images/icons/Tricycle.png'),
-                'count_id' => '',
+                'count_id' => 'tricycleCount',
             ],
             [
                 'title' => 'Vendors | Month',
                 'icon' => asset('assets/images/icons/Vendors.png'),
-                'count_id' => '',
+                'count_id' => 'vendorsCount',
             ],
         ];
     @endphp
+
 
     <div class="row mx-auto">
         <div class="card-body px-2 py-1">
@@ -63,7 +63,7 @@
                     <p class="mb-0 text-center text-white fw-semibold">{{ $cC['title'] }}</p>
                     <div class="d-flex justify-content-center align-items-center gap-2">
                         <img src="{{ $cC['icon'] }}" style="width: 50px; height: 70px" alt="">
-                        <p class="mb-0 text-white" style="font-size: 24px">0</p>
+                        <p class="mb-0 text-white" style="font-size: 24px" id="{{ $cC['count_id'] }}">0</p>
                     </div>
                 </div>
             </div>
@@ -98,7 +98,19 @@
         <div class="col-12 mt-2">
             <div class="card">
                 <div class="card-body">
-                    <p class="mb-0 fw-semibold" style="font-size: 14px">STATISTIC DATA CHART</p>
+                    <div class="d-flex justify-content-between">
+                        <p class="mb-0 fw-semibold" style="font-size: 14px">STATISTIC DATA CHART</p>
+                        <div class="col-2">
+                            <select id="yearSelect" class="form-select">
+                                @php $currentYear = now()->year; @endphp
+                                @for ($year = $currentYear; $year >= $currentYear - 5; $year--)
+                                    <option value="{{ $year }}" {{ $year == $currentYear ? 'selected' : '' }}>
+                                        {{ $year }}
+                                    </option>
+                                @endfor
+                            </select>
+                        </div>
+                    </div>
                     <div id="recordsChart" style="width: 100%;"></div>
                 </div>
             </div>
@@ -109,4 +121,5 @@
 @section('js')
     @include('dashboard.js.dashboard')
     @include('dashboard.js.chart')
+    @include('dashboard.js.dashboardcounts')
 @endsection

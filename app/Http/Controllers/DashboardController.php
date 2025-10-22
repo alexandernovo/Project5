@@ -82,4 +82,18 @@ class DashboardController extends Controller
 
         return response()->json($filtered);
     }
+
+    public function getDashboardCounts(Request $request)
+    {
+        $counts = DB::table('records')
+            ->select('type', DB::raw('COUNT(*) as total'))
+            ->groupBy('type')
+            ->orderBy('type')
+            ->get();
+
+        return response()->json([
+            "status" => "success",
+            "counts" => $counts
+        ]);
+    }
 }
