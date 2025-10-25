@@ -14,9 +14,9 @@
         </div>
         <div class="ms-3 d-flex justify-content-center gap-3">
             <img src="{{ asset('assets/images/logo.jpg') }}" alt="" class="rounded-circle"
-                style="width: 300px; height: 300px">
+                style="width: 270px; height: 270px">
             <img src="{{ asset('assets/images/logo2.png') }}" alt="" class="rounded-circle"
-                style="width: 300px; height: 300px">
+                style="width: 270px; height: 270px">
         </div>
     </div>
 @endsection
