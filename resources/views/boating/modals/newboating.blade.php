@@ -1,6 +1,6 @@
 <div class="modal fade" id="newBoatingModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="newBoatingModalLabel"
     aria-hidden="true">
-    <div class="modal-dialog"  style="max-width: 600px">
+    <div class="modal-dialog" style="max-width: 600px;">
         <div class="modal-content">
             <div class="modal-header position-relative d-flex justify-content-center align-items-center flex-column">
                 <img class="mb-1" src="{{ asset('assets/images/logo.jpg') }}" style="height: 70px; width: 70px"
@@ -18,7 +18,7 @@
             <form id="newBoatingform">
                 <input type="hidden" id="record_id" name="record_id" value="0">
                 <input type="hidden" id="client_id" name="client_id" value="0">
-                <div class="modal-body">
+                <div class="modal-body overflow-y-auto" style="max-height: 450px">
                     <div class="row mx-auto">
                         <div class="col-12 mb-1">
                             <p class="mb-0 fw-semibold">OWNER'S INFORMATION</p>
@@ -53,6 +53,20 @@
                         </div>
                         <div class="col-12">
                             <div class="form-group mb-1">
+                                <label for="" class="mb-1">Name of Boating Activities</label>
+                                <input type="text" name="nameactivities" id="nameactivities" placeholder="Name of Boating Activities"
+                                    class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group mb-1">
+                                <label for="" class="mb-1">Date of Boating Activities</label>
+                                <input type="date" name="dateactivities" id="dateactivities" placeholder="OR Number"
+                                    class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group mb-1">
                                 <label for="" class="mb-1">Name of Boat</label>
                                 <input type="text" name="name_other" placeholder="Name of Boat" id="name_other"
                                     class="form-control" required>
@@ -68,8 +82,8 @@
                         <div class="col-4">
                             <div class="form-group mb-1">
                                 <label for="" class="mb-1">Municipality</label>
-                                <input type="text" name="municipality" id="municipality" placeholder="Municipality"
-                                    class="form-control" required>
+                                <input type="text" name="municipality" id="municipality"
+                                    placeholder="Municipality" class="form-control" required>
                             </div>
                         </div>
                         <div class="col-4">

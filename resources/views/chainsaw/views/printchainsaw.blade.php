@@ -65,7 +65,7 @@
                 <div style="font-size:16px; text-align:justify; line-height:1.8;">
                     <p><strong>TO WHOM IT MAY CONCERN:</strong></p>
                     <p style="text-indent: 40px">
-                        This is to certify that the <strong class="text-uppercase"> {{ $record->owner_name }}</strong> a
+                        This is to certify that <strong class="text-uppercase"> {{ $record->owner_name }}</strong> a
                         resident of
                         {{ $record->address }} the owner of one (1) unit Chainsaw, Bran {{ $record->brand }}, Model No.
                         {{ $record->model_no }},

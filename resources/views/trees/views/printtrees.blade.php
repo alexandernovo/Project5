@@ -9,9 +9,9 @@
                     <div
                         class="d-flex align-items-center mb-2 flex-wrap text-lg-start text-sm-center gap-2 title-tips-class">
                         <h4 class="fw-semibold mb-0 text-nowrap">
-                            <img src="{{ asset('assets/images/icons/Chainsaw.png') }}"
+                            <img src="{{ asset('assets/images/icons/Cutting Trees.png') }}"
                                 style="width: 30px; height:40px; filter: invert(1);" alt="">
-                            Chainsaw
+                            Cutting Trees
                         </h4>
                     </div>
                     <nav aria-label="breadcrumb" class="breadcrum-sm-class">
@@ -20,9 +20,10 @@
                                 <a class="text-muted text-decoration-none" href="{{ route('dashboard') }}">Dashboard</a>
                             </li>
                             <li class="breadcrumb-item">
-                                <a class="text-muted text-decoration-none" href="{{ route('chainsaw_view') }}">Chainsaw</a>
+                                <a class="text-muted text-decoration-none" href="{{ route('trees_view') }}">Cutting
+                                    Trees</a>
                             </li>
-                            <li class="breadcrumb-item" aria-current="page">Print Chainsaw</li>
+                            <li class="breadcrumb-item" aria-current="page">Print Cutting Trees</li>
                         </ol>
                     </nav>
                 </div>
@@ -36,7 +37,7 @@
                     Print
                 </button>
             </div>
-            <div class="container bg-white p-5 border rounded shadow-sm mt-2"
+            <div class="container bg-white p-5 border rounded shadow-sm mt-2 paper_printable"
                 style="max-width:800px; margin:auto; position:relative;" id="print_area">
                 <div class="text-center mb-3">
                     <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -65,18 +66,22 @@
                 <div style="font-size:16px; text-align:justify; line-height:1.8;">
                     <p><strong>TO WHOM IT MAY CONCERN:</strong></p>
                     <p style="text-indent: 40px">
-                        This is to certify that the <strong class="text-uppercase"> {{ $record->owner_name }}</strong> a
+                        This is to certify that this Office interposes no objection over the request of <strong
+                            class="text-uppercase"> {{ $record->owner_name }}</strong> a
                         resident of
-                        {{ $record->address }} the owner of one (1) unit Chainsaw, Bran {{ $record->brand }}, Model No.
-                        {{ $record->model_no }},
-                        Serial No. {{ $record->serial_no }} has compiled all requirements based on the implementing
-                        Guidelines of Chainsaw Act 2001 (RA No. 9175) and Article 12 & 14
-                        of Municipal Ordinance No. 4 Series of 2018 known as the Ecological and Integrated Solid Waste
-                        Management of the Municipality of Barbaza and is allowed to renew
-                        {{ $record->sex == 'Female' ? 'her' : 'his' }} Chainsaw license for business.
+                        {{ $record->address }} is the owner of
+                        @php
+                            $formatter = new \NumberFormatter('en', \NumberFormatter::SPELLOUT);
+                            $words = ucfirst($formatter->format($record->nooftrees));
+                        @endphp
+                        {{ $words }} ({{ $record->nooftrees }}) {{ $record->typeoftrees }} tree situated at
+                        {{ $record->treeslocated }}
+                        within the land declared under Lot {{ $record->lot_no }} in the name of <strong
+                            class="text-uppercase"> {{ $record->owner_name }}</strong>. The purpose is to cut the said
+                        trees for personal use.
                     </p>
                     <p style="text-indent: 40px">
-                        This certification is issued to <strong class="text-uppercase"> {{ $record->owner_name }}</strong>
+                        This Certification is hereby issued upon the request of <strong class="text-uppercase"> {{ $record->owner_name }}</strong>
                         for whatever legal
                         purpose
                         it may
@@ -101,7 +106,7 @@
 
                     <p style="text-indent: 40px">
                         Done this {{ $day }}<sup>{{ $suffix }}</sup> day of {{ $month }},
-                            {{ $year }} at Barbaza, Antique.
+                        {{ $year }} at Barbaza, Antique.
                     </p>
                 </div>
                 <div class="d-flex justify-content-start">

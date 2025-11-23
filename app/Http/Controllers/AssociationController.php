@@ -58,6 +58,7 @@ class AssociationController extends Controller
             if ($record_id == 0) {
                 $all['status'] = "ACTIVE";
                 $all['type'] = "ASSOCIATION";
+                $all['record_status'] = "Renewed";
                 Record::create($all);
             } else {
                 Record::where("record_id", $record_id)->update($all);
@@ -136,6 +137,30 @@ class AssociationController extends Controller
         return response()->json([
             'status' => 'success',
             'message' => "Association deleted successfully"
+        ]);
+    }
+
+    public function expireRenew(Request $request)
+    {
+        $record_id = $request->record_id;
+        $record_status = $request->record_status == "Expired" ? "Renewed" : "Expired";
+        $message = $request->record_status == "Expired"
+            ? "Renewed successfully"
+            : "Marked as expired successfully";
+
+        $data = [
+            'record_status' => $record_status,
+        ];
+
+        if ($request->record_status == "Renewed") {
+            $data['date_renewal'] = now();
+        }
+
+        Record::where('record_id', $record_id)->update($data);
+
+        return response()->json([
+            'status' => 'success',
+            'message' => $message
         ]);
     }
 

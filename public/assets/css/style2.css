@@ -421,7 +421,7 @@
 
 .btn-blue {
     background-color: #00068c;
-    color: #fff;
+    color: #fff !important;
     padding: 8px 16px;
     border-radius: 6px;
     border: none;
@@ -446,7 +446,7 @@
 
 .btn-green {
     background-color: #2c7101;
-    color: #fff;
+    color: #fff !important;
     padding: 8px 16px;
     border-radius: 6px;
     border: none;
@@ -465,17 +465,23 @@
     outline: 3px solid rgba(44, 113, 1, 0.3);
     outline-offset: 2px;
 }
+.bg-green {
+    background-color: #256101;
+}
 
 /* RED BUTTON (#830202) */
 .btn-red {
     background-color: #830202;
-    color: #fff;
+    color: #fff !important;
     padding: 8px 16px;
     border-radius: 6px;
     border: none;
     cursor: pointer;
     font-weight: 500;
     transition: all 0.15s ease-in-out;
+}
+.bg-red {
+    background-color: #830202;
 }
 .btn-red:hover {
     background-color: #6e0202;
@@ -487,4 +493,9 @@
 .btn-red:focus {
     outline: 3px solid rgba(131, 2, 2, 0.3);
     outline-offset: 2px;
+}
+
+.paper_printable {
+    width: 8.5in;
+    height: 11in;
 }

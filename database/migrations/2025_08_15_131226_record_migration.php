@@ -23,7 +23,13 @@ return new class extends Migration
             $table->string('requester')->nullable();
             $table->string('name_other')->nullable();
             $table->string('status')->nullable();
+            $table->string('record_status')->nullable();
             $table->string('type')->nullable();
+            $table->string('nameactivities')->nullable();
+            $table->string('dateactivities')->nullable();
+            $table->integer('nooftrees')->nullable();
+            $table->string('typeoftrees')->nullable();
+            $table->string('treeslocated')->nullable();
 
             $table->string('ctpo')->nullable();
             $table->string('brgy_cert')->nullable();

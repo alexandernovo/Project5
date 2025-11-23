@@ -54,7 +54,7 @@
                             <th class="text-nowrap p-3">Sex</th>
                             <th class="text-nowrap p-3">Contact No.</th>
                             <th class="text-nowrap p-3">Date Created</th>
-                            <th class="text-nowrap p-2 text-center align-middle" width="10%">Action</th>
+                            <th class="text-nowrap p-2 text-center align-middle" style="width: 10% !important">Action</th>
                         </tr>
                     </thead>
                     <tbody>

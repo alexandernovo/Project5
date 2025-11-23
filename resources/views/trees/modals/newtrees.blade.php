@@ -25,7 +25,7 @@
             <form id="newtreesform">
                 <input type="hidden" id="record_id" name="record_id" value="0">
                 <input type="hidden" id="client_id" name="client_id" value="0">
-                <div class="modal-body">
+                <div class="modal-body overflow-y-auto" style="max-height: 450px">
                     <div class="row">
                         <div class="col-6">
                             <div class="row mx-auto">
@@ -70,8 +70,29 @@
                                 <div class="col-6">
                                     <div class="form-group mb-1">
                                         <label for="" class="mb-1">Lot Number</label>
-                                        <input type="text" name="lot_no" id="lot_no"
-                                            placeholder="Lot Number" class="form-control" required>
+                                        <input type="text" name="lot_no" id="lot_no" placeholder="Lot Number"
+                                            class="form-control" required>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group mb-1">
+                                        <label for="" class="mb-1">Type of Tree</label>
+                                        <input type="text" name="typeoftrees" id="typeoftrees"
+                                            placeholder="Type of tree (e.g., Narra)" class="form-control" required>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group mb-1">
+                                        <label for="" class="mb-1">Number of Trees</label>
+                                        <input type="number" name="nooftrees" id="nooftrees"
+                                            placeholder="Number of Trees" class="form-control" required>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group mb-1">
+                                        <label for="" class="mb-1">Trees Location</label>
+                                        <input type="text" name="treeslocated" id="treeslocated"
+                                            placeholder="Trees Location" class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="col-4">

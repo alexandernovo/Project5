@@ -98,7 +98,7 @@
                 title: 'Renewal Status',
                 className: 'text-nowrap p-2 text-center  align-middle text-center',
                 render: function(data, type, row) {
-                    return renderExpirationStatus(row.expiration);
+                    return renderExpirationStatus(row.record_status);
                 }
             },
             {
@@ -121,6 +121,7 @@
                 render: function(data, type, row) {
                     return `
                         <div class="d-flex gap-2 text-center align-items-center">
+                            <button class="btn d-flex justify-content-center align-items-center ${row.record_status == 'Expired' ? 'btn-green' : 'btn-red'} expRenButton" style="width: 90px" data-record_id="${row.record_id}">${row.record_status == 'Expired' ? 'Renewed' : 'Expired'}</button>
                             <button class="btn btn-warning editButton px-2" data-record_id="${row.record_id}"><i class="bi bi-pencil-fill"></i></button>
                             <button class="btn btn-secondary-new deleteButton px-2" data-record_id="${row.record_id}"><i class="bi bi-trash3"></i></button>
                         </div>
@@ -281,4 +282,47 @@
             }
         });
     };
+
+    $(document).on("click", ".expRenButton", function(e) {
+        e.stopPropagation();
+
+        let record_id = $(this).data('record_id');
+        let data = chainsawData.find(x => x.record_id == record_id);
+        let message = "";
+        let buttonConfirm = ""
+
+        if (data) {
+            message = data.record_status === "Expired" ?
+                'Renew this Association?' :
+                'Mark this Association as Expired?';
+            buttonConfirm = data.record_status === "Expired" ?
+                'Renew' :
+                'Mark as Expired';
+
+            Swal.fire({
+                title: "Warning",
+                text: message,
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonText: buttonConfirm
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    postRequest("{{ route('expireRenew') }}", {
+                        record_id: data.record_id,
+                        record_status: data.record_status,
+                    }, (response) => {
+                        if (response.status == "success") {
+                            reloadChainsawTable();
+                            Swal.fire({
+                                title: "Success",
+                                text: response.message,
+                                icon: "success",
+                                showCancelButton: false,
+                            })
+                        }
+                    })
+                }
+            });
+        }
+    })
 </script>

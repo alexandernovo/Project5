@@ -32,5 +32,11 @@ class Record extends Model
         'orno_check',
         'cr_check',
         'tax_check',
+        'record_status',
+        'nameactivities',
+        'dateactivities',
+        'nooftrees',
+        'typeoftrees',
+        'treeslocated',
     ];
 }

@@ -37,7 +37,7 @@
                     Print
                 </button>
             </div>
-            <div class="container bg-white p-5 border rounded shadow-sm mt-2"
+            <div class="container bg-white p-5 border rounded shadow-sm mt-2 paper_printable"
                 style="max-width:800px; margin:auto; position:relative;" id="print_area">
                 <div class="text-center mb-3">
                     <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -67,7 +67,7 @@
                     <p><strong>TO WHOM IT MAY CONCERN:</strong></p>
                     <p style="text-indent: 40px">
                         This is to certify that Barangay Officials of <strong>{{ $record->address }}</strong> is
-                        allowed to conduct 2nd Dagsa Festival Bancarera 2024 on May 13, 2024 as part of their Religious
+                        allowed to conduct {{ $record->nameactivities }} on {{ date('F d, Y', strtotime($record->dateactivities)) }} as part of their Religious
                         Fiesta
                         activity.
                     </p>

@@ -72,7 +72,24 @@ $(document).ready(function () {
     });
 });
 function formatDateToStr(rawDateTime, withTime = true) {
-    var months = [
+    if (!rawDateTime) return "";
+
+    let dateObj;
+
+    // If it's already a Date object
+    if (rawDateTime instanceof Date) {
+        dateObj = rawDateTime;
+    } else {
+        // Normalize string for Date parsing
+        // Replace space with 'T' if missing for ISO
+        let dateStr = rawDateTime.includes("T")
+            ? rawDateTime
+            : rawDateTime.replace(" ", "T");
+        dateObj = new Date(dateStr);
+        if (isNaN(dateObj)) return "";
+    }
+
+    const months = [
         "Jan",
         "Feb",
         "Mar",
@@ -86,37 +103,29 @@ function formatDateToStr(rawDateTime, withTime = true) {
         "Nov",
         "Dec",
     ];
-    if (
-        rawDateTime !== null &&
-        typeof rawDateTime === "string" &&
-        rawDateTime.trim() !== ""
-    ) {
-        var dateTimeParts = rawDateTime.split(" ");
-        var dateParts = dateTimeParts[0].split("-");
-        var timeParts = dateTimeParts[1].split(":");
-        var year = dateParts[0];
-        var month = months[parseInt(dateParts[1]) - 1];
-        var day = parseInt(dateParts[2]);
-        var hour = parseInt(timeParts[0]);
-        var minute = timeParts[1];
-        var period = "AM";
+
+    const year = dateObj.getFullYear();
+    const month = months[dateObj.getMonth()];
+    const day = dateObj.getDate();
+
+    let formatted = `${month} ${day}, ${year}`;
+
+    if (withTime) {
+        let hour = dateObj.getHours();
+        const minute = dateObj.getMinutes().toString().padStart(2, "0");
+        let period = "AM";
+
         if (hour >= 12) {
             period = "PM";
-            if (hour > 12) {
-                hour -= 12;
-            }
+            if (hour > 12) hour -= 12;
+        } else if (hour === 0) {
+            hour = 12;
         }
-        return (
-            month +
-            " " +
-            day +
-            ", " +
-            year +
-            (withTime ? " " + hour + ":" + minute + " " + period : "")
-        );
-    } else {
-        return "";
+
+        formatted += ` ${hour}:${minute} ${period}`;
     }
+
+    return formatted;
 }
 
 function formatDatetimeLocalToStr(rawDateTime) {
@@ -325,26 +334,38 @@ function cloneObject(obj) {
     return JSON.parse(JSON.stringify(obj));
 }
 
-function renderExpirationStatus(expiration) {
-    if (!expiration) return "";
+// function renderExpirationStatus(expiration) {
+//     if (!expiration) return "";
 
-    const expirationDate = new Date(expiration);
-    const today = new Date();
+//     const expirationDate = new Date(expiration);
+//     const today = new Date();
 
-    expirationDate.setHours(0, 0, 0, 0);
-    today.setHours(0, 0, 0, 0);
+//     expirationDate.setHours(0, 0, 0, 0);
+//     today.setHours(0, 0, 0, 0);
 
-    const formattedDate = formatDateToStr(expiration, false);
+//     const formattedDate = formatDateToStr(expiration, false);
 
-    if (expirationDate < today) {
-        // Expired
+//     if (expirationDate < today) {
+//         // Expired
+//         return `
+//             <span class="badge bg-danger" style="font-size: 11px; border-radius: 10px">Expired</span>
+//         `;
+//     } else {
+//         // Renewed (still valid)
+//         return `
+//             <span class="badge bg-success" style="font-size: 11px; border-radius: 10px">Renewed</span>
+//         `;
+//     }
+// }
+
+function renderExpirationStatus(record_status) {
+    if (record_status == "Expired") {
         return `
-            <span class="badge bg-danger" style="font-size: 11px; border-radius: 10px">Expired</span>
+            <span class="badge p-2 bg-red" style="font-size: 12px; border-radius: 10px">Expired</span>
         `;
     } else {
-        // Renewed (still valid)
         return `
-            <span class="badge bg-success" style="font-size: 11px; border-radius: 10px">Renewed</span>
+            <span class="badge p-2 bg-green" style="font-size: 12px; border-radius: 10px">Renewed</span>
         `;
     }
 }

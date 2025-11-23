@@ -88,7 +88,7 @@
                 className: 'text-nowrap p-2 text-center  align-middle sticky-action',
                 render: function(data, type, row) {
                     return `
-                        <div class="d-flex gap-2 text-center align-items-center">
+                        <div class="d-flex gap-2 text-center align-items-center px-3">
                             <button class="btn btn-warning editButton px-2" data-record_id="${row.record_id}"><i class="bi bi-pencil-fill"></i></button>
                             <button class="btn btn-secondary-new deleteButton px-2" data-record_id="${row.record_id}"><i class="bi bi-trash3"></i></button>
                         </div>
