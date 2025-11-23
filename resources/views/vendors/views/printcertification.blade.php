@@ -37,7 +37,7 @@
                     Print
                 </button>
             </div>
-            <div class="container bg-white p-5 border rounded shadow-sm mt-2"
+            <div class="container bg-white p-5 border rounded shadow-sm mt-2 paper_printable"
                 style="max-width:800px; margin:auto; position:relative;" id="print_area">
                 <div class="text-center mb-3">
                     <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -68,7 +68,7 @@
                     <p style="text-indent: 40px">
                         This is to certify that {{ $record->sex == 'Male' ? 'MR.' : 'MS.' }}
                         <span class="text-uppercase"><strong>{{ $record->owner_name }}</strong></span> is a
-                        <span class="text-uppercase"><strong>{{ $record->name_other }}</strong></span> resident of
+                        <span class="text-uppercase"><strong>{{ $record->typeofvendor }}</strong></span> resident of
                         {{ $record->address }}
                         has compiled all the requirements based on Article 4 Section 12 & 14 of Municipal Ordinance No. 4
                         Series 2018 known as the
@@ -76,8 +76,8 @@
                     </p>
 
                     <p style="text-indent: 40px">
-                        This certification is issued to {{ $record->sex == 'Male' ? 'MR.' : 'MS.' }} <span
-                            class="text-uppercase">{{ $record->owner_name }}</span> or whatever legal purpose it may serve.
+                        This certification is issued to <strong>{{ $record->sex == 'Male' ? 'MR.' : 'MS.' }} <span
+                            class="text-uppercase">{{ $record->owner_name }}</span></strong> or whatever legal purpose it may serve.
                     </p>
                     @php
                         $date = \Carbon\Carbon::parse($record->date_renewal);
@@ -97,8 +97,8 @@
                     @endphp
 
                     <p style="text-indent: 40px">
-                        Issued {{ $day }}<sup>{{ $suffix }}</sup> day of {{ $month }},
-                            {{ $year }} at the Municipality of Barbaza, Antique, Philippines.
+                        Done this {{ $day }}<sup>{{ $suffix }}</sup> day of {{ $month }},
+                            {{ $year }} at Barbaza, Antique.
                     </p>
                 </div>
 

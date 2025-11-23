@@ -52,10 +52,17 @@
                                     class="form-control" required>
                             </div>
                         </div>
-                        <div class="col-12">
+                        <div class="col-6">
                             <div class="form-group mb-1">
                                 <label for="" class="mb-1">Name of Vendor</label>
                                 <input type="text" name="name_other" placeholder="Name of Vendor" id="name_other"
+                                    class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group mb-1">
+                                <label for="" class="mb-1">Type of Vendor</label>
+                                <input type="text" name="typeofvendor" placeholder="Type of Vendor" id="typeofvendor"
                                     class="form-control" required>
                             </div>
                         </div>
@@ -69,8 +76,8 @@
                         <div class="col-4">
                             <div class="form-group mb-1">
                                 <label for="" class="mb-1">Municipality</label>
-                                <input type="text" name="municipality" id="municipality" placeholder="Municipality"
-                                    class="form-control" required>
+                                <input type="text" name="municipality" id="municipality"
+                                    placeholder="Municipality" class="form-control" required>
                             </div>
                         </div>
                         <div class="col-4">

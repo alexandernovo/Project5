@@ -293,8 +293,8 @@
 
         if (data) {
             message = data.record_status === "Expired" ?
-                'Renew this Association?' :
-                'Mark this Association as Expired?';
+                'Renew this Chainsaw?' :
+                'Mark this Chainsaw as Expired?';
             buttonConfirm = data.record_status === "Expired" ?
                 'Renew' :
                 'Mark as Expired';

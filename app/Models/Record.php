@@ -38,5 +38,6 @@ class Record extends Model
         'nooftrees',
         'typeoftrees',
         'treeslocated',
+        'typeofvendor',
     ];
 }

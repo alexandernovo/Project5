@@ -26,10 +26,11 @@ return new class extends Migration
             $table->string('record_status')->nullable();
             $table->string('type')->nullable();
             $table->string('nameactivities')->nullable();
-            $table->string('dateactivities')->nullable();
+            $table->date('dateactivities')->nullable();
             $table->integer('nooftrees')->nullable();
             $table->string('typeoftrees')->nullable();
             $table->string('treeslocated')->nullable();
+            $table->string('typeofvendor')->nullable();
 
             $table->string('ctpo')->nullable();
             $table->string('brgy_cert')->nullable();
