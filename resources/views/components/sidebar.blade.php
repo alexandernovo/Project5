@@ -7,11 +7,7 @@
         </div>
         <nav class="sidebar-nav scroll-sidebar position-relative pb-3" style="">
             <ul id="sidebarnav">
-                <li class="nav-small-cap mt-1">
-                    <i class="ti ti-dots nav-small-cap-icon text-white fs-4"></i>
-                    <span class="hide-menu text-white">Main</span>
-                </li>
-                <li class="sidebar-item">
+                <li class="sidebar-item mt-3">
                     <a class="sidebar-link py-1" style="font-size: 11px" href="{{ route('dashboard') }}"
                         aria-expanded="false">
                         <span>
@@ -20,10 +16,10 @@
                         <span class="hide-menu text-white">Dashboard</span>
                     </a>
                 </li>
-
-                <li class="nav-small-cap mt-2">
+                <hr class="mt-2 my-1 border-top border-secondary">
+                <li class="nav-small-cap mt-0">
                     <i class="ti ti-dots nav-small-cap-icon text-white fs-4"></i>
-                    <span class="hide-menu text-white">Certification</span>
+                    <span class="hide-menu text-white" style="font-size: 14px">Certification</span>
                 </li>
                 <li class="sidebar-item">
                     <a class="sidebar-link py-1" style="font-size: 11px" href="{{ route('association_view') }}"
@@ -81,9 +77,10 @@
                         <span class="hide-menu text-white">Vendors</span>
                     </a>
                 </li>
-                <li class="nav-small-cap  mt-2">
+                <hr class="mt-2 my-1 border-top border-secondary">
+                <li class="nav-small-cap mt-0">
                     <i class="ti ti-dots nav-small-cap-icon text-white fs-4"></i>
-                    <span class="hide-menu text-white">Waste</span>
+                    <span class="hide-menu text-white" style="font-size: 14px">Waste</span>
                 </li>
                 <li class="sidebar-item">
                     <a class="sidebar-link py-1" style="font-size: 11px" href="{{ route('wastecollect_view') }}"
