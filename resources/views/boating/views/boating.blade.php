@@ -36,7 +36,7 @@
                         Reload
                     </button>
                     <div class="d-flex justify-content-end">
-                        <button class="btn btn-primary-new" id="printCertificate"><i class="bi bi-printer-fill"></i> Print
+                        <button class="btn btn-blue" id="printCertificate"><i class="bi bi-printer-fill"></i> Print
                             Certification</button>
                     </div>
                     <button class="btn btn-primary-new" id="newCertification">
@@ -54,7 +54,7 @@
                             <th class="text-nowrap p-3">Sex</th>
                             <th class="text-nowrap p-3">Contact No.</th>
                             <th class="text-nowrap p-3">Date Created</th>
-                            <th class="text-nowrap p-2 text-center align-middle sticky-action">Action</th>
+                            <th class="text-nowrap p-2 text-center align-middle" width="10%">Action</th>
                         </tr>
                     </thead>
                     <tbody>

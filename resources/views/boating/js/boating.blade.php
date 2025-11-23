@@ -60,7 +60,7 @@
             },
             {
                 title: 'Contact No.',
-                className: 'text-nowrap p-3',
+                className: 'text-nowrap text-start p-3',
                 render: function(data, type, row) {
                     return row.contact_no;
                 }
@@ -74,12 +74,13 @@
             },
             {
                 title: 'Action',
-                className: 'text-nowrap p-2 text-center  align-middle sticky-action',
+                className: 'text-nowrap p-2 text-center align-middle sticky-action',
                 render: function(data, type, row) {
                     return `
-                        <div class="d-flex gap-2 text-center align-items-center">
-                            <button class="btn btn-warning editButton" data-record_id="${row.record_id}">Edit</button>
-                            <button class="btn btn-secondary-new deleteButton" data-record_id="${row.record_id}">Delete</button>
+                        <div class="d-flex gap-2 text-center justify-content-center align-items-center">
+                            <button class="btn btn-red expRenButton" data-record_id="${row.record_id}">Expire</button>
+                            <button class="btn btn-warning editButton px-2" data-record_id="${row.record_id}"><i class="bi bi-pencil-fill"></i></button>
+                            <button class="btn btn-secondary-new deleteButton px-2" data-record_id="${row.record_id}"><i class="bi bi-trash3"></i></button>
                         </div>
                     `;
                 }

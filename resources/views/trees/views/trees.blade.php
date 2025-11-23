@@ -36,7 +36,7 @@
                         Reload
                     </button>
                     <div class="d-flex justify-content-end">
-                        <button class="btn btn-primary-new" id="printCertificate"><i class="bi bi-printer-fill"></i> Print
+                        <button class="btn btn-blue" id="printCertificate"><i class="bi bi-printer-fill"></i> Print
                             Certification</button>
                     </div>
                     <button class="btn btn-primary-new" id="newCertification">

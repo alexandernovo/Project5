@@ -374,7 +374,7 @@
 
 .sticky-action {
     position: sticky !important;
-    right: 0 !important;
+    right: -1px !important;
     /* background: white !important; */
     z-index: 3;
     width: 200px !important;
@@ -417,4 +417,74 @@
     font-size: 25px;
     color: rgb(18, 125, 18);
     cursor: pointer;
+}
+
+.btn-blue {
+    background-color: #00068c;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.15s ease-in-out;
+}
+
+.btn-blue:hover {
+    background-color: #00057a; /* slightly lighter on hover */
+}
+
+.btn-blue:active {
+    background-color: #000466; /* darker when pressed */
+    transform: scale(0.97);
+}
+
+.btn-blue:focus {
+    outline: 3px solid rgba(0, 6, 140, 0.3);
+    outline-offset: 2px;
+}
+
+.btn-green {
+    background-color: #2c7101;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.15s ease-in-out;
+}
+.btn-green:hover {
+    background-color: #256101;
+}
+.btn-green:active {
+    background-color: #1e5001;
+    transform: scale(0.97);
+}
+.btn-green:focus {
+    outline: 3px solid rgba(44, 113, 1, 0.3);
+    outline-offset: 2px;
+}
+
+/* RED BUTTON (#830202) */
+.btn-red {
+    background-color: #830202;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.15s ease-in-out;
+}
+.btn-red:hover {
+    background-color: #6e0202;
+}
+.btn-red:active {
+    background-color: #590101;
+    transform: scale(0.97);
+}
+.btn-red:focus {
+    outline: 3px solid rgba(131, 2, 2, 0.3);
+    outline-offset: 2px;
 }

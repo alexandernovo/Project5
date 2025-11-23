@@ -4,6 +4,16 @@
         'July', 'August', 'September', 'October', 'November', 'December'
     ];
 
+    const barColors = {
+        "ASSOCIATION": "#5F040C",
+        "BOATING": "#830202",
+        "CHAINSAW": "#00068C",
+        "CUTTING TREES": "#63300B",
+        "SARI-SARI STORE": "#06510C",
+        "TRICYCLE": "#2C7101",
+        "VENDORS": "#545454"
+    };
+
     let chart = null;
 
     function loadChart(year) {
@@ -14,10 +24,11 @@
                 year: year
             },
             success: function(data) {
+
                 const dataMonths = [...new Set(data.map(item => item.month))];
                 const months = allMonths.filter(m => dataMonths.includes(m));
                 const types = [...new Set(data.map(item => item.type))];
-
+                console.log("types", data);
                 const series = types.map(type => ({
                     name: typeLibrary[type] ?? type,
                     data: allMonths.map(month => {
@@ -39,6 +50,7 @@
                             text: 'Month'
                         }
                     },
+                    colors: types.map(type => barColors[type.toUpperCase()] || '#808080'), // <-- FIXED
                     yaxis: {
                         title: {
                             text: 'Number of Items'
@@ -53,7 +65,7 @@
                     plotOptions: {
                         bar: {
                             horizontal: false,
-                            columnWidth: '50%'
+                            columnWidth: '100%'
                         }
                     },
                     dataLabels: {
@@ -70,8 +82,7 @@
                             enabled: false
                         },
                         offsetY: -10
-                    },
-                    colors: ['#808080']
+                    }
                 };
 
                 // Destroy previous chart before re-render
