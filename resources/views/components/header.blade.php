@@ -45,10 +45,10 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link nav-icon-hover px-2" href="javascript:void(0)" id="drop2"
                                 data-bs-toggle="dropdown" aria-expanded="false">
-                                <div class=" d-flex align-items-center" style="width: 40px; height: 40px">
-                                    <img src="#"
-                                        onerror="this.src='{{ asset('template_assets/images/profile/user-1.jpg') }}'"
-                                        class="rounded-circle w-100 h-100 object-fit-cover">
+                                <div class="rounded-circle d-flex align-items-center justify-content-center"
+                                    style="width: 30px; height: 30px; background-color: lightgray !important;">
+                                    <i class="bi bi-person-circle"
+                                        style="font-size: 28.5px; color: rgb(54, 54, 54) !important;"></i>
                                 </div>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up"
@@ -67,19 +67,20 @@
             @else
                 <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
                     <div class="d-flex gap align-items-center">
-                        <div class="d-flex flex-column justify-content-center align-items-end border-end pe-2">
-                            <p class="mb-0 fw-semibold text-white" style="font-size: 13px; line-height: 17px">
-                                Admin
-                            </p>
-                        </div>
                         <li class="nav-item dropdown">
-                            <a class="nav-link nav-icon-hover px-2 cursor-pointer" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop">
-                                <div class=" d-flex align-items-center" style="width: 40px; height: 40px">
-                                    <img src="{{ asset('template_assets/images/profile/user-1.jpg') }}"
-                                        class="rounded-circle w-100 h-100 object-fit-cover">
+                            <a class="nav-link nav-icon-hover px-2 cursor-pointer" data-bs-toggle="offcanvas"
+                                data-bs-target="#staticBackdrop">
+                                <div class="rounded-circle d-flex align-items-center justify-content-center"
+                                    style="width: 30px; height: 30px; background-color: lightgray !important;">
+                                    <i class="bi bi-person-circle"
+                                        style="font-size: 28.5px; color: rgb(54, 54, 54) !important;"></i>
                                 </div>
+                                <p class="mb-0 fw-semibold text-white ms-1" style="font-size: 15px; line-height: 17px">
+                                    Admin
+                                </p>
                             </a>
                         </li>
+
                     </div>
                 </ul>
             @endif

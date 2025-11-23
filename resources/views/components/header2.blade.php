@@ -35,9 +35,9 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link nav-icon-hover px-2" href="javascript:void(0)" id="drop2"
                                 data-bs-toggle="dropdown" aria-expanded="false">
-                                <div class="bg-white rounded-circle d-flex align-items-center justify-content-center"
-                                    style="width: 30px; height: 30px;">
-                                    <i class="bi bi-person-circle" style="font-size: 30px"></i>
+                                <div class="rounded-circle d-flex align-items-center justify-content-center"
+                                    style="width: 30px; height: 30px; background-color: lightgray !important;">
+                                    <i class="bi bi-person-circle" style="font-size: 28.5px; color: rgb(54, 54, 54) !important;"></i>
                                 </div>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up"

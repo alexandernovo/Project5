@@ -2,7 +2,7 @@
     id="staticBackdrop" aria-labelledby="staticBackdropLabel">
     <div class="offcanvas-header">
         <div class="d-flex justify-content-end w-100">
-            <button type="button" class="btn border border-white p-0 rounded-circle" style="width: 40px; height: 40px"
+            <button type="button" class="btn border border-white p-0 rounded-circle" style="width: 25px; height: 25px"
                 data-bs-dismiss="offcanvas" aria-label="Close">
                 <i class="bi bi-x-lg text-white"></i>
             </button>
