@@ -1,9 +1,9 @@
 <aside class="left-sidebar primary-bg-new border-0" style="">
     <div class="h-100">
         <div class="d-flex justify-content-center align-items-center mt-3 flex-column">
-            <img src="{{ asset('assets/images/logo.jpg') }}" style="width: 60px; height: 60px" class="rounded-circle"
+            <img src="{{ asset('assets/images/logo.jpg') }}" style="width: 80px; height: 80px" class="rounded-circle"
                 alt="">
-            <p class="mb-0 text-white my-2" style="font-weight: bold; font-size: 15px">MENRO-BAARS PORTAL</p>
+            <p class="mb-0 text-white my-2" style="font-weight: bold; font-size: 17px">MENRO-BAARS PORTAL</p>
         </div>
         <nav class="sidebar-nav scroll-sidebar position-relative pb-3" style="">
             <ul id="sidebarnav">

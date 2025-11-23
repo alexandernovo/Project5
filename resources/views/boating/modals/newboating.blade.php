@@ -1,6 +1,6 @@
 <div class="modal fade" id="newBoatingModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="newBoatingModalLabel"
     aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog"  style="max-width: 600px">
         <div class="modal-content">
             <div class="modal-header position-relative d-flex justify-content-center align-items-center flex-column">
                 <img class="mb-1" src="{{ asset('assets/images/logo.jpg') }}" style="height: 70px; width: 70px"

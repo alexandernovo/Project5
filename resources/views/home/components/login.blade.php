@@ -1,9 +1,11 @@
 <div class="offcanvas offcanvas-end" style="background-color: #313131" data-bs-backdrop="static" tabindex="-1"
     id="staticBackdrop" aria-labelledby="staticBackdropLabel">
     <div class="offcanvas-header">
-        <button type="button" class="btn" data-bs-dismiss="offcanvas" aria-label="Close">
-            <i class="bi bi-x-lg text-white"></i>
-        </button>
+        <div class="d-flex justify-content-end w-100">
+            <button type="button" class="btn border border-white p-0 rounded-circle" style="width: 40px; height: 40px" data-bs-dismiss="offcanvas" aria-label="Close">
+                <i class="bi bi-x-lg text-white"></i>
+            </button>
+        </div>
     </div>
     <div class="offcanvas-body">
         <div class="d-flex flex-column justify-content-center align-items-center mt-3">

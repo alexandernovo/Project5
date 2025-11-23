@@ -7,7 +7,7 @@
 @endphp
 <div class="modal fade" id="newtreesModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="newtreesModalLabel"
     aria-hidden="true">
-    <div class="modal-dialog" style="max-width: 1300px">
+    <div class="modal-dialog" style="max-width: 900px">
         <div class="modal-content">
             <div class="modal-header position-relative d-flex justify-content-center align-items-center flex-column">
                 <img class="mb-1" src="{{ asset('assets/images/logo.jpg') }}" style="height: 70px; width: 70px"
@@ -27,7 +27,7 @@
                 <input type="hidden" id="client_id" name="client_id" value="0">
                 <div class="modal-body">
                     <div class="row">
-                        <div class="col-7">
+                        <div class="col-6">
                             <div class="row mx-auto">
                                 <div class="col-12 mb-1">
                                     <p class="mb-0 fw-semibold">OWNER'S INFORMATION</p>
@@ -127,7 +127,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-5">
+                        <div class="col-6">
                             <div class="col-12 mb-1">
                                 <p class="mb-0 fw-semibold">CHAINSAW REQUIREMENTS</p>
                             </div>

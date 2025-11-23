@@ -97,8 +97,8 @@
                     @endphp
 
                     <p style="text-indent: 40px">
-                        Issued <strong>{{ $day }}<sup>{{ $suffix }}</sup> day of {{ $month }},
-                            {{ $year }}</strong> at the Municipality of Barbaza, Antique, Philippines.
+                        Issued {{ $day }}<sup>{{ $suffix }}</sup> day of {{ $month }},
+                            {{ $year }} at the Municipality of Barbaza, Antique, Philippines.
                     </p>
                 </div>
 

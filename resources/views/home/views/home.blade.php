@@ -2,7 +2,7 @@
 @section('content')
     @include('home/css/homecss')
     @include('home.components.login')
-    <div class="d-flex flex-wrap justify-content-between align-items-center gap-4 banner px-5"
+    <div class="d-flex flex-nowrap justify-content-between align-items-center gap-4 banner px-5"
         style="height: calc(100vh - 122px);">
         <div class="text-start text-white">
             <p class="mb-4" style="font-size: 20px">Welcome to</p>

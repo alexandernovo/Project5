@@ -100,8 +100,8 @@
                     @endphp
 
                     <p style="text-indent: 40px">
-                        Done this <strong>{{ $day }}<sup>{{ $suffix }}</sup> day of {{ $month }},
-                            {{ $year }}</strong> at Barbaza, Antique.
+                        Done this {{ $day }}<sup>{{ $suffix }}</sup> day of {{ $month }},
+                            {{ $year }} at Barbaza, Antique.
                     </p>
                 </div>
                 <div class="d-flex justify-content-start">
