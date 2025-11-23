@@ -47,10 +47,10 @@
         ];
     @endphp
 
-    <div class="row mx-auto">
+    <div class="row mx-auto d-flex justify-content-center">
         @foreach ($dashboard as $d)
             <div class="col-3 mb-4">
-                <div class="border p-4" style="min-height: 300px; border-radius: 16px; {{ $d['style'] }}">
+                <div class="border p-3" style="min-height: 250px; border-radius: 16px; {{ $d['style'] }}">
                     <div class="d-flex flex-column justify-content-center align-items-center">
                         <img src="{{ $d['icon'] }}" style="width: 110px; height: 160px" alt="">
                         <p class="mb-0 text-white text-center text-nowrap" style="font-size: 16px">{{ $d['title'] }}</p>
