@@ -35,12 +35,12 @@
                         Reload
                     </button>
                     <button class="btn btn-primary-new" id="newwastecollectBtn">
-                        <img src="{{ asset('assets/images/icons/Waste Collection.png') }}" style="width: 30px; height:30px;"
+                        <img src="{{ asset('assets/images/icons/Waste Collection.png') }}" style="width: 20px; height:20px;"
                             alt="">
                         Add Waste Collection
                     </button>
                 </div>
-                <table id="wastecollectTable" class="table table-bordered">
+                <table id="wastecollectTable" class="table table-bordered data_table">
                     <thead>
                         <tr>
                             <th>No.</th>
@@ -53,6 +53,7 @@
                             <th>Recyclable</th>
                             <th>Special Waste</th>
                             <th>Date Created</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>

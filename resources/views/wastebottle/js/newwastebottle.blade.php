@@ -1,27 +1,24 @@
 <script>
     $(document).on("click", "#newwastebottleBtn", function() {
-        $("#newwastebottleModalLabel").text("New Waste Bottle");
+        $("#wasteBottleSubmit").html(`
+            <img src="{{ asset('assets/images/icons/Waste Bottle.png') }}" style="width: 20px; height:20px;"alt="">
+            Add Waste Bottle
+        `);
         resetWasteBottle();
         $("#newwastebottleModal").modal("show");
     });
 
-    $(document).on("click", "#editwastebottleBtn", function() {
-        $("#newwastebottleModalLabel").text("Edit Waste Bottle");
-        var selectedRow = wastebottleTable.row('.selected');
+    $(document).on("click", ".editButton", function() {
+        $("#wasteBottleSubmit").html(`
+            <img src="{{ asset('assets/images/icons/Waste Bottle.png') }}" style="width: 20px; height:20px;"alt=""> 
+            Edit Waste Bottle
+        `);
+        let wastebottle_id = $(this).data('wastebottle_id');
+        let data = wastebottleData.find(x => x.wastebottle_id == wastebottle_id);
         resetWasteBottle();
-
-        if (selectedRow.node()) {
-            var data = selectedRow.data();
-            if (data) {
-                populateForm(data, "newwastebottleform");
-                $("#newwastebottleModal").modal("show");
-            }
-        } else {
-            Swal.fire({
-                title: "Warning",
-                text: "Please Select a Row First",
-                icon: "warning",
-            });
+        if (data) {
+            populateForm(data, "newwastebottleform");
+            $("#newwastebottleModal").modal("show");
         }
     })
 

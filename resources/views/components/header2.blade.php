@@ -1,4 +1,4 @@
-<header class="app-header position-sticky top-0 w-100" style="background-color: black">
+<header class="app-header position-sticky top-0 w-100" style="background-color: #313131">
     <nav class="navbar navbar-expand-lg navbar-light">
         <ul class="navbar-nav">
             <li class="nav-item d-block d-xl-none">
@@ -29,16 +29,15 @@
                     <div class="d-flex gap align-items-center">
                         <div class="d-flex flex-column justify-content-center align-items-end border-end pe-2">
                             <p class="mb-0 fw-semibold text-white" style="font-size: 13px; line-height: 17px">
-                                Admin
+                                MENRO-BAARS Admin
                             </p>
                         </div>
                         <li class="nav-item dropdown">
                             <a class="nav-link nav-icon-hover px-2" href="javascript:void(0)" id="drop2"
                                 data-bs-toggle="dropdown" aria-expanded="false">
-                                <div class=" d-flex align-items-center" style="width: 40px; height: 40px">
-                                    <img src="#"
-                                        onerror="this.src='{{ asset('template_assets/images/profile/user-1.jpg') }}'"
-                                        class="rounded-circle w-100 h-100 object-fit-cover">
+                                <div class="bg-white rounded-circle d-flex align-items-center justify-content-center"
+                                    style="width: 30px; height: 30px;">
+                                    <i class="bi bi-person-circle" style="font-size: 30px"></i>
                                 </div>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up"
@@ -63,7 +62,8 @@
                             </p>
                         </div>
                         <li class="nav-item dropdown">
-                            <a class="nav-link nav-icon-hover px-2 cursor-pointer" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop">
+                            <a class="nav-link nav-icon-hover px-2 cursor-pointer" data-bs-toggle="offcanvas"
+                                data-bs-target="#staticBackdrop">
                                 <div class=" d-flex align-items-center" style="width: 40px; height: 40px">
                                     <img src="{{ asset('template_assets/images/profile/user-1.jpg') }}"
                                         class="rounded-circle w-100 h-100 object-fit-cover">

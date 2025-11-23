@@ -36,7 +36,7 @@
                     </button>
                     <button class="btn btn-primary-new" id="newwastebottleBtn">
                         <img src="{{ asset('assets/images/icons/Waste Bottle.png') }}"
-                            style="width: 30px; height:30px;" alt="">
+                            style="width: 20px; height:20px;" alt="">
                         Add Waste Bottle
                     </button>
                 </div>
@@ -52,6 +52,7 @@
                             <th>Rice in Kg</th>
                             <th>Total in Rice</th>
                             <th>Date Created</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>

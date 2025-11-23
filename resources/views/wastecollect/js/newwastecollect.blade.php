@@ -1,27 +1,19 @@
 <script>
     $(document).on("click", "#newwastecollectBtn", function() {
-        $("#newwastecollectModalLabel").text("New Waste Collection");
+        $("#wasteCollectionSubmit").text("Add Waste Collection");
         resetWasteCollect();
         $("#newwastecollectModal").modal("show");
     });
 
-    $(document).on("click", "#editwastecollectBtn", function() {
-        $("#newwastecollectModalLabel").text("Edit Waste Collection");
-        var selectedRow = wastecollectTable.row('.selected');
+    $(document).on("click", ".editButton", function() {
+        $("#wasteCollectionSubmit").text("Edit Waste Collection");
+        let wastecollect_id = $(this).data('wastecollect_id');
+        let data = wastecollectData.find(x => x.wastecollect_id == wastecollect_id);
         resetWasteCollect();
 
-        if (selectedRow.node()) {
-            var data = selectedRow.data();
-            if (data) {
-                populateForm(data, "newwastecollectform");
-                $("#newwastecollectModal").modal("show");
-            }
-        } else {
-            Swal.fire({
-                title: "Warning",
-                text: "Please Select a Row First",
-                icon: "warning",
-            });
+        if (data) {
+            populateForm(data, "newwastecollectform");
+            $("#newwastecollectModal").modal("show");
         }
     })
 

@@ -23,7 +23,7 @@
                 <input type="hidden" id="wastecollect_id" name="wastecollect_id" value="0">
                 <div class="modal-body">
                     <div class="row mx-auto">
-                        <div class="col-12">
+                        <div class="col-6">
                             <div class="form-group mb-1">
                                 <label for="" class="mb-1">Barangay</label>
                                 <input type="text" name="barangay" id="barangay" class="form-control" required>
@@ -45,20 +45,20 @@
                                 </select>
                             </div> --}}
                         </div>
-                        <div class="col-12">
+                        <div class="col-6">
                             <div class="form-group mb-1">
                                 <label for="" class="mb-1">Municipality</label>
                                 <input type="text" name="municipality" id="municipality" class="form-control"
                                     required>
                             </div>
                         </div>
-                        <div class="col-12">
+                        <div class="col-6">
                             <div class="form-group mb-1">
                                 <label for="" class="mb-1">Province</label>
                                 <input type="text" name="province" id="province" class="form-control" required>
                             </div>
                         </div>
-                        <div class="col-12">
+                        <div class="col-6">
                             <div class="form-group mb-1">
                                 <label for="" class="mb-1">Purok</label>
                                 <input type="text" name="purok" id="purok" class="form-control" required>
@@ -80,20 +80,20 @@
                                 <input type="number" name="nonbio" id="nonbio" class="form-control" required>
                             </div>
                         </div>
-                        <div class="col-6">
+                        <div class="col-4">
                             <div class="form-group mb-1">
                                 <label for="" class="mb-1">Recyclable</label>
                                 <input type="number" name="recyclable" id="recyclable" class="form-control" required>
                             </div>
                         </div>
-                        <div class="col-6">
+                        <div class="col-4">
                             <div class="form-group mb-1">
                                 <label for="" class="mb-1">Special Waste</label>
                                 <input type="number" name="specialwaste" id="specialwaste" class="form-control"
                                     required>
                             </div>
                         </div>
-                        <div class="col-6">
+                        <div class="col-4">
                             <div class="form-group mb-1">
                                 <label for="" class="mb-1">Total Waste</label>
                                 <input type="number" id="total" class="form-control">
@@ -103,7 +103,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save changes</button>
+                    <button type="submit" class="btn btn-primary-new" id="wasteCollectionSubmit">Add Waste Collection</button>
                 </div>
             </form>
         </div>

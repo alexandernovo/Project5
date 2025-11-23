@@ -23,26 +23,26 @@
                 <input type="hidden" id="wastebottle_id" name="wastebottle_id" value="0">
                 <div class="modal-body">
                     <div class="row mx-auto">
-                        <div class="col-12">
+                        <div class="col-6">
                             <div class="form-group mb-1">
                                 <label for="" class="mb-1">Barangay</label>
                                 <input type="text" name="brgy" id="brgy" class="form-control" required>
                             </div>
                         </div>
-                        <div class="col-12">
+                        <div class="col-6">
                             <div class="form-group mb-1">
                                 <label for="" class="mb-1">Municipality</label>
                                 <input type="text" name="municipality" id="municipality" class="form-control"
                                     required>
                             </div>
                         </div>
-                        <div class="col-12">
+                        <div class="col-6">
                             <div class="form-group mb-1">
                                 <label for="" class="mb-1">Province</label>
                                 <input type="text" name="province" id="province" class="form-control" required>
                             </div>
                         </div>
-                        <div class="col-12">
+                        <div class="col-6">
                             <div class="form-group mb-1">
                                 <label for="" class="mb-1">Purok</label>
                                 <input type="text" name="purok" id="purok" class="form-control" required>
@@ -70,10 +70,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary-new py-1">
-                        <img src="{{ asset('assets/images/icons/Waste Bottle.png') }}" style="width: 30px; height:30px;"
-                            alt="">
-                        Add Waste
+                    <button type="submit" class="btn btn-primary-new py-1" id="wasteBottleSubmit">
+                        Add Waste Bottle
                     </button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div>
