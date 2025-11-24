@@ -17,91 +17,92 @@ use App\Http\Controllers\WasteBottleController;
 use App\Http\Controllers\WasteCollectController;
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
-Route::get('/dashboard', [DashboardController::class, 'dashboard_view'])->name('dashboard');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 
+Route::middleware(["userchecker"])->group(function () {
+    //association
+    Route::get('/dashboard', [DashboardController::class, 'dashboard_view'])->name('dashboard');
+    Route::get('/association/view', [AssociationController::class, 'association_view'])->name('association_view');
+    Route::get('/association/print', [AssociationController::class, 'printAssociation'])->name('printAssociation');
+    Route::post('/association/save_new_association', [AssociationController::class, 'save_new_association'])->name('save_new_association');
+    Route::post('/association/getAssociations', [AssociationController::class, 'getAssociations'])->name('getAssociations');
+    Route::post('/association/deleteAssociation', [AssociationController::class, 'deleteAssociation'])->name('deleteAssociation');
 
-//association
-Route::get('/association/view', [AssociationController::class, 'association_view'])->name('association_view');
-Route::get('/association/print', [AssociationController::class, 'printAssociation'])->name('printAssociation');
-Route::post('/association/save_new_association', [AssociationController::class, 'save_new_association'])->name('save_new_association');
-Route::post('/association/getAssociations', [AssociationController::class, 'getAssociations'])->name('getAssociations');
-Route::post('/association/deleteAssociation', [AssociationController::class, 'deleteAssociation'])->name('deleteAssociation');
+    //boating
+    Route::get('/boating/view', [BoatingController::class, 'boating_view'])->name('boating_view');
+    Route::get('/boating/print', [BoatingController::class, 'printBoating'])->name('printBoating');
+    Route::post('/boating/save_new_boating', [BoatingController::class, 'save_new_boating'])->name('save_new_boating');
+    Route::post('/boating/getBoatings', [BoatingController::class, 'getBoatings'])->name('getBoatings');
+    Route::post('/boating/deleteBoating', [BoatingController::class, 'deleteBoating'])->name('deleteBoating');
 
-//boating
-Route::get('/boating/view', [BoatingController::class, 'boating_view'])->name('boating_view');
-Route::get('/boating/print', [BoatingController::class, 'printBoating'])->name('printBoating');
-Route::post('/boating/save_new_boating', [BoatingController::class, 'save_new_boating'])->name('save_new_boating');
-Route::post('/boating/getBoatings', [BoatingController::class, 'getBoatings'])->name('getBoatings');
-Route::post('/boating/deleteBoating', [BoatingController::class, 'deleteBoating'])->name('deleteBoating');
+    //chainsaw
+    Route::get('/chainsaw/view', [ChainsawController::class, 'chainsaw_view'])->name('chainsaw_view');
+    Route::get('/chainsaw/print', [ChainsawController::class, 'printChainsaw'])->name('printChainsaw');
+    Route::post('/chainsaw/save_new_chainsaw', [ChainsawController::class, 'save_new_chainsaw'])->name('save_new_chainsaw');
+    Route::post('/chainsaw/getchainsaws', [ChainsawController::class, 'getchainsaws'])->name('getchainsaws');
+    Route::post('/chainsaw/deletechainsaw', [ChainsawController::class, 'deletechainsaw'])->name('deletechainsaw');
 
-//chainsaw
-Route::get('/chainsaw/view', [ChainsawController::class, 'chainsaw_view'])->name('chainsaw_view');
-Route::get('/chainsaw/print', [ChainsawController::class, 'printChainsaw'])->name('printChainsaw');
-Route::post('/chainsaw/save_new_chainsaw', [ChainsawController::class, 'save_new_chainsaw'])->name('save_new_chainsaw');
-Route::post('/chainsaw/getchainsaws', [ChainsawController::class, 'getchainsaws'])->name('getchainsaws');
-Route::post('/chainsaw/deletechainsaw', [ChainsawController::class, 'deletechainsaw'])->name('deletechainsaw');
+    //trees
+    Route::get('/trees/view', [TreesController::class, 'trees_view'])->name('trees_view');
+    Route::get('/trees/print', [TreesController::class, 'printTrees'])->name('printTrees');
+    Route::post('/trees/save_new_trees', [TreesController::class, 'save_new_trees'])->name('save_new_trees');
+    Route::post('/trees/gettreess', [TreesController::class, 'gettreess'])->name('gettrees');
+    Route::post('/trees/deletetrees', [TreesController::class, 'deletetrees'])->name('deletetrees');
 
-//trees
-Route::get('/trees/view', [TreesController::class, 'trees_view'])->name('trees_view');
-Route::get('/trees/print', [TreesController::class, 'printTrees'])->name('printTrees');
-Route::post('/trees/save_new_trees', [TreesController::class, 'save_new_trees'])->name('save_new_trees');
-Route::post('/trees/gettreess', [TreesController::class, 'gettreess'])->name('gettrees');
-Route::post('/trees/deletetrees', [TreesController::class, 'deletetrees'])->name('deletetrees');
+    //store
+    Route::get('/store/view', [StoreController::class, 'store_view'])->name('store_view');
+    Route::get('/store/print', [StoreController::class, 'printStore'])->name('printStore');
+    Route::post('/store/save_new_store', [StoreController::class, 'save_new_store'])->name('save_new_store');
+    Route::post('/store/getstores', [StoreController::class, 'getstores'])->name('getstore');
+    Route::post('/store/deletestore', [StoreController::class, 'deletestore'])->name('deletestore');
 
-//store
-Route::get('/store/view', [StoreController::class, 'store_view'])->name('store_view');
-Route::get('/store/print', [StoreController::class, 'printStore'])->name('printStore');
-Route::post('/store/save_new_store', [StoreController::class, 'save_new_store'])->name('save_new_store');
-Route::post('/store/getstores', [StoreController::class, 'getstores'])->name('getstore');
-Route::post('/store/deletestore', [StoreController::class, 'deletestore'])->name('deletestore');
+    //tricycle
+    Route::get('/tricycle/view', [TricycleController::class, 'tricycle_view'])->name('tricycle_view');
+    Route::get('/tricycle/print', [TricycleController::class, 'printTricycle'])->name('printTricycle');
+    Route::post('/tricycle/save_new_tricycle', [TricycleController::class, 'save_new_tricycle'])->name('save_new_tricycle');
+    Route::post('/tricycle/gettricycles', [TricycleController::class, 'gettricycles'])->name('gettricycle');
+    Route::post('/tricycle/deletetricycle', [TricycleController::class, 'deletetricycle'])->name('deletetricycle');
 
-//tricycle
-Route::get('/tricycle/view', [TricycleController::class, 'tricycle_view'])->name('tricycle_view');
-Route::get('/tricycle/print', [TricycleController::class, 'printTricycle'])->name('printTricycle');
-Route::post('/tricycle/save_new_tricycle', [TricycleController::class, 'save_new_tricycle'])->name('save_new_tricycle');
-Route::post('/tricycle/gettricycles', [TricycleController::class, 'gettricycles'])->name('gettricycle');
-Route::post('/tricycle/deletetricycle', [TricycleController::class, 'deletetricycle'])->name('deletetricycle');
+    //vendor
+    Route::get('/vendor/view', [VendorController::class, 'vendor_view'])->name('vendor_view');
+    Route::get('/vendor/print', [VendorController::class, 'printVendor'])->name('printVendor');
+    Route::post('/vendor/save_new_vendor', [VendorController::class, 'save_new_vendor'])->name('save_new_vendor');
+    Route::post('/vendor/getvendors', [VendorController::class, 'getvendors'])->name('getvendor');
+    Route::post('/vendor/deletevendor', [VendorController::class, 'deletevendor'])->name('deletevendor');
 
-//vendor
-Route::get('/vendor/view', [VendorController::class, 'vendor_view'])->name('vendor_view');
-Route::get('/vendor/print', [VendorController::class, 'printVendor'])->name('printVendor');
-Route::post('/vendor/save_new_vendor', [VendorController::class, 'save_new_vendor'])->name('save_new_vendor');
-Route::post('/vendor/getvendors', [VendorController::class, 'getvendors'])->name('getvendor');
-Route::post('/vendor/deletevendor', [VendorController::class, 'deletevendor'])->name('deletevendor');
+    //waste collection
+    Route::get('/wastecollect/view', [WasteCollectController::class, 'wastecollect_view'])->name('wastecollect_view');
+    Route::post('/wastecollect/save_new_wastecollect', [WasteCollectController::class, 'save_new_wastecollect'])->name('save_new_wastecollect');
+    Route::post('/wastecollect/getwastecollects', [WasteCollectController::class, 'getwastecollects'])->name('getwastecollect');
+    Route::post('/wastecollect/deletewastecollect', [WasteCollectController::class, 'deletewastecollect'])->name('deletewastecollect');
 
-//waste collection
-Route::get('/wastecollect/view', [WasteCollectController::class, 'wastecollect_view'])->name('wastecollect_view');
-Route::post('/wastecollect/save_new_wastecollect', [WasteCollectController::class, 'save_new_wastecollect'])->name('save_new_wastecollect');
-Route::post('/wastecollect/getwastecollects', [WasteCollectController::class, 'getwastecollects'])->name('getwastecollect');
-Route::post('/wastecollect/deletewastecollect', [WasteCollectController::class, 'deletewastecollect'])->name('deletewastecollect');
+    //waste bottle
+    Route::get('/wastebottle/view', [WasteBottleController::class, 'wastebottle_view'])->name('wastebottle_view');
+    Route::post('/wastebottle/save_new_wastebottle', [WasteBottleController::class, 'save_new_wastebottle'])->name('save_new_wastebottle');
+    Route::post('/wastebottle/getwastebottles', [WasteBottleController::class, 'getwastebottles'])->name('getwastebottle');
+    Route::post('/wastebottle/deletewastebottle', [WasteBottleController::class, 'deletewastebottle'])->name('deletewastebottle');
 
-//waste bottle
-Route::get('/wastebottle/view', [WasteBottleController::class, 'wastebottle_view'])->name('wastebottle_view');
-Route::post('/wastebottle/save_new_wastebottle', [WasteBottleController::class, 'save_new_wastebottle'])->name('save_new_wastebottle');
-Route::post('/wastebottle/getwastebottles', [WasteBottleController::class, 'getwastebottles'])->name('getwastebottle');
-Route::post('/wastebottle/deletewastebottle', [WasteBottleController::class, 'deletewastebottle'])->name('deletewastebottle');
+    //profile
+    Route::get('/profile/view', [ProfileController::class, 'profile_view'])->name('profile_view');
+    Route::post('/profile/updateProfile', [ProfileController::class, 'updateProfile'])->name('updateProfile');
+    Route::post('/profile/profileUpload', [ProfileController::class, 'profileUpload'])->name('profileUpload');
+    Route::post('/profile/backgroundUpload', [ProfileController::class, 'backgroundUpload'])->name('backgroundUpload');
+    Route::post('/profile/deleteCover', [ProfileController::class, 'deleteCover'])->name('deleteCover');
 
-//profile
-Route::get('/profile/view', [ProfileController::class, 'profile_view'])->name('profile_view');
-Route::post('/profile/updateProfile', [ProfileController::class, 'updateProfile'])->name('updateProfile');
-Route::post('/profile/profileUpload', [ProfileController::class, 'profileUpload'])->name('profileUpload');
-Route::post('/profile/backgroundUpload', [ProfileController::class, 'backgroundUpload'])->name('backgroundUpload');
-Route::post('/profile/deleteCover', [ProfileController::class, 'deleteCover'])->name('deleteCover');
-
-//reports
-Route::get('/reports/dashboard/view', [ReportController::class, 'reportdashboard'])->name('reportdashboard');
-Route::get('/reports/association/print', [ReportController::class, 'associationPrint'])->name('associationPrint');
-Route::get('/reports/boating/print', [ReportController::class, 'boatingPrint'])->name('boatingPrint');
-Route::get('/reports/sarisaristore/print', [ReportController::class, 'sarisaristorePrint'])->name('sarisaristorePrint');
-Route::get('/reports/tricycle/print', [ReportController::class, 'tricyclePrint'])->name('tricyclePrint');
-Route::get('/reports/vendors/print', [ReportController::class, 'vendorsPrint'])->name('vendorsPrint');
-Route::get('/reports/chainsaw/print', [ReportController::class, 'chainsawPrint'])->name('chainsawPrint');
-Route::get('/reports/trees/print', [ReportController::class, 'treesPrint'])->name('treesPrint');
+    //reports
+    Route::get('/reports/dashboard/view', [ReportController::class, 'reportdashboard'])->name('reportdashboard');
+    Route::get('/reports/association/print', [ReportController::class, 'associationPrint'])->name('associationPrint');
+    Route::get('/reports/boating/print', [ReportController::class, 'boatingPrint'])->name('boatingPrint');
+    Route::get('/reports/sarisaristore/print', [ReportController::class, 'sarisaristorePrint'])->name('sarisaristorePrint');
+    Route::get('/reports/tricycle/print', [ReportController::class, 'tricyclePrint'])->name('tricyclePrint');
+    Route::get('/reports/vendors/print', [ReportController::class, 'vendorsPrint'])->name('vendorsPrint');
+    Route::get('/reports/chainsaw/print', [ReportController::class, 'chainsawPrint'])->name('chainsawPrint');
+    Route::get('/reports/trees/print', [ReportController::class, 'treesPrint'])->name('treesPrint');
 
 
-Route::post('/dashboard/getDashboardDetails', [DashboardController::class, 'getDashboardDetails'])->name('getDashboardDetails');
-Route::post('/dashboard/getChartData', [DashboardController::class, 'getChartData'])->name('getChartData');
-Route::post('/dashboard/getDashboardCounts', [DashboardController::class, 'getDashboardCounts'])->name('getDashboardCounts');
-Route::post('/global/expireRenew', [AssociationController::class, 'expireRenew'])->name('expireRenew');
+    Route::post('/dashboard/getDashboardDetails', [DashboardController::class, 'getDashboardDetails'])->name('getDashboardDetails');
+    Route::post('/dashboard/getChartData', [DashboardController::class, 'getChartData'])->name('getChartData');
+    Route::post('/dashboard/getDashboardCounts', [DashboardController::class, 'getDashboardCounts'])->name('getDashboardCounts');
+    Route::post('/global/expireRenew', [AssociationController::class, 'expireRenew'])->name('expireRenew');
+});

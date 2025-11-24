@@ -56,6 +56,27 @@
                 }
             },
             {
+                title: 'Type of Tree',
+                className: 'text-nowrap p-2 text-center  align-middle',
+                render: function(data, type, row) {
+                    return row.typeoftrees;
+                }
+            },
+            {
+                title: 'Trees Location',
+                className: 'text-nowrap p-2 text-center  align-middle',
+                render: function(data, type, row) {
+                    return row.treeslocated;
+                }
+            },
+            {
+                title: 'Number of Trees',
+                className: 'text-nowrap p-2 text-center  align-middle',
+                render: function(data, type, row) {
+                    return row.nooftrees;
+                }
+            },
+            {
                 title: 'Address',
                 className: 'text-nowrap p-2 text-center  align-middle',
                 render: function(data, type, row) {

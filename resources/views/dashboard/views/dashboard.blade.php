@@ -1,50 +1,56 @@
 @extends('layout.mainlayout')
 @section('content')
     @include('dashboard.css.dashboard')
-
+    @include('association.modals.newassociation')
+    @include('boating.modals.newboating')
+    @include('chainsaw.modals.newchainsaw')
+    @include('store.modals.newstore')
+    @include('trees.modals.newtrees')
+    @include('tricycle.modals.newtricycle')
+    @include('vendors.modals.newvendor')
     @php
         $countCards = [
             [
                 'title' => 'Association | Month',
                 'icon' => asset('assets/images/icons/Association.png'),
                 'count_id' => 'associationCount',
-                'style' => 'background-color: #5F040C'
+                'style' => 'background-color: #5F040C',
             ],
             [
                 'title' => 'Boating | Month',
                 'icon' => asset('assets/images/icons/Boating.png'),
                 'count_id' => 'boatingCount',
-                'style' => 'background-color: #830202'
+                'style' => 'background-color: #830202',
             ],
             [
                 'title' => 'Chainsaw | Month',
                 'icon' => asset('assets/images/icons/Chainsaw.png'),
                 'count_id' => 'chainsawCount',
-                'style' => 'background-color: #00068C'
+                'style' => 'background-color: #00068C',
             ],
             [
                 'title' => 'Cutting Trees | Month',
                 'icon' => asset('assets/images/icons/Cutting Trees.png'),
                 'count_id' => 'treesCount',
-                'style' => 'background-color: #63300B'
+                'style' => 'background-color: #63300B',
             ],
             [
                 'title' => 'Sari-Sari Store | Month',
                 'icon' => asset('assets/images/icons/Sari-Sari Store.png'),
                 'count_id' => 'storeCount',
-                'style' => 'background-color: #06510C'
+                'style' => 'background-color: #06510C',
             ],
             [
                 'title' => 'Tricycle | Month',
                 'icon' => asset('assets/images/icons/Tricycle.png'),
                 'count_id' => 'tricycleCount',
-                'style' => 'background-color: #2C7101'
+                'style' => 'background-color: #2C7101',
             ],
             [
                 'title' => 'Vendors | Month',
                 'icon' => asset('assets/images/icons/Vendors.png'),
                 'count_id' => 'vendorsCount',
-                'style' => 'background-color: #545454'
+                'style' => 'background-color: #545454',
             ],
         ];
     @endphp
@@ -79,7 +85,7 @@
             <div class="card">
                 <div class="card-body">
                     <p class="mb-0 fw-semibold" style="font-size: 16px">REPORT | THIS MONTH</p>
-                    <table id="dashboardTable" class="table table-bordered dashboard-table-font">
+                    <table id="dashboardTable" class="table table-bordered dashboard-table-font data_table">
                         <thead>
                             <tr>
                                 <th class="text-nowrap p-3 text-center">No.</th>
