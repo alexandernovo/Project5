@@ -59,28 +59,48 @@ class DashboardController extends Controller
         ]);
     }
 
+    // public function getChartData(Request $request)
+    // {
+    //     $year = $request->get('year', now()->year);
+
+    //     $records = DB::table('records')
+    //         ->selectRaw("
+    //         DATENAME(MONTH, created_at) as month,
+    //         MONTH(created_at) as month_num,
+    //         type,
+    //         COUNT(*) as total
+    //     ")
+    //         ->whereYear('created_at', $year)
+    //         ->groupByRaw('DATENAME(MONTH, created_at), MONTH(created_at), type')
+    //         ->orderBy('month_num')
+    //         ->get();
+
+    //     // Keep only the highest total per month
+    //     $filtered = $records->groupBy('month')->map(function ($items) {
+    //         return $items->sortByDesc('total')->first();
+    //     })->values();
+
+    //     return response()->json($filtered);
+    // }
     public function getChartData(Request $request)
     {
         $year = $request->get('year', now()->year);
+        $month = $request->get('month', 'all');
 
-        $records = DB::table('records')
-            ->selectRaw("
-            DATENAME(MONTH, created_at) as month,
-            MONTH(created_at) as month_num,
-            type,
-            COUNT(*) as total
-        ")
-            ->whereYear('created_at', $year)
-            ->groupByRaw('DATENAME(MONTH, created_at), MONTH(created_at), type')
-            ->orderBy('month_num')
+        $query = DB::table('records')
+            ->selectRaw("type, COUNT(*) as total")
+            ->whereYear('created_at', $year);
+
+        if ($month !== 'all') {
+            $query->whereMonth('created_at', $month);
+        }
+
+        $records = $query
+            ->groupBy('type')
+            ->orderBy('type')
             ->get();
 
-        // Keep only the highest total per month
-        $filtered = $records->groupBy('month')->map(function ($items) {
-            return $items->sortByDesc('total')->first();
-        })->values();
-
-        return response()->json($filtered);
+        return response()->json($records);
     }
 
     public function getDashboardCounts(Request $request)

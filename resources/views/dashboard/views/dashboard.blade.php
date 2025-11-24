@@ -112,16 +112,32 @@
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex justify-content-between">
-                        <p class="mb-0 fw-semibold" style="font-size: 16px">STATISTIC DATA CHART</p>
-                        <div class="col-2">
-                            <select id="yearSelect" class="form-select">
-                                @php $currentYear = now()->year; @endphp
-                                @for ($year = $currentYear; $year >= $currentYear - 5; $year--)
-                                    <option value="{{ $year }}" {{ $year == $currentYear ? 'selected' : '' }}>
-                                        {{ $year }}
-                                    </option>
-                                @endfor
-                            </select>
+                        <p class="mb-0 fw-semibold" style="font-size: 16px">
+                            STATISTIC DATA CHART
+                        </p>
+
+                        <div class="d-flex gap-2">
+                            <div>
+                                <select id="monthSelect" class="form-select">
+                                    <option value="all">All Months</option>
+                                    @foreach (range(1, 12) as $m)
+                                        <option value="{{ $m }}">
+                                            {{ DateTime::createFromFormat('!m', $m)->format('F') }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div>
+                                <select id="yearSelect" class="form-select">
+                                    @php $currentYear = now()->year; @endphp
+                                    @for ($year = $currentYear; $year >= $currentYear - 5; $year--)
+                                        <option value="{{ $year }}" {{ $year == $currentYear ? 'selected' : '' }}>
+                                            {{ $year }}
+                                        </option>
+                                    @endfor
+                                </select>
+                            </div>
+
                         </div>
                     </div>
                     <div id="recordsChart" style="width: 100%;"></div>
