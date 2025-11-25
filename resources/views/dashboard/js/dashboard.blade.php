@@ -50,7 +50,7 @@
                 }
             },
             {
-                title: 'Owner of dashboard',
+                title: 'Owner',
                 className: 'text-nowrap p-2 text-center  align-middle',
                 render: function(data, type, row) {
                     return row.owner_name;
@@ -103,7 +103,8 @@
                 className: 'text-nowrap p-2 text-center  align-middle text-center',
                 render: function(data, type, row) {
                     return (row.type != "TREES" && row.type != "BOATING") ? renderExpirationStatus(row
-                        .expiration) : 'NA';
+                        .record_status) : 'NA';
+                        
                 }
             },
             {
