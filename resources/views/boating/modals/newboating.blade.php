@@ -53,25 +53,25 @@
                         </div>
                         <div class="col-12">
                             <div class="form-group mb-1">
-                                <label for="" class="mb-1">Name of Boating Activities</label>
+                                <label for="" class="mb-1">Name of Activities</label>
                                 <input type="text" name="nameactivities" id="nameactivities" placeholder="Name of Boating Activities"
                                     class="form-control" required>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="form-group mb-1">
-                                <label for="" class="mb-1">Date of Boating Activities</label>
+                                <label for="" class="mb-1">Date of Activities</label>
                                 <input type="date" name="dateactivities" id="dateactivities" placeholder="OR Number"
                                     class="form-control" required>
                             </div>
                         </div>
-                        <div class="col-12">
+                        {{-- <div class="col-12">
                             <div class="form-group mb-1">
                                 <label for="" class="mb-1">Name of Boat</label>
                                 <input type="text" name="name_other" placeholder="Name of Boat" id="name_other"
                                     class="form-control" required>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="col-4">
                             <div class="form-group mb-1">
                                 <label for="" class="mb-1">Barangay</label>

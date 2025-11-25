@@ -150,7 +150,7 @@
                         </div>
                         <div class="col-6">
                             <div class="col-12 mb-1">
-                                <p class="mb-0 fw-semibold">CHAINSAW REQUIREMENTS</p>
+                                <p class="mb-0 fw-semibold">CUTTING TREES REQUIREMENTS</p>
                             </div>
                             <table class="table table-bordered">
                                 <thead>

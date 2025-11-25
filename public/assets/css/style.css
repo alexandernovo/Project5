@@ -14,7 +14,9 @@
     top: 30%;
     transform: translateY(-50%);
 }
-
+input, select, label {
+    color: black !important;
+}
 .simplebar-offset .simplebar-content {
     height: 100%;
     /* display: flex;
@@ -375,7 +377,7 @@ div.dt-container div.dt-search input {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(255, 255, 255, 0.4); 
+    background: rgba(255, 255, 255, 0.4);
     display: flex; /* center content */
     align-items: center;
     justify-content: center;

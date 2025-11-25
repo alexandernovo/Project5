@@ -96,7 +96,7 @@
                                 <th class="text-nowrap p-3">Contact No.</th>
                                 <th class="text-nowrap p-3">Type of<br>Certification</th>
                                 <th class="text-nowrap p-3">Date Created</th>
-                                <th class="text-nowrap p-3 text-center">Renewal Status</th>
+                                <th class="text-nowrap p-3 text-center">Status</th>
                                 <th class="text-nowrap p-3">Date of<br>Renewal</th>
                                 <th class="text-nowrap p-3">Date of<br>Expiration</th>
                             </tr>

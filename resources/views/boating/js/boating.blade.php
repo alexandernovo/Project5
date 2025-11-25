@@ -45,26 +45,26 @@
                 }
             },
             {
-                title: 'Name of Boating  Activities',
+                title: 'Name of  Activities',
                 className: 'text-nowrap p-3',
                 render: function(data, type, row) {
                     return row.nameactivities;;
                 }
             },
             {
-                title: 'Date of Boating Activities',
+                title: 'Date of Activities',
                 className: 'text-nowrap p-3',
                 render: function(data, type, row) {
                     return formatDateToStr(row.dateactivities, false);
                 }
             },
-            {
-                title: 'Name of Boat',
-                className: 'text-nowrap p-3',
-                render: function(data, type, row) {
-                    return row.name_other;
-                }
-            },
+            // {
+            //     title: 'Name of Boat',
+            //     className: 'text-nowrap p-3',
+            //     render: function(data, type, row) {
+            //         return row.name_other;
+            //     }
+            // },
             {
                 title: 'Address',
                 className: 'text-nowrap p-3',

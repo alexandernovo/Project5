@@ -54,7 +54,7 @@
                             <th class="text-nowrap p-3">Sex</th>
                             <th class="text-nowrap p-3">Contact No.</th>
                             <th class="text-nowrap p-3">Date Created</th>
-                            <th class="text-nowrap p-3 text-center">Renewal Status</th>
+                            <th class="text-nowrap p-3 text-center">Status</th>
                             <th class="text-nowrap p-3">Date of Renewal</th>
                             <th class="text-nowrap p-3">Date of Expiration</th>
                             <th class="text-nowrap p-3 sticky-action">Action</th>
