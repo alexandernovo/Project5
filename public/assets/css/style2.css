@@ -372,10 +372,15 @@
     text-wrap: nowrap !important;
 }
 
+.data_table th {
+    background-color: #06510c !important;
+    color: white !important;
+}
+
 .sticky-action {
     position: sticky !important;
     right: -1px !important;
-    /* background: white !important; */
+    background: #06510c !important;
     z-index: 3;
     width: 200px !important;
 }
@@ -383,9 +388,13 @@
 .data_table.dataTable > thead > tr > th:last-child {
     position: sticky !important;
     right: 0 !important;
-    background: white !important;
+    background: #06510c !important;
     z-index: 3;
     width: 200px;
+}
+
+.bg-success {
+    background: #06510c !important;
 }
 
 .data_table.dataTable > tbody > tr > td:last-child {
