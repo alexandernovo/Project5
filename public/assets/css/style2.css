@@ -375,6 +375,7 @@
 .data_table th {
     background-color: #06510c !important;
     color: white !important;
+    padding: 10px 10px !important;
 }
 
 .sticky-action {

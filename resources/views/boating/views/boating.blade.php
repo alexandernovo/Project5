@@ -47,14 +47,14 @@
                 <table id="boatingTable" class="table table-bordered data_table">
                     <thead>
                         <tr class="text-center">
-                            <th class="text-nowrap p-3 text-center">No.</th>
-                            <th class="text-nowrap p-3">Owner</th>
-                            <th class="text-nowrap p-3">Name of Boat</th>
-                            <th class="text-nowrap p-3">Address</th>
-                            <th class="text-nowrap p-3">Sex</th>
-                            <th class="text-nowrap p-3">Contact No.</th>
-                            <th class="text-nowrap p-3">Date Created</th>
-                            <th class="text-nowrap p-2 text-center align-middle" style="width: 10% !important">Action</th>
+                            <th class="text-nowrap text-center">No.</th>
+                            <th class="text-nowrap">Owner</th>
+                            <th class="text-nowrap">Name of Boat</th>
+                            <th class="text-nowrap">Address</th>
+                            <th class="text-nowrap">Sex</th>
+                            <th class="text-nowrap">Contact No.</th>
+                            <th class="text-nowrap">Date Created</th>
+                            <th class="text-nowrap text-center align-middle" style="width: 10% !important">Action</th>
                         </tr>
                     </thead>
                     <tbody>

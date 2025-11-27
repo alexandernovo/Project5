@@ -88,17 +88,17 @@
                     <table id="dashboardTable" class="table table-bordered dashboard-table-font data_table">
                         <thead>
                             <tr>
-                                <th class="text-nowrap p-3 text-center">No.</th>
-                                <th class="text-nowrap p-3">Owner of Association</th>
-                                <th class="text-nowrap p-3">OR No.</th>
-                                <th class="text-nowrap p-3">Address</th>
-                                <th class="text-nowrap p-3">Sex</th>
-                                <th class="text-nowrap p-3">Contact No.</th>
-                                <th class="text-nowrap p-3">Type of<br>Certification</th>
-                                <th class="text-nowrap p-3">Date Created</th>
-                                <th class="text-nowrap p-3 text-center">Status</th>
-                                <th class="text-nowrap p-3">Date of<br>Renewal</th>
-                                <th class="text-nowrap p-3">Date of<br>Expiration</th>
+                                <th class="text-nowrap text-center">No.</th>
+                                <th class="text-nowrap">Owner of Association</th>
+                                <th class="text-nowrap">OR No.</th>
+                                <th class="text-nowrap">Address</th>
+                                <th class="text-nowrap">Sex</th>
+                                <th class="text-nowrap">Contact No.</th>
+                                <th class="text-nowrap">Type of<br>Certification</th>
+                                <th class="text-nowrap">Date Created</th>
+                                <th class="text-nowrap text-center">Status</th>
+                                <th class="text-nowrap">Date of<br>Renewal</th>
+                                <th class="text-nowrap">Date of<br>Expiration</th>
                             </tr>
                         </thead>
                         <tbody>
