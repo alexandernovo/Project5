@@ -103,7 +103,7 @@
                                     <div class="form-group mb-1">
                                         <label for="" class="mb-1">Date of Renewed</label>
                                         <input type="date" name="date_renewal" id="date_renewal"
-                                            class="form-control" required>
+                                            class="form-control" >
                                     </div>
                                 </div>
                                 <div class="col-6">

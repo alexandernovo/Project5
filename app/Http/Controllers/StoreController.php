@@ -34,6 +34,7 @@ class StoreController extends Controller
                     "province" => $all['province'],
                     "sex" => $all['sex'],
                     "contact_no" => $all['contact_no'],
+                    "date_renewal" => $all['date_renewal'] ?? now(),
                 ]);
                 $client_id = $client->client_id;
             } else {
@@ -54,6 +55,7 @@ class StoreController extends Controller
             $all['client_id'] = $client_id;
 
             if ($record_id == 0) {
+                $all['date_renewal'] = $all['date_renewal'] ?? now();
                 $all['status'] = "ACTIVE";
                 $all['type'] = "STORE";
                 Record::create($all);
