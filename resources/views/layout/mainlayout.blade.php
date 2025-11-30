@@ -31,7 +31,7 @@
 
             @if (Route::currentRouteName() != 'home')
                 <div class="body-wrapper position-relative d-flex flex-column vh-100 justify-content-between">
-                    <div>
+                    <div class="div-upper">
                         @if (Route::currentRouteName() != 'home')
                             @include('components.header2')
                         @endif

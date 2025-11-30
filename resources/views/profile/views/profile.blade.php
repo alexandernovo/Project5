@@ -4,10 +4,17 @@
     <style>
         .div-prof {
             margin-top: 0 !important;
-            background-color: #B4B4B4
+            background-color: #B4B4B4;
+            flex: 1
+        }
+
+        .div-upper {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
         }
     </style>
-    <div class="card pt-3 bg-transparent">
+    <div class="card pt-3 bg-transparent" style="flex: 1">
         <div class="card-body p-0">
             <div class="row mx-auto">
                 <div class="col-4 border-end p-4 pb-3" style="border-right: 1px solid #555554; background-color: #093a0d;">
@@ -92,7 +99,8 @@
                             class="" style="width: 100%; height: 100%; object-fit: cover" alt="" />
                     </div>
                     <div class="d-flex justify-content-end gap-3 mt-3">
-                        <button class="btn btn-secondary-new" onclick="document.getElementById('backgroundInput').click()">
+                        <button class="btn btn-secondary-new"
+                            onclick="document.getElementById('backgroundInput').click()">
                             <i class="bi bi-arrow-bar-up"></i>
                             Upload
                         </button>
