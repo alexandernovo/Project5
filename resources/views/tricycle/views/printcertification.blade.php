@@ -69,7 +69,9 @@
                     <p style="text-indent: 40px">
                         This is to certify that {{ $record->sex == 'Male' ? 'MR.' : 'MS.' }}
                         <span class="text-uppercase"><strong>{{ $record->owner_name }}</strong></span> owner of
-                        <span class="text-uppercase"><strong>{{ $record->name_other }}</strong></span> located at
+                        {{-- <span class="text-uppercase"><strong>{{ $record->name_other }}</strong></span>  --}}
+                        <span class="text-uppercase"><strong>1- UNIT OF TRICYCLE FOR HIRE (RENEWAL)</strong></span> 
+                        located at
                         {{ $record->address }}
                         has compiled all the requirements based on Article 4 Section 12 & 14 of Municipal Ordinance No. 4
                         Series 2018 known as the

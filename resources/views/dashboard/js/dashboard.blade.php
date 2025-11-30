@@ -103,7 +103,7 @@
                 className: 'text-nowrap p-2 text-center  align-middle text-center',
                 render: function(data, type, row) {
                     return (row.type != "TREES" && row.type != "BOATING") ? renderExpirationStatus(row
-                        .record_status) : 'NA';
+                        .record_status, row.expiration) : 'NA';
                         
                 }
             },
