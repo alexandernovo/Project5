@@ -77,6 +77,7 @@ class WasteCollectController extends Controller
         $totalData = $query->count();
 
         $data = $query
+            ->orderBy("wastecollection.created_at", "DESC")
             ->offset($start)
             ->limit($length)
             ->get();

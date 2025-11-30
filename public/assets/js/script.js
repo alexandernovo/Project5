@@ -358,14 +358,19 @@ function cloneObject(obj) {
 //     }
 // }
 
-function renderExpirationStatus(record_status) {
-    if (record_status == "Expired") {
+function renderExpirationStatus(record_status, expiration) {
+    if (!expiration) return "";
+
+    const today = new Date().setHours(0, 0, 0, 0);
+    const expDate = new Date(expiration).setHours(0, 0, 0, 0);
+
+    if (expDate <= today) {
         return `
             <span class="badge p-2 bg-red" style="font-size: 12px; border-radius: 10px">Expired</span>
         `;
     } else {
         return `
-            <span class="badge p-2 bg-green" style="font-size: 12px; border-radius: 10px">Renewed</span>
+            <span class="badge p-2 bg-green" style="font-size: 12px; border-radius: 10px">Active</span>
         `;
     }
 }

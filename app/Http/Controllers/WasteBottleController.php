@@ -78,6 +78,7 @@ class WasteBottleController extends Controller
         $totalData = $query->count();
 
         $data = $query
+            ->orderBy("wastebottle.created_at", "DESC")
             ->offset($start)
             ->limit($length)
             ->get();

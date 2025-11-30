@@ -53,11 +53,12 @@
     $(document).ready(function() {
         function calculateTotal() {
             let bottle = parseFloat($("#bottleinkg").val()) || 0;
-            let rice = parseFloat($("#riceinkg").val()) || 0;
-            let total = bottle + rice;
+            $("#riceinkg").val($("#bottleinkg").val())
+            // let rice = parseFloat($("#riceinkg").val()) || 0;
+            let total = bottle + bottle;
             $("#totalinrice").val(total);
         }
 
-        $("#bottleinkg, #riceinkg").on("input change", calculateTotal);
+        $("#bottleinkg").on("input change", calculateTotal);
     });
 </script>

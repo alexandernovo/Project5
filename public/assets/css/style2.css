@@ -348,6 +348,14 @@
     color: white !important;
 }
 
+.btn-profile,
+.btn-profile:focus,
+.btn-profile:active,
+.btn-profile:hover {
+    background-color: #63300B !important;
+    color: white !important;
+}
+
 .btn-secondary-new,
 .btn-secondary-new:focus,
 .btn-secondary-new:active,

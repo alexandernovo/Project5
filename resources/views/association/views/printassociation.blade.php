@@ -111,8 +111,8 @@
                     <p><em>On {{ date('F d, Y', strtotime($record->created_at)) }}</em></p>
                 </div>
 
-                <button type="button" class="btn-close position-absolute" style="top:15px; right:15px;"
-                    aria-label="Close"></button>
+                <a href="{{ route('association_view') }}" type="button" class="btn-close position-absolute" style="top:15px; right:15px;"
+                    aria-label="Close"></a>
             </div>
         </div>
     </div>

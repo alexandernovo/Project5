@@ -95,7 +95,8 @@ class ChainsawController extends Controller
                 DB::raw("clients.firstname + ' '+ clients.middlename+' '+ clients.lastname AS owner_name"),
                 DB::raw("clients.barangay + ', '+ clients.municipality+', '+ clients.province AS address")
             )
-            ->where("records.type", "CHAINSAW");
+            ->where("records.type", "CHAINSAW")
+            ->orderBy("records.created_at", "DESC");
 
         if (!empty($searchValue)) {
             $query->where(function ($q) use ($searchValue) {

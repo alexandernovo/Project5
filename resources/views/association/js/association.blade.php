@@ -84,18 +84,18 @@
                 title: 'Renewal Status',
                 className: 'text-nowrap p-2 text-center  align-middle text-center',
                 render: function(data, type, row) {
-                    return renderExpirationStatus(row.record_status);
+                    return renderExpirationStatus(row.record_status, row.expiration);
                 }
             },
             {
-                title: 'Date of Renewal',
+                title: 'Date of Renewed',
                 className: 'text-nowrap p-2 text-center  align-middle',
                 render: function(data, type, row) {
                     return formatDateToStr(row.date_renewal, false);
                 }
             },
             {
-                title: 'Date of Expiration',
+                title: 'Date of Expired',
                 className: 'text-nowrap p-2 text-center  align-middle',
                 render: function(data, type, row) {
                     return formatDateToStr(row.expiration, false);
@@ -107,7 +107,7 @@
                 render: function(data, type, row) {
                     return `
                         <div class="d-flex gap-2 text-center align-items-center">
-                            <button class="btn d-flex justify-content-center align-items-center ${row.record_status == 'Expired' ? 'btn-green' : 'btn-red'} expRenButton" style="width: 90px" data-record_id="${row.record_id}">${row.record_status == 'Expired' ? 'Renewed' : 'Expired'}</button>
+                            <button class="btn d-flex justify-content-center align-items-center btn-blue expRenButton" style="width: 90px" data-record_id="${row.record_id}">Renew</button>
                             <button class="btn btn-warning editButton px-2" data-record_id="${row.record_id}"><i class="bi bi-pencil-fill"></i></button>
                             <button class="btn btn-secondary-new deleteButton px-2" data-record_id="${row.record_id}"><i class="bi bi-trash3"></i></button>
                         </div>
@@ -317,12 +317,9 @@
         let buttonConfirm = ""
 
         if (data) {
-            message = data.record_status === "Expired" ?
-                'Renew this Association?' :
-                'Mark this Association as Expired?';
-            buttonConfirm = data.record_status === "Expired" ?
-                'Renew' :
-                'Mark as Expired';
+            console.log(data.record_status);
+            message = 'Renew this Association?';
+            buttonConfirm = 'Renew';
 
             Swal.fire({
                 title: "Warning",

@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('username');
+            $table->string('address');
+            $table->string('phone_num');
             $table->boolean('notify')->default(false); 
             $table->string('background')->nullable();
             $table->string('profile')->nullable();

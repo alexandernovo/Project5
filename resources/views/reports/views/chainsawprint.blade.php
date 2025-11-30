@@ -130,6 +130,12 @@
                             @endif
                         </tbody>
                     </table>
+                    <div class="d-flex justify-content-end">
+                        <div class="text-end mt-2 d-flex justify-content-center align-items-center flex-column">
+                            <p class="fw-semibold mb-0">GALILEO E. NACIONALES</p>
+                            <p class="mb-0">MENRO</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

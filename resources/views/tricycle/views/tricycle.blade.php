@@ -55,8 +55,8 @@
                             <th class="text-nowrap">Contact No.</th>
                             <th class="text-nowrap">Date Created</th>
                             <th class="text-nowrap text-center">Status</th>
-                            <th class="text-nowrap">Date of Renewal</th>
-                            <th class="text-nowrap">Date of Expiration</th>
+                            <th class="text-nowrap">Date of Renewed</th>
+                            <th class="text-nowrap">Date of Expired</th>
                             <th class="text-nowrap sticky-action">Action</th>
                         </tr>
                     </thead>

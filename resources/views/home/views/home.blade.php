@@ -7,7 +7,7 @@
         <div class="text-start text-white">
             <p class="mb-4" style="font-size: 20px">Welcome to</p>
             <p class="mb-1" style="font-size: 43px; font-weight: bold">BARBAZA MENRO-BAARS</p>
-            <p style="font-size: 20px; font-style: italic">( Municipal Environment and Natural Resources)</p>
+            <p style="font-size: 20px; font-style: italic">( Municipal Environment and Natural Resources Office)</p>
             <p class="mb-1" style="font-size: 18px; margin-top: 70px">
                 "Ensuring Business Legality, Supporting Environment Goals"
             </p>

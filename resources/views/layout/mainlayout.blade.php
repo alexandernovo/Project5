@@ -35,7 +35,7 @@
                         @if (Route::currentRouteName() != 'home')
                             @include('components.header2')
                         @endif
-                        <div class="px-3 pb-3 mt-3">
+                        <div class="px-3 pb-3 mt-3 div-prof">
                             @yield('content')
                         </div>
                     </div>

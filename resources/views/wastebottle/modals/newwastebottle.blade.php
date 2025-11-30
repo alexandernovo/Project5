@@ -57,7 +57,7 @@
                         <div class="col-4">
                             <div class="form-group mb-1">
                                 <label for="" class="mb-1">Rice in Kg</label>
-                                <input type="number" name="riceinkg" id="riceinkg" class="form-control" required>
+                                <input type="number" readonly name="riceinkg" id="riceinkg" class="form-control" required>
                             </div>
                         </div>
                         <div class="col-4">

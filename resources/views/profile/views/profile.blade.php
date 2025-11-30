@@ -1,9 +1,16 @@
 @extends('layout.mainlayout')
+
 @section('content')
-    <div class="card">
+    <style>
+        .div-prof {
+            margin-top: 0 !important;
+            background-color: #B4B4B4
+        }
+    </style>
+    <div class="card pt-3 bg-transparent">
         <div class="card-body p-0">
             <div class="row mx-auto">
-                <div class="col-4 border-end p-4 pb-3" style="border-right: 1px solid #555554; background-color: #F1F2F2">
+                <div class="col-4 border-end p-4 pb-3" style="border-right: 1px solid #555554; background-color: #093a0d;">
                     <div class="d-flex justify-content-center">
                         <div class="border rounded-circle bg-white position-relative" style="width: 150px; height: 150px">
                             <img src="{{ asset(auth()->user()->profile) }}"
@@ -18,15 +25,17 @@
                             </button>
                         </div>
                     </div>
-                    <p class="mb-2 text-center mt-1">
-                        {{ '@' . auth()->user()->username }}
+                    <p class="mb-0 text-center mt-1 text-white">
+                        @galileonacionales
                     </p>
-                    <p class="mb-1 text-center mt-1 fw-semibold" style="font-size: 20px">
-                        {{ auth()->user()->firstname }}
+                    <p class="mb-1 text-center mt-0 text-white" style="font-size: 24px">
+                        {{-- {{ auth()->user()->firstname }}
                         {{ auth()->user()->middlename ? strtoupper(substr(auth()->user()->middlename, 0, 1)) . '.' : '' }}
-                        {{ auth()->user()->lastname }}
+                        {{ auth()->user()->lastname }} --}}
+                        Galileo E. Nacionales
                     </p>
-                    <div style="background-color: #808080; border-radius: 25px" class="gap-3 p-2 px-3 text-white d-flex justify-content-between align-items-center"
+                    <div style="background-color: #2C7101; border-radius: 25px"
+                        class="gap-3 p-2 px-3 text-white d-flex justify-content-between align-items-center"
                         style="border-radius: 20px">
                         <img src="{{ asset('assets/images/logo.jpg') }}" class="rounded-circle" alt=""
                             style="height: 35px; width: 35px">
@@ -70,12 +79,12 @@
                             </div>
 
                             <div class="d-flex justify-content-between mt-2">
-                                <button type="submit" class="btn btn-secondary-new">Save</button>
+                                <button type="submit" class="btn btn-profile">Save</button>
                             </div>
                         </form>
                     </div>
                 </div>
-                <div class="col-8 p-4 d-flex justify-content-between flex-column">
+                <div class="col-8 p-4 d-flex justify-content-between flex-column bg-white">
                     <div class="border" style="height: 480px">
                         <input type="file" id="backgroundInput" class="d-none" accept="image/*">
                         <img src="{{ asset(auth()->user()->background) }}" id="backgroundPreview"
@@ -87,7 +96,7 @@
                             <i class="bi bi-arrow-bar-up"></i>
                             Upload
                         </button>
-                        <button class="btn btn-secondary-new" id="deleteCover">
+                        <button class="btn btn-red" id="deleteCover">
                             <i class="bi bi-trash-fill"></i>
                             Delete
                         </button>

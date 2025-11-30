@@ -93,7 +93,8 @@ class BoatingController extends Controller
                 DB::raw("clients.firstname + ' '+ clients.middlename+' '+ clients.lastname AS owner_name"),
                 DB::raw("clients.barangay + ', '+ clients.municipality+', '+ clients.province AS address")
             )
-            ->where("records.type", "BOATING");
+            ->where("records.type", "BOATING")
+            ->orderBy("records.created_at", "DESC");
 
         if (!empty($searchValue)) {
             $query->where(function ($q) use ($searchValue) {

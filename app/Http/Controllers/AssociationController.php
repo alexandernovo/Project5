@@ -96,7 +96,8 @@ class AssociationController extends Controller
                 DB::raw("clients.firstname + ' '+ clients.middlename+' '+ clients.lastname AS owner_name"),
                 DB::raw("clients.barangay + ', '+ clients.municipality+', '+ clients.province AS address")
             )
-            ->where("records.type", "ASSOCIATION");
+            ->where("records.type", "ASSOCIATION")
+            ->orderBy("records.created_at", "DESC");
 
         if (!empty($searchValue)) {
             $query->where(function ($q) use ($searchValue) {
@@ -143,17 +144,16 @@ class AssociationController extends Controller
     public function expireRenew(Request $request)
     {
         $record_id = $request->record_id;
-        $record_status = $request->record_status == "Expired" ? "Renewed" : "Expired";
-        $message = $request->record_status == "Expired"
-            ? "Renewed successfully"
-            : "Marked as expired successfully";
+        $record_status = "Renewed";
+        $message = "Renewed successfully";
 
         $data = [
             'record_status' => $record_status,
         ];
 
-        if ($request->record_status == "Renewed") {
+        if ($record_status == "Renewed") {
             $data['date_renewal'] = now();
+            $data['expiration'] = now()->addYear();
         }
 
         Record::where('record_id', $record_id)->update($data);

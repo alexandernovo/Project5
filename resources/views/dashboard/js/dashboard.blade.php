@@ -108,7 +108,7 @@
                 }
             },
             {
-                title: 'Date of Renewal',
+                title: 'Date of Renewed',
                 className: 'text-nowrap p-2 text-center  align-middle',
                 render: function(data, type, row) {
                     return (row.type != "TREES" && row.type != "BOATING") ? formatDateToStr(row
@@ -116,7 +116,7 @@
                 }
             },
             {
-                title: 'Date of Expiration',
+                title: 'Date of Expired',
                 className: 'text-nowrap p-2 text-center  align-middle',
                 render: function(data, type, row) {
                     return (row.type != "TREES" && row.type != "BOATING") ? formatDateToStr(row.expiration,
