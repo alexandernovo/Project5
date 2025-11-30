@@ -81,7 +81,7 @@
                 }
             },
             {
-                title: 'Renewal Status',
+                title: 'Status',
                 className: 'text-nowrap p-2 text-center  align-middle text-center',
                 render: function(data, type, row) {
                     return renderExpirationStatus(row.record_status, row.expiration);
