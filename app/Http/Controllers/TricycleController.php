@@ -55,7 +55,7 @@ class TricycleController extends Controller
             $all['client_id'] = $client_id;
 
             if ($record_id == 0) {
-                $all['date_renewal'] = $all['date_renewal'] ?? now();
+                
                 $all['status'] = "ACTIVE";
                 $all['type'] = "TRICYCLE";
                 Record::create($all);

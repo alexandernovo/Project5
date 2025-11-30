@@ -58,7 +58,7 @@ class ChainsawController extends Controller
             if ($record_id == 0) {
                 $all['status'] = "ACTIVE";
                 $all['type'] = "CHAINSAW";
-                $all['date_renewal'] = $all['date_renewal'] ?? now();
+                
                 Record::create($all);
             } else {
                 Record::where("record_id", $record_id)->update($all);
