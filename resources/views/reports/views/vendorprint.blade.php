@@ -67,7 +67,7 @@
                         Vendor REPORT AS OF
                         {{ date('F Y', strtotime(request('monthyear', date('Y-m')) . '-01')) }}
                     </p>
-                    <table class="table-bordered border-dark table mt-3">
+                    <table class="table-bordered border-dark table mt-3 table-reports">
                         <thead>
                             <tr>
                                 <th class="text-center p-1 align-middle" style="font-size: 12px" style="font-size: 12px">

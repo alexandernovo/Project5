@@ -116,7 +116,7 @@
                         <div class="d-flex gap-2 text-center align-items-center">
                             <button class="btn d-flex justify-content-center align-items-center btn-blue expRenButton" style="width: 90px" data-record_id="${row.record_id}">Renew</button>
                             <button class="btn btn-warning editButton px-2" data-record_id="${row.record_id}"><i class="bi bi-pencil-fill"></i></button>
-                            <button class="btn btn-secondary-new deleteButton px-2" data-record_id="${row.record_id}"><i class="bi bi-trash3"></i></button>
+                            <button class="btn btn-red deleteButton px-2" data-record_id="${row.record_id}"><i class="bi bi-trash3"></i></button>
                         </div>
                     `;
                 }
