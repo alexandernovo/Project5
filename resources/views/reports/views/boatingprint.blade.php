@@ -84,7 +84,7 @@
                                 </th>
                                 <th class="text-center p-1 align-middle  border-right-report" style="font-size: 12px"
                                     style="font-size: 12px">
-                                    Name of Boat
+                                    Name and Date of Activities
                                 </th>
                                 <th class="text-center p-1 align-middle  border-right-report" style="font-size: 12px"
                                     style="font-size: 12px">
@@ -109,7 +109,7 @@
                                         {{ $d->ornumber }}
                                     </td>
                                     <td class="text-center px-2 py-1 align-middle" style="font-size: 12px">
-                                        {{ $d->name_other }}</td>
+                                        {{ $d->nameactivities }} | {{ date('F d, Y', strtotime($d->dateactivities)) }}</td>
                                     <td class="text-center px-2 py-1 align-middle" style="font-size: 12px">
                                         {{ $d->address }}</td>
                                     <td class="text-center px-2 py-1 align-middle" style="font-size: 12px">

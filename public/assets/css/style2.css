@@ -364,6 +364,13 @@
     color: white !important;
 }
 
+.btn-secondary-new-2,
+.btn-secondary-new-2:focus,
+.btn-secondary-new-2:active,
+.btn-secondary-new-2:hover {
+    background-color: rgb(85, 85, 85) !important;
+    color: white !important;
+}
 .sidebar-nav ul .sidebar-item.selected > .sidebar-link,
 .sidebar-nav ul .sidebar-item.selected > .sidebar-link.active,
 .sidebar-nav ul .sidebar-item > .sidebar-link.active {
