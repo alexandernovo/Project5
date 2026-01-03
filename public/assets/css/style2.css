@@ -594,30 +594,30 @@ div.dt-container .dt-paging .dt-paging-button:not(.active) button:hover {
 }
 /* Logout button */
 .btn-logout {
-    background-color: #313131;
-    color: #fff;
-    border: 1px solid #313131;
+    background-color: #313131 !important;
+    color: #fff !important;
+    border: 1px solid #313131 !important;
 }
 
 .btn-logout:hover,
 .btn-logout:focus {
-    background-color: #1f1f1f;
-    border-color: #1f1f1f;
-    color: #fff;
+    background-color: #1f1f1f !important;
+    border-color: #1f1f1f !important;
+    color: #fff !important;
 }
 
 /* Cancel logout button */
 .btn-cancel-logout {
-    background-color: #093a0d;
-    color: #fff;
-    border: 1px solid #093a0d;
+    background-color: #093a0d !important;
+    color: #fff !important;
+    border: 1px solid #093a0d !important;
 }
 
 .btn-cancel-logout:hover,
 .btn-cancel-logout:focus {
-    background-color: #062a09;
-    border-color: #062a09;
-    color: #fff;
+    background-color: #062a09 !important;
+    border-color: #062a09 !important;
+    color: #fff !important;
 }
 .badge-admin {
     background-color: #064f0c !important;
