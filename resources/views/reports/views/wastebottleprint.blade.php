@@ -1,5 +1,11 @@
 @extends('layout.mainlayout')
 @section('content')
+    @php
+        $typeWaste = request()->query('type_waste');
+        $categoryWaste = request()->query('category_waste');
+        $barangayWaste = request()->query('barangay_waste');
+        $monthWaste = request()->query('month_waste');
+    @endphp
     <div class="row mx-auto">
         <div class="card-body px-2 py-1">
             <div class="row align-items-center">
@@ -7,8 +13,8 @@
                     <div
                         class="d-flex align-items-center mb-2 flex-wrap text-lg-start text-sm-center gap-2 title-tips-class">
                         <h4 class="fw-semibold mb-0 text-nowrap">
-                            <i class="bi bi-journal-text text-white"></i>
-                            Report | Vendors
+                            <i class="bi bi-journal-text"></i>
+                            Waste Bottle
                         </h4>
                     </div>
                     <nav aria-label="breadcrumb" class="breadcrum-sm-class">
@@ -16,7 +22,7 @@
                             <li class="breadcrumb-item">
                                 <a class="text-muted text-decoration-none" href="{{ route('dashboard') }}">Dashboard</a>
                             </li>
-                            <li class="breadcrumb-item" aria-current="page">Report | Vendors</li>
+                            <li class="breadcrumb-item" aria-current="page">Waste Bottle</li>
                         </ol>
                     </nav>
                 </div>
@@ -66,10 +72,17 @@
                     <p class="mb-2 mt-4 text-center fw-semibold text-uppercase" style="font-size: 16px; color: #F90E00">
                         MUNICIPAL ENVIRONMENT & NATURAL RESOURCES OFFICE
                     </p>
-                    <p class="mb-2 mt-4 text-center fw-semibold text-uppercase" style="font-size: 20px; color: black">
-                        Vendor REPORT AS OF
-                        {{ date('F Y', strtotime(request('monthyear', date('Y-m')) . '-01')) }}
-                    </p>
+                    @if ($categoryWaste == 'Overall')
+                        <p class="mb-2 mt-4 text-center fw-semibold text-uppercase" style="font-size: 20px; color: black">
+                            WASTE BOTTLE REPORT AS OF
+                            {{ date('F Y', strtotime(request('monthyear', date('Y-m')) . '-01')) }}
+                        </p>
+                    @else
+                        <p class="mb-2 mt-4 text-center fw-semibold text-uppercase" style="font-size: 20px; color: black">
+                            WASTE BOTTLE REPORT OF BARANGAY {{ $barangayWaste }} AS OF
+                            {{ date('F Y', strtotime(request('monthyear', date('Y-m')) . '-01')) }}
+                        </p>
+                    @endif
                     <table class="table-bordered border-dark table mt-3 table-reports">
                         <thead>
                             <tr>
@@ -77,25 +90,32 @@
                                     style="font-size: 12px" style="font-size: 12px">
                                     No.
                                 </th>
+                                @if ($categoryWaste == 'Overall')
+                                    <th class="text-center p-1 align-middle border-right-report" style="font-size: 12px"
+                                        style="font-size: 12px">
+                                        Barangay
+                                    </th>
+                                    <th class="text-center p-1 align-middle border-right-report" style="font-size: 12px"
+                                        style="font-size: 12px">
+                                        Purok
+                                    </th>
+                                @else
+                                    <th class="text-center p-1 align-middle border-right-report" style="font-size: 12px"
+                                        style="font-size: 12px">
+                                        Date
+                                    </th>
+                                @endif
                                 <th class="text-center p-1 align-middle border-right-report" style="font-size: 12px"
                                     style="font-size: 12px">
-                                    Name of Owner
+                                    Bottle in Kg
                                 </th>
                                 <th class="text-center p-1 align-middle border-right-report" style="font-size: 12px"
                                     style="font-size: 12px">
-                                    OR Number
+                                    Rice in Kg
                                 </th>
                                 <th class="text-center p-1 align-middle border-right-report" style="font-size: 12px"
                                     style="font-size: 12px">
-                                    Name of Vendor
-                                </th>
-                                <th class="text-center p-1 align-middle border-right-report" style="font-size: 12px"
-                                    style="font-size: 12px">
-                                    Address
-                                </th>
-                                <th class="text-center p-1 align-middle border-right-report" style="font-size: 12px"
-                                    style="font-size: 12px">
-                                    Date
+                                    Total
                                 </th>
                             </tr>
                         </thead>
@@ -105,28 +125,53 @@
                                     <td class="text-center px-2 py-1 align-middle" style="font-size: 12px">
                                         {{ $loop->iteration }}
                                     </td>
+                                    @if ($categoryWaste == 'Overall')
+                                        <td class="text-center px-2 py-1 align-middle" style="font-size: 12px">
+                                            {{ $d->brgy }}
+                                        </td>
+                                        <td class="text-center px-2 py-1 align-middle" style="font-size: 12px">
+                                            {{ $d->purok }}
+                                        </td>
+                                    @else
+                                        <td class="text-center px-2 py-1 align-middle" style="font-size: 12px">
+                                            {{ date('F d, Y h:i a', strtotime($d->created_at)) }}
+                                        </td>
+                                    @endif
                                     <td class="text-center px-2 py-1 align-middle" style="font-size: 12px">
-                                        {{ $d->owner_name }}
-                                    </td>
+                                        {{ $d->bottleinkg }}</td>
                                     <td class="text-center px-2 py-1 align-middle" style="font-size: 12px">
-                                        {{ $d->ornumber }}
-                                    </td>
+                                        {{ $d->riceinkg }}</td>
                                     <td class="text-center px-2 py-1 align-middle" style="font-size: 12px">
-                                        {{ $d->name_other }}</td>
-                                    <td class="text-center px-2 py-1 align-middle" style="font-size: 12px">
-                                        {{ $d->address }}</td>
-                                    <td class="text-center px-2 py-1 align-middle" style="font-size: 12px">
-                                        {{ date('F d, Y h:i a', strtotime($d->created_at)) }}
+                                        {{ $d->total }}
                                     </td>
                                 </tr>
                             @endforeach
 
                             @if (empty($data) || count($data) == 0)
                                 <tr>
-                                    <td colspan="8" class="text-center py-1" style="font-size: 12px">No Data</td>
+                                    <td colspan="{{ $categoryWaste == 'Overall' ? '6' : '5' }}" class="text-center py-1"
+                                        style="font-size: 12px">No Data</td>
                                 </tr>
                             @endif
                         </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="{{ $categoryWaste == 'Overall' ? '3' : '2' }}"
+                                    class="text-start fw-semibold px-2 py-1 align-middle" style="font-size: 12px">
+                                    GRAND TOTAL
+                                </td>
+
+                                <td class="text-center px-2 py-1 align-middle" style="font-size: 12px">
+                                    {{ $totals['bottleinkg'] }}
+                                </td>
+                                <td class="text-center px-2 py-1 align-middle" style="font-size: 12px">
+                                    {{ $totals['riceinkg'] }}
+                                </td>
+                                <td class="text-center px-2 py-1 align-middle" style="font-size: 12px">
+                                    {{ $totals['grand_total'] }}
+                                </td>
+                            </tr>
+                        </tfoot>
                     </table>
                     <div class="d-flex justify-content-end">
                         <div class="text-end mt-2 d-flex justify-content-center align-items-center flex-column">
@@ -144,6 +189,10 @@
     @include('reports.js.printing')
     <script>
         const reportData = @json($data);
+        const totals = @json($totals);
+        const categoryWaste = @json($categoryWaste);
+        const barangayWaste = @json($barangayWaste);
+        const monthWaste = @json($monthWaste);
     </script>
-    @include('reports.js.vendordownload')
+    @include('reports.js.bottledownload')
 @endsection

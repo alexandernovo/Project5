@@ -35,7 +35,7 @@ function formatMonth(monthStr) {
 // ✅ Excel Export
 function downloadExcel(data, title) {
     let headers = ["No"];
-    if (categoryWaste === 'Overall') {
+    if (categoryWaste != 'Overall') {
         headers.push("Date");
     } else {
         headers.push("Barangay", "Purok");
@@ -48,7 +48,7 @@ function downloadExcel(data, title) {
 
     data.forEach((row, i) => {
         let rowData = [i + 1];
-        if (categoryWaste === 'Overall') {
+        if (categoryWaste != 'Overall') {
             rowData.push(row.created_at ? formatDate(row.created_at) : "");
         } else {
             rowData.push(row.barangay ?? "", row.purok ?? "");
@@ -66,7 +66,7 @@ function downloadExcel(data, title) {
     // Add Grand Total row
     let grandTotalRow = [];
     grandTotalRow.push("");
-    if (categoryWaste === 'Overall') {
+    if (categoryWaste != 'Overall') {
         grandTotalRow.push("GRAND TOTAL");
     } else {
         grandTotalRow.push("", "", "GRAND TOTAL");
@@ -89,7 +89,7 @@ function downloadExcel(data, title) {
 // ✅ Word Export
 function downloadWord(data, title) {
     let headers = ["No"];
-    if (categoryWaste === 'Overall') {
+    if (categoryWaste != 'Overall') {
         headers.push("Date");
     } else {
         headers.push("Barangay", "Purok");
@@ -105,7 +105,7 @@ function downloadWord(data, title) {
     data.forEach((row, i) => {
         content += `<tr>`;
         content += `<td>${i + 1}</td>`;
-        if (categoryWaste === 'Overall') {
+        if (categoryWaste != 'Overall') {
             content += `<td>${row.created_at ? formatDate(row.created_at) : ""}</td>`;
         } else {
             content += `<td>${row.barangay ?? ""}</td><td>${row.purok ?? ""}</td>`;
@@ -120,7 +120,7 @@ function downloadWord(data, title) {
 
     // Grand Total row
     content += `<tr style="font-weight:bold; background:#f2f2f2;">`;
-    if (categoryWaste === 'Overall') {
+    if (categoryWaste != 'Overall') {
         content += `<td></td><td>GRAND TOTAL</td>`;
     } else {
         content += `<td></td><td></td><td>GRAND TOTAL</td>`;

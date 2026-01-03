@@ -120,7 +120,7 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link py-1 cursor-pointer " style="font-size: 11px" data-bs-toggle="modal"
+                    <a class="sidebar-link py-1 cursor-pointer {{ Route::currentRouteName() == "wastePrint" ? 'active' : '' }}" style="font-size: 11px" data-bs-toggle="modal"
                         data-bs-target="#wasteModal" aria-expanded="false">
                         <span>
                             <i class="bi bi-journal-text text-white"></i>

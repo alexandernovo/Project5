@@ -1,6 +1,6 @@
 <script>
     $(document).on("shown.bs.modal", "#wasteModal", function() {
-        $("#barangay_waste").attr("disabled", true);
+        $("#barangay_waste").attr("disabled", true).attr("required", false).val("");
     });
 
     $(document).on("submit", "#waste_report_select", function(e) {
@@ -17,9 +17,9 @@
 
     $(document).on("change", "#category_waste", function() {
         if ($(this).val() == "Barangay") {
-            $("#barangay_waste").attr("disabled", false)
+            $("#barangay_waste").attr("disabled", false).attr("required", true);
         } else {
-            $("#barangay_waste").attr("disabled", true)
+            $("#barangay_waste").attr("disabled", true).attr("required", false).val("");
         }
     })
 </script>

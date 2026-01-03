@@ -92,7 +92,7 @@
                                     style="font-size: 12px" style="font-size: 12px">
                                     No.
                                 </th>
-                                @if ($categoryWaste == 'Overall')
+                                @if ($categoryWaste != 'Overall')
                                     <th class="text-center p-1 align-middle border-right-report" style="font-size: 12px"
                                         style="font-size: 12px">
                                         Date
@@ -135,7 +135,7 @@
                                     <td class="text-center px-2 py-1 align-middle" style="font-size: 12px">
                                         {{ $loop->iteration }}
                                     </td>
-                                    @if ($categoryWaste == 'Overall')
+                                    @if ($categoryWaste != 'Overall')
                                         <td class="text-center px-2 py-1 align-middle" style="font-size: 12px">
                                             {{ date('F d, Y h:i a', strtotime($d->created_at)) }}
                                         </td>
@@ -165,14 +165,15 @@
 
                             @if (empty($data) || count($data) == 0)
                                 <tr>
-                                    <td colspan="8" class="text-center py-1" style="font-size: 12px">No Data</td>
+                                    <td colspan="{{ $categoryWaste != 'Overall' ? '7' : '8' }}" class="text-center py-1"
+                                        style="font-size: 12px">No Data</td>
                                 </tr>
                             @endif
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="{{ $categoryWaste == 'Overall' ? '2' : '3' }}" class="text-start fw-semibold px-2 py-1 align-middle"
-                                    style="font-size: 12px">
+                                <td colspan="{{ $categoryWaste == 'Overall' ? '3' : '2' }}"
+                                    class="text-start fw-semibold px-2 py-1 align-middle" style="font-size: 12px">
                                     GRAND TOTAL
                                 </td>
 

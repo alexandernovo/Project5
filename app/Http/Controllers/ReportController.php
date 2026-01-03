@@ -171,7 +171,43 @@ class ReportController extends Controller
 
             return view('reports.views.wastecollectionprint',  $data);
         } else {
-            return view('reports.views.wastebottleprint');
+
+            $query = DB::table('wastebottle')
+                ->select(
+                    '*',
+                    DB::raw('(bottleinkg) as total')
+                )
+                ->whereRaw("FORMAT(created_at, 'yyyy-MM') = ?", [$month_waste]);
+
+            if ($category_waste == "Barangay") {
+                $query->where('brgy', $barangay_waste);
+            }
+
+            $result = $query->get([
+                'bottleinkg',
+                'riceinkg'
+            ])->map(function ($row) {
+                foreach (['bottleinkg', 'riceinkg', 'total'] as $field) {
+                    if (isset($row->$field)) {
+                        $value = (float)$row->$field;
+                        $row->$field = $value == floor($value) ? (int)$value : $value;
+                    }
+                }
+                return $row;
+            });
+
+            $totals = [
+                'bottleinkg' => $result->sum('bottleinkg'),
+                'riceinkg' => $result->sum('riceinkg'),
+                'grand_total' => $result->sum('bottleinkg'),
+            ];
+
+            $data = [
+                'data' => $result,
+                'totals' => $totals,
+            ];
+
+            return view('reports.views.wastebottleprint', $data);
         }
     }
 }
