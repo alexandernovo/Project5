@@ -3,11 +3,15 @@
     <div class="modal-dialog modal-lg  modal-dialog-centered" style="max-width: 600px">
         <div class="modal-content">
             <div class="modal-header position-relative d-flex justify-content-center align-items-center flex-column">
-                <img class="mb-1" src="{{ asset('assets/images/logo.jpg') }}" style="height: 70px; width: 70px" alt="">
+                <img class="mb-1" src="{{ asset('assets/images/logo.jpg') }}" style="height: 70px; width: 70px"
+                    alt="">
                 <div>
-                    <p class="mb-0 text-center fw-semibold" style="color: #5D0900; font-size: 20px">ASSOCIATION CERTIFICATION FORM</p>
+                    <p class="mb-0 text-center fw-semibold" style="color: #5D0900; font-size: 20px">ASSOCIATION
+                        CERTIFICATION FORM</p>
                 </div>
-                <button type="button" class="btn position-absolute rounded-circle d-flex justify-content-center align-items-center" style="top: 5px; right: 5px; width: 40px; height: 40px" data-bs-dismiss="modal" aria-label="Close">
+                <button type="button"
+                    class="btn position-absolute rounded-circle d-flex justify-content-center align-items-center"
+                    style="top: 5px; right: 5px; width: 40px; height: 40px" data-bs-dismiss="modal" aria-label="Close">
                     <i class="bi bi-x-lg" style="font-size: 15px"></i>
                 </button>
             </div>
@@ -57,8 +61,14 @@
                         <div class="col-4">
                             <div class="form-group mb-1">
                                 <label for="" class="mb-1">Barangay</label>
-                                <input type="text" name="barangay" id="barangay" placeholder="Barangay"
-                                    class="form-control" required>
+                                {{-- <input type="text" name="barangay" id="barangay" placeholder="Barangay"
+                                    class="form-control" required> --}}
+                                <select class="form-select" name="barangay" id="barangay" required>
+                                    <option value="" disabled selected>Barangay</option>
+                                    @foreach ($barangays_global as $brgy)
+                                        <option>{{ $brgy }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
                         <div class="col-4">
@@ -94,8 +104,7 @@
                         <div class="col-6">
                             <div class="form-group mb-1">
                                 <label for="" class="mb-1">Date of Renewed</label>
-                                <input type="date" name="date_renewal" id="date_renewal" class="form-control"
-                                    >
+                                <input type="date" name="date_renewal" id="date_renewal" class="form-control">
                             </div>
                         </div>
                         <div class="col-6">
@@ -109,7 +118,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary-new button-submit">Add Certification</button>
-                    <button type="button" class="btn btn-secondary-new" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-secondary-new" data-bs-dismiss="modal">Close</button>
                 </div>
             </form>
         </div>

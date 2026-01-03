@@ -54,8 +54,8 @@
                         <div class="col-12">
                             <div class="form-group mb-1">
                                 <label for="" class="mb-1">Name of Activities</label>
-                                <input type="text" name="nameactivities" id="nameactivities" placeholder="Name of Boating Activities"
-                                    class="form-control" required>
+                                <input type="text" name="nameactivities" id="nameactivities"
+                                    placeholder="Name of Boating Activities" class="form-control" required>
                             </div>
                         </div>
                         <div class="col-12">
@@ -75,8 +75,14 @@
                         <div class="col-4">
                             <div class="form-group mb-1">
                                 <label for="" class="mb-1">Barangay</label>
-                                <input type="text" name="barangay" id="barangay" placeholder="Barangay"
-                                    class="form-control" required>
+                                {{-- <input type="text" name="barangay" id="barangay" placeholder="Barangay"
+                                    class="form-control" required> --}}
+                                <select class="form-select" name="barangay" id="barangay" required>
+                                    <option value="" disabled selected>Barangay</option>
+                                    @foreach ($barangays_global as $brgy)
+                                        <option>{{ $brgy }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
                         <div class="col-4">

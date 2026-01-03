@@ -1,6 +1,6 @@
 <div class="modal fade" id="newtricycleModal" data-bs-backdrop="static" tabindex="-1"
     aria-labelledby="newtricycleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg"  style="max-width: 600px">
+    <div class="modal-dialog modal-lg" style="max-width: 600px">
         <div class="modal-content">
             <div class="modal-header position-relative d-flex justify-content-center align-items-center flex-column">
                 <img class="mb-1" src="{{ asset('assets/images/logo.jpg') }}" style="height: 70px; width: 70px"
@@ -62,8 +62,12 @@
                         <div class="col-4">
                             <div class="form-group mb-1">
                                 <label for="" class="mb-1">Barangay</label>
-                                <input type="text" name="barangay" id="barangay" placeholder="Barangay"
-                                    class="form-control" required>
+                                <select class="form-select" name="barangay" id="barangay" required>
+                                    <option value="" disabled selected>Barangay</option>
+                                    @foreach ($barangays_global as $brgy)
+                                        <option>{{ $brgy }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
                         <div class="col-4">
@@ -99,8 +103,7 @@
                         <div class="col-6">
                             <div class="form-group mb-1">
                                 <label for="" class="mb-1">Date of Renewed</label>
-                                <input type="date" name="date_renewal" id="date_renewal" class="form-control"
-                                    >
+                                <input type="date" name="date_renewal" id="date_renewal" class="form-control">
                             </div>
                         </div>
                         <div class="col-6">

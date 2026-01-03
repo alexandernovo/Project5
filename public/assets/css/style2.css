@@ -612,3 +612,9 @@ div.dt-container .dt-paging .dt-paging-button:not(.active) button:hover {
     border-color: #062a09;
     color: #fff;
 }
+.badge-admin {
+    background-color: #064f0c !important;
+    height: 45px !important;
+    padding: 5px 10px !important;
+    border-radius: 10px;
+}

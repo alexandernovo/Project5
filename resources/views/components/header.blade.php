@@ -10,8 +10,8 @@
                 <div class="brand-logo d-flex align-items-center justify-content-between ps-0">
                     <a href="#" class="text-nowrap logo-img d-flex align-items-center gap-2">
                         <img src="{{ asset('assets/images/logo.png') }}" class="bg-white rounded-circle" width=""
-                            alt="" style="width: 43px; height: 43px" />
-                        <span style="font-size: 25px; letter-spacing: 4px; font-weight: 600;"
+                            alt="" style="width: 34px; height: 34px" />
+                        <span style="font-size: 23px; letter-spacing: 4px; font-weight: 600;"
                             class="text-white title-sidebar">
                             MENRO-BARS
                         </span>
@@ -65,16 +65,28 @@
                 <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
                     <div class="d-flex gap align-items-center">
                         <li class="nav-item dropdown">
-                            <a class="nav-link nav-icon-hover px-2 cursor-pointer" data-bs-toggle="offcanvas"
-                                data-bs-target="#staticBackdrop">
+                            <a class="nav-link nav-icon-hover px-2 cursor-pointer me-4 d-flex  align-items-center"
+                                data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop">
+                                <img src="{{ asset('assets/icons/projectteam.png') }}" alt="" style="width: 27px; height: 29px">
+                                <p class="mb-0 fw-semibold text-white ms-1" style="font-size: 14px; line-height: 17px">
+                                    |
+                                    Project Team
+                                </p>
+                            </a>
+                        </li>
+                    </div>
+                    <div class="d-flex gap align-items-center">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link nav-icon-hover px-2 cursor-pointer badge-admin"
+                                data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop">
                                 <i class="bi bi-person-circle text-white"
-                                    style="font-size: calc(30px - 2px); fill: white"></i>
-                                <p class="mb-0 fw-semibold text-white ms-1" style="font-size: 15px; line-height: 17px">
+                                    style="font-size: calc(24px - 2px); fill: white"></i>
+                                <p class="mb-0 fw-semibold text-white ms-1" style="font-size: 14px; line-height: 17px">
+                                    |
                                     Admin
                                 </p>
                             </a>
                         </li>
-
                     </div>
                 </ul>
             @endif
