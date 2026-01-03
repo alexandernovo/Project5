@@ -1,15 +1,15 @@
-@php
+{{-- @php
     $table = [
         ['title' => 'CTPO', 'check' => 'ctpo'],
         ['title' => 'Barangay Certification', 'check' => 'brgy_cert'],
         ['title' => 'OR Number (Treasury Office)', 'check' => 'orno_check'],
         ['title' => 'Certificate of Registration', 'check' => 'cr_check'],
     ];
-@endphp
+@endphp --}}
 
 <div class="modal fade" id="newChainsawModal" data-bs-backdrop="static" tabindex="-1"
     aria-labelledby="newChainsawModalLabel" aria-hidden="true">
-    <div class="modal-dialog" style="max-width: 1000px">
+    <div class="modal-dialog" style="max-width: 1200px">
         <div class="modal-content">
             <div class="modal-header position-relative d-flex justify-content-center align-items-center flex-column">
                 <img class="mb-1" src="{{ asset('assets/images/logo.jpg') }}" style="height: 70px; width: 70px"
@@ -29,7 +29,7 @@
                 <input type="hidden" id="client_id" name="client_id" value="0">
                 <div class="modal-body">
                     <div class="row">
-                        <div class="col-7">
+                        <div class="col-6">
                             <div class="row mx-auto">
                                 <div class="col-12 mb-1">
                                     <p class="mb-0 fw-semibold">OWNER'S INFORMATION</p>
@@ -144,41 +144,26 @@
 
                             </div>
                         </div>
-                        <div class="col-5">
+                        <div class="col-6">
                             <div class="col-12 mb-1">
                                 <p class="mb-0 fw-semibold">CHAINSAW REQUIREMENTS</p>
                             </div>
-                            <table class="table table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th>No.</th>
-                                        <th>Requirements</th>
-                                        <th>Progress</th>
-                                        <th>Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($table as $t)
+                            <div style="max-height: 400px; overflow-y: auto">
+                                <table class="table table-bordered mb-1">
+                                    <thead>
                                         <tr>
-                                            <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $t['title'] }}</td>
-                                            <td class="text-center align-middle">
-                                                <div class="d-flex justify-content-center">
-                                                    <input class="form-check-input checkthis" type="checkbox"
-                                                        value="1" name="{{ $t['check'] }}"
-                                                        id="{{ $t['check'] }}">
-                                                </div>
-                                            </td>
-                                            <td width="30%" class="align-middle p-0">
-                                                <div class="d-flex justify-content-center">
-                                                    <span id="{{ $t['check'] }}_status">
-                                                    </span>
-                                                </div>
-                                            </td>
+                                            <th class="text-center">No.</th>
+                                            <th>Requirements</th>
+                                            <th>Progress</th>
+                                            <th class="text-center">Status</th>
+                                            <th>Action</th>
                                         </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody id="table_chainsaw">
+                                    </tbody>
+                                </table>
+                            </div>
+                            <i class="bi bi-plus-circle cursor-pointer" id="addnewrequirementschainsaw" style="font-size: 25px; color: #06510C"></i>
                         </div>
                     </div>
                 </div>

@@ -21,8 +21,11 @@ class ChainsawController extends Controller
             DB::beginTransaction();
 
             $all = $request->all();
+            $chainsawTableRequirements = $request->chainsawTableRequirements;
+            $chainsawTableRequirementsRemoved = $request->chainsawTableRequirementsRemoved;
+
             $record_id = $all['record_id'];
-            unset($all['record_id']);
+            unset($all['record_id'], $all['chainsawTableRequirements'], $all['chainsawTableRequirementsRemoved']);
 
             if ($all['client_id'] == 0) {
                 // Create new client
@@ -58,10 +61,39 @@ class ChainsawController extends Controller
             if ($record_id == 0) {
                 $all['status'] = "ACTIVE";
                 $all['type'] = "CHAINSAW";
-                
-                Record::create($all);
+
+                $record = Record::create($all);
+                $record_id = $record->record_id;
             } else {
                 Record::where("record_id", $record_id)->update($all);
+            }
+
+            $reversedRequirements = array_reverse($chainsawTableRequirements);
+
+            foreach ($reversedRequirements as $index => $ch) {
+                $nowData = now();
+
+                if ($ch['requirement_id'] == 0) {
+                    $data = [
+                        "record_id" => $record_id,
+                        "description" => $ch['description'],
+                        "progress" => $ch['progress'],
+                        "created_at"  => $nowData->copy()->addMilliseconds($index),
+                        "updated_at"  => $nowData->copy()->addMilliseconds($index),
+                    ];
+                    DB::table("requirements")->insert($data);
+                } else {
+                    $data = [
+                        "description" => $ch['description'],
+                        "progress" => $ch['progress'],
+                        "updated_at" => now(),
+                    ];
+                    DB::table("requirements")->where("requirement_id", $ch['requirement_id'])->update($data);
+                }
+            }
+
+            foreach ($chainsawTableRequirementsRemoved as $ch) {
+                DB::table("requirements")->where("requirement_id", $ch['requirement_id'])->delete();
             }
 
             DB::commit();
@@ -119,7 +151,14 @@ class ChainsawController extends Controller
         $data = $query
             ->offset($start)
             ->limit($length)
-            ->get();
+            ->get()
+            ->map(function ($row) {
+                $row->chainsawTableRequirements = DB::table('requirements')
+                    ->where('record_id', $row->record_id)
+                    ->orderBy("created_at", "DESC")
+                    ->get();
+                return $row;
+            });
 
         return response()->json([
             "draw" => intval($request->input('draw')),
