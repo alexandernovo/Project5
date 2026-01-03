@@ -63,7 +63,7 @@
                 </ul>
             @else
                 <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
-                    <div class="d-flex gap align-items-center">
+                    {{-- <div class="d-flex gap align-items-center">
                         <li class="nav-item dropdown">
                             <a class="nav-link nav-icon-hover px-2 cursor-pointer me-4 d-flex  align-items-center"
                                 data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop">
@@ -74,8 +74,8 @@
                                 </p>
                             </a>
                         </li>
-                    </div>
-                    <div class="d-flex gap align-items-center">
+                    </div> --}}
+                    {{-- <div class="d-flex gap align-items-center">
                         <li class="nav-item dropdown">
                             <a class="nav-link nav-icon-hover px-2 cursor-pointer badge-admin"
                                 data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop">
@@ -83,6 +83,18 @@
                                     style="font-size: calc(24px - 2px); fill: white"></i>
                                 <p class="mb-0 fw-semibold text-white ms-1" style="font-size: 14px; line-height: 17px">
                                     |
+                                    Admin
+                                </p>
+                            </a>
+                        </li>
+                    </div> --}}
+                    <div class="d-flex gap align-items-center">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link nav-icon-hover px-2 cursor-pointer"
+                                data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop">
+                                <i class="bi bi-person-circle text-white"
+                                    style="font-size: calc(24px - 2px); fill: white"></i>
+                                <p class="mb-0 fw-semibold text-white ms-1" style="font-size: 14px; line-height: 17px">
                                     Admin
                                 </p>
                             </a>
