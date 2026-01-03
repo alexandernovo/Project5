@@ -100,6 +100,7 @@
                     return `
                         <div class="d-flex gap-2 text-center justify-content-center align-items-center px-3">
                             <button class="btn btn-warning editButton px-2" data-record_id="${row.record_id}"><i class="bi bi-pencil-fill"></i></button>
+                            <a href="{{ route('printBoating') }}?record_id=${row.record_id}" onclick="event.stopPropagation();"  class="btn btn-secondary-new-2 px-2"><i class="bi bi-printer"></i></a>
                             <button class="btn btn-red deleteButton px-2" data-record_id="${row.record_id}"><i class="bi bi-trash3"></i></button>
                         </div>
                     `;
