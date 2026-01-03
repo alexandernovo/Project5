@@ -93,8 +93,8 @@
                             <a class="nav-link nav-icon-hover px-2 cursor-pointer"
                                 data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop">
                                 <i class="bi bi-person-circle text-white"
-                                    style="font-size: calc(24px - 2px); fill: white"></i>
-                                <p class="mb-0 fw-semibold text-white ms-1" style="font-size: 14px; line-height: 17px">
+                                    style="font-size: calc(28px - 2px); fill: white"></i>
+                                <p class="mb-0 fw-semibold text-white ms-1" style="font-size: 15px; line-height: 17px">
                                     Admin
                                 </p>
                             </a>
