@@ -57,7 +57,8 @@ class WasteBottleController extends Controller
         $dateTo = $request->input('dateTo');
 
         $query = DB::table('wastebottle')
-            ->select('*', DB::raw('(bottleinkg + riceinkg) AS total'));
+            // ->select('*', DB::raw('(bottleinkg + riceinkg) AS total'));
+            ->select('*', DB::raw('(riceinkg) AS total'));
 
         if (!empty($searchValue)) {
             $query->where(function ($q) use ($searchValue) {

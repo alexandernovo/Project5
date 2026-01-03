@@ -51,26 +51,26 @@
                         <div class="col-4">
                             <div class="form-group mb-1">
                                 <label for="" class="mb-1">Bottle in Kg</label>
-                                <input type="number" name="bottleinkg" id="bottleinkg" class="form-control" required>
+                                <input type="number" step="0.01" min="0" name="bottleinkg" id="bottleinkg" class="form-control" required>
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="form-group mb-1">
                                 <label for="" class="mb-1">Rice in Kg</label>
-                                <input type="number" readonly name="riceinkg" id="riceinkg" class="form-control" required>
+                                <input type="number" step="0.01" min="0" readonly name="riceinkg" id="riceinkg" class="form-control" required>
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="form-group mb-1">
-                                <label for="" class="mb-1">Total Waste</label>
-                                <input type="number" name="totalinrice" id="totalinrice" class="form-control" required
+                                <label for="" class="mb-1">Total</label>
+                                <input type="number" step="0.01" min="0" name="totalinrice" id="totalinrice" class="form-control" required
                                     readonly>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary-new py-1" id="wasteBottleSubmit">
+                    <button type="submit" class="btn btn-primary-new" id="wasteBottleSubmit">
                         Add Waste Bottle
                     </button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

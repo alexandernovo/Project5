@@ -3,7 +3,7 @@
         <div class="d-flex justify-content-center align-items-center mt-3 flex-column">
             <img src="{{ asset('assets/images/logo.jpg') }}" style="width: 80px; height: 80px" class="rounded-circle"
                 alt="">
-            <p class="mb-0 text-white my-2" style="font-weight: bold; font-size: 17px">MENRO-BAARS PORTAL</p>
+            <p class="mb-0 text-white my-2" style="font-weight: bold; font-size: 17px">MENRO-BARS PORTAL</p>
         </div>
         <nav class="sidebar-nav scroll-sidebar position-relative pb-3" style="">
             <ul id="sidebarnav">
@@ -100,7 +100,7 @@
                 </li>
                 <hr class="my-1 border-top border-secondary">
                 <li class="sidebar-item">
-                    <a class="sidebar-link py-1" style="font-size: 11px" href="{{ route('reportdashboard') }}"
+                    <a class="sidebar-link py-1 cursor-pointer " style="font-size: 11px" data-bs-toggle="modal" data-bs-target="#certificationModal"
                         aria-expanded="false">
                         <span>
                             <i class="bi bi-journal-text text-white"></i>
@@ -108,7 +108,16 @@
                         <span class="hide-menu text-white">Report</span>
                     </a>
                 </li>
-                <li class="sidebar-item">
+                {{-- <li class="sidebar-item">
+                    <a class="sidebar-link py-1" style="font-size: 11px" href="{{ route('reportdashboard') }}"
+                        aria-expanded="false">
+                        <span>
+                            <i class="bi bi-journal-text text-white"></i>
+                        </span>
+                        <span class="hide-menu text-white">Report</span>
+                    </a>
+                </li> --}}
+                {{-- <li class="sidebar-item">
                     <a class="sidebar-link py-1" style="font-size: 11px" href="{{ route('profile_view') }}"
                         aria-expanded="false">
                         <span>
@@ -116,7 +125,7 @@
                         </span>
                         <span class="hide-menu text-white">Profile</span>
                     </a>
-                </li>
+                </li> --}}
             </ul>
         </nav>
     </div>

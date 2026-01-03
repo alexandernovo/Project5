@@ -13,8 +13,8 @@
             backdrop: true,
             allowOutsideClick: false,
             customClass: {
-                confirmButton: 'btn btn-danger ms-2',
-                cancelButton: 'btn btn-secondary'
+                confirmButton: 'btn btn-logout ms-2',
+                cancelButton: 'btn btn-cancel-logout'
             },
             buttonsStyling: false
         }).then((result) => {

@@ -352,7 +352,7 @@
 .btn-profile:focus,
 .btn-profile:active,
 .btn-profile:hover {
-    background-color: #63300B !important;
+    background-color: #63300b !important;
     color: white !important;
 }
 
@@ -518,9 +518,97 @@
     height: 11in;
 }
 
-.table-reports thead tr th{
+.table-reports thead tr th {
     font-size: 16px;
-    text-transform:uppercase !important;
-    background-color: #07510D;
+    text-transform: uppercase !important;
+    background-color: #07510d;
     color: white;
+}
+
+input,
+select,
+textarea {
+    color: black !important;
+}
+.label-out {
+    color: white;
+}
+.input-out,
+.input-out:focus {
+    background-color: white;
+}
+
+.form-control:focus,
+.form-select:focus,
+input:focus,
+textarea:focus {
+    border-color: #10bd1e !important;
+    box-shadow: 0 0 0 0.1rem rgba(6, 81, 12, 0.5) !important;
+    /* #06510C ring */
+    outline: none !important;
+}
+
+div.dt-container .dt-paging .dt-paging-button.active button {
+    color: white !important;
+    background-color: #06510c !important;
+    border: none !important;
+}
+
+div.dt-container .dt-paging .dt-paging-button.active button:hover {
+    color: white !important;
+    background-color: #06510c !important;
+}
+
+div.dt-container .dt-paging .dt-paging-button:not(.active) button:hover {
+    color: white !important;
+    background: #06510c !important;
+    /* padding: 5px 11px !important; */
+    border: none !important;
+}
+
+.border-left-report {
+    border-left: 1px solid white;
+}
+.border-right-report {
+    border-right: 1px solid white;
+}
+
+@media print {
+    .border-left-report {
+        border-left: 1px solid black;
+        background-color: white !important;
+        color: black !important;
+    }
+    .border-right-report {
+        border-right: 1px solid black;
+        background-color: white !important;
+        color: black !important;
+    }
+}
+/* Logout button */
+.btn-logout {
+    background-color: #313131;
+    color: #fff;
+    border: 1px solid #313131;
+}
+
+.btn-logout:hover,
+.btn-logout:focus {
+    background-color: #1f1f1f;
+    border-color: #1f1f1f;
+    color: #fff;
+}
+
+/* Cancel logout button */
+.btn-cancel-logout {
+    background-color: #093a0d;
+    color: #fff;
+    border: 1px solid #093a0d;
+}
+
+.btn-cancel-logout:hover,
+.btn-cancel-logout:focus {
+    background-color: #062a09;
+    border-color: #062a09;
+    color: #fff;
 }

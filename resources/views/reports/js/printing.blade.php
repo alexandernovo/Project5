@@ -22,6 +22,18 @@
                         <title>Incident Report</title>
                         <link rel="stylesheet" href="{{ asset('template_assets/css/styles.min.css') }}">
                     </head>
+                     <style>
+                           .border-left-report {
+                                border-left: 1px solid black;
+                                background-color: white !important;
+                                color: black !important;
+                            }
+                            .border-right-report {
+                                border-right: 1px solid black;
+                                background-color: white !important;
+                                color: black !important;
+                            }
+                        </style>
                     <body>
                         ${content}
                     </body>

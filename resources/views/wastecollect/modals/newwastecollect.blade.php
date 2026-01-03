@@ -70,40 +70,44 @@
                         <div class="col-6">
                             <div class="form-group mb-1">
                                 <label for="" class="mb-1">Biodegradable</label>
-                                <input type="number" name="biodegradable" id="biodegradable" class="form-control"
-                                    required>
+                                <input type="number" step="0.01" min="0" name="biodegradable"
+                                    id="biodegradable" class="form-control" required>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="form-group mb-1">
                                 <label for="" class="mb-1">Non-Biodegradable</label>
-                                <input type="number" name="nonbio" id="nonbio" class="form-control" required>
+                                <input type="number" step="0.01" min="0" name="nonbio" id="nonbio"
+                                    class="form-control" required>
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="form-group mb-1">
                                 <label for="" class="mb-1">Recyclable</label>
-                                <input type="number" name="recyclable" id="recyclable" class="form-control" required>
+                                <input type="number" step="0.01" min="0" name="recyclable" id="recyclable"
+                                    class="form-control" required>
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="form-group mb-1">
                                 <label for="" class="mb-1">Special Waste</label>
-                                <input type="number" name="specialwaste" id="specialwaste" class="form-control"
-                                    required>
+                                <input type="number" step="0.01" min="0" name="specialwaste"
+                                    id="specialwaste" class="form-control" required>
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="form-group mb-1">
                                 <label for="" class="mb-1">Total Waste</label>
-                                <input type="number" id="total" class="form-control">
+                                <input type="number" step="0.01" min="0" id="total"
+                                    class="form-control">
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary-new" id="wasteCollectionSubmit">Add Waste
+                        Collection</button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary-new" id="wasteCollectionSubmit">Add Waste Collection</button>
                 </div>
             </form>
         </div>

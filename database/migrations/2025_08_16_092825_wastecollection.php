@@ -19,10 +19,10 @@ return new class extends Migration
             $table->string('purok')->nullable();
             $table->string('schedule_from')->nullable();
             $table->string('schedule_to')->nullable();
-            $table->integer('recyclable')->nullable();
-            $table->integer('biodegradable')->nullable();
-            $table->integer('nonbio')->nullable();
-            $table->integer('specialwaste')->nullable();
+            $table->decimal('recyclable', 10, 2)->nullable();
+            $table->decimal('biodegradable', 10, 2)->nullable();
+            $table->decimal('nonbio', 10, 2)->nullable();
+            $table->decimal('specialwaste', 10, 2)->nullable();
             $table->timestamps();
         });
     }

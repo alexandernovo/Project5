@@ -56,7 +56,10 @@ class WasteCollectController extends Controller
         $dateTo = $request->input('dateTo');
 
         $query = DB::table('wastecollection')
-            ->select('*', DB::raw('(recyclable + biodegradable + nonbio + specialwaste) AS total'));
+            ->select(
+                '*',
+                DB::raw('(recyclable + biodegradable + nonbio + specialwaste) AS total')
+            );
 
         if (!empty($searchValue)) {
             $query->where(function ($q) use ($searchValue) {
@@ -70,6 +73,7 @@ class WasteCollectController extends Controller
         if (!empty($dateFrom) && !empty($dateTo)) {
             $dateFrom = date("Y-m-d", strtotime($dateFrom));
             $dateTo = date("Y-m-d", strtotime($dateTo));
+
             $query->where(DB::raw("CAST(wastecollection.created_at AS DATE)"), ">=", $dateFrom)
                 ->where(DB::raw("CAST(wastecollection.created_at AS DATE)"), "<=", $dateTo);
         }
@@ -80,7 +84,16 @@ class WasteCollectController extends Controller
             ->orderBy("wastecollection.created_at", "DESC")
             ->offset($start)
             ->limit($length)
-            ->get();
+            ->get()
+            ->map(function ($row) {
+                // format all decimal fields
+                foreach (['recyclable', 'biodegradable', 'nonbio', 'specialwaste', 'total'] as $field) {
+                    if (isset($row->$field)) {
+                        $row->$field = number_format((float)$row->$field, 2, '.', '');
+                    }
+                }
+                return $row;
+            });
 
         return response()->json([
             "draw" => intval($request->input('draw')),
@@ -89,6 +102,7 @@ class WasteCollectController extends Controller
             "data" => $data
         ]);
     }
+
 
     public function deletewastecollect(Request $request)
     {

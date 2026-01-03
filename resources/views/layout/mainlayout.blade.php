@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>MERO-BAARS</title>
+    <title>MERO-BARS</title>
     <link rel="shortcut icon" type="image/png" href="{{ asset('assets/images/logo.png') }}" />
     <link rel="stylesheet" href="{{ asset('assets/bootstrap-icons/font/bootstrap-icons.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/twitterbootstrap.css') }}">
@@ -54,6 +54,7 @@
     </div>
     <div class="toast-container position-fixed z-3 pb-2 pe-2" id="toast-container-global" style="right: 0; bottom: 0">
     </div>
+    @include('components.certification')
     <script src="{{ asset('assets/js/loader.js') }}"></script>
     <script src="{{ asset('assets/js/jquery.js') }}"></script>
     <script src="{{ asset('assets/js/datatables.js') }}"></script>
@@ -74,6 +75,7 @@
     <script src="{{ asset('assets/js/script.js') }}"></script>
     <script src="{{ asset('assets/js/html2pdf.js') }}"></script>
     @include('layout.js.layoutjs')
+    @include('layout.js.certificationjs')
     @yield('js')
 </body>
 

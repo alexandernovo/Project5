@@ -11,9 +11,9 @@
                     <a href="#" class="text-nowrap logo-img d-flex align-items-center gap-2">
                         <img src="{{ asset('assets/images/logo.png') }}" class="bg-white rounded-circle" width=""
                             alt="" style="width: 43px; height: 43px" />
-                        <span style="font-size: 28px; letter-spacing: 4px; font-weight: 600;"
+                        <span style="font-size: 25px; letter-spacing: 4px; font-weight: 600;"
                             class="text-white title-sidebar">
-                            MENRO-BAARS
+                            MENRO-BARS
                         </span>
                     </a>
                 </div>

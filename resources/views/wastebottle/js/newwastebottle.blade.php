@@ -1,7 +1,6 @@
 <script>
     $(document).on("click", "#newwastebottleBtn", function() {
         $("#wasteBottleSubmit").html(`
-            <img src="{{ asset('assets/images/icons/Waste Bottle.png') }}" style="width: 20px; height:20px;"alt="">
             Add Waste Bottle
         `);
         resetWasteBottle();
@@ -10,7 +9,6 @@
 
     $(document).on("click", ".editButton", function() {
         $("#wasteBottleSubmit").html(`
-            <img src="{{ asset('assets/images/icons/Waste Bottle.png') }}" style="width: 20px; height:20px;"alt=""> 
             Edit Waste Bottle
         `);
         let wastebottle_id = $(this).data('wastebottle_id');
@@ -55,7 +53,7 @@
             let bottle = parseFloat($("#bottleinkg").val()) || 0;
             $("#riceinkg").val($("#bottleinkg").val())
             // let rice = parseFloat($("#riceinkg").val()) || 0;
-            let total = bottle + bottle;
+            let total = bottle;
             $("#totalinrice").val(total);
         }
 
