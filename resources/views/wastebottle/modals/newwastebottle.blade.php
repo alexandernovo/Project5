@@ -26,7 +26,12 @@
                         <div class="col-6">
                             <div class="form-group mb-1">
                                 <label for="" class="mb-1">Barangay</label>
-                                <input type="text" name="brgy" id="brgy" class="form-control" required>
+                                <select class="form-select" name="brgy" id="brgy" required>
+                                    <option value="" disabled selected>Barangay</option>
+                                    @foreach ($barangays_global as $brgy)
+                                        <option>{{ $brgy }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
                         <div class="col-6">
@@ -51,20 +56,22 @@
                         <div class="col-4">
                             <div class="form-group mb-1">
                                 <label for="" class="mb-1">Bottle in Kg</label>
-                                <input type="number" step="0.01" min="0" name="bottleinkg" id="bottleinkg" class="form-control" required>
+                                <input type="number" step="0.01" min="0" name="bottleinkg" id="bottleinkg"
+                                    class="form-control" required>
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="form-group mb-1">
                                 <label for="" class="mb-1">Rice in Kg</label>
-                                <input type="number" step="0.01" min="0" readonly name="riceinkg" id="riceinkg" class="form-control" required>
+                                <input type="number" step="0.01" min="0" readonly name="riceinkg"
+                                    id="riceinkg" class="form-control" required>
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="form-group mb-1">
                                 <label for="" class="mb-1">Total</label>
-                                <input type="number" step="0.01" min="0" name="totalinrice" id="totalinrice" class="form-control" required
-                                    readonly>
+                                <input type="number" step="0.01" min="0" name="totalinrice" id="totalinrice"
+                                    class="form-control" required readonly>
                             </div>
                         </div>
                     </div>

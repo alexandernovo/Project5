@@ -26,7 +26,12 @@
                         <div class="col-6">
                             <div class="form-group mb-1">
                                 <label for="" class="mb-1">Barangay</label>
-                                <input type="text" name="barangay" id="barangay" class="form-control" required>
+                                 <select class="form-select" name="barangay" id="barangay" required>
+                                    <option value="" disabled selected>Barangay</option>
+                                    @foreach ($barangays_global as $brgy)
+                                        <option>{{ $brgy }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             {{-- <div class="form-group mb-1">
                                 <label for="" class="mb-1">Schedule From</label>
