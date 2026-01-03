@@ -1,3 +1,14 @@
+@php
+    $reportRoute = [
+        "associationPrint",
+        "boatingPrint",
+        "chainsawPrint",
+        "treesPrint",
+        "sarisaristorePrint",
+        "tricyclePrint",
+        "vendorsPrint",
+    ];
+@endphp
 <aside class="left-sidebar primary-bg-new border-0" style="">
     <div class="h-100">
         <div class="d-flex justify-content-center align-items-center mt-3 flex-column">
@@ -100,7 +111,7 @@
                 </li>
                 <hr class="my-1 border-top border-secondary">
                 <li class="sidebar-item">
-                    <a class="sidebar-link py-1 cursor-pointer " style="font-size: 11px" data-bs-toggle="modal"
+                    <a class="sidebar-link py-1 cursor-pointer {{ in_array(Route::currentRouteName(), $reportRoute) ? "active" : "" }}" style="font-size: 11px" data-bs-toggle="modal"
                         data-bs-target="#certificationModal" aria-expanded="false">
                         <span>
                             <i class="bi bi-journal-text text-white"></i>

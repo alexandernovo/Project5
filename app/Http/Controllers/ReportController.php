@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Client;
 use App\Models\Record;
+use App\Models\WasteCollection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Exception;
@@ -86,7 +87,7 @@ class ReportController extends Controller
 
         return view('reports.views.chainsawprint', $data);
     }
-    
+
     public function treesPrint(Request $request)
     {
         $monthyear = $request->query('monthyear');
@@ -118,5 +119,59 @@ class ReportController extends Controller
         $result = $query->get();
 
         return $result;
+    }
+
+    public function wastePrint(Request $request)
+    {
+        $type_waste = $request->query('type_waste');
+        $month_waste = $request->query('month_waste');
+        $category_waste = $request->query('category_waste');
+        $barangay_waste = $request->query('barangay_waste');
+
+        if ($type_waste == "Collection") {
+            $query = DB::table('wastecollection')
+                ->select(
+                    '*',
+                    DB::raw('(recyclable + biodegradable + nonbio + specialwaste) as total')
+                )
+                ->whereRaw("FORMAT(created_at, 'yyyy-MM') = ?", [$month_waste]);
+
+            if ($category_waste == "Barangay") {
+                $query->where('barangay', $barangay_waste);
+            }
+
+            $result = $query->get([
+                'recyclable',
+                'biodegradable',
+                'nonbio',
+                'specialwaste',
+            ])->map(function ($row) {
+                foreach (['recyclable', 'biodegradable', 'nonbio', 'specialwaste', 'total'] as $field) {
+                    if (isset($row->$field)) {
+                        $value = (float)$row->$field;
+                        $row->$field = $value == floor($value) ? (int)$value : $value;
+                    }
+                }
+                return $row;
+            });
+
+            $totals = [
+                'recyclable' => $result->sum('recyclable'),
+                'biodegradable' => $result->sum('biodegradable'),
+                'nonbio' => $result->sum('nonbio'),
+                'specialwaste' => $result->sum('specialwaste'),
+            ];
+
+            $totals['grand_total'] = array_sum($totals);
+
+            $data = [
+                'data' => $result,
+                'totals' => $totals,
+            ];
+
+            return view('reports.views.wastecollectionprint',  $data);
+        } else {
+            return view('reports.views.wastebottleprint');
+        }
     }
 }

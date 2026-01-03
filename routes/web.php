@@ -99,6 +99,7 @@ Route::middleware(["userchecker"])->group(function () {
     Route::get('/reports/vendors/print', [ReportController::class, 'vendorsPrint'])->name('vendorsPrint');
     Route::get('/reports/chainsaw/print', [ReportController::class, 'chainsawPrint'])->name('chainsawPrint');
     Route::get('/reports/trees/print', [ReportController::class, 'treesPrint'])->name('treesPrint');
+    Route::get('/reports/wastePrint/print', [ReportController::class, 'wastePrint'])->name('wastePrint');
 
 
     Route::post('/dashboard/getDashboardDetails', [DashboardController::class, 'getDashboardDetails'])->name('getDashboardDetails');

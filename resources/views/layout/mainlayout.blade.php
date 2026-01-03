@@ -55,6 +55,7 @@
     <div class="toast-container position-fixed z-3 pb-2 pe-2" id="toast-container-global" style="right: 0; bottom: 0">
     </div>
     @include('components.certification')
+    @include('components.waste')
     <script src="{{ asset('assets/js/loader.js') }}"></script>
     <script src="{{ asset('assets/js/jquery.js') }}"></script>
     <script src="{{ asset('assets/js/datatables.js') }}"></script>
@@ -76,6 +77,7 @@
     <script src="{{ asset('assets/js/html2pdf.js') }}"></script>
     @include('layout.js.layoutjs')
     @include('layout.js.certificationjs')
+    @include('layout.js.wastejs')
     @yield('js')
 </body>
 
