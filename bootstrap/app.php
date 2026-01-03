@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\GuestMiddleware;
 use App\Http\Middleware\SessionMiddleWare;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
@@ -15,6 +16,7 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->group("userchecker", [SessionMiddleWare::class]);
+        $middleware->group("guestchecker", [GuestMiddleware::class]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->render(function (NotFoundHttpException $e, Request $request) {

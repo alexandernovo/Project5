@@ -1,5 +1,8 @@
+@php
+    $notRoutesHeader = ['home', 'projectteam'];
+@endphp
 <header class="app-header position-sticky top-0 w-100 primary-bg-new">
-    <nav class="navbar navbar-expand-lg navbar-light">
+    <nav class="navbar navbar-expand-lg navbar-light py-1">
         <ul class="navbar-nav">
             <li class="nav-item d-block d-xl-none">
                 <a class="nav-link sidebartoggler nav-icon-hover" id="headerCollapse" href="javascript:void(0)">
@@ -34,7 +37,7 @@
             </li>
         </ul>
         <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
-            @if (Route::currentRouteName() != 'home')
+            @if (!in_array(Route::currentRouteName(), $notRoutes))
                 <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
                     <div class="d-flex gap align-items-center">
                         <div class="d-flex flex-column justify-content-center align-items-end border-end pe-2">
@@ -65,11 +68,11 @@
                 <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
                     <div class="d-flex gap align-items-center">
                         <li class="nav-item dropdown">
-                            <a class="nav-link nav-icon-hover px-2 cursor-pointer me-4 d-flex  align-items-center"
-                                data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop">
-                                <img src="{{ asset('assets/icons/projectteam.png') }}" alt="" style="width: 27px; height: 29px">
-                                <p class="mb-0 fw-semibold text-white ms-1" style="font-size: 14px; line-height: 17px">
-                                    |
+                            <a class="nav-link nav-icon-hover px-2 cursor-pointer me-4 d-flex align-items-center {{ Route::currentRouteName() == "projectteam" ? 'badge-admin':'' }}"
+                                href="{{ route('projectteam') }}">
+                                <img src="{{ asset('assets/icons/projectteam.png') }}" alt=""
+                                    style="width: 22px; height: 22px">
+                                <p class="mb-0 fw-semibold text-white ms-1 ps-1" style="font-size: 14px; line-height: 17px; border-left: 2px solid white">
                                     Project Team
                                 </p>
                             </a>
@@ -77,12 +80,11 @@
                     </div>
                     <div class="d-flex gap align-items-center">
                         <li class="nav-item dropdown">
-                            <a class="nav-link nav-icon-hover px-2 cursor-pointer badge-admin"
+                            <a class="nav-link nav-icon-hover px-2 cursor-pointer {{ Route::currentRouteName() == "home" ? 'badge-admin':'' }}"
                                 data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop">
-                                <i class="bi bi-person-circle text-white"
+                                <i class="bi bi-person-circle text-white me-1"
                                     style="font-size: calc(24px - 2px); fill: white"></i>
-                                <p class="mb-0 fw-semibold text-white ms-1" style="font-size: 14px; line-height: 17px">
-                                    |
+                                <p class="mb-0 fw-semibold text-white ms-1 ps-1" style="font-size: 14px; line-height: 17px; border-left: 2px solid white">
                                     Admin
                                 </p>
                             </a>

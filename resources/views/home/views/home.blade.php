@@ -1,6 +1,6 @@
 @extends('layout.mainlayout')
 @section('content')
-    @include('home/css/homecss')
+    @include('home.css.homecss')
     @include('home.components.login')
     <div class="d-flex flex-nowrap justify-content-between align-items-center gap-4 banner px-5"
         style="height: calc(100vh - 122px);">

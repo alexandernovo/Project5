@@ -16,30 +16,33 @@
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/style2.css') }}" />
 </head>
+@php
+    $notRoutes = ['home', 'projectteam'];
+@endphp
 
 <body class="position-relative">
     <div class="d-flex flex-column vh-100 justify-content-between">
-        @if (Route::currentRouteName() == 'home')
+        @if (in_array(Route::currentRouteName(), $notRoutes))
             @include('components.header')
         @endif
 
         <div class="page-wrapper flex-1" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6"
             data-sidebartype="full" data-sidebar-position="fixed" data-header-position="fixed">
-            @if (Route::currentRouteName() != 'home')
+            @if (!in_array(Route::currentRouteName(), $notRoutes))
                 @include('components.sidebar')
             @endif
 
-            @if (Route::currentRouteName() != 'home')
+            @if (!in_array(Route::currentRouteName(), $notRoutes))
                 <div class="body-wrapper position-relative d-flex flex-column vh-100 justify-content-between">
                     <div class="div-upper">
-                        @if (Route::currentRouteName() != 'home')
+                        @if (!in_array(Route::currentRouteName(), $notRoutes))
                             @include('components.header2')
                         @endif
                         <div class="px-3 pb-3 mt-3 div-prof">
                             @yield('content')
                         </div>
                     </div>
-                    @if (Route::currentRouteName() != 'home')
+                    @if (!in_array(Route::currentRouteName(), $notRoutes))
                         @include('components.footer2')
                     @endif
                 </div>
@@ -47,7 +50,7 @@
                 @yield('content')
             @endif
         </div>
-        @if (Route::currentRouteName() == 'home')
+        @if (in_array(Route::currentRouteName(), $notRoutes))
             @include('components.footer')
         @endif
 

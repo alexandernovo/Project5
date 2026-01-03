@@ -16,9 +16,13 @@ use App\Http\Controllers\VendorController;
 use App\Http\Controllers\WasteBottleController;
 use App\Http\Controllers\WasteCollectController;
 
-Route::get('/', [HomeController::class, 'home'])->name('home');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
+
+Route::middleware(["guestchecker"])->group(function () {
+    Route::get('/', [HomeController::class, 'home'])->name('home');
+    Route::get('/projectteam', [HomeController::class, 'projectteam'])->name('projectteam');
+});
 
 Route::middleware(["userchecker"])->group(function () {
     //association

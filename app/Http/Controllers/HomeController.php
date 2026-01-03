@@ -7,7 +7,12 @@ use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
-    public function home() {
+    public function home()
+    {
         return view('home.views.home');
+    }
+    public function projectteam()
+    {
+        return view('home.views.projectteam');
     }
 }
