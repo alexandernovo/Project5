@@ -100,12 +100,21 @@
                 </li>
                 <hr class="my-1 border-top border-secondary">
                 <li class="sidebar-item">
-                    <a class="sidebar-link py-1 cursor-pointer " style="font-size: 11px" data-bs-toggle="modal" data-bs-target="#certificationModal"
-                        aria-expanded="false">
+                    <a class="sidebar-link py-1 cursor-pointer " style="font-size: 11px" data-bs-toggle="modal"
+                        data-bs-target="#certificationModal" aria-expanded="false">
                         <span>
                             <i class="bi bi-journal-text text-white"></i>
                         </span>
-                        <span class="hide-menu text-white">Report</span>
+                        <span class="hide-menu text-white">Certification</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link py-1 cursor-pointer " style="font-size: 11px" data-bs-toggle="modal"
+                        data-bs-target="#wasteModal" aria-expanded="false">
+                        <span>
+                            <i class="bi bi-journal-text text-white"></i>
+                        </span>
+                        <span class="hide-menu text-white">Waste</span>
                     </a>
                 </li>
                 {{-- <li class="sidebar-item">

@@ -21,8 +21,10 @@ class TreesController extends Controller
             DB::beginTransaction();
 
             $all = $request->all();
+            $treesTableRequirements = $request->treesTableRequirements;
+            $treesTableRequirementsRemoved = $request->treesTableRequirementsRemoved;
             $record_id = $all['record_id'];
-            unset($all['record_id']);
+            unset($all['record_id'], $all['treesTableRequirements'], $all['treesTableRequirementsRemoved']);
 
             if ($all['client_id'] == 0) {
                 // Create new client
@@ -58,11 +60,40 @@ class TreesController extends Controller
             if ($record_id == 0) {
                 $all['status'] = "ACTIVE";
                 $all['type'] = "TREES";
-                Record::create($all);
+                $record = Record::create($all);
+                $record_id = $record->record_id;
             } else {
                 Record::where("record_id", $record_id)->update($all);
             }
 
+            $reversedRequirements = array_reverse($treesTableRequirements);
+
+            foreach ($reversedRequirements as $index => $ch) {
+                $nowData = now();
+
+                if ($ch['requirement_id'] == 0) {
+                    $data = [
+                        "record_id" => $record_id,
+                        "description" => $ch['description'],
+                        "progress" => $ch['progress'],
+                        "created_at"  => $nowData->copy()->addMilliseconds($index),
+                        "updated_at"  => $nowData->copy()->addMilliseconds($index),
+                    ];
+                    DB::table("requirements")->insert($data);
+                } else {
+                    $data = [
+                        "description" => $ch['description'],
+                        "progress" => $ch['progress'],
+                        "updated_at" => now(),
+                    ];
+                    DB::table("requirements")->where("requirement_id", $ch['requirement_id'])->update($data);
+                }
+            }
+
+            foreach ($treesTableRequirementsRemoved as $ch) {
+                DB::table("requirements")->where("requirement_id", $ch['requirement_id'])->delete();
+            }
+            
             DB::commit();
 
             return response()->json([
@@ -118,7 +149,13 @@ class TreesController extends Controller
         $data = $query
             ->offset($start)
             ->limit($length)
-            ->get();
+            ->get()->map(function ($row) {
+                $row->treesTableRequirements = DB::table('requirements')
+                    ->where('record_id', $row->record_id)
+                    ->orderBy("created_at", "DESC")
+                    ->get();
+                return $row;
+            });
 
         return response()->json([
             "draw" => intval($request->input('draw')),
