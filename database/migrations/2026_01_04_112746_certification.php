@@ -17,6 +17,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->text('signatory')->nullable();
             $table->text('ornodescription')->nullable();
+            $table->text('approved')->nullable();
             $table->timestamps();
         });
     }

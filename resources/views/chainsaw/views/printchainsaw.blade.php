@@ -61,67 +61,80 @@
 
                 <h5 class="text-center mb-4" style="letter-spacing:3px; font-size: 20px; font-weight: bold">CERTIFICATION
                 </h5>
+                @php
+                    $date = \Carbon\Carbon::parse($record->date_renewal);
+                    $day = $date->format('j');
+                    $month = $date->format('F');
+                    $year = $date->format('Y');
 
-                <div style="font-size:16px; text-align:justify; line-height:1.8;">
-                    <p><strong>TO WHOM IT MAY CONCERN:</strong></p>
-                    <p style="text-indent: 40px">
-                        This is to certify that <strong class="text-uppercase"> {{ $record->owner_name }}</strong> a
-                        resident of
-                        {{ $record->address }} the owner of one (1) unit Chainsaw, Bran {{ $record->brand }}, Model No.
-                        {{ $record->model_no }},
-                        Serial No. {{ $record->serial_no }} has compiled all requirements based on the implementing
-                        Guidelines of Chainsaw Act 2001 (RA No. 9175) and Article 12 & 14
-                        of Municipal Ordinance No. 4 Series of 2018 known as the Ecological and Integrated Solid Waste
-                        Management of the Municipality of Barbaza and is allowed to renew
-                        {{ $record->sex == 'Female' ? 'her' : 'his' }} Chainsaw license for business.
-                    </p>
-                    <p style="text-indent: 40px">
-                        This certification is issued to <strong class="text-uppercase"> {{ $record->owner_name }}</strong>
-                        for whatever legal
-                        purpose
-                        it may
-                        serve.
-                    </p>
-                    @php
-                        $date = \Carbon\Carbon::parse($record->date_renewal);
-                        $day = $date->format('j');
-                        $month = $date->format('F');
-                        $year = $date->format('Y');
+                    if ($day % 10 == 1 && $day != 11) {
+                        $suffix = 'st';
+                    } elseif ($day % 10 == 2 && $day != 12) {
+                        $suffix = 'nd';
+                    } elseif ($day % 10 == 3 && $day != 13) {
+                        $suffix = 'rd';
+                    } else {
+                        $suffix = 'th';
+                    }
+                    $sex = $record->sex == 'Female' ? 'her' : 'his';
+                @endphp
+                {!! $description != "" ? "<p style='white-space: pre-wrap'>{$description}</p>" : "
+                    <div style='font-size:16px; text-align:justify; line-height:1.8;'>
+                        <p><strong>TO WHOM IT MAY CONCERN:</strong></p>
+                        <p style='text-indent: 40px'>
+                            This is to certify that <strong class='text-uppercase'>$record->owner_name</strong> a
+                            resident of
+                            $record->address the owner of one (1) unit Chainsaw, Brand $record->brand, Model No.
+                            $record->model_no,
+                            Serial No.$record->serial_no has compiled all requirements based on the implementing
+                            Guidelines of Chainsaw Act 2001 (RA No. 9175) and Article 12 & 14
+                            of Municipal Ordinance No. 4 Series of 2018 known as the Ecological and Integrated Solid Waste
+                            Management of the Municipality of Barbaza and is allowed to renew $sex
+                            Chainsaw license for business.
+                        </p>
+                        <p style='text-indent: 40px'>
+                            This certification is issued to <strong class='text-uppercase'>$record->owner_name</strong>
+                            for whatever legal
+                            purpose
+                            it may
+                            serve.
+                        </p>
+                
 
-                        if ($day % 10 == 1 && $day != 11) {
-                            $suffix = 'st';
-                        } elseif ($day % 10 == 2 && $day != 12) {
-                            $suffix = 'nd';
-                        } elseif ($day % 10 == 3 && $day != 13) {
-                            $suffix = 'rd';
-                        } else {
-                            $suffix = 'th';
-                        }
-                    @endphp
-
-                    <p style="text-indent: 40px">
-                        Done this {{ $day }}<sup>{{ $suffix }}</sup> day of {{ $month }},
-                            {{ $year }} at Barbaza, Antique.
-                    </p>
-                </div>
+                        <p style='text-indent: 40px'>
+                            Done this $day<sup>$suffix</sup> day of $month,
+                               $year at Barbaza, Antique.
+                        </p>
+                    </div>"
+                !!}
                 <div class="d-flex justify-content-start">
                     <div class="text-end mt-5 d-flex justify-content-center align-items-center flex-column">
-                        <p class="fw-semibold mb-0 align-self-start mb-4">Recommending Approval:</p>
-                        <p class="fw-semibold mb-0 ms-5">GALILEO E. NACIONALES</p>
-                        <p class="mb-0 ms-5">MENRO</p>
+                        {!! $signatory != "" ? "<p style='white-space: pre-wrap'>$signatory</p>" : "
+                            <p class='fw-semibold mb-0 align-self-start mb-4'>Recommending Approval:</p>
+                            <p class='fw-semibold mb-0 ms-5'>GALILEO E. NACIONALES</p>
+                            <p class='mb-0 ms-5'>MENRO</p>"
+                        !!}
                     </div>
                 </div>
                 <div class="d-flex justify-content-end me-5">
                     <div class="text-end mt-5 d-flex justify-content-center align-items-center flex-column">
-                        <p class="fw-semibold mb-0 align-self-start mb-4">Approved:</p>
-                        <p class="fw-semibold mb-0">ROBERTO C. NECOR</p>
-                        <p class="mb-0">Municipal Mayor</p>
+                        {!! $approved != "" ? "<p style='white-space: pre-wrap'>$approved</p>" : "
+                            <p class='fw-semibold mb-0 align-self-start mb-4'>Approved:</p>
+                            <p class='fw-semibold mb-0'>ROBERTO C. NECOR</p>
+                            <p class='mb-0'>Municipal Mayor</p>"
+                         !!}
                     </div>
                 </div>
+
+                @php
+                    $date = date('F d, Y', strtotime($record->created_at));
+                @endphp
                 <div class="mt-4 fw-semibold" style="font-size:11px; color:#555;">
-                    <p class="mb-0"><em>Paid under O.R. No. {{ $record->ornumber }}</em></p>
-                    <p class="mb-0"><em>Issued at Barbaza, Antique</em></p>
-                    <p><em>On {{ date('F d, Y', strtotime($record->created_at)) }}</em></p>
+                    {!! $ornodescription != "" ? "<p style='white-space: pre-wrap'>$ornodescription</p>" : "
+                        <p class='mb-0'><em>Paid under O.R. No. $record->ornumber</em></p>
+                        <p class='mb-0'><em>Issued at Barbaza, Antique</em></p>
+                        <p><em>On $date</em></p>
+                    "!!}
                 </div>
 
                 <a href="{{ route('chainsaw_view') }}" type="button" class="btn-close position-absolute" style="top:15px; right:15px;"

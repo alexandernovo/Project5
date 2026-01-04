@@ -10,6 +10,12 @@ use Exception;
 
 class ChainsawController extends Controller
 {
+    protected $certificationController;
+
+    public function __construct(CertificationController $certificationController)
+    {
+        $this->certificationController = $certificationController;
+    }
     public function chainsaw_view()
     {
         return view('chainsaw.views.chainsaw');
@@ -194,7 +200,48 @@ class ChainsawController extends Controller
             )
             ->where("records.type", "CHAINSAW")
             ->where("records.record_id", $record_id)->first();
+        $certification = DB::table("certification")->where("record_id", $record_id)->first();
 
-        return view('chainsaw.views.printchainsaw', ['record' => $record]);
+        $badges = [
+            ['label' => 'Address', 'value' => ':address', 'key' => 'address'],
+            ['label' => 'Owner Name', 'value' => ':OWNER_NAME', 'key' => 'OWNER_NAME'],
+            ['label' => 'Year', 'value' => ':year', 'key' => 'year'],
+            ['label' => 'Model No.', 'value' => ':model_no', 'key' => 'model_no'],
+            ['label' => 'Serial No.', 'value' => ':serial_no', 'key' => 'serial_no'],
+            ['label' => 'Brand', 'value' => ':brand', 'key' => 'brand'],
+            ['label' => 'Month', 'value' => ':month', 'key' => 'month'],
+            ['label' => 'Day', 'value' => ':day', 'key' => 'day'],
+            ['label' => 'OR Number', 'value' => ':or_number', 'key' => 'ornumber'],
+            ['label' => 'Created Date', 'value' => ':created_at', 'key' => 'created_at'],
+        ];
+
+        $date = \Carbon\Carbon::parse($record->created_at ?? now());
+
+        $recordData = [
+            'year' => $date->format('Y'),
+            'month' => $date->format('F'),
+            'day' => $date->format('j'),
+            'OWNER_NAME' => $record->owner_name ?? '',
+            'serial_no' => $record->serial_no ?? '',
+            'model_no' => $record->model_no ?? '',
+            'brand' => $record->brand ?? '',
+            'address' => $record->address ?? '',
+            'date_activities' => \Carbon\Carbon::parse($record->created_at ?? now())->format('F d, Y'),
+            'ornumber' => $record->ornumber ?? '',
+            'created_at' => \Carbon\Carbon::parse($record->created_at ?? now())->format('F d, Y'),
+        ];
+
+        $description =  $this->certificationController->replacePlaceholders($certification->description ?? '', $badges, $recordData);
+        $signatory =  $this->certificationController->replacePlaceholders($certification->signatory ?? '', $badges, $recordData);
+        $ornodescription =  $this->certificationController->replacePlaceholders($certification->ornodescription ?? '', $badges, $recordData);
+        $approved =  $this->certificationController->replacePlaceholders($certification->approved ?? '', $badges, $recordData);
+
+        return view('chainsaw.views.printchainsaw', [
+            'record' => $record,
+            'description' => $description,
+            'signatory' => $signatory,
+            'ornodescription' => $ornodescription,
+            'approved' => $approved,
+        ]);
     }
 }

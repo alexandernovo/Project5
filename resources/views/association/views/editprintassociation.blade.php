@@ -23,7 +23,7 @@
                                 <a class="text-muted text-decoration-none"
                                     href="{{ route('association_view') }}">Association</a>
                             </li>
-                            <li class="breadcrumb-item" aria-current="page">Print Association</li>
+                            <li class="breadcrumb-item" aria-current="page">Edit Association Certificate</li>
                         </ol>
                     </nav>
                 </div>

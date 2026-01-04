@@ -9,9 +9,9 @@
                     <div
                         class="d-flex align-items-center mb-2 flex-wrap text-lg-start text-sm-center gap-2 title-tips-class">
                         <h4 class="fw-semibold mb-0 text-nowrap">
-                            <img src="{{ asset('assets/images/icons/Boating.png') }}"
+                            <img src="{{ asset('assets/images/icons/Chainsaw.png') }}"
                                 style="width: 30px; height:40px; filter: invert(1);" alt="">
-                            Boating
+                            Chainsaw
                         </h4>
                     </div>
                     <nav aria-label="breadcrumb" class="breadcrum-sm-class">
@@ -20,10 +20,9 @@
                                 <a class="text-muted text-decoration-none" href="{{ route('dashboard') }}">Dashboard</a>
                             </li>
                             <li class="breadcrumb-item">
-                                <a class="text-muted text-decoration-none"
-                                    href="{{ route('boating_view') }}">Boating</a>
+                                <a class="text-muted text-decoration-none" href="{{ route('chainsaw_view') }}">Chainsaw</a>
                             </li>
-                            <li class="breadcrumb-item" aria-current="page">Edit Boating Certificate</li>
+                            <li class="breadcrumb-item" aria-current="page">Edit Chainsaw Certificate</li>
                         </ol>
                     </nav>
                 </div>
@@ -64,8 +63,10 @@
                     @php
                         $badges = [
                             ['label' => 'Address', 'value' => ':address'],
-                            ['label' => 'Activities', 'value' => ':activities'],
-                            ['label' => 'Date of Activities', 'value' => ':activities'],
+                            ['label' => 'Owner', 'value' => ':OWNER_NAME'],
+                            ['label' => 'Brand', 'value' => ':brand'],
+                            ['label' => 'Serial No.', 'value' => ':serial_no'],
+                            ['label' => 'Model No.', 'value' => ':model_no'],
                             ['label' => 'Day', 'value' => ':day'],
                             ['label' => 'Month', 'value' => ':month'],
                             ['label' => 'Year', 'value' => ':year'],
@@ -88,50 +89,71 @@
                         } else {
                             $suffix = 'th';
                         }
+                        $sex = $record->sex == 'Female' ? 'her' : 'his';
                     @endphp
                     <div class="mb-2">
                         <label class="fw-semibold">Available Placeholder: (Tip - Click the row you want before clicking this
                             placeholder)</label><br>
-                        @foreach ($badges as $badge)
-                            <span class="badge badge-choice bg-secondary-new text-white" data-badge="{{ $badge['value'] }}"
-                                style="cursor:pointer;">
-                                {{ $badge['label'] }}
-                            </span>
-                        @endforeach
+                        <div class="d-flex gap-1 flex-wrap">
+                            @foreach ($badges as $badge)
+                                <span class="badge badge-choice bg-secondary-new text-white" data-badge="{{ $badge['value'] }}"
+                                    style="cursor:pointer;">
+                                    {{ $badge['label'] }}
+                                </span>
+                            @endforeach
+                        </div>
                     </div>
                     <textarea id="description" name="description" required>
                         {{ ($certificate && $certificate->description ) ? $certificate->description 
-                        : " <p><strong>TO WHOM IT MAY CONCERN:</strong></p>
+                        : "<p><strong>TO WHOM IT MAY CONCERN:</strong></p>
                             <p style='text-indent: 40px'>
-                                This is to certify that Barangay Officials of <strong class='highlight-bg-cert' contenteditable='false'>:address</strong></strong> is
-                                allowed to conduct <span class='highlight-bg-cert' contenteditable='false'>:activities</span> on <span class='highlight-bg-cert' contenteditable='false'>:date_activities</span> as part of their Religious
-                                Fiesta
-                                activity.
+                                This is to certify that <strong class='highlight-bg-cert text-uppercase' contenteditable='false'>:OWNER_NAME</strong> a
+                                resident of
+                                <span class='highlight-bg-cert' contenteditable='false'>:address</span> the owner of one (1) unit Chainsaw, Brand <span class='highlight-bg-cert' contenteditable='false'>:brand</span>, Model No.
+                                <span class='highlight-bg-cert' contenteditable='false'>:model_no</span>,
+                                Serial No. <span class='highlight-bg-cert' contenteditable='false'>:serial_no</span> has compiled all requirements based on the implementing
+                                Guidelines of Chainsaw Act 2001 (RA No. 9175) and Article 12 & 14
+                                of Municipal Ordinance No. 4 Series of 2018 known as the Ecological and Integrated Solid Waste
+                                Management of the Municipality of Barbaza and is allowed to renew
+                                $sex Chainsaw license for business.
                             </p>
                             <p style='text-indent: 40px'>
-                                On the other hand, they should ensure to protect and conserve our environment. However, it is still
-                                subject to the approval of the Provincial Coast Guard.
+                                This certification is issued to <strong class='highlight-bg-cert text-uppercase' contenteditable='false'>:OWNER_NAME</strong>
+                                for whatever legal
+                                purpose
+                                it may
+                                serve.
                             </p>
                             <p style='text-indent: 40px'>
-                                This certification is issued to whatever legal purpose it may serve.
-                            </p>
-                            <p style='text-indent: 40px'>
-                                Issued <span class='highlight-bg-cert' contenteditable='false'>:day</span><sup>$suffix</sup> day of <span class='highlight-bg-cert' contenteditable='false'>:month</span>,
-                                    <span class='highlight-bg-cert' contenteditable='false'>:year</span> at the Municipality of Barbaza, Antique, Philippines.
+                                Done this <span class='highlight-bg-cert' contenteditable='false'>:day</span><sup>$suffix</sup> day of <span class='highlight-bg-cert' contenteditable='false'>:month</span>,
+                                    <span class='highlight-bg-cert' contenteditable='false'>:year</span> at Barbaza, Antique.
                             </p>"
                         }}
                     </textarea>
-
-                    <div class="d-flex justify-content-end">
-                   
-                        <textarea id="signatory" name="signatory" required>
-                            {{ ($certificate && $certificate->signatory ) ? $certificate->signatory 
-                            : "<div class='text-end mt-5 d-flex justify-content-center align-items-center flex-column'>
-                                    <p class='fw-semibold mb-0'>GALILEO E. NACIONALES</p>
-                                    <p class='mb-0'>MENRO</p>
-                                </div>"
+                    <div class="d-flex justify-content-start">
+                        <div class='text-end mt-5 d-flex justify-content-center align-items-center flex-column'>
+                            <textarea id="signatory" name="signatory" required>
+                            {{ ($certificate && $certificate->signatory) ? $certificate->signatory 
+                            : "<p class='text-start fw-semibold mb-0 align-self-start mb-4'>Recommending Approval:</p>
+                                <p class='text-center fw-semibold mb-0 ms-5'>GALILEO E. NACIONALES</p>
+                                <p class='text-center mb-0 ms-5'>MENRO</p>
+                                "
                             }}
-                        </textarea>
+                            </textarea>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-end me-5">
+                        <div class='text-end mt-5 d-flex justify-content-center align-items-center flex-column'>
+                            <textarea id="approved" name="approved" required>
+                                {{ ($certificate && $certificate->approved ) ? $certificate->approved 
+                                : "
+                                    <p class='fw-semibold text-start mb-0 align-self-start mb-4'>Approved:</p>
+                                    <p class='fw-semibold text-center mb-0'>ROBERTO C. NECOR</p>
+                                    <p class='mb-0 text-center'>Municipal Mayor</p>
+                                    "
+                                }}
+                            </textarea>
+                        </div>
                     </div>
                     <textarea id="ornodescription" name="ornodescription" required>
                         {{ ($certificate && $certificate->ornodescription ) ? $certificate->ornodescription 
@@ -154,5 +176,5 @@
     </div>
 @endsection
 @section('js')
-    @include('boating.js.editcertification')
+    @include('chainsaw.js.editcertification')
 @endsection

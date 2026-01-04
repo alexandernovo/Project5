@@ -23,6 +23,15 @@ class CertificationController extends Controller
         return view('boating.views.editprintboating', ['record' => $data, 'certificate' => $certificate]);
     }
 
+    public function chainsaw_certificate(Request $request)
+    {
+        $record_id = $request->query("record_id");
+        $data = $this->getPrintQuery($record_id, "CHAINSAW");
+        $certificate = DB::table("certification")->where("record_id", $record_id)->first();
+        return view('chainsaw.views.editprintchainsaw', ['record' => $data, 'certificate' => $certificate]);
+    }
+
+
     private function getPrintQuery($id, $type)
     {
         $query = DB::table('records')
@@ -54,6 +63,10 @@ class CertificationController extends Controller
             'updated_at' => $now,
         ];
 
+        if (!empty($request->approved)) {
+            $data['approved'] = $request->approved;
+        }
+
         $find = DB::table("certification")->where("record_id", $request->record_id)->first();
         if (!$find) {
             $data["created_at"] = $now;
@@ -75,13 +88,22 @@ class CertificationController extends Controller
             $placeholder = $badge['value'];
             $value = $recordData[$badge['key']] ?? '';
 
-            // Match <strong ...>PLACEHOLDER</strong> or <span ...>PLACEHOLDER</span>
-            $pattern = "/<(strong|span)[^>]*>" . preg_quote($placeholder, '/') . "<\/\\1>/i";
+            // Match <strong> or <span> containing the placeholder
+            $pattern = "/<(strong|span)([^>]*)>" . preg_quote($placeholder, '/') . "<\/\\1>/i";
 
-            // Replace with same tag but remove extra attributes
-            $replacement = "<$1>" . $value . "</$1>";
+            $html = preg_replace_callback($pattern, function ($matches) use ($value) {
+                $tag = $matches[1]; // strong or span
+                $attrs = $matches[2]; // all existing attributes
 
-            $html = preg_replace($pattern, $replacement, $html);
+                // Remove only highlight-bg-cert class and contenteditable attribute
+                $attrs = preg_replace('/\bhighlight-bg-cert\b/', '', $attrs);
+                $attrs = preg_replace('/\s*contenteditable=["\']?false["\']?/', '', $attrs);
+
+                // Clean up extra spaces
+                $attrs = trim(preg_replace('/\s+/', ' ', $attrs));
+
+                return "<$tag" . ($attrs ? " $attrs" : "") . ">$value</$tag>";
+            }, $html);
         }
 
         return $html;
