@@ -11,7 +11,7 @@
     <div class="offcanvas-body">
         <div class="d-flex flex-column justify-content-center align-items-center mt-3">
             <h5 class="text-center text-white mb-4">
-                MENRO-BAARS Admin Login
+                MENRO-BARS Admin Login
             </h5>
             <img src="{{ asset('assets/images/logo.jpg') }}" class="rounded-circle" alt=""
                 style="width: 120px; height: 120px">
