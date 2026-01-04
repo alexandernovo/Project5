@@ -200,6 +200,7 @@ class ChainsawController extends Controller
             )
             ->where("records.type", "CHAINSAW")
             ->where("records.record_id", $record_id)->first();
+            
         $certification = DB::table("certification")->where("record_id", $record_id)->first();
 
         $badges = [

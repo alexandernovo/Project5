@@ -42,8 +42,7 @@
             console.log(badgeText);
             let tags = badgeText.toLowerCase().includes("owner") ? "strong" : 'span';
             var type = badgeText.toLowerCase().includes("owner") ? "text-uppercase" : '';
-            var html =
-                `<${tags} class="highlight-bg-cert ${type}" contenteditable="false">${badgeText}</${tags}>`;
+            var html = `<${tags} class="highlight-bg-cert ${type}" contenteditable="false">${badgeText}</${tags}>`;
 
             // Restore cursor of last focused editor
             $(lastFocusedEditor).summernote('restoreRange');

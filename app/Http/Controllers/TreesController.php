@@ -10,6 +10,13 @@ use Exception;
 
 class TreesController extends Controller
 {
+    protected $certificationController;
+
+    public function __construct(CertificationController $certificationController)
+    {
+        $this->certificationController = $certificationController;
+    }
+
     public function trees_view()
     {
         return view('trees.views.trees');
@@ -93,7 +100,7 @@ class TreesController extends Controller
             foreach ($treesTableRequirementsRemoved as $ch) {
                 DB::table("requirements")->where("requirement_id", $ch['requirement_id'])->delete();
             }
-            
+
             DB::commit();
 
             return response()->json([
@@ -191,7 +198,51 @@ class TreesController extends Controller
             )
             ->where("records.type", "TREES")
             ->where("records.record_id", $record_id)->first();
+        $certification = DB::table("certification")->where("record_id", $record_id)->first();
 
-        return view('trees.views.printtrees', ['record' => $record]);
+        $badges = [
+            ['label' => 'Address', 'value' => ':address', 'key' => 'address'],
+            ['label' => 'Owner Name', 'value' => ':OWNER_NAME', 'key' => 'OWNER_NAME'],
+            ['label' => 'Year', 'value' => ':year', 'key' => 'year'],
+            ['label' => 'Lot No.', 'value' => ':lot_no', 'key' => 'lot_no'],
+            ['label' => 'No. of Trees', 'value' => ':no_trees', 'key' => 'no_trees'],
+            ['label' => 'Type of Trees', 'value' => ':type_trees', 'key' => 'type_trees'],
+            ['label' => 'Trees Located', 'value' => ':trees_located', 'key' => 'trees_located'],
+            ['label' => 'Month', 'value' => ':month', 'key' => 'month'],
+            ['label' => 'Day', 'value' => ':day', 'key' => 'day'],
+            ['label' => 'OR Number', 'value' => ':or_number', 'key' => 'ornumber'],
+            ['label' => 'Created Date', 'value' => ':created_at', 'key' => 'created_at'],
+        ];
+
+        $date = \Carbon\Carbon::parse($record->created_at ?? now());
+        $formatter = new \NumberFormatter('en', \NumberFormatter::SPELLOUT);
+        $words = ucfirst($formatter->format($record->nooftrees));
+        $recordData = [
+            'year' => $date->format('Y'),
+            'month' => $date->format('F'),
+            'day' => $date->format('j'),
+            'OWNER_NAME' => $record->owner_name ?? '',
+            'lot_no' => $record->lot_no ?? '',
+            'no_trees' => $words . (!empty($record->nooftrees) ? ' (' . $record->nooftrees . ')' : ''),
+            'type_trees' => $record->typeoftrees ?? '',
+            'trees_located' => $record->treeslocated ?? '',
+            'address' => $record->address ?? '',
+            'date_activities' => \Carbon\Carbon::parse($record->created_at ?? now())->format('F d, Y'),
+            'ornumber' => $record->ornumber ?? '',
+            'created_at' => \Carbon\Carbon::parse($record->created_at ?? now())->format('F d, Y'),
+        ];
+
+        $description =  $this->certificationController->replacePlaceholders($certification->description ?? '', $badges, $recordData);
+        $signatory =  $this->certificationController->replacePlaceholders($certification->signatory ?? '', $badges, $recordData);
+        $ornodescription =  $this->certificationController->replacePlaceholders($certification->ornodescription ?? '', $badges, $recordData);
+        $approved =  $this->certificationController->replacePlaceholders($certification->approved ?? '', $badges, $recordData);
+
+        return view('trees.views.printtrees', [
+            'record' => $record,
+            'description' => $description,
+            'signatory' => $signatory,
+            'ornodescription' => $ornodescription,
+            'approved' => $approved,
+        ]);
     }
 }

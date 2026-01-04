@@ -31,6 +31,13 @@ class CertificationController extends Controller
         return view('chainsaw.views.editprintchainsaw', ['record' => $data, 'certificate' => $certificate]);
     }
 
+    public function trees_certificate(Request $request)
+    {
+        $record_id = $request->query("record_id");
+        $data = $this->getPrintQuery($record_id, "TREES");
+        $certificate = DB::table("certification")->where("record_id", $record_id)->first();
+        return view('trees.views.editprinttrees', ['record' => $data, 'certificate' => $certificate]);
+    }
 
     private function getPrintQuery($id, $type)
     {

@@ -117,7 +117,7 @@
                     </div>
                 </div>
                 <div class="d-flex justify-content-end me-5">
-                    <div class="text-end mt-5 d-flex justify-content-center align-items-center flex-column">
+                    <div class="text-end mt-2 d-flex justify-content-center align-items-center flex-column">
                         {!! $approved != "" ? "<p style='white-space: pre-wrap'>$approved</p>" : "
                             <p class='fw-semibold mb-0 align-self-start mb-4'>Approved:</p>
                             <p class='fw-semibold mb-0'>ROBERTO C. NECOR</p>
