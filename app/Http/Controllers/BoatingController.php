@@ -10,6 +10,13 @@ use Exception;
 
 class BoatingController extends Controller
 {
+    protected $certificationController;
+
+    public function __construct(CertificationController $certificationController)
+    {
+        $this->certificationController = $certificationController;
+    }
+
     public function boating_view()
     {
         return view('boating.views.boating');
@@ -153,6 +160,42 @@ class BoatingController extends Controller
             ->where("records.type", "BOATING")
             ->where("records.record_id", $record_id)->first();
 
-        return view('boating.views.printcertification', ['record' => $record]);
+        $certification = DB::table("certification")->where("record_id", $record_id)->first();
+
+        $badges = [
+            ['label' => 'Address', 'value' => ':address', 'key' => 'address'],
+            ['label' => 'Year', 'value' => ':year', 'key' => 'year'],
+            ['label' => 'Date Activities', 'value' => ':date_activities', 'key' => 'date_activities'],
+            ['label' => 'Activities', 'value' => ':activities', 'key' => 'activities'],
+            ['label' => 'Month', 'value' => ':month', 'key' => 'month'],
+            ['label' => 'Day', 'value' => ':day', 'key' => 'day'],
+            ['label' => 'OR Number', 'value' => ':or_number', 'key' => 'ornumber'],
+            ['label' => 'Created Date', 'value' => ':created_at', 'key' => 'created_at'],
+        ];
+
+        $date = \Carbon\Carbon::parse($record->created_at ?? now());
+
+        $recordData = [
+            'year' => $date->format('Y'),
+            'month' => $date->format('F'),
+            'day' => $date->format('j'),
+            'owner_name' => $record->owner_name ?? '',
+            'activities' => $record->nameactivities ?? '',
+            'address' => $record->address ?? '',
+            'date_activities' => \Carbon\Carbon::parse($record->created_at ?? now())->format('F d, Y'),
+            'ornumber' => $record->ornumber ?? '',
+            'created_at' => \Carbon\Carbon::parse($record->created_at ?? now())->format('F d, Y'),
+        ];
+
+        $description =  $this->certificationController->replacePlaceholders($certification->description ?? '', $badges, $recordData);
+        $signatory =  $this->certificationController->replacePlaceholders($certification->signatory ?? '', $badges, $recordData);
+        $ornodescription =  $this->certificationController->replacePlaceholders($certification->ornodescription ?? '', $badges, $recordData);
+
+        return view('boating.views.printcertification', [
+            'record' => $record,
+            'description' => $description,
+            'signatory' => $signatory,
+            'ornodescription' => $ornodescription,
+        ]);
     }
 }

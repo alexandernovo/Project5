@@ -62,55 +62,64 @@
 
                 <h5 class="text-center mb-4" style="letter-spacing:3px; font-size: 20px; font-weight: bold">CERTIFICATION
                 </h5>
+                @php
+                    $date = \Carbon\Carbon::parse($record->created_at);
+                    $day = $date->format('j');
+                    $month = $date->format('F');
+                    $year = $date->format('Y');
 
-                <div style="font-size:16px; text-align:justify; line-height:1.8;">
-                    <p><strong>TO WHOM IT MAY CONCERN:</strong></p>
-                    <p style="text-indent: 40px">
-                        This is to certify that Barangay Officials of <strong>{{ $record->address }}</strong> is
-                        allowed to conduct {{ $record->nameactivities }} on {{ date('F d, Y', strtotime($record->dateactivities)) }} as part of their Religious
-                        Fiesta
-                        activity.
-                    </p>
-                    <p style="text-indent: 40px">
-                        On the other hand, they should ensure to protect and conserve our environment. However, it is still
-                        subject to the approval of the Provincial Coast Guard.
-                    </p>
-                    <p style="text-indent: 40px">
-                        This certification is issued to whatever legal purpose it may serve.
-                    </p>
-                    @php
-                        $date = \Carbon\Carbon::parse($record->date_renewal);
-                        $day = $date->format('j');
-                        $month = $date->format('F');
-                        $year = $date->format('Y');
+                    if ($day % 10 == 1 && $day != 11) {
+                        $suffix = 'st';
+                    } elseif ($day % 10 == 2 && $day != 12) {
+                        $suffix = 'nd';
+                    } elseif ($day % 10 == 3 && $day != 13) {
+                        $suffix = 'rd';
+                    } else {
+                        $suffix = 'th';
+                    }
+                @endphp
 
-                        if ($day % 10 == 1 && $day != 11) {
-                            $suffix = 'st';
-                        } elseif ($day % 10 == 2 && $day != 12) {
-                            $suffix = 'nd';
-                        } elseif ($day % 10 == 3 && $day != 13) {
-                            $suffix = 'rd';
-                        } else {
-                            $suffix = 'th';
-                        }
-                    @endphp
-
-                    <p style="text-indent: 40px">
-                        Issued {{ $day }}<sup>{{ $suffix }}</sup> day of {{ $month }},
-                            {{ $year }} at the Municipality of Barbaza, Antique, Philippines.
-                    </p>
-                </div>
-
-                <div class="d-flex justify-content-end">
-                    <div class="text-end mt-5 d-flex justify-content-center align-items-center flex-column">
-                        <p class="fw-semibold mb-0">GALILEO E. NACIONALES</p>
-                        <p class="mb-0">MENRO</p>
+                {!! $description != "" ? "<p style='white-space: pre-wrap'>{$description}</p>" : "
+                    <div style='font-size:16px; text-align:justify; line-height:1.8;'>
+                        <p><strong>TO WHOM IT MAY CONCERN:</strong></p>
+                        <p style='text-indent: 40px'>
+                            This is to certify that Barangay Officials of <strong>$record->address</strong> is
+                            allowed to conduct $record->nameactivities on date('F d, Y', strtotime($record->dateactivities)) as part of their Religious
+                            Fiesta
+                            activity.
+                        </p>
+                        <p style='text-indent: 40px'>
+                            On the other hand, they should ensure to protect and conserve our environment. However, it is still
+                            subject to the approval of the Provincial Coast Guard.
+                        </p>
+                        <p style='text-indent: 40px'>
+                            This certification is issued to whatever legal purpose it may serve.
+                        </p>
+                
+                        <p style='text-indent: 40px'>
+                            Issued $day<sup>$suffix</sup> day of $month,
+                                $year at the Municipality of Barbaza, Antique, Philippines.
+                        </p>
                     </div>
+                "!!}
+                
+                <div class="d-flex justify-content-end">
+                     {!! $signatory != "" ? "<p style='white-space: pre-wrap'>$signatory</p>" : "
+                        <div class='text-end mt-5 d-flex justify-content-center align-items-center flex-column'>
+                            <p class='fw-semibold mb-0'>GALILEO E. NACIONALES</p>
+                            <p class='mb-0'>MENRO</p>
+                        </div>
+                    "!!}
                 </div>
+                @php
+                    $date = date('F d, Y', strtotime($record->created_at));
+                @endphp
                 <div class="mt-4 fw-semibold" style="font-size:11px; color:#555;">
-                    <p class="mb-0"><em>Paid under O.R. No. {{ $record->ornumber }}</em></p>
-                    <p class="mb-0"><em>Issued at Barbaza, Antique</em></p>
-                    <p><em>On {{ date('F d, Y', strtotime($record->created_at)) }}</em></p>
+                    {!! $ornodescription != "" ? "<p style='white-space: pre-wrap'>$ornodescription</p>" : "
+                        <p class='mb-0'><em>Paid under O.R. No. $record->ornumber</em></p>
+                        <p class='mb-0'><em>Issued at Barbaza, Antique</em></p>
+                        <p><em>On $date</em></p>
+                    "!!}
                 </div>
 
                 <a href="{{ route('boating_view') }}" type="button" class="btn-close position-absolute" style="top:15px; right:15px;"

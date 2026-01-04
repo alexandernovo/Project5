@@ -28,16 +28,17 @@
         <div class="card w-100 px-0 mb-0">
             <div class="card-body p-3">
                 <div class="d-flex justify-content-end gap-2">
-                    <button class="btn btn-secondary-new d-flex flex-nowrap align-items-center gap-2"
-                        id="reloadButton">
+                    <button class="btn btn-secondary-new d-flex flex-nowrap align-items-center gap-2" id="reloadButton">
                         <span>
                             <i class="bi bi-arrow-clockwise"></i>
                         </span>
                         Reload
                     </button>
                     <div class="d-flex justify-content-end">
-                        <button class="btn btn-blue" id="printCertificate"><i class="bi bi-printer-fill"></i> Print
-                            Certification</button>
+                        <button class="btn btn-blue" id="editCertificationBtn">
+                            <i class="bi bi-pencil-square"></i>
+                            Edit Certification
+                        </button>
                     </div>
                     <button class="btn btn-primary-new" id="newCertification">
                         <i class="bi bi-clipboard-plus-fill"></i>

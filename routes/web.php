@@ -114,5 +114,6 @@ Route::middleware(["userchecker"])->group(function () {
 
     //edit certification
     Route::get('/certificate/association_certificate', [CertificationController::class, 'association_certificate'])->name('association_certificate');
+    Route::get('/certificate/boating_certificate', [CertificationController::class, 'boating_certificate'])->name('boating_certificate');
     Route::post('/certificate/saveCertification', [CertificationController::class, 'saveCertification'])->name('saveCertification');
 });
