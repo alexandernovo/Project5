@@ -1,11 +1,12 @@
 <header class="app-header position-sticky top-0 w-100" style="background-color: #313131">
     <nav class="navbar navbar-expand-lg navbar-light">
         <ul class="navbar-nav">
-            <li class="nav-item d-block d-xl-none">
+            <li class="nav-item">
                 <a class="nav-link sidebartoggler nav-icon-hover" id="headerCollapse" href="javascript:void(0)">
                     <i class="ti ti-menu-2 text-white"></i>
                 </a>
             </li>
+            
             <li class="nav-item dropdown">
                 <div class="dropdown-menu dropdown-menu-start dropdown-menu-animate-up" style="min-width: 350px;"
                     aria-labelledby="dropnotif">

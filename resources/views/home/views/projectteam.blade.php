@@ -39,7 +39,7 @@
                         class="w-100 h-100 object-fit-cover rounded-circle">
                 </div>
 
-                <p class="mt-2 text-white text-uppercase text-nowrap" style="font-size: 14px; letter-spacing: 1px">
+                <p class="mt-2 text-white text-uppercase text-nowrap fw-semibold" style="font-size: 14px; letter-spacing: 1px">
                     {{ $member['name'] }}
                 </p>
             </div>
@@ -52,10 +52,10 @@
                     class="w-100 h-100 object-fit-cover rounded-circle">
             </div>
 
-            <p class="mt-2 text-white text-uppercase text-nowrap mb-0" style="font-size: 14px;">
+            <p class="mt-2 text-white text-uppercase text-nowrap mb-0 fw-semibold" style="font-size: 14px;">
                 Rex P. Bernesto
             </p>
-            <p class="text-white text-nowrap" style="font-size: 14px; border-top: 2px solid white; width: 170px">
+            <p class="text-white text-nowrap fw-semibold" style="font-size: 14px; border-top: 2px solid white; width: 170px">
                 Capstone Adviser
             </p>
         </div>
