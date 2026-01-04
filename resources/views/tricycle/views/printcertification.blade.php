@@ -63,58 +63,67 @@
 
                 <h5 class="text-center mb-4" style="letter-spacing:3px; font-size: 20px; font-weight: bold">CERTIFICATION
                 </h5>
+                @php
+                    $date = \Carbon\Carbon::parse($record->date_renewal);
+                    $day = $date->format('j');
+                    $month = $date->format('F');
+                    $year = $date->format('Y');
 
+                    if ($day % 10 == 1 && $day != 11) {
+                        $suffix = 'st';
+                    } elseif ($day % 10 == 2 && $day != 12) {
+                        $suffix = 'nd';
+                    } elseif ($day % 10 == 3 && $day != 13) {
+                        $suffix = 'rd';
+                    } else {
+                        $suffix = 'th';
+                    }
+                    $sex = $record->sex == 'Male' ? 'MR.' : 'MS.';
+                @endphp
                 <div style="font-size:16px; text-align:justify; line-height:1.8;">
-                    <p><strong>TO WHOM IT MAY CONCERN:</strong></p>
-                    <p style="text-indent: 40px">
-                        This is to certify that {{ $record->sex == 'Male' ? 'MR.' : 'MS.' }}
-                        <span class="text-uppercase"><strong>{{ $record->owner_name }}</strong></span> owner of
-                        {{-- <span class="text-uppercase"><strong>{{ $record->name_other }}</strong></span>  --}}
-                        <span class="text-uppercase"><strong>1- UNIT OF TRICYCLE FOR HIRE (RENEWAL)</strong></span> 
-                        located at
-                        {{ $record->address }}
-                        has compiled all the requirements based on Article 4 Section 12 & 14 of Municipal Ordinance No. 4
-                        Series 2018 known as the
-                        Ecological and Integrated Solid Waste Management and allowed to operate for business.
-                    </p>
+                    {!! $description != "" ? "<p style='white-space: pre-wrap'>{$description}</p>" : "
+                        <p><strong>TO WHOM IT MAY CONCERN:</strong></p>
+                        <p style='text-indent: 40px'>
+                            This is to certify that $sex
+                            <span class='text-uppercase'><strong>$record->owner_name</strong></span> owner of
+                            <span class='text-uppercase'><strong>1- UNIT OF TRICYCLE FOR HIRE (RENEWAL)</strong></span> 
+                            located at
+                            $record->address
+                            has compiled all the requirements based on Article 4 Section 12 & 14 of Municipal Ordinance No. 4
+                            Series 2018 known as the
+                            Ecological and Integrated Solid Waste Management and allowed to operate for business.
+                        </p>
 
-                    <p style="text-indent: 40px">
-                        This certification is issued to {{ $record->sex == 'Male' ? 'MR.' : 'MS.' }} <span
-                            class="text-uppercase">{{ $record->owner_name }}</span> or whatever legal purpose it may serve.
-                    </p>
-                    @php
-                        $date = \Carbon\Carbon::parse($record->date_renewal);
-                        $day = $date->format('j');
-                        $month = $date->format('F');
-                        $year = $date->format('Y');
+                        <p style='text-indent: 40px'>
+                            This certification is issued to $record->sex == 'Male' ? 'MR.' : 'MS.' <span
+                                class='text-uppercase'>$record->owner_name</span> or whatever legal purpose it may serve.
+                        </p>
 
-                        if ($day % 10 == 1 && $day != 11) {
-                            $suffix = 'st';
-                        } elseif ($day % 10 == 2 && $day != 12) {
-                            $suffix = 'nd';
-                        } elseif ($day % 10 == 3 && $day != 13) {
-                            $suffix = 'rd';
-                        } else {
-                            $suffix = 'th';
-                        }
-                    @endphp
 
-                    <p style="text-indent: 40px">
-                        Issued {{ $day }}<sup>{{ $suffix }}</sup> day of {{ $month }},
-                            {{ $year }} at the Municipality of Barbaza, Antique, Philippines.
-                    </p>
+                        <p style='text-indent: 40px'>
+                            Issued $day<sup>$suffix</sup> day of $month,
+                                $year at the Municipality of Barbaza, Antique, Philippines.
+                        </p>"
+                    !!}
                 </div>
 
                 <div class="d-flex justify-content-end">
-                    <div class="text-end mt-5 d-flex justify-content-center align-items-center flex-column">
-                        <p class="fw-semibold mb-0">GALILEO E. NACIONALES</p>
-                        <p class="mb-0">MENRO</p>
-                    </div>
+                     {!! $signatory != "" ? "<p style='white-space: pre-wrap'>$signatory</p>" : "
+                        <div class='text-end mt-5 d-flex justify-content-center align-items-center flex-column'>
+                            <p class='fw-semibold mb-0'>GALILEO E. NACIONALES</p>
+                            <p class='mb-0'>MENRO</p>
+                        </div>
+                    "!!}
                 </div>
+                @php
+                    $date = date('F d, Y', strtotime($record->created_at));
+                @endphp
                 <div class="mt-4 fw-semibold" style="font-size:11px; color:#555;">
-                    <p class="mb-0"><em>Paid under O.R. No. {{ $record->ornumber }}</em></p>
-                    <p class="mb-0"><em>Issued at Barbaza, Antique</em></p>
-                    <p><em>On {{ date('F d, Y', strtotime($record->created_at)) }}</em></p>
+                    {!! $ornodescription != "" ? "<p style='white-space: pre-wrap'>$ornodescription</p>" : "
+                        <p class='mb-0'><em>Paid under O.R. No. $record->ornumber</em></p>
+                        <p class='mb-0'><em>Issued at Barbaza, Antique</em></p>
+                        <p><em>On $date</em></p>
+                    "!!}
                 </div>
 
                 <a href="{{ route('tricycle_view') }}" type="button" class="btn-close position-absolute" style="top:15px; right:15px;"

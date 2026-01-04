@@ -10,6 +10,12 @@ use Exception;
 
 class TricycleController extends Controller
 {
+    protected $certificationController;
+
+    public function __construct(CertificationController $certificationController)
+    {
+        $this->certificationController = $certificationController;
+    }
     public function tricycle_view()
     {
         return view('tricycle.views.tricycle');
@@ -55,7 +61,7 @@ class TricycleController extends Controller
             $all['client_id'] = $client_id;
 
             if ($record_id == 0) {
-                
+
                 $all['status'] = "ACTIVE";
                 $all['type'] = "TRICYCLE";
                 Record::create($all);
@@ -155,6 +161,39 @@ class TricycleController extends Controller
             ->where("records.type", "TRICYCLE")
             ->where("records.record_id", $record_id)->first();
 
-        return view('tricycle.views.printcertification', ['record' => $record]);
+        $certification = DB::table("certification")->where("record_id", $record_id)->first();
+
+        $badges = [
+            ['label' => 'Address', 'value' => ':address', 'key' => 'address'],
+            ['label' => 'Year', 'value' => ':year', 'key' => 'year'],
+            ['label' => 'Owner Name', 'value' => ':OWNER_NAME', 'key' => 'OWNER_NAME'],
+            ['label' => 'Month', 'value' => ':month', 'key' => 'month'],
+            ['label' => 'Day', 'value' => ':day', 'key' => 'day'],
+            ['label' => 'OR Number', 'value' => ':or_number', 'key' => 'ornumber'],
+            ['label' => 'Created Date', 'value' => ':created_at', 'key' => 'created_at'],
+        ];
+
+        $date = \Carbon\Carbon::parse($record->created_at ?? now());
+
+        $recordData = [
+            'year' => $date->format('Y'),
+            'month' => $date->format('F'),
+            'day' => $date->format('j'),
+            'OWNER_NAME' => $record->owner_name ?? '',
+            'address' => $record->address ?? '',
+            'ornumber' => $record->ornumber ?? '',
+            'created_at' => \Carbon\Carbon::parse($record->created_at ?? now())->format('F d, Y'),
+        ];
+
+        $description =  $this->certificationController->replacePlaceholders($certification->description ?? '', $badges, $recordData);
+        $signatory =  $this->certificationController->replacePlaceholders($certification->signatory ?? '', $badges, $recordData);
+        $ornodescription =  $this->certificationController->replacePlaceholders($certification->ornodescription ?? '', $badges, $recordData);
+
+        return view('tricycle.views.printcertification', [
+            'record' => $record,
+            'description' => $description,
+            'signatory' => $signatory,
+            'ornodescription' => $ornodescription,
+        ]);
     }
 }
