@@ -25,6 +25,7 @@
                             <option value="" disabled selected>Please Select</option>
                             <option value="Association">Association</option>
                             <option value="Boating">Boating</option>
+                            <option value="Chainsaw">Chainsaw</option>
                             <option value="Trees">Cutting Trees</option>
                             <option value="Store">Sari-Sari Store</option>
                             <option value="Tricycle">Tricycle</option>
