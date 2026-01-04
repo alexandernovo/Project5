@@ -109,7 +109,11 @@
                         <span class="hide-menu text-white">Waste in the Bottle</span>
                     </a>
                 </li>
-                <hr class="my-1 border-top border-secondary">
+                <hr class="mt-2 my-1 border-top border-secondary">
+                <li class="nav-small-cap mt-0">
+                    <i class="ti ti-dots nav-small-cap-icon text-white fs-4"></i>
+                    <span class="hide-menu text-white" style="font-size: 14px">REPORT</span>
+                </li>
                 <li class="sidebar-item">
                     <a class="sidebar-link py-1 cursor-pointer {{ in_array(Route::currentRouteName(), $reportRoute) ? "active" : "" }}" style="font-size: 11px" data-bs-toggle="modal"
                         data-bs-target="#certificationModal" aria-expanded="false">
