@@ -33,7 +33,7 @@
                     <span class="hide-menu text-white" style="font-size: 14px">Certification</span>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link py-1" style="font-size: 11px" href="{{ route('association_view') }}"
+                    <a class="sidebar-link py-1 {{ Route::currentRouteName() == "association_certificate" ? "active" : "" }}" style="font-size: 11px" href="{{ route('association_view') }}"
                         aria-expanded="false">
                         <img src="{{ asset('assets/images/icons/Association.png') }}" style="width: 20px; height: 30px"
                             alt="">
@@ -41,7 +41,7 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link py-1" style="font-size: 11px" href="{{ route('boating_view') }}"
+                    <a class="sidebar-link py-1 {{ Route::currentRouteName() == "boating_certificate" ? "active" : "" }}" style="font-size: 11px" href="{{ route('boating_view') }}"
                         aria-expanded="false">
                         <img src="{{ asset('assets/images/icons/Boating.png') }}" style="width: 20px; height: 30px"
                             alt="">
@@ -49,7 +49,7 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link py-1" style="font-size: 11px" href="{{ route('chainsaw_view') }}"
+                    <a class="sidebar-link py-1 {{ Route::currentRouteName() == "chainsaw_certificate" ? "active" : "" }}" style="font-size: 11px" href="{{ route('chainsaw_view') }}"
                         aria-expanded="false">
                         <img src="{{ asset('assets/images/icons/Chainsaw.png') }}" style="width: 20px; height: 30px"
                             alt="">
@@ -57,7 +57,7 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link py-1" style="font-size: 11px" href="{{ route('trees_view') }}"
+                    <a class="sidebar-link py-1 {{ Route::currentRouteName() == "trees_certificate" ? "active" : "" }}" style="font-size: 11px" href="{{ route('trees_view') }}"
                         aria-expanded="false">
                         <img src="{{ asset('assets/images/icons/Cutting Trees.png') }}"
                             style="width: 20px; height: 30px" alt="">
@@ -65,7 +65,7 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link py-1" style="font-size: 11px" href="{{ route('store_view') }}"
+                    <a class="sidebar-link py-1 {{ Route::currentRouteName() == "store_certificate" ? "active" : "" }}" style="font-size: 11px" href="{{ route('store_view') }}"
                         aria-expanded="false">
                         <img src="{{ asset('assets/images/icons/Sari-Sari Store.png') }}"
                             style="width: 20px; height: 30px" alt="">
@@ -73,7 +73,7 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link py-1" style="font-size: 11px" href="{{ route('tricycle_view') }}"
+                    <a class="sidebar-link py-1 {{ Route::currentRouteName() == "tricycle_certificate" ? "active" : "" }}" style="font-size: 11px" href="{{ route('tricycle_view') }}"
                         aria-expanded="false">
                         <img src="{{ asset('assets/images/icons/Tricycle.png') }}" style="width: 20px; height: 30px"
                             alt="">
@@ -81,7 +81,7 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link py-1" style="font-size: 11px" href="{{ route('vendor_view') }}"
+                    <a class="sidebar-link py-1 {{ Route::currentRouteName() == "vendor_certificate" ? "active" : "" }}" style="font-size: 11px" href="{{ route('vendor_view') }}"
                         aria-expanded="false">
                         <img src="{{ asset('assets/images/icons/Vendors.png') }}" style="width: 20px; height: 30px"
                             alt="">
