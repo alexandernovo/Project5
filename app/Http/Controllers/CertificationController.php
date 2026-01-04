@@ -38,7 +38,13 @@ class CertificationController extends Controller
         $certificate = DB::table("certification")->where("record_id", $record_id)->first();
         return view('trees.views.editprinttrees', ['record' => $data, 'certificate' => $certificate]);
     }
-
+    public function store_certificate(Request $request)
+    {
+        $record_id = $request->query("record_id");
+        $data = $this->getPrintQuery($record_id, "STORE");
+        $certificate = DB::table("certification")->where("record_id", $record_id)->first();
+        return view('store.views.editprintstore', ['record' => $data, 'certificate' => $certificate]);
+    }
     private function getPrintQuery($id, $type)
     {
         $query = DB::table('records')

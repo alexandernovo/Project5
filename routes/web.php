@@ -117,5 +117,6 @@ Route::middleware(["userchecker"])->group(function () {
     Route::get('/certificate/boating_certificate', [CertificationController::class, 'boating_certificate'])->name('boating_certificate');
     Route::get('/certificate/chainsaw_certificate', [CertificationController::class, 'chainsaw_certificate'])->name('chainsaw_certificate');
     Route::get('/certificate/trees_certificate', [CertificationController::class, 'trees_certificate'])->name('trees_certificate');
+    Route::get('/certificate/store_certificate', [CertificationController::class, 'store_certificate'])->name('store_certificate');
     Route::post('/certificate/saveCertification', [CertificationController::class, 'saveCertification'])->name('saveCertification');
 });
