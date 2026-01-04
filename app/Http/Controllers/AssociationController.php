@@ -10,6 +10,13 @@ use Exception;
 
 class AssociationController extends Controller
 {
+    protected $certificationController;
+
+    public function __construct(CertificationController $certificationController)
+    {
+        $this->certificationController = $certificationController;
+    }
+
     public function association_view()
     {
         return view('association.views.association');
@@ -56,7 +63,7 @@ class AssociationController extends Controller
             $all['client_id'] = $client_id;
 
             if ($record_id == 0) {
-                
+
                 $all['status'] = "ACTIVE";
                 $all['type'] = "ASSOCIATION";
                 $all['record_status'] = "Renewed";
@@ -180,6 +187,38 @@ class AssociationController extends Controller
             ->where("records.type", "ASSOCIATION")
             ->where("records.record_id", $record_id)->first();
 
-        return view('association.views.printassociation', ['record' => $record]);
+        $certification = DB::table("certification")->where("record_id", $record_id)->first();
+
+        $badges = [
+            ['label' => 'Association Name', 'value' => ':association_name', 'key' => 'owner_name'],
+            ['label' => 'Address', 'value' => ':address', 'key' => 'address'],
+            ['label' => 'Year', 'value' => ':year', 'key' => 'year'],
+            ['label' => 'Month', 'value' => ':month', 'key' => 'month'],
+            ['label' => 'Day', 'value' => ':day', 'key' => 'day'],
+            ['label' => 'OR Number', 'value' => ':or_number', 'key' => 'ornumber'],
+            ['label' => 'Created Date', 'value' => ':created_at', 'key' => 'created_at'],
+        ];
+
+        $date = \Carbon\Carbon::parse($record->created_at ?? now());
+        $recordData = [
+            'year' => $date->format('Y'),
+            'month' => $date->format('F'),
+            'day' => $date->format('j'),
+            'owner_name' => $record->owner_name ?? '',
+            'address' => $record->address ?? '',
+            'ornumber' => $record->ornumber ?? '',
+            'created_at' => \Carbon\Carbon::parse($record->created_at ?? now())->format('F d, Y'),
+        ];
+
+        $description =  $this->certificationController->replacePlaceholders($certification->description ?? '', $badges, $recordData);
+        $signatory =  $this->certificationController->replacePlaceholders($certification->signatory ?? '', $badges, $recordData);
+        $ornodescription =  $this->certificationController->replacePlaceholders($certification->ornodescription ?? '', $badges, $recordData);
+
+        return view('association.views.printassociation', [
+            'record' => $record,
+            'description' => $description,
+            'signatory' => $signatory,
+            'ornodescription' => $ornodescription,
+        ]);
     }
 }

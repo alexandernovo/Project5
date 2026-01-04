@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BoatingController;
+use App\Http\Controllers\CertificationController;
 use App\Http\Controllers\ChainsawController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
@@ -105,9 +106,13 @@ Route::middleware(["userchecker"])->group(function () {
     Route::get('/reports/trees/print', [ReportController::class, 'treesPrint'])->name('treesPrint');
     Route::get('/reports/wastePrint/print', [ReportController::class, 'wastePrint'])->name('wastePrint');
 
-
+    //dashboard
     Route::post('/dashboard/getDashboardDetails', [DashboardController::class, 'getDashboardDetails'])->name('getDashboardDetails');
     Route::post('/dashboard/getChartData', [DashboardController::class, 'getChartData'])->name('getChartData');
     Route::post('/dashboard/getDashboardCounts', [DashboardController::class, 'getDashboardCounts'])->name('getDashboardCounts');
     Route::post('/global/expireRenew', [AssociationController::class, 'expireRenew'])->name('expireRenew');
+
+    //edit certification
+    Route::get('/certificate/association_certificate', [CertificationController::class, 'association_certificate'])->name('association_certificate');
+    Route::post('/certificate/saveCertification', [CertificationController::class, 'saveCertification'])->name('saveCertification');
 });

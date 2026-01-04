@@ -62,22 +62,8 @@
 
                 <h5 class="text-center mb-4" style="letter-spacing:3px; font-size: 20px; font-weight: bold">CERTIFICATION
                 </h5>
-
-                <div style="font-size:16px; text-align:justify; line-height:1.8;">
-                    <p><strong>TO WHOM IT MAY CONCERN:</strong></p>
-                    <p style="text-indent: 40px">
-                        This is to certify that the <strong>{{ $record->association }}</strong> located at {{ $record->address }} has compiled all the requirements based on Article I Section 2 of Municipal Ordinance No. 4
-                        Series 2018 known as the Ecological and Integrated Solid Waste Management and allowed to operate for
-                        business.
-                    </p>
-                    <p style="text-indent: 40px">
-                        This certification is issued to <strong>{{ $record->association }}</strong> for whatever legal
-                        purpose
-                        it may
-                        serve.
-                    </p>
-                    @php
-                        $date = \Carbon\Carbon::parse($record->date_renewal);
+                     @php
+                        $date = \Carbon\Carbon::parse($record->created_at);
                         $day = $date->format('j');
                         $month = $date->format('F');
                         $year = $date->format('Y');
@@ -92,23 +78,44 @@
                             $suffix = 'th';
                         }
                     @endphp
-
-                    <p style="text-indent: 40px">
-                        Done this {{ $day }}<sup>{{ $suffix }}</sup> day of {{ $month }},
-                            {{ $year }} at Barbaza, Antique.
-                    </p>
-                </div>
+                {!! $description != "" ? "<p style='white-space: pre-wrap'>{$description}</p>" : "
+                    <div style='font-size:16px; text-align:justify; line-height:1.8;'>
+                        <p><strong>TO WHOM IT MAY CONCERN:</strong></p>
+                        <p style='text-indent: 40px'>
+                            This is to certify that the <strong>$record->association</strong> located at $record->address has compiled all the requirements based on Article I Section 2 of Municipal Ordinance No. 4
+                            Series 2018 known as the Ecological and Integrated Solid Waste Management and allowed to operate for
+                            business.
+                        </p>
+                        <p style='text-indent: 40px'>
+                            This certification is issued to <strong>$record->association</strong> for whatever legal
+                            purpose
+                            it may
+                            serve.
+                        </p>
+                        <p style='text-indent: 40px'>
+                            Done this $day<sup>$suffix</sup> day of $month, $year at Barbaza, Antique.
+                        </p>
+                    </div>
+                "!!}
+               
 
                 <div class="d-flex justify-content-end">
-                    <div class="text-end mt-5 d-flex justify-content-center align-items-center flex-column">
-                        <p class="fw-semibold mb-0">GALILEO E. NACIONALES</p>
-                        <p class="mb-0">MENRO</p>
-                    </div>
+                     {!! $signatory != "" ? "<p style='white-space: pre-wrap'>$signatory</p>" : "
+                        <div class='text-end mt-5 d-flex justify-content-center align-items-center flex-column'>
+                            <p class='fw-semibold mb-0'>GALILEO E. NACIONALES</p>
+                            <p class='mb-0'>MENRO</p>
+                        </div>
+                    "!!}
                 </div>
+                @php
+                    $date = date('F d, Y', strtotime($record->created_at));
+                @endphp
                 <div class="mt-4 fw-semibold" style="font-size:11px; color:#555;">
-                    <p class="mb-0"><em>Paid under O.R. No. {{ $record->ornumber }}</em></p>
-                    <p class="mb-0"><em>Issued at Barbaza, Antique</em></p>
-                    <p><em>On {{ date('F d, Y', strtotime($record->created_at)) }}</em></p>
+                    {!! $ornodescription != "" ? "<p style='white-space: pre-wrap'>$ornodescription</p>" : "
+                        <p class='mb-0'><em>Paid under O.R. No. $record->ornumber</em></p>
+                        <p class='mb-0'><em>Issued at Barbaza, Antique</em></p>
+                        <p><em>On $date</em></p>
+                    "!!}
                 </div>
 
                 <a href="{{ route('association_view') }}" type="button" class="btn-close position-absolute" style="top:15px; right:15px;"

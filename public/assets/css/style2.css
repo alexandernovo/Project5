@@ -371,6 +371,10 @@
     background-color: rgb(85, 85, 85) !important;
     color: white !important;
 }
+.bg-secondary-new {
+    background-color: rgb(85, 85, 85) !important;
+    color: white !important;
+}
 .sidebar-nav ul .sidebar-item.selected > .sidebar-link,
 .sidebar-nav ul .sidebar-item.selected > .sidebar-link.active,
 .sidebar-nav ul .sidebar-item > .sidebar-link.active {
@@ -624,4 +628,13 @@ div.dt-container .dt-paging .dt-paging-button:not(.active) button:hover {
     height: 45px !important;
     padding: 5px 10px !important;
     border-radius: 10px;
+}
+.note-editor .dropdown-menu {
+    z-index: 9999 !important;
+}
+.highlight-bg-cert {
+    background-color: #6c757d; /* Bootstrap secondary color */
+    color: #fff; /* White text */
+    border-radius: 0.25rem; /* Rounded corners (same as Bootstrap 'rounded') */
+    padding: 2px; /* Same as your inline padding */
 }

@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/datatablesbootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('template_assets/css/icons/tabler-icons/tabler-icons.css') }}" />
     <link rel="stylesheet" href="{{ asset('template_assets/css/styles.min.css') }}" />
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-bs5.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/css/select2.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/style2.css') }}" />
@@ -78,6 +79,7 @@
     <script src="{{ asset('assets/js/socket.io.js') }}"></script>
     <script src="{{ asset('assets/js/script.js') }}"></script>
     <script src="{{ asset('assets/js/html2pdf.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-bs5.min.js"></script>
     @include('layout.js.layoutjs')
     @include('layout.js.certificationjs')
     @include('layout.js.wastejs')
