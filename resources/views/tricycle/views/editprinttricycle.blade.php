@@ -155,7 +155,7 @@
                             </div>"
                         }}
                     </textarea>
-                    <a href="{{ route('association_view') }}" type="button" class="btn-close position-absolute"
+                    <a href="{{ route('tricycle_view') }}" type="button" class="btn-close position-absolute"
                         style="top:15px; right:15px;" aria-label="Close"></a>
                     <div class="d-flex justify-content-end" style="border-top: 2px solid gray">
                         <button class="btn btn-green mt-2" type="submit">Save</button>
