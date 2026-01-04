@@ -66,7 +66,7 @@
                 </ul>
             @else
                 <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
-                    {{-- <div class="d-flex gap align-items-center">
+                    <div class="d-flex gap align-items-center">
                         <li class="nav-item dropdown">
                             <a class="nav-link nav-icon-hover px-2 cursor-pointer me-4 d-flex align-items-center {{ Route::currentRouteName() == "projectteam" ? 'badge-admin':'' }}"
                                 href="{{ route('projectteam') }}">
@@ -77,8 +77,8 @@
                                 </p>
                             </a>
                         </li>
-                    </div> --}}
-                    {{-- <div class="d-flex gap align-items-center">
+                    </div>
+                    <div class="d-flex gap align-items-center">
                         <li class="nav-item dropdown">
                             <a class="nav-link nav-icon-hover px-2 cursor-pointer {{ Route::currentRouteName() == "home" ? 'badge-admin':'' }}"
                                 data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop">
@@ -89,8 +89,8 @@
                                 </p>
                             </a>
                         </li>
-                    </div> --}}
-                    <div class="d-flex gap align-items-center">
+                    </div>
+                    {{-- <div class="d-flex gap align-items-center">
                         <li class="nav-item dropdown">
                             <a class="nav-link nav-icon-hover px-2 cursor-pointer"
                                 data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop">
@@ -101,7 +101,7 @@
                                 </p>
                             </a>
                         </li>
-                    </div>
+                    </div> --}}
                 </ul>
             @endif
         </div>
