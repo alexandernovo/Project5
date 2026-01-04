@@ -5,10 +5,10 @@
     <div class="d-flex flex-nowrap justify-content-between align-items-center gap-4 banner px-5"
         style="height: calc(100vh - 122px);">
         <div class="text-start text-white">
-            <p class="mb-4" style="font-size: 20px">Welcome to</p>
-            <p class="mb-1" style="font-size: 44px; font-weight: bold">MENRO-BARS</p>
-            <p style="font-size: 19px;">An Automated Recording System for <br>Municipality of Barbaza, Antique</p>
-            <p class="mb-1" style="font-size: 15px; margin-top: 70px">
+            <p class="mb-4" style="font-size: 25px">Welcome to</p>
+            <p class="mb-1" style="font-size: 60px; font-weight: bold">MENRO-BARS</p>
+            <p style="font-size: 28px;">An Automated Recording System for <br>Municipality of Barbaza, Antique</p>
+            <p class="mb-1" style="font-size: 20px; margin-top: 70px">
                 "Ensuring Business Legality, Supporting Environment Goals"
             </p>
         </div>
