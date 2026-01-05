@@ -49,7 +49,19 @@ class DashboardController extends Controller
         $data = $query
             ->offset($start)
             ->limit($length)
-            ->get();
+            ->get()
+            ->map(function ($row) {
+                $row->chainsawTableRequirements = DB::table('requirements')
+                    ->where('record_id', $row->record_id)
+                    ->orderBy("created_at", "DESC")
+                    ->get();
+                    
+                $row->treesTableRequirements = DB::table('requirements')
+                    ->where('record_id', $row->record_id)
+                    ->orderBy("created_at", "DESC")
+                    ->get();
+                return $row;
+            });
 
         return response()->json([
             "draw" => intval($request->input('draw')),

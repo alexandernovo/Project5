@@ -163,7 +163,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <i class="bi bi-plus-circle cursor-pointer" id="addnewrequirementschainsaw" style="font-size: 25px; color: #06510C"></i>
+                            <i class="bi bi-plus-circle cursor-pointer" data-type="chainsaw" id="addnewrequirementschainsaw" style="font-size: 25px; color: #06510C"></i>
                         </div>
                     </div>
                 </div>

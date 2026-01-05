@@ -70,22 +70,32 @@
                     <table class="table-bordered border-dark table mt-3 table-reports">
                         <thead>
                             <tr>
-                                <th class="text-center p-1 align-middle border-left-report border-right-report" style="font-size: 12px" style="font-size: 12px">
+                                <th class="text-center p-1 align-middle border-left-report border-right-report"
+                                    style="font-size: 12px" style="font-size: 12px">
                                     No.
                                 </th>
-                                <th class="text-center p-1 align-middle border-right-report" style="font-size: 12px" style="font-size: 12px">
+                                <th class="text-center p-1 align-middle border-right-report" style="font-size: 12px"
+                                    style="font-size: 12px">
                                     Name of Owner
                                 </th>
-                                <th class="text-center p-1 align-middle border-right-report" style="font-size: 12px" style="font-size: 12px">
+                                <th class="text-center p-1 align-middle border-right-report" style="font-size: 12px"
+                                    style="font-size: 12px">
+                                    Type of Vendor
+                                </th>
+                                <th class="text-center p-1 align-middle border-right-report" style="font-size: 12px"
+                                    style="font-size: 12px">
                                     OR Number
                                 </th>
-                                <th class="text-center p-1 align-middle border-right-report" style="font-size: 12px" style="font-size: 12px">
+                                <th class="text-center p-1 align-middle border-right-report" style="font-size: 12px"
+                                    style="font-size: 12px">
                                     Name of Vendor
                                 </th>
-                                <th class="text-center p-1 align-middle border-right-report" style="font-size: 12px" style="font-size: 12px">
+                                <th class="text-center p-1 align-middle border-right-report" style="font-size: 12px"
+                                    style="font-size: 12px">
                                     Address
                                 </th>
-                                <th class="text-center p-1 align-middle border-right-report" style="font-size: 12px" style="font-size: 12px">
+                                <th class="text-center p-1 align-middle border-right-report" style="font-size: 12px"
+                                    style="font-size: 12px">
                                     Date
                                 </th>
                             </tr>
@@ -98,6 +108,9 @@
                                     </td>
                                     <td class="text-center px-2 py-1 align-middle" style="font-size: 12px">
                                         {{ $d->owner_name }}
+                                    </td>
+                                    <td class="text-center px-2 py-1 align-middle" style="font-size: 12px">
+                                        {{ $d->typeofvendor }}
                                     </td>
                                     <td class="text-center px-2 py-1 align-middle" style="font-size: 12px">
                                         {{ $d->ornumber }}

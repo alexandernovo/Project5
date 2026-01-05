@@ -129,7 +129,7 @@
                                             required>
                                     </div>
                                 </div>
-                                <div class="col-6">
+                                {{-- <div class="col-6">
                                     <div class="form-group mb-1">
                                         <label for="" class="mb-1">Date of Renewed</label>
                                         <input type="date" name="date_renewal" id="date_renewal"
@@ -142,7 +142,7 @@
                                         <input type="date" name="expiration" id="expiration" class="form-control"
                                             required>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                         <div class="col-6">
@@ -165,7 +165,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <i class="bi bi-plus-circle cursor-pointer" id="addnewrequirementstrees"
+                            <i class="bi bi-plus-circle cursor-pointer" data-type="trees" id="addnewrequirementstrees"
                                 style="font-size: 25px; color: #06510C"></i>
                         </div>
                     </div>

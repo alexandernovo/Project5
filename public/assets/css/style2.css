@@ -638,3 +638,6 @@ div.dt-container .dt-paging .dt-paging-button:not(.active) button:hover {
     border-radius: 0.25rem; /* Rounded corners (same as Bootstrap 'rounded') */
     padding: 2px; /* Same as your inline padding */
 }
+.apexcharts-legend-text {
+    font-weight: bold !important;
+}

@@ -41,13 +41,33 @@
                         data: counts
                     }],
                     xaxis: {
-                        categories: categories
-                        // title removed
+                        categories: categories,
+                        labels: {
+                            style: {
+                                fontWeight: 'bold',
+                                fontSize: '13px'
+                            }
+                        }
                     },
                     yaxis: {
                         labels: {
                             formatter: function(val) {
                                 return Math.floor(val); // no decimals
+                            }
+                        }
+                    },
+                    dataLabels: {
+                        enabled: true,
+                        style: {
+                            fontWeight: 'bold',
+                            fontSize: '12px'
+                        }
+                    },
+                    legend: {
+                        labels: {
+                            style: {
+                                fontWeight: 'bold',
+                                fontSize: '13px'
                             }
                         }
                     },
@@ -58,9 +78,6 @@
                             horizontal: false,
                             columnWidth: '50%'
                         }
-                    },
-                    dataLabels: {
-                        enabled: true
                     }
                 };
 
