@@ -656,7 +656,7 @@
 
         if (requirement) {
             requirement.progress = $(this).is(":checked") ? 1 : 0;
-            createNewTableChainsaw(treesTableRequirements);
+            createNewTableTrees(treesTableRequirements);
         } else {
             console.warn("No requirement found for index:", index);
         }
@@ -671,7 +671,7 @@
             }
 
             treesTableRequirements.splice(index, 1);
-            createNewTableChainsaw(treesTableRequirements);
+            createNewTableTrees(treesTableRequirements);
         }
     });
 </script>
