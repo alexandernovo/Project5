@@ -161,13 +161,13 @@
                                     GRAND TOTAL
                                 </td>
 
-                                <td class="text-center px-2 py-1 align-middle" style="font-size: 12px">
+                                <td class="text-center fw-semibold px-2 py-1 align-middle" style="font-size: 12px">
                                     {{ $totals['bottleinkg'] }}
                                 </td>
-                                <td class="text-center px-2 py-1 align-middle" style="font-size: 12px">
+                                <td class="text-center fw-semibold px-2 py-1 align-middle" style="font-size: 12px">
                                     {{ $totals['riceinkg'] }}
                                 </td>
-                                <td class="text-center px-2 py-1 align-middle" style="font-size: 12px">
+                                <td class="text-center fw-semibold px-2 py-1 align-middle" style="font-size: 12px">
                                     {{ $totals['grand_total'] }}
                                 </td>
                             </tr>

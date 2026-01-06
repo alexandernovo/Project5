@@ -25,7 +25,7 @@
                     <div class="row mx-auto">
                         <div class="col-6">
                             <div class="form-group mb-1">
-                                <label for="" class="mb-1">Barangay</label>
+                                <label for="" class="mb-1">Barangay <span class="text-danger">*</span></label>
                                 <select class="form-select" name="brgy" id="brgy" required>
                                     <option value="" disabled selected>Barangay</option>
                                     @foreach ($barangays_global as $brgy)
@@ -36,40 +36,40 @@
                         </div>
                         <div class="col-6">
                             <div class="form-group mb-1">
-                                <label for="" class="mb-1">Municipality</label>
+                                <label for="" class="mb-1">Municipality <span class="text-danger">*</span></label>
                                 <input type="text" name="municipality" id="municipality" class="form-control"
                                     required>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="form-group mb-1">
-                                <label for="" class="mb-1">Province</label>
+                                <label for="" class="mb-1">Province <span class="text-danger">*</span></label>
                                 <input type="text" name="province" id="province" class="form-control" required>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="form-group mb-1">
-                                <label for="" class="mb-1">Purok</label>
+                                <label for="" class="mb-1">Purok <span class="text-danger">*</span></label>
                                 <input type="text" name="purok" id="purok" class="form-control" required>
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="form-group mb-1">
-                                <label for="" class="mb-1">Bottle in Kg</label>
+                                <label for="" class="mb-1">Bottle in Kg <span class="text-danger">*</span></label>
                                 <input type="number" step="0.01" min="0" name="bottleinkg" id="bottleinkg"
                                     class="form-control" required>
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="form-group mb-1">
-                                <label for="" class="mb-1">Rice in Kg</label>
+                                <label for="" class="mb-1">Rice in Kg <span class="text-danger">*</span></label>
                                 <input type="number" step="0.01" min="0" readonly name="riceinkg"
                                     id="riceinkg" class="form-control" required>
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="form-group mb-1">
-                                <label for="" class="mb-1">Total</label>
+                                <label for="" class="mb-1">Total <span class="text-danger">*</span></label>
                                 <input type="number" step="0.01" min="0" name="totalinrice" id="totalinrice"
                                     class="form-control" required readonly>
                             </div>

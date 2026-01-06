@@ -36,35 +36,35 @@
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group mb-1">
-                                        <label for="" class="mb-1">First Name</label>
+                                        <label for="" class="mb-1">First Name <span class="text-danger">*</span></label>
                                         <input type="text" name="firstname" id="firstname" placeholder="First Name"
                                             class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group mb-1">
-                                        <label for="" class="mb-1">Middle Name</label>
+                                        <label for="" class="mb-1">Middle Name <span class="text-danger">*</span></label>
                                         <input type="text" name="middlename" id="middlename"
                                             placeholder="Middle Name" class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group mb-1">
-                                        <label for="" class="mb-1">Last Name</label>
+                                        <label for="" class="mb-1">Last Name <span class="text-danger">*</span></label>
                                         <input type="text" name="lastname" id="lastname" placeholder="Last Name"
                                             class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group mb-1">
-                                        <label for="" class="mb-1">OR Number</label>
+                                        <label for="" class="mb-1">OR Number <span class="text-danger">*</span></label>
                                         <input type="text" name="ornumber" id="ornumber" placeholder="OR Number"
                                             class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group mb-1">
-                                        <label for="" class="mb-1">Barangay</label>
+                                        <label for="" class="mb-1">Barangay <span class="text-danger">*</span></label>
                                         <select class="form-select" name="barangay" id="barangay" required>
                                             <option value="" disabled selected>Barangay</option>
                                             @foreach ($barangays_global as $brgy)
@@ -75,21 +75,21 @@
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group mb-1">
-                                        <label for="" class="mb-1">Municipality</label>
+                                        <label for="" class="mb-1">Municipality <span class="text-danger">*</span></label>
                                         <input type="text" name="municipality" id="municipality"
                                             placeholder="Municipality" class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group mb-1">
-                                        <label for="" class="mb-1">Province</label>
+                                        <label for="" class="mb-1">Province <span class="text-danger">*</span></label>
                                         <input type="text" name="province" id="province" placeholder="Province"
                                             class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group mb-1">
-                                        <label for="" class="mb-1">Sex</label>
+                                        <label for="" class="mb-1">Sex <span class="text-danger">*</span></label>
                                         <select name="sex" id="sex" class="form-select" required>
                                             <option value="Male">Male</option>
                                             <option value="Female">Female</option>
@@ -98,7 +98,7 @@
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group mb-1">
-                                        <label for="" class="mb-1">Contact Number</label>
+                                        <label for="" class="mb-1">Contact Number <span class="text-danger">*</span></label>
                                         <input type="number" name="contact_no" id="contact_no" class="form-control"
                                             required>
                                     </div>
@@ -112,7 +112,7 @@
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group mb-1">
-                                        <label for="" class="mb-1">Date of Expired</label>
+                                        <label for="" class="mb-1">Date of Expired <span class="text-danger">*</span></label>
                                         <input type="date" name="expiration" id="expiration" class="form-control"
                                             required>
                                     </div>
@@ -122,21 +122,21 @@
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group mb-1">
-                                        <label for="" class="mb-1">Brand</label>
+                                        <label for="" class="mb-1">Brand <span class="text-danger">*</span></label>
                                         <input type="text" name="brand" id="brand" class="form-control"
                                             required>
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group mb-1">
-                                        <label for="" class="mb-1">Model No.</label>
+                                        <label for="" class="mb-1">Model No. <span class="text-danger">*</span></label>
                                         <input type="text" name="model_no" id="model_no" class="form-control"
                                             required>
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group mb-1">
-                                        <label for="" class="mb-1">Serial No.</label>
+                                        <label for="" class="mb-1">Serial No. <span class="text-danger">*</span></label>
                                         <input type="text" name="serial_no" id="serial_no" class="form-control"
                                             required>
                                     </div>

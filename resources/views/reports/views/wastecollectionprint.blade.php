@@ -177,19 +177,19 @@
                                     GRAND TOTAL
                                 </td>
 
-                                <td class="text-center px-2 py-1 align-middle" style="font-size: 12px">
+                                <td class="text-center fw-semibold px-2 py-1 align-middle" style="font-size: 12px">
                                     {{ $totals['biodegradable'] }}
                                 </td>
-                                <td class="text-center px-2 py-1 align-middle" style="font-size: 12px">
+                                <td class="text-center fw-semibold px-2 py-1 align-middle" style="font-size: 12px">
                                     {{ $totals['nonbio'] }}
                                 </td>
-                                <td class="text-center px-2 py-1 align-middle" style="font-size: 12px">
+                                <td class="text-center fw-semibold px-2 py-1 align-middle" style="font-size: 12px">
                                     {{ $totals['recyclable'] }}
                                 </td>
-                                <td class="text-center px-2 py-1 align-middle" style="font-size: 12px">
+                                <td class="text-center fw-semibold px-2 py-1 align-middle" style="font-size: 12px">
                                     {{ $totals['specialwaste'] }}
                                 </td>
-                                <td class="text-center px-2 py-1 align-middle" style="font-size: 12px">
+                                <td class="text-center fw-semibold px-2 py-1 align-middle" style="font-size: 12px">
                                     {{ $totals['grand_total'] }}
                                 </td>
                             </tr>

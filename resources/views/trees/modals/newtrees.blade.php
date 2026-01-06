@@ -27,70 +27,70 @@
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group mb-1">
-                                        <label for="" class="mb-1">First Name</label>
+                                        <label for="" class="mb-1">First Name <span class="text-danger">*</span></label>
                                         <input type="text" name="firstname" id="firstname" placeholder="First Name"
                                             class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group mb-1">
-                                        <label for="" class="mb-1">Middle Name</label>
+                                        <label for="" class="mb-1">Middle Name <span class="text-danger">*</span></label>
                                         <input type="text" name="middlename" id="middlename"
                                             placeholder="Middle Name" class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group mb-1">
-                                        <label for="" class="mb-1">Last Name</label>
+                                        <label for="" class="mb-1">Last Name <span class="text-danger">*</span></label>
                                         <input type="text" name="lastname" id="lastname" placeholder="Last Name"
                                             class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group mb-1">
-                                        <label for="" class="mb-1">OR Number</label>
+                                        <label for="" class="mb-1">OR Number <span class="text-danger">*</span></label>
                                         <input type="text" name="ornumber" id="ornumber" placeholder="OR Number"
                                             class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group mb-1">
-                                        <label for="" class="mb-1">Owner of Trees</label>
+                                        <label for="" class="mb-1">Owner of Trees <span class="text-danger">*</span></label>
                                         <input type="text" name="name_other" id="name_other"
                                             placeholder="Owner of Trees" class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group mb-1">
-                                        <label for="" class="mb-1">Lot Number</label>
+                                        <label for="" class="mb-1">Lot Number <span class="text-danger">*</span></label>
                                         <input type="text" name="lot_no" id="lot_no" placeholder="Lot Number"
                                             class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group mb-1">
-                                        <label for="" class="mb-1">Type of Tree</label>
+                                        <label for="" class="mb-1">Type of Tree <span class="text-danger">*</span></label>
                                         <input type="text" name="typeoftrees" id="typeoftrees"
                                             placeholder="Type of tree (e.g., Narra)" class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group mb-1">
-                                        <label for="" class="mb-1">Number of Trees</label>
+                                        <label for="" class="mb-1">Number of Trees <span class="text-danger">*</span></label>
                                         <input type="number" name="nooftrees" id="nooftrees"
                                             placeholder="Number of Trees" class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group mb-1">
-                                        <label for="" class="mb-1">Trees Location</label>
+                                        <label for="" class="mb-1">Trees Location <span class="text-danger">*</span></label>
                                         <input type="text" name="treeslocated" id="treeslocated"
                                             placeholder="Trees Location" class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group mb-1">
-                                        <label for="" class="mb-1">Barangay</label>
+                                        <label for="" class="mb-1">Barangay <span class="text-danger">*</span></label>
                                         <select class="form-select" name="barangay" id="barangay" required>
                                             <option value="" disabled selected>Barangay</option>
                                             @foreach ($barangays_global as $brgy)
@@ -101,21 +101,21 @@
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group mb-1">
-                                        <label for="" class="mb-1">Municipality</label>
+                                        <label for="" class="mb-1">Municipality <span class="text-danger">*</span></label>
                                         <input type="text" name="municipality" id="municipality"
                                             placeholder="Municipality" class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group mb-1">
-                                        <label for="" class="mb-1">Province</label>
+                                        <label for="" class="mb-1">Province <span class="text-danger">*</span></label>
                                         <input type="text" name="province" id="province" placeholder="Province"
                                             class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group mb-1">
-                                        <label for="" class="mb-1">Sex</label>
+                                        <label for="" class="mb-1">Sex <span class="text-danger">*</span></label>
                                         <select name="sex" id="sex" class="form-select" required>
                                             <option value="Male">Male</option>
                                             <option value="Female">Female</option>
@@ -124,21 +124,21 @@
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group mb-1">
-                                        <label for="" class="mb-1">Contact Number</label>
+                                        <label for="" class="mb-1">Contact Number <span class="text-danger">*</span></label>
                                         <input type="number" name="contact_no" id="contact_no" class="form-control"
                                             required>
                                     </div>
                                 </div>
                                 {{-- <div class="col-6">
                                     <div class="form-group mb-1">
-                                        <label for="" class="mb-1">Date of Renewed</label>
+                                        <label for="" class="mb-1">Date of Renewed <span class="text-danger">*</span></label>
                                         <input type="date" name="date_renewal" id="date_renewal"
                                             class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group mb-1">
-                                        <label for="" class="mb-1">Date of Expired</label>
+                                        <label for="" class="mb-1">Date of Expired <span class="text-danger">*</span></label>
                                         <input type="date" name="expiration" id="expiration" class="form-control"
                                             required>
                                     </div>
